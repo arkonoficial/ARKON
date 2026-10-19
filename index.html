@@ -1,144 +1,924 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101a32">
-<meta name="description" content="ARKON: plataforma educativa para aprender convivencia, ciudadanía, habilidades laborales y prevención de riesgos.">
-<title>ARKON | Aprende, convive, avanza</title>
+<meta name="description" content="ARKON: plataforma educativa interactiva sobre prevención de riesgos, convivencia, ciudadanía y habilidades laborales.">
+<title>ARKON</title>
 <style>
-:root{--bg:#f4f6fb;--panel:#fff;--ink:#17213b;--muted:#68738b;--line:#e3e8f2;--navy:#101a32;--blue:#4263eb;--cyan:#39c6d8;--soft:#eaf0ff;--green:#16866b;--shadow:0 16px 40px rgba(22,35,70,.08)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}.app{min-height:100vh}.sidebar{position:fixed;inset:0 auto 0 0;width:248px;background:var(--navy);color:#eef2ff;padding:26px 18px;display:flex;flex-direction:column;z-index:10}.brand{display:flex;align-items:center;gap:11px;padding:0 10px 30px}.brand-mark{width:39px;height:39px;border-radius:13px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:grid;place-items:center;color:white;font-weight:900;font-size:21px;box-shadow:0 7px 20px #4263eb55}.brand strong{display:block;letter-spacing:2.5px;font-size:20px}.brand small{display:block;color:#9eabc8;font-size:10px;letter-spacing:1.2px}.nav-label{font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:#8290b0;padding:12px 12px 8px}.nav{display:grid;gap:6px}.nav button{border:0;background:transparent;color:#b9c4df;text-align:left;padding:11px 13px;border-radius:11px;display:flex;align-items:center;gap:12px;transition:.2s}.nav button:hover,.nav button.active{background:#253353;color:#fff}.nav button.active{box-shadow:inset 3px 0 var(--cyan)}.nav .ico{width:22px;text-align:center;font-size:17px}.side-bottom{margin-top:auto;background:#1b2947;border:1px solid #31405f;border-radius:15px;padding:15px}.side-bottom strong{font-size:13px}.side-bottom p{font-size:12px;color:#aab7d4;margin:6px 0 12px}.mini-progress{height:5px;border-radius:9px;background:#354363;overflow:hidden}.mini-progress span{display:block;height:100%;width:0;background:var(--cyan);transition:width .3s}.main{margin-left:248px;padding:0 36px 60px;max-width:1600px}.topbar{height:82px;display:flex;align-items:center;justify-content:space-between;gap:18px;border-bottom:1px solid var(--line);margin-bottom:28px}.crumb{color:var(--muted);font-size:13px}.crumb b{color:var(--ink)}.top-actions{display:flex;align-items:center;gap:10px}.search{position:relative}.search input{width:min(280px,30vw);background:var(--panel);border:1px solid var(--line);border-radius:11px;padding:10px 14px 10px 37px;outline:none;color:var(--ink)}.search input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #4263eb18}.search span{position:absolute;left:13px;top:8px;color:var(--muted)}.icon-btn{width:40px;height:40px;border:1px solid var(--line);border-radius:12px;background:var(--panel);color:var(--ink)}.avatar{width:39px;height:39px;border-radius:13px;background:#e1e8ff;color:#2946b5;display:grid;place-items:center;font-weight:800}.view{display:none;animation:rise .25s ease}.view.active{display:block}@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}.eyebrow{color:var(--blue);font-weight:800;font-size:11px;letter-spacing:1.8px;text-transform:uppercase}.hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#111d3a 0%,#1c3261 63%,#245a78 100%);border-radius:23px;padding:36px 38px;color:white;display:grid;grid-template-columns:1.3fr .7fr;gap:20px;min-height:275px;box-shadow:var(--shadow)}.hero:after{content:"";position:absolute;width:290px;height:290px;border:1px solid #ffffff19;border-radius:50%;right:5%;top:-120px;box-shadow:0 0 0 36px #ffffff08,0 0 0 72px #ffffff06}.hero-copy{position:relative;z-index:1}.hero .eyebrow{color:#78e4ee}.hero h1{font-size:clamp(28px,3.5vw,43px);line-height:1.12;letter-spacing:-1.4px;margin:12px 0}.hero p{color:#c2cde5;max-width:510px;margin:0 0 23px}.hero-art{display:grid;place-items:center;position:relative;z-index:1}.orbit{width:190px;height:190px;border:1px solid #ffffff35;border-radius:50%;display:grid;place-items:center;position:relative;background:radial-gradient(circle,#ffffff13,transparent 67%)}.orbit:before,.orbit:after{content:"";position:absolute;border:1px solid #ffffff28;border-radius:50%;inset:19px}.orbit:after{inset:39px}.orbit-core{font-size:49px;filter:drop-shadow(0 6px 18px #42d9e655)}.orbit-dot{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--cyan);box-shadow:0 0 15px var(--cyan)}.orbit-dot.one{top:25px;right:36px}.orbit-dot.two{bottom:31px;left:20px;background:#8c9dff}.btn{border:0;border-radius:11px;padding:11px 16px;font-weight:750;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .15s,filter .15s}.btn:hover{filter:brightness(1.05);transform:translateY(-1px)}.btn-primary{background:var(--blue);color:white}.btn-light{background:white;color:#1a2a4b}.btn-outline{background:transparent;border:1px solid var(--line);color:var(--ink)}.hero .btn-primary{background:#6e83ff}.hero .btn-outline{border-color:#60769c;color:white}.section-head{display:flex;align-items:end;justify-content:space-between;gap:14px;margin:29px 0 15px}.section-head h2{font-size:20px;letter-spacing:-.5px;margin:2px 0 0}.section-head p{color:var(--muted);margin:0;font-size:13px}.text-link{border:0;background:transparent;color:var(--blue);font-weight:750}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px;margin-top:20px}.stat,.panel,.module-card,.resource-card{background:var(--panel);border:1px solid var(--line);border-radius:17px;box-shadow:0 5px 18px #17213b04}.stat{padding:18px;display:flex;gap:13px;align-items:center}.stat-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;background:var(--soft);font-size:20px}.stat strong{font-size:24px;line-height:1.2;display:block}.stat small{color:var(--muted);font-size:12px}.modules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.module-card{padding:20px;transition:.2s;display:flex;flex-direction:column;min-height:204px}.module-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#cbd5ff}.module-top{display:flex;justify-content:space-between;align-items:center}.module-icon{width:45px;height:45px;border-radius:14px;display:grid;place-items:center;font-size:21px;background:#eaf0ff}.tag{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--green);background:#e3f7f0;padding:5px 8px;border-radius:20px}.module-card h3{margin:14px 0 5px;font-size:17px}.module-card p{color:var(--muted);font-size:13px;margin:0 0 18px}.module-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;font-size:12px;color:var(--muted)}.module-foot button{border:0;background:var(--soft);color:var(--blue);font-weight:800;padding:8px 11px;border-radius:9px}.lower-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px;margin-top:23px}.panel{padding:21px}.panel h3{margin:0 0 5px;font-size:16px}.panel-sub{color:var(--muted);font-size:12px;margin:0 0 17px}.activity-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line)}.activity-row:first-of-type{border-top:0}.activity-symbol{width:38px;height:38px;border-radius:12px;background:var(--soft);display:grid;place-items:center}.activity-row strong{display:block;font-size:13px}.activity-row small{color:var(--muted);font-size:11px}.activity-row .status{margin-left:auto;font-size:11px;font-weight:800;color:var(--green)}.daily-tip{background:linear-gradient(135deg,#edf4ff,#eafaf8);border-radius:14px;padding:18px}.daily-tip .tip-icon{font-size:25px}.daily-tip p{font-size:13px;color:#42516d;margin:7px 0 0}.page-title{margin:0 0 7px;font-size:31px;letter-spacing:-1px}.page-intro{color:var(--muted);margin:0 0 24px;max-width:720px}.lesson-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.lesson{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:22px}.lesson h3{margin:10px 0 7px}.lesson p,.lesson li{color:var(--muted);font-size:14px}.lesson ul{padding-left:20px}.lesson .btn{margin-top:9px}.callout{border-left:4px solid var(--cyan);background:var(--soft);padding:15px 17px;border-radius:0 12px 12px 0;margin:20px 0;color:var(--ink)}.quiz-box{max-width:780px;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:25px}.quiz-progress{height:6px;background:var(--line);border-radius:10px;margin:13px 0 23px;overflow:hidden}.quiz-progress span{display:block;height:100%;width:0;background:var(--blue);transition:width .25s}.question-count{font-size:12px;color:var(--muted);font-weight:700}.quiz-box h2{font-size:22px;line-height:1.3}.answers{display:grid;gap:10px;margin:20px 0}.answer{padding:13px 15px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:12px;text-align:left}.answer:hover{border-color:var(--blue)}.answer.selected{border-color:var(--blue);background:var(--soft)}.answer.correct{border-color:var(--green);background:#e6f8f1}.answer.wrong{border-color:#dc5656;background:#fff0f0}.feedback{min-height:25px;color:var(--muted);font-size:13px;margin:12px 0}.resource-list{display:grid;gap:12px}.resource-card{padding:17px;display:flex;gap:14px;align-items:flex-start}.resource-card .resource-icon{font-size:23px}.resource-card h3{font-size:15px;margin:0 0 4px}.resource-card p{font-size:13px;color:var(--muted);margin:0 0 8px}.resource-card a{color:var(--blue);font-size:12px;font-weight:800}.search-empty{display:none;padding:25px;text-align:center;color:var(--muted)}.footer{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:15px;color:var(--muted);font-size:11px}.toast{position:fixed;right:20px;bottom:20px;background:#17213b;color:white;padding:12px 17px;border-radius:12px;box-shadow:var(--shadow);z-index:30;opacity:0;transform:translateY(10px);pointer-events:none;transition:.25s}.toast.show{opacity:1;transform:none}.mobile-menu{display:none}
-body.dark{--bg:#0d1425;--panel:#151f34;--ink:#edf2ff;--muted:#a0acc5;--line:#2a3650;--soft:#202e4b;--shadow:0 16px 40px #0003}body.dark .stat-icon,body.dark .module-icon{background:#243455}body.dark .daily-tip{background:linear-gradient(135deg,#1a2b47,#163a3b)}body.dark .daily-tip p{color:#c0cde3}body.dark .tag{background:#183d36;color:#7fe2bf}body.dark .avatar{background:#29395f;color:#b9c7ff}
-@media(max-width:1050px){.sidebar{width:215px}.main{margin-left:215px;padding:0 24px 45px}.hero{padding:29px}.orbit{width:160px;height:160px}.stats{gap:10px}.stat{padding:14px}.lower-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:760px){.sidebar{transform:translateX(-100%);transition:transform .25s;width:260px;box-shadow:var(--shadow)}.sidebar.open{transform:translateX(0)}.main{margin-left:0;padding:0 16px 35px}.topbar{height:70px;margin-bottom:19px}.mobile-menu{display:inline-grid}.crumb{display:none}.search input{width:min(44vw,230px)}.hero{grid-template-columns:1fr;padding:25px 22px;min-height:0}.hero-art{display:none}.hero h1{font-size:32px}.stats{grid-template-columns:1fr 1fr}.stat:last-child{grid-column:1/-1}.modules,.lesson-grid{grid-template-columns:1fr}.lower-grid{grid-template-columns:1fr}.section-head{align-items:start}.page-title{font-size:27px}.footer{flex-direction:column}.side-backdrop{display:none;position:fixed;inset:0;background:#08112788;z-index:9}.side-backdrop.show{display:block}}
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+:root {
+  --site-primary: #183B70;
+  --site-secondary: #14B8A6;
+  --site-background: #F3F7FC;
+  --site-on-primary: #FFFFFF;
+  --site-on-secondary: #062E2A;
+  --site-on-background: #172841;
+  --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+  --ink: light-dark(#172841, #ECF3FF);
+  --muted: light-dark(#5D6B82, #A7B6CB);
+  --surface: light-dark(#FFFFFF, #18253A);
+  --surface-soft: light-dark(#EAF1FA, #202F47);
+  --border: light-dark(#DCE5F0, #34445D);
+  --shadow: 0 16px 42px rgba(21, 47, 82, .09);
+  --teal-ink: #087F75;
+  --yellow: #FFCA66;
+  --purple: #7761D7;
+  --danger: #B84942;
+  --hover-accent: #0F9488;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--site-font-body); color: var(--ink); background: var(--site-background); }
+button, input, select { font: inherit; }
+button, a, input, select { -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; }
+:focus-visible { outline: 3px solid #E5A52E; outline-offset: 3px; }
+#app { min-height: 100vh; width: 100%; border-radius: 0; color: var(--site-on-background); background-color: var(--site-background); overflow: clip; }
+.shell { max-width: 1180px; width: min(100% - 42px, 1180px); margin: 0 auto; }
+.topline { height: 5px; background: linear-gradient(90deg, var(--site-primary) 0 55%, var(--site-secondary) 55% 82%, var(--yellow) 82%); }
+header { position: sticky; top: 0; z-index: 20; background: light-dark(rgba(255,255,255,.94), rgba(16,25,40,.94)); backdrop-filter: blur(18px); border-bottom: 1px solid var(--border); }
+.header-inner { display:flex; align-items:center; justify-content:space-between; gap:20px; min-height:78px; }
+.brand { display:flex; align-items:center; gap:11px; border:0; background:transparent; padding:6px 0; color:var(--ink); text-align:left; flex-shrink:0; }
+.brand-mark { width:42px; height:42px; border-radius:14px; display:grid; place-items:center; background:var(--site-primary); color:#fff; box-shadow:0 6px 16px rgba(24,59,112,.23); }
+.brand-name { display:block; font-family:var(--site-font-heading); font-weight:850; font-size:1.02rem; letter-spacing:-.035em; }
+.brand-caption { display:block; font-size:.68rem; letter-spacing:.08em; color:var(--muted); margin-top:2px; text-transform:uppercase; }
+.nav { display:flex; align-items:center; gap:4px; }
+.nav button { color:var(--muted); border:0; background:transparent; border-radius:12px; padding:10px 12px; font-size:.86rem; font-weight:700; transition:background .18s ease,color .18s ease; }
+.nav button:hover, .nav button.active { color:var(--site-primary); background:light-dark(#EAF1FB,#233A59); }
+.nav button.active { box-shadow: inset 0 -2px 0 var(--site-secondary); }
+.header-actions { display:flex; align-items:center; gap:9px; }
+.icon-btn { width:42px; height:42px; display:grid; place-items:center; border-radius:13px; color:var(--ink); border:1px solid var(--border); background:var(--surface); }
+.menu-toggle { display:none; }
+.page { display:none; animation:fadeIn .25s ease both; padding:32px 0 68px; }
+.page.active { display:block; }
+@keyframes fadeIn { from { opacity:0; transform:translateY(5px) } to { opacity:1; transform:translateY(0) } }
+.eyebrow { display:inline-flex; align-items:center; gap:8px; color:var(--teal-ink); font-size:.73rem; font-weight:850; letter-spacing:.12em; text-transform:uppercase; }
+.eyebrow-dot { width:8px; height:8px; border-radius:50%; background:var(--site-secondary); box-shadow:0 0 0 4px light-dark(#D7F5EF,#183E46); }
+h1,h2,h3,h4,p { margin-top:0; }
+h1,h2,h3 { font-family:var(--site-font-heading); letter-spacing:-.045em; }
+h1 { font-size:calc(clamp(2.55rem, 5vw, 4.5rem) * var(--site-heading-scale)); line-height:1.02; margin:18px 0 20px; max-width:680px; }
+h2 { font-size:calc(clamp(1.8rem,3.3vw,2.8rem) * var(--site-heading-scale)); line-height:1.1; margin:12px 0; }
+h3 { font-size:calc(1.18rem * var(--site-heading-scale)); line-height:1.2; margin-bottom:8px; }
+p { color:var(--muted); line-height:1.7; }
+.lead { max-width:630px; font-size:1.08rem; line-height:1.72; }
+.btn { display:inline-flex; justify-content:center; align-items:center; gap:9px; border:1px solid transparent; border-radius:14px; padding:13px 17px; font-weight:800; font-size:.9rem; text-decoration:none; transition:transform .17s ease,box-shadow .17s ease,background .17s ease; }
+.btn:hover { transform:translateY(-2px); }
+.btn-primary { background:var(--site-primary); color:var(--site-on-primary); box-shadow:0 8px 20px rgba(24,59,112,.2); }
+.btn-primary:hover { box-shadow:0 12px 24px rgba(24,59,112,.28); }
+.btn-secondary { background:var(--site-secondary); color:var(--site-on-secondary); }
+.btn-quiet { background:var(--surface); color:var(--ink); border-color:var(--border); }
+.btn-small { padding:9px 12px; border-radius:11px; font-size:.82rem; }
+.button-row { display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
+.hero { position:relative; display:grid; grid-template-columns:1.08fr .92fr; gap:38px; align-items:center; border-radius:30px; padding:clamp(28px,5vw,62px); background:linear-gradient(128deg,var(--site-primary),#234E85 64%,#176E83); color:#fff; overflow:hidden; box-shadow:var(--shadow); }
+.hero:after { content:""; position:absolute; width:410px;height:410px;border:1px solid rgba(255,255,255,.16);border-radius:50%;right:-105px;top:-180px;opacity:var(--site-decoration-opacity);pointer-events:none; }
+.hero .eyebrow { color:#8EF0DD; }
+.hero h1 { color:#fff; }
+.hero p { color:rgba(255,255,255,.81); }
+.hero .btn-quiet { color:#fff; background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.25); }
+.hero-note { display:flex; align-items:center; gap:10px; margin-top:27px; font-size:.8rem; color:rgba(255,255,255,.8); }
+.hero-note .check { background:#2FC6AE; color:#062E2A; width:23px;height:23px;display:grid;place-items:center;border-radius:8px;font-weight:900; }
+.illustration { position:relative; min-height:330px; display:grid; place-items:center; isolation:isolate; }
+.illustration .orb { position:absolute; width:288px;height:288px;border-radius:50%; background:linear-gradient(135deg,rgba(20,184,166,.85),rgba(255,202,102,.95)); opacity:.95; z-index:-1; }
+.illustration svg { width:100%; max-width:440px; filter:drop-shadow(0 20px 25px rgba(5,20,43,.22)); }
+.float-card { position:absolute; display:flex; gap:10px; align-items:center; padding:13px 15px; border-radius:16px; background:light-dark(#FFFFFF,#202F47); color:var(--ink); box-shadow:0 12px 30px rgba(4,20,42,.22); border:1px solid rgba(255,255,255,.65); font-size:.78rem; font-weight:800; }
+.float-card span:first-child { width:32px;height:32px;display:grid;place-items:center;background:#DBF8F1;border-radius:10px;font-size:1rem; }
+.float-card.one { top:22px; left:-2px; }
+.float-card.two { right:-5px; bottom:28px; }
+.section-head { display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin:48px 0 22px; }
+.section-head p { margin:7px 0 0; max-width:550px; }
+.text-link { border:0;background:transparent;color:var(--teal-ink);font-weight:850;display:inline-flex;align-items:center;gap:7px;padding:9px 0; }
+.card-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:17px; }
+.card { background:var(--surface); border:1px solid var(--border); border-radius:22px; padding:23px; box-shadow:0 7px 24px rgba(22,48,79,.035); }
+.card.interactive { transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease; cursor:pointer; }
+.card.interactive:hover { transform:translateY(-4px); border-color:light-dark(#9ECBCB,#407E85); box-shadow:var(--shadow); }
+.card p:last-child { margin-bottom:0; }
+.card-top { display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:18px; }
+.card-icon { width:52px;height:52px;display:grid;place-items:center;border-radius:17px;font-size:1.5rem; }
+.icon-blue { background:#E8F0FF; }.icon-mint { background:#DDF8EF; }.icon-yellow { background:#FFF1CF; }.icon-lilac { background:#EEE9FF; }.icon-peach { background:#FFE5D9; }
+.tag { display:inline-flex; align-items:center; gap:5px; border-radius:999px; padding:6px 10px; background:var(--surface-soft); color:var(--muted); font-size:.72rem; font-weight:800; white-space:nowrap; }
+.card h3 { margin-bottom:9px; }
+.card p { font-size:.9rem; line-height:1.65; }
+.card-bottom { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:17px; font-size:.78rem; color:var(--muted); }
+.arrow-circle { width:32px;height:32px;border-radius:11px;display:grid;place-items:center;background:var(--surface-soft);color:var(--ink); }
+.feature-strip { margin-top:18px; padding:22px 25px; display:flex; align-items:center; justify-content:space-between; gap:22px; border-radius:22px; border:1px solid var(--border); background:var(--surface); }
+.feature-copy { display:flex; align-items:center; gap:15px; }
+.feature-copy .card-icon { flex-shrink:0; }
+.feature-copy p { margin:0; font-size:.87rem; }
+.feature-copy h3 { margin:0 0 5px; }
+.challenge { display:grid;grid-template-columns: .75fr 1.25fr; gap:24px; padding:27px; border-radius:24px; background:var(--surface-soft); border:1px solid var(--border); }
+.challenge-intro { padding:7px 8px; }
+.challenge-intro .card-icon { margin-bottom:15px; }
+.challenge-question { background:var(--surface); border:1px solid var(--border); border-radius:19px; padding:23px; }
+.challenge-question h3 { font-size:1.12rem; }
+.answer-list { display:grid; gap:9px; margin:17px 0 10px; }
+.answer-btn { display:flex; align-items:center; gap:11px; padding:12px 13px; width:100%;text-align:left;border:1px solid var(--border);border-radius:13px;color:var(--ink);background:var(--surface);font-size:.87rem; }
+.answer-btn:hover { border-color:var(--site-secondary); }
+.answer-btn .letter { flex-shrink:0; width:27px;height:27px;display:grid;place-items:center;border-radius:9px;background:var(--surface-soft);font-size:.76rem;font-weight:900; }
+.answer-btn.correct { border-color:#1B9A77;background:light-dark(#E9F9F3,#193F3A); }
+.answer-btn.wrong { border-color:#D16B65;background:light-dark(#FFF0ED,#452B35); }
+.feedback { min-height:26px; font-size:.84rem; line-height:1.5; font-weight:700; margin:12px 0 0; }
+.search-panel { display:flex; align-items:center; gap:13px; margin:28px 0 20px; padding:13px 15px; border-radius:18px; border:1px solid var(--border); background:var(--surface); }
+.search-field { flex:1; display:flex; align-items:center; gap:10px; min-width:100px; }
+.search-field input { border:0; outline:0; width:100%; min-width:0; background:transparent; color:var(--ink); padding:8px 0; }
+.search-panel select { max-width:190px; border:1px solid var(--border); border-radius:11px; padding:10px 12px; background:var(--surface); color:var(--ink); }
+.page-intro { padding:23px 0 12px; }
+.page-intro h1 { font-size:calc(clamp(2.4rem,4.4vw,3.7rem) * var(--site-heading-scale)); max-width:800px; }
+.page-intro p { max-width:740px; font-size:1.02rem; }
+.mini-stats { display:flex;flex-wrap:wrap;gap:10px;margin-top:22px; }
+.mini-stat { padding:10px 13px;border:1px solid var(--border);background:var(--surface);border-radius:12px;font-size:.8rem;color:var(--muted); }
+.mini-stat strong { color:var(--ink); margin-right:4px; }
+.notice { display:flex; align-items:flex-start; gap:12px; padding:15px 17px; border:1px solid #E6C17A; border-radius:16px; background:light-dark(#FFF8E8,#3C3322); margin:22px 0; }
+.notice-icon { flex-shrink:0; width:29px;height:29px;display:grid;place-items:center;border-radius:9px;background:#FFE7AE;color:#754E00; }
+.notice p { margin:0; font-size:.84rem; color:light-dark(#72531C,#F3D58A); line-height:1.6; }
+.detail-layout { display:grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px,.75fr); gap:22px; align-items:start; }
+.detail-panel { background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:clamp(20px,3vw,32px); }
+.detail-panel h2 { font-size:2rem; }
+.detail-panel h3 { margin-top:25px; }
+.detail-panel ul { padding-left:21px;color:var(--muted);line-height:1.75; }
+.detail-panel li { padding-left:3px; margin:6px 0; }
+.steps-grid { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;margin:22px 0; }
+.step-card { padding:17px;border-radius:16px;background:var(--surface-soft);border:1px solid var(--border); }
+.step-card .step-no { width:29px;height:29px;display:grid;place-items:center;border-radius:10px;background:var(--site-primary);color:#fff;font-weight:900;font-size:.78rem;margin-bottom:13px; }
+.step-card p { margin:0;font-size:.84rem; }
+.checklist { display:grid;gap:10px; }
+.check-item { display:flex; gap:11px; align-items:flex-start; padding:12px 13px; border:1px solid var(--border); border-radius:13px; background:var(--surface); font-size:.87rem; line-height:1.5; }
+.check-item input { width:18px;height:18px; margin:2px 0 0;accent-color:var(--teal-ink);flex-shrink:0; }
+.check-item:has(input:checked) span { color:var(--muted);text-decoration:line-through; }
+.progress-shell { height:7px;border-radius:100px;background:var(--border);overflow:hidden;margin:10px 0 13px; }
+.progress-fill { height:100%;border-radius:100px;background:linear-gradient(90deg,var(--site-secondary),#78DCCB);width:0;transition:width .2s ease; }
+.side-card { position:sticky;top:100px; }
+.side-card .card-icon { margin-bottom:14px; }
+.pill-row { display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0; }
+.pill { border:1px solid var(--border);background:var(--surface);color:var(--muted);border-radius:999px;padding:7px 11px;font-size:.75rem;font-weight:750; }
+.back-button { display:inline-flex; align-items:center; gap:8px; padding:10px 0; border:0; background:transparent; color:var(--teal-ink); font-weight:850; margin-bottom:14px; }
+.empty-state { padding:34px 20px;text-align:center;background:var(--surface);border:1px dashed var(--border);border-radius:20px;grid-column:1/-1; }
+.empty-state .card-icon { margin:0 auto 12px; }
+.source-list { display:grid; gap:13px; }
+.source-item { display:grid;grid-template-columns:52px 1fr auto;gap:16px;align-items:start;padding:20px;background:var(--surface);border:1px solid var(--border);border-radius:19px; }
+.source-number { display:grid;place-items:center;width:46px;height:46px;border-radius:14px;background:var(--surface-soft);font-size:.82rem;font-weight:900;color:var(--teal-ink); }
+.source-item h3 { margin:2px 0 5px;letter-spacing:-.02em; }
+.source-item p { margin:0;font-size:.86rem; }
+.source-meta { display:block;color:var(--muted);font-size:.75rem;margin:7px 0; }
+.source-item .btn { flex-shrink:0; }
+.about-grid { display:grid;grid-template-columns:1.15fr .85fr;gap:20px; }
+.principles { display:grid;gap:12px; }
+.principle { display:flex;gap:13px;padding:17px;background:var(--surface);border:1px solid var(--border);border-radius:17px; }
+.principle-icon { display:grid;place-items:center;width:39px;height:39px;border-radius:12px;background:var(--surface-soft);flex-shrink:0; }
+.principle h3 { margin:0 0 5px;font-size:1rem; }
+.principle p { margin:0;font-size:.84rem; }
+.footer { padding:25px 0 36px; border-top:1px solid var(--border); background:light-dark(#EAF0F7,#121D30); }
+.footer-inner { display:flex;justify-content:space-between;align-items:center;gap:20px; }
+.footer-brand { font-weight:900; color:var(--ink); }
+.footer p { font-size:.76rem;margin:6px 0 0; }
+.footer-links { display:flex;flex-wrap:wrap;gap:10px; }
+.footer-links button { background:transparent;border:0;color:var(--muted);font-weight:750;font-size:.8rem; }
+dialog { padding:0; border:1px solid var(--border); border-radius:24px; width:min(630px, calc(100vw - 28px)); max-height:min(82vh,800px); background:var(--surface);color:var(--ink);box-shadow:0 25px 90px rgba(0,0,0,.28); }
+dialog::backdrop { background:rgba(8,21,39,.58);backdrop-filter:blur(4px); }
+.dialog-content { padding:clamp(20px,4vw,32px);overflow:auto; }
+.dialog-header { display:flex;align-items:flex-start;justify-content:space-between;gap:14px; }
+.dialog-header h2 { font-size:1.8rem; }
+.dialog-close { border:1px solid var(--border);background:var(--surface-soft);color:var(--ink);border-radius:11px;width:38px;height:38px;font-size:1.3rem;flex-shrink:0; }
+.dialog-body { color:var(--muted);line-height:1.75; }
+.dialog-body h3 { color:var(--ink);margin-top:20px; }
+.dialog-body ul { padding-left:22px; }
+.quiz-progress { font-size:.78rem;color:var(--muted);font-weight:800;margin-bottom:12px; }
+.quiz-result { padding:20px;border-radius:17px;background:var(--surface-soft);margin:15px 0; }
+.mobile-nav { display:none; }
+.credits-hero { display:flex; align-items:flex-end; justify-content:space-between; gap:24px; padding:clamp(24px,4vw,42px); margin:12px 0 24px; border-radius:26px; color:#fff; background:linear-gradient(125deg,var(--site-primary),#315E91 68%,#167E83); box-shadow:var(--shadow); }
+.credits-hero h1 { margin:13px 0 12px; color:#fff; font-size:calc(clamp(2.3rem,4vw,3.5rem) * var(--site-heading-scale)); }
+.credits-hero p { max-width:620px; margin-bottom:0; color:rgba(255,255,255,.82); }
+.credits-hero .eyebrow { color:#9AF2E3; }
+.credits-hero .btn { flex-shrink:0; }
+.credits-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; }
+.credit-card { position:relative; overflow:hidden; min-width:0; padding:25px 22px 24px; background:var(--surface); border:1px solid var(--border); border-radius:22px; box-shadow:0 7px 24px rgba(22,48,79,.045); transition:transform .28s cubic-bezier(.2,.8,.2,1),border-color .28s ease,box-shadow .28s ease; }
+.credit-card::before { content:""; position:absolute; inset:0 auto auto 0; width:100%; height:4px; background:var(--hover-accent); transform:scaleX(0); transform-origin:left; transition:transform .28s ease; }
+.credit-card:hover { transform:translateY(-6px); border-color:var(--hover-accent); box-shadow:var(--shadow); }
+.credit-card:hover::before { transform:scaleX(1); }
+.credit-number { display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; margin-bottom:24px; border-radius:13px; color:var(--site-on-primary); background:var(--site-primary); font-size:.78rem; font-weight:900; }
+.credit-symbol { display:block; margin-bottom:13px; color:var(--hover-accent); font-size:1.35rem; }
+.credit-name { overflow-wrap:anywhere; margin-bottom:9px; font-size:1.22rem; transition:color .24s ease; }
+.credit-role { margin-bottom:0; font-size:.88rem; }
+.credit-card .creator-photo-frame { width:calc(100% + 44px); margin:-25px -22px 18px; border:0; border-radius:0; }
+.credit-photo-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.credit-photo-actions .btn { flex:1; min-width:92px; padding:9px 10px; font-size:.76rem; }
+.credit-photo-status { display:block; min-height:18px; margin-top:7px; color:var(--teal-ink); font-size:.72rem; }
+.credits-note { margin-top:20px; padding:18px 20px; border:1px solid var(--border); border-radius:17px; background:var(--surface); }
+.credits-note p { margin:0; font-size:.86rem; }
+.credits-hero .btn-quiet { color:#fff; background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.3); }
+.credits-editor-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+.credits-field { display:grid; gap:7px; color:var(--ink); font-size:.82rem; font-weight:800; }
+.credits-field input { width:100%; min-width:0; border:1px solid var(--border); border-radius:11px; padding:11px 12px; color:var(--ink); background:var(--surface); }
+.credits-field input:focus { border-color:var(--hover-accent); }
+.credits-field.color-field input { min-height:43px; padding:5px; }
+.credits-editor-person { grid-column:1/-1; display:grid; grid-template-columns:1fr 1fr; gap:12px; padding:15px; border:1px solid var(--border); border-radius:15px; background:var(--surface-soft); }
+.credits-editor-person h3 { grid-column:1/-1; margin:0; font-size:.95rem; }
+.card.interactive, .credit-card, .feature-strip, .source-item, .principle, .step-card, .check-item, .mini-stat, .answer-btn { transition:background-color .24s ease,border-color .24s ease,box-shadow .24s ease,transform .24s ease; }
+.card.interactive:hover, .credit-card:hover, .feature-strip:hover, .source-item:hover, .principle:hover, .step-card:hover, .check-item:hover, .mini-stat:hover, .answer-btn:hover { background:light-dark(#E7F7F3,#213B49); border-color:var(--hover-accent); }
+.project-question-hero { padding:clamp(25px,4.5vw,48px); margin:10px 0 24px; border-radius:28px; background:linear-gradient(125deg,var(--site-primary),#245985 65%,#147D7A); color:#fff; box-shadow:var(--shadow); }
+.project-kicker { display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(255,255,255,.25); border-radius:999px; padding:7px 11px; background:rgba(255,255,255,.09); color:#B9F5E9; font-size:.72rem; font-weight:850; letter-spacing:.09em; text-transform:uppercase; }
+.project-question-hero h1 { max-width:1000px; margin:20px 0 16px; color:#fff; font-size:calc(clamp(2rem,4vw,3.25rem) * var(--site-heading-scale)); line-height:1.12; letter-spacing:-.04em; }
+.project-question-hero p { max-width:850px; margin-bottom:0; color:rgba(255,255,255,.83); }
+.project-facts-grid,.project-pillars-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; margin:18px 0; }
+.project-fact,.project-pillar { min-width:0; padding:19px; border:1px solid var(--border); border-radius:18px; background:var(--surface); transition:background-color .22s ease,border-color .22s ease,transform .22s ease; }
+.project-fact:hover,.project-pillar:hover { background:light-dark(#E7F7F3,#213B49); border-color:var(--hover-accent); transform:translateY(-3px); }
+.project-fact .fact-label { display:block; margin-bottom:7px; color:var(--teal-ink); font-size:.7rem; font-weight:850; letter-spacing:.1em; text-transform:uppercase; }
+.project-fact strong { display:block; color:var(--ink); line-height:1.4; }
+.project-pillar h3 { margin:10px 0 7px; font-size:1.03rem; }
+.project-pillar p { margin:0; font-size:.84rem; }
+.project-pillar-icon { display:grid; place-items:center; width:43px; height:43px; border-radius:14px; background:var(--surface-soft); font-size:1.25rem; }
+.subject-list { display:grid; gap:12px; margin-top:20px; }
+.subject-detail { overflow:hidden; border:1px solid var(--border); border-radius:18px; background:var(--surface); transition:border-color .2s ease,background-color .2s ease; }
+.subject-detail[open] { border-color:light-dark(#9CCFC7,#367D76); }
+.subject-detail summary { display:flex; align-items:center; gap:13px; list-style:none; padding:18px 20px; cursor:pointer; font-weight:850; }
+.subject-detail summary::-webkit-details-marker { display:none; }
+.subject-detail summary::after { content:"+"; display:grid; place-items:center; flex-shrink:0; width:29px; height:29px; margin-left:auto; border-radius:10px; background:var(--surface-soft); color:var(--teal-ink); font-size:1.15rem; transition:transform .2s ease; }
+.subject-detail[open] summary::after { content:"−"; }
+.subject-detail summary:hover { background:light-dark(#EAF7F4,#203A46); }
+.subject-emoji { display:grid; place-items:center; flex-shrink:0; width:42px; height:42px; border-radius:13px; background:var(--surface-soft); font-size:1.25rem; }
+.subject-title-wrap { display:grid; gap:4px; min-width:0; }
+.subject-title-wrap small { color:var(--muted); font-size:.75rem; font-weight:650; line-height:1.4; }
+.subject-body { padding:3px 20px 22px; border-top:1px solid var(--border); }
+.subject-body p,.subject-body li { font-size:.89rem; line-height:1.7; }
+.subject-body ul,.subject-body ol { padding-left:22px; color:var(--muted); }
+.subject-body li { margin:5px 0; }
+.subject-body h3 { margin:22px 0 8px; font-size:1.12rem; }
+.subject-body a { color:var(--teal-ink); font-weight:750; text-underline-offset:3px; }
+.project-chip-list { display:flex; flex-wrap:wrap; gap:8px; margin:13px 0 18px; }
+.project-chip-list span { padding:7px 10px; border:1px solid var(--border); border-radius:999px; background:var(--surface-soft); color:var(--ink); font-size:.76rem; font-weight:750; }
+.ethics-dilemma { padding:17px 18px; margin:18px 0; border:1px solid #E9C87D; border-radius:16px; background:light-dark(#FFF8E8,#3C3322); }
+.ethics-dilemma h3 { margin-top:0; color:light-dark(#74531A,#F3D58A); }
+.ethics-dilemma p { margin-bottom:8px; color:light-dark(#72531C,#F3D58A); }
+.contact-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:11px; margin:15px 0; }
+.contact-card { display:flex; flex-direction:column; gap:7px; min-width:0; padding:15px; border:1px solid var(--border); border-radius:15px; background:var(--surface); transition:background-color .2s ease,border-color .2s ease,transform .2s ease; }
+.contact-card:hover { background:light-dark(#E7F7F3,#213B49); border-color:var(--hover-accent); transform:translateY(-3px); }
+.contact-card strong { color:var(--ink); font-size:.87rem; }
+.contact-card span { color:var(--muted); font-size:.79rem; line-height:1.55; }
+.contact-card a { margin-top:auto; font-size:.78rem; }
+.project-callout { padding:15px 17px; margin:15px 0; border:1px solid var(--border); border-radius:15px; background:var(--surface-soft); }
+.project-callout p { margin:0; font-size:.85rem; }
+.risk-survey-inputs { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin:15px 0; }
+.risk-input { display:grid; grid-template-columns:minmax(0,1fr) 86px; align-items:center; gap:10px; padding:11px 12px; border:1px solid var(--border); border-radius:13px; background:var(--surface); font-size:.82rem; line-height:1.45; }
+.risk-input input { width:100%; min-width:0; padding:8px; border:1px solid var(--border); border-radius:9px; background:var(--surface-soft); color:var(--ink); }
+.survey-summary { padding:14px 16px; border-radius:14px; background:var(--surface-soft); color:var(--ink); font-size:.85rem; }
+.survey-viz-grid { display:grid; grid-template-columns:1.2fr .8fr; gap:18px; margin:20px 0; }
+.survey-viz-panel { min-width:0; padding:16px; border:1px solid var(--border); border-radius:16px; background:var(--surface); }
+.survey-viz-panel h3 { font-size:1rem; margin:0 0 14px; }
+.risk-bar-list { display:grid; gap:12px; }
+.risk-bar-line { display:grid; gap:5px; }
+.risk-bar-label { display:flex; justify-content:space-between; gap:10px; color:var(--muted); font-size:.75rem; }
+.risk-bar-label strong { color:var(--ink); white-space:nowrap; }
+.risk-bar-track { height:9px; overflow:hidden; border-radius:999px; background:var(--surface-soft); }
+.risk-bar-fill { height:100%; border-radius:999px; transition:width .25s ease; }
+.risk-pie-wrap { display:grid; justify-items:center; gap:13px; }
+.risk-pie { width:145px; height:145px; max-width:100%; border-radius:50%; border:1px solid var(--border); background:var(--surface-soft); box-shadow:inset 0 0 0 1px rgba(255,255,255,.1); }
+.risk-pie-legend { display:grid; width:100%; gap:7px; }
+.risk-pie-legend span { display:flex; justify-content:space-between; align-items:center; gap:8px; color:var(--muted); font-size:.73rem; }
+.legend-name { display:flex; align-items:center; gap:7px; }
+.legend-dot { width:9px; height:9px; border-radius:3px; flex-shrink:0; }
+.stats-table-wrap { width:100%; overflow-x:auto; border:1px solid var(--border); border-radius:13px; }
+.stats-table { width:100%; border-collapse:collapse; font-size:.8rem; }
+.stats-table th,.stats-table td { padding:10px 12px; text-align:left; border-bottom:1px solid var(--border); }
+.stats-table th { color:var(--ink); background:var(--surface-soft); }
+.stats-table td { color:var(--muted); }
+.stats-table tr:last-child td,.stats-table tr:last-child th { border-bottom:0; }
+.milestone-list { display:grid; gap:10px; margin:17px 0; }
+.milestone-row { display:flex; align-items:flex-start; gap:12px; padding:14px 15px; border:1px solid var(--border); border-radius:14px; background:var(--surface); cursor:pointer; transition:background-color .2s ease,border-color .2s ease; }
+.milestone-row:hover { background:light-dark(#E7F7F3,#213B49); border-color:var(--hover-accent); }
+.milestone-row input { flex-shrink:0; width:18px; height:18px; margin-top:2px; accent-color:var(--teal-ink); }
+.milestone-row strong { display:block; color:var(--ink); font-size:.85rem; }
+.milestone-row small { display:block; margin-top:3px; color:var(--muted); font-size:.78rem; line-height:1.5; }
+.english-example { margin:12px 0; padding:15px 16px; border-left:4px solid var(--site-secondary); border-radius:0 13px 13px 0; background:var(--surface-soft); }
+.english-example p { margin:5px 0 0; font-size:.88rem; }
+.english-example strong { color:var(--ink); }
+.project-answer { padding:clamp(22px,3.5vw,34px); margin:24px 0; border:1px solid var(--border); border-radius:24px; background:var(--surface); box-shadow:0 9px 28px rgba(22,48,79,.045); }
+.project-answer h2 { max-width:850px; font-size:calc(clamp(1.6rem,3vw,2.35rem) * var(--site-heading-scale)); }
+.project-answer p { max-width:900px; }
+.answer-points { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:19px; }
+.answer-point { padding:17px; border:1px solid var(--border); border-radius:16px; background:var(--surface-soft); transition:background .22s ease,border-color .22s ease,transform .22s ease; }
+.answer-point:hover { background:light-dark(#E7F7F3,#213B49); border-color:var(--hover-accent); transform:translateY(-3px); }
+.answer-point strong { display:block; margin:8px 0 5px; color:var(--ink); font-size:.9rem; }
+.answer-point p { margin:0; font-size:.82rem; line-height:1.6; }
+.creator-photo-section { margin:26px 0 8px; padding:clamp(20px,3vw,30px); border:1px solid var(--border); border-radius:24px; background:var(--surface); }
+.creator-photo-heading { display:flex; align-items:flex-end; justify-content:space-between; gap:20px; margin-bottom:20px; }
+.creator-photo-heading h2 { font-size:calc(clamp(1.6rem,3vw,2.2rem) * var(--site-heading-scale)); }
+.creator-photo-heading p { max-width:520px; margin:0; font-size:.86rem; }
+.creator-photo-grid { display:grid; grid-template-columns:minmax(0,780px); justify-content:center; gap:16px; }
+.creator-photo-card { overflow:hidden; min-width:0; border:1px solid var(--border); border-radius:19px; background:var(--surface); transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease; }
+.creator-photo-card:hover { transform:translateY(-4px); border-color:var(--hover-accent); box-shadow:var(--shadow); }
+.creator-photo-frame { position:relative; display:grid; place-items:center; overflow:hidden; aspect-ratio:4/3; background:linear-gradient(145deg,var(--surface-soft),light-dark(#D8EEE9,#243E4D)); }
+.creator-photo-frame img { display:block; width:100%; height:100%; object-fit:cover; }
+.creator-photo-placeholder { display:grid; justify-items:center; gap:9px; padding:18px; color:var(--muted); text-align:center; }
+.creator-photo-placeholder .placeholder-icon { display:grid; place-items:center; width:57px; height:57px; border-radius:20px; background:var(--surface); font-size:1.6rem; box-shadow:0 6px 18px rgba(20,50,70,.08); }
+.creator-photo-placeholder span:last-child { font-size:.76rem; }
+.creator-photo-meta { padding:15px; }
+.creator-photo-meta strong { display:block; color:var(--ink); font-size:.94rem; }
+.creator-photo-meta p { min-height:35px; margin:5px 0 12px; font-size:.77rem; }
+.creator-photo-actions { display:flex; flex-wrap:wrap; gap:8px; }
+.creator-photo-actions .btn { flex:1; padding:9px 10px; font-size:.78rem; }
+.creator-photo-input { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); clip-path:inset(50%); white-space:nowrap; }
+.photo-privacy-note { padding:13px 15px; margin-top:16px; border-radius:13px; background:var(--surface-soft); }
+.photo-privacy-note p { margin:0; font-size:.78rem; line-height:1.6; }
+.photo-status { display:block; min-height:18px; margin-top:8px; color:var(--teal-ink); font-size:.75rem; }
+.btn:hover { transform:translateY(-3px) scale(1.015); }
+.card.interactive:hover { transform:translateY(-6px) scale(1.008); }
+.page.active { animation:pageReveal .38s cubic-bezier(.2,.75,.25,1) both; }
+@keyframes pageReveal { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+.float-card { animation:gentleFloat 5.5s ease-in-out infinite; }
+.float-card.two { animation-delay:-2.6s; }
+@keyframes gentleFloat { 0%,100% { translate:0 0; } 50% { translate:0 -5px; } }
+[hidden] { display:none !important; }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; transition-duration:.01ms !important; } }
+@media (max-width:980px) {
+  .nav button { padding:9px 8px;font-size:.8rem; }
+  .header-actions .btn { display:none; }
+  .hero { grid-template-columns:1fr .8fr;gap:12px; }
+  .illustration { min-height:270px; }
+  .illustration .orb { width:230px;height:230px; }
+  .float-card.one { left:-10px; }.float-card.two { right:-8px; }
+  .card-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:760px) {
+  .shell { width:min(100% - 28px,1180px); }
+  .header-inner { min-height:70px; }
+  .menu-toggle { display:grid; }
+  .nav { display:none; position:absolute;top:calc(100% + 1px);left:0;right:0;padding:10px 14px 15px;background:light-dark(#FFFFFF,#101928);border-bottom:1px solid var(--border);box-shadow:0 16px 24px rgba(14,36,65,.1); }
+  .nav.open { display:grid;grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .nav button { text-align:left;padding:12px; }
+  .hero { grid-template-columns:1fr;padding:28px 25px 24px;gap:0; }
+  .hero h1 { font-size:calc(clamp(2.6rem,10vw,4rem) * var(--site-heading-scale)); }
+  .illustration { min-height:250px;margin-top:5px; }
+  .illustration svg { max-width:350px; }
+  .illustration .orb { width:220px;height:220px; }
+  .float-card.one { left:0;top:10px; }.float-card.two { right:0;bottom:12px; }
+  .page { padding:23px 0 48px; }
+  .section-head { align-items:flex-start;flex-direction:column;margin:38px 0 19px;gap:7px; }
+  .challenge { grid-template-columns:1fr;padding:19px; }
+  .challenge-intro { padding:0; }
+  .search-panel { flex-wrap:wrap; }
+  .search-field { flex-basis:100%; }
+  .search-panel select { flex:1;max-width:none; }
+  .detail-layout,.about-grid { grid-template-columns:1fr; }
+  .credits-hero { align-items:flex-start; flex-direction:column; }
+  .credits-grid { grid-template-columns:1fr; }
+  .credits-editor-grid { grid-template-columns:1fr; }
+  .credits-editor-person { grid-template-columns:1fr; }
+  .credits-editor-person h3 { grid-column:auto; }
+  .project-facts-grid,.project-pillars-grid { grid-template-columns:1fr; }
+  .contact-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .survey-viz-grid { grid-template-columns:1fr; }
+  .side-card { position:static; }
+  .steps-grid { grid-template-columns:1fr; }
+  .source-item { grid-template-columns:43px 1fr; }
+  .source-number { width:40px;height:40px; }
+  .source-item .btn { grid-column:2;justify-self:start; }
+  .footer-inner { align-items:flex-start;flex-direction:column; }
+}
+@media (max-width:480px) {
+  .shell { width:min(100% - 22px,1180px); }
+  .brand-caption { display:none; }
+  .brand-mark { width:38px;height:38px; }
+  .card-grid { grid-template-columns:1fr; }
+  .hero { border-radius:23px;padding:25px 20px 19px; }
+  .hero .button-row { align-items:stretch;flex-direction:column; }
+  .hero .btn { width:100%; }
+  .hero-note { align-items:flex-start; }
+  .float-card { padding:10px;font-size:.7rem; }
+  .float-card span:first-child { width:28px;height:28px; }
+  .feature-strip { align-items:flex-start;flex-direction:column;padding:19px; }
+  .mini-stats { gap:7px; }
+  .mini-stat { font-size:.72rem; }
+  .contact-grid,.risk-survey-inputs { grid-template-columns:1fr; }
+  .risk-input { grid-template-columns:minmax(0,1fr) 78px; }
+  .subject-detail summary { padding:14px; gap:10px; }
+  .subject-body { padding:3px 14px 18px; }
+}
 </style>
 </head>
 <body>
-<div class="app">
-<aside class="sidebar" id="sidebar">
-<a class="brand" href="#inicio" aria-label="ARKON inicio"><span class="brand-mark">A</span><span><strong>ARKON</strong><small>APRENDER PARA AVANZAR</small></span></a>
-<div class="nav-label">Espacio de aprendizaje</div>
-<nav class="nav" aria-label="Navegación principal">
-<button class="active" data-view="inicio"><span class="ico">⌂</span>Inicio</button>
-<button data-view="convivencia"><span class="ico">🤝</span>Convivencia</button>
-<button data-view="ciudadania"><span class="ico">🏛️</span>Ciudadanía</button>
-<button data-view="laborales"><span class="ico">💡</span>Habilidades laborales</button>
-<button data-view="prevencion"><span class="ico">🛡️</span>Prevención y seguridad</button>
-<button data-view="evaluacion"><span class="ico">✎</span>Evaluar lo aprendido</button>
-<button data-view="recursos"><span class="ico">▤</span>Recursos y fuentes</button>
-</nav>
-<div class="side-bottom"><strong>🚀 Tu aprendizaje cuenta</strong><p>Explora los módulos y completa el cuestionario para seguir avanzando.</p><div class="mini-progress"><span id="sideProgress"></span></div><small id="sideProgressText" style="display:block;color:#aab7d4;margin-top:8px">0 de 5 módulos explorados</small></div>
-</aside>
-<div class="side-backdrop" id="backdrop"></div>
-<main class="main">
-<header class="topbar">
-<div style="display:flex;align-items:center;gap:12px"><button class="icon-btn mobile-menu" id="menuBtn" aria-label="Abrir menú">☰</button><div class="crumb">ARKON <span style="padding:0 8px;color:#a5aec1">/</span> <b id="breadcrumb">Inicio</b></div></div>
-<div class="top-actions"><label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="Buscar tema..." aria-label="Buscar tema"></label><button class="icon-btn" id="themeBtn" aria-label="Cambiar tema" title="Cambiar tema">☾</button><div class="avatar" title="Estudiante">E</div></div>
-</header>
-<section class="view active" id="view-inicio">
-<div class="hero"><div class="hero-copy"><div class="eyebrow">Tu espacio para crecer</div><h1>Aprende hoy.<br>Transforma tu futuro.</h1><p>Una plataforma para desarrollar habilidades que sirven en el aula, en la comunidad y en el mundo laboral.</p><button class="btn btn-primary" data-go="convivencia">Explorar módulos <span>↗</span></button> <button class="btn btn-outline" data-go="evaluacion">Hacer evaluación</button></div><div class="hero-art" aria-hidden="true"><div class="orbit"><span class="orbit-dot one"></span><span class="orbit-dot two"></span><span class="orbit-core">✦</span></div></div></div>
-<div class="stats">
-<div class="stat"><div class="stat-icon">📚</div><div><strong>5</strong><small>Módulos de aprendizaje</small></div></div>
-<div class="stat"><div class="stat-icon">🎯</div><div><strong id="completedStat">0%</strong><small>Progreso de exploración</small></div></div>
-<div class="stat"><div class="stat-icon">🧠</div><div><strong>5</strong><small>Preguntas para practicar</small></div></div>
+<div class="topline" aria-hidden="true"></div>
+<div id="app" data-sites-preview-theme="custom">
+  <header>
+    <div class="shell header-inner">
+      <button class="brand" data-nav="inicio" aria-label="Ir al inicio de ARKON">
+        <span class="brand-mark" aria-hidden="true"><svg width="25" height="25" viewBox="0 0 24 24" fill="none"><path d="M4 15.5 9 7l3.1 5 2.1-3.2L20 18H4v-2.5Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="m8 18 3.2-4.6 2.4 2.9" stroke="#8EF0DD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span><span class="brand-name">ARKON</span><span class="brand-caption">PLATAFORMA EDUCATIVA</span></span>
+      </button>
+      <nav class="nav" id="main-nav" aria-label="Navegación principal">
+        <button data-nav="inicio" class="active">Inicio</button>
+        <button data-nav="proyecto">Pregunta ABP</button>
+        <button data-nav="desastres">Desastres</button>
+        <button data-nav="habilidades">Habilidades laborales</button>
+        <button data-nav="biblioteca">Biblioteca</button>
+        <button data-nav="fuentes">Fuentes</button>
+        <button data-nav="creditos">Créditos</button>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="global-search" aria-label="Buscar recursos" title="Buscar recursos"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+        <button class="icon-btn menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="shell">
+    <section class="page active" id="page-inicio" aria-labelledby="home-title">
+      <div class="hero">
+        <div>
+          <span class="eyebrow"><span class="eyebrow-dot"></span> Habilidades que te preparan</span>
+          <h1 id="home-title">Aprende hoy.<br>Responde mejor <span style="color:#8EF0DD">mañana.</span></h1>
+          <p class="lead">Conocimientos prácticos para cuidarte ante los riesgos, trabajar en equipo y construir tu futuro con más confianza.</p>
+          <div class="button-row">
+            <button class="btn btn-secondary" data-nav="desastres">Explorar prevención <span aria-hidden="true">↗</span></button>
+            <button class="btn btn-quiet" data-nav="habilidades">Desarrollar habilidades <span aria-hidden="true">→</span></button>
+          </div>
+          <div class="hero-note"><span class="check">✓</span><span>Explicaciones claras, práctica interactiva y fuentes consultables.</span></div>
+        </div>
+        <div class="illustration" aria-label="Ilustración de una casa protegida entre montañas" role="img">
+          <div class="orb"></div>
+          <svg viewBox="0 0 440 340" fill="none" aria-hidden="true">
+            <path d="M30 275 120 145l66 82 67-112 150 160H30Z" fill="#DFF5EF" opacity=".85"/>
+            <path d="m97 275 98-129 42 58 44-70 86 141H97Z" fill="#76CFBD"/>
+            <path d="M112 222 190 163l79 59v74H112v-74Z" fill="#FFFDF4"/>
+            <path d="m94 225 96-77 96 77" stroke="#F6BD58" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M160 296v-51a30 30 0 0 1 60 0v51" fill="#DCEBFA" stroke="#183B70" stroke-width="5"/>
+            <path d="M190 245v51" stroke="#183B70" stroke-width="3"/>
+            <rect x="235" y="236" width="29" height="30" rx="5" fill="#DCEBFA" stroke="#183B70" stroke-width="4"/>
+            <path d="M249 236v30M235 251h29" stroke="#183B70" stroke-width="3"/>
+            <path d="M190 126c-16-21-13-47 5-62 19-16 46-7 52 14 20-5 40 10 39 32-1 19-16 31-37 31h-39c-9 0-16-6-20-15Z" fill="#FFFDF4" opacity=".92"/>
+            <path d="M330 66v45M308 89h44" stroke="#FFFDF4" stroke-width="6" stroke-linecap="round"/>
+            <path d="M80 107c0-11 8-19 19-19s19 8 19 19-8 19-19 19-19-8-19-19Z" fill="#FFCA66"/>
+            <path d="m72 289 18-14 18 14" stroke="#183B70" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M304 281c0-14 11-25 25-25s25 11 25 25v17h-50v-17Z" fill="#FFFDF4" stroke="#183B70" stroke-width="4"/>
+            <path d="m321 273 7 7 11-14" stroke="#13A28E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M35 301h367" stroke="#FFFDF4" stroke-width="7" stroke-linecap="round" opacity=".65"/>
+          </svg>
+          <div class="float-card one"><span>🛡️</span><span>Prevención con propósito</span></div>
+          <div class="float-card two"><span>✦</span><span>Aprende haciendo</span></div>
+        </div>
+      </div>
+
+      <div class="section-head"><div><span class="eyebrow"><span class="eyebrow-dot"></span> Dos rutas, un mismo objetivo</span><h2>Tu próximo paso empieza aquí</h2><p>Aprende a anticiparte a los riesgos y a desarrollar competencias que puedes practicar cada día.</p></div></div>
+      <div class="card-grid">
+        <article class="card interactive" data-nav="desastres"><div class="card-top"><span class="card-icon icon-blue">🌦️</span><span class="tag">Ruta 01 · Prevención</span></div><h3>Prepárate para los desastres</h3><p>Conoce distintos fenómenos, organiza un plan de preparación y aprende a seguir orientaciones oficiales.</p><div class="card-bottom"><span>7 temas para explorar</span><span class="arrow-circle">↗</span></div></article>
+        <article class="card interactive" data-nav="habilidades"><div class="card-top"><span class="card-icon icon-mint">🧠</span><span class="tag">Ruta 02 · Trabajo</span></div><h3>Fortalece tus habilidades laborales</h3><p>Practica comunicación, trabajo en equipo, resolución de problemas y herramientas útiles para el empleo.</p><div class="card-bottom"><span>8 competencias prácticas</span><span class="arrow-circle">↗</span></div></article>
+        <article class="card interactive" data-nav="biblioteca"><div class="card-top"><span class="card-icon icon-yellow">📚</span><span class="tag">Recursos</span></div><h3>Encuentra una guía a tu ritmo</h3><p>Busca por tema, nivel o tipo de recurso. Guarda lo aprendido en este dispositivo.</p><div class="card-bottom"><span>Buscador y filtros</span><span class="arrow-circle">↗</span></div></article>
+      </div>
+      <div class="feature-strip"><div class="feature-copy"><span class="card-icon icon-lilac">🔎</span><div><h3>Aprendizaje con fuentes claras</h3><p>Los contenidos enlazan con organismos oficiales y materiales originales para que puedas consultar más.</p></div></div><button class="btn btn-quiet btn-small" data-nav="fuentes">Revisar bibliografía <span aria-hidden="true">→</span></button></div>
+
+      <div class="section-head"><div><span class="eyebrow"><span class="eyebrow-dot"></span> Reto del día</span><h2>Comprueba lo que sabes</h2><p>Una pregunta breve, una explicación útil. Puedes volver a intentarlo cuando quieras.</p></div></div>
+      <div class="challenge">
+        <div class="challenge-intro"><span class="card-icon icon-yellow">⚡</span><h3>Un minuto para aprender</h3><p>Tu progreso se guarda localmente en este dispositivo. No necesitas crear una cuenta.</p><div class="mini-stats"><span class="mini-stat"><strong id="home-completed">0</strong> tareas listas</span><span class="mini-stat"><strong id="home-score">0</strong> retos correctos</span></div></div>
+        <div class="challenge-question"><span class="tag">Prevención · Sismos</span><h3>Si estás dentro de un edificio cuando comienza un sismo, ¿qué acción general se recomienda?</h3><div class="answer-list" id="daily-answers"></div><p class="feedback" id="daily-feedback" aria-live="polite"></p><button class="text-link" id="daily-reset" hidden>Intentar de nuevo ↻</button></div>
+      </div>
+      <div class="section-head"><div><span class="eyebrow"><span class="eyebrow-dot"></span> Para empezar</span><h2>Guías que puedes explorar</h2></div><button class="text-link" data-nav="biblioteca">Ver toda la biblioteca <span aria-hidden="true">→</span></button></div>
+      <div class="card-grid" id="featured-articles"></div>
+    </section>
+
+    <section class="page" id="page-proyecto" aria-labelledby="problem-question-title">
+      <div class="project-question-hero">
+        <span class="project-kicker">ARKON · ABP · Grado 10°1</span>
+        <h1 id="problem-question-title">¿Cómo fortalecer la convivencia, la ciudadanía y las habilidades laborales para contribuir positivamente a nuestra comunidad y al mundo laboral?</h1>
+        <p>Esta pregunta guía el proyecto: conocer los riesgos, aprender a prevenirlos, consultar información confiable y practicar formas de colaborar para cuidar a las personas y a la comunidad.</p>
+      </div>
+      <section class="project-answer" aria-labelledby="project-answer-title">
+        <span class="eyebrow"><span class="eyebrow-dot"></span> Nuestra propuesta de respuesta</span>
+        <h2 id="project-answer-title">¿Cómo podemos contribuir positivamente?</h2>
+        <p>Podemos fortalecer la convivencia, la ciudadanía y las habilidades laborales aprendiendo a respetar las diferencias, escuchar y resolver conflictos mediante el diálogo; participando responsablemente en nuestra comunidad; y trabajando en equipo con comunicación, organización y pensamiento crítico. Para llevarlo a la práctica, <strong>ARKON</strong> reúne información de fuentes confiables sobre riesgos y emergencias, ayuda a reconocer rutas de atención, y permite organizar los resultados de una encuesta comunitaria para proponer medidas de prevención. Así convertimos lo aprendido en acciones concretas: identificar peligros, informar de manera responsable, apoyar sin exponernos y tomar decisiones basadas en evidencia.</p>
+        <div class="answer-points">
+          <article class="answer-point"><span aria-hidden="true">🤝</span><strong>Convivir con respeto</strong><p>Escuchar, reconocer diferencias, acordar soluciones pacíficas y tratar a todos con dignidad.</p></article>
+          <article class="answer-point"><span aria-hidden="true">🏘️</span><strong>Actuar como ciudadanía</strong><p>Conocer los riesgos locales, consultar canales oficiales y participar en acciones preventivas.</p></article>
+          <article class="answer-point"><span aria-hidden="true">🧰</span><strong>Prepararnos para el trabajo</strong><p>Distribuir roles, cumplir compromisos, comunicar peligros y resolver problemas en equipo.</p></article>
+        </div>
+      </section>
+      <div class="project-facts-grid">
+        <article class="project-fact"><span class="fact-label">Eje articulador</span><strong>Convivencia y ciudadanía</strong></article>
+        <article class="project-fact"><span class="fact-label">Contexto</span><strong>I.E. La Esperanza · Cali · Comuna 18</strong></article>
+        <article class="project-fact"><span class="fact-label">Producto final</span><strong>Web para la atención y prevención de riesgos y emergencias</strong></article>
+      </div>
+      <div class="project-pillars-grid">
+        <article class="project-pillar"><span class="project-pillar-icon">🤝</span><h3>Convivencia</h3><p>Escuchar, resolver desacuerdos con respeto y construir acuerdos.</p></article>
+        <article class="project-pillar"><span class="project-pillar-icon">🏘️</span><h3>Ciudadanía</h3><p>Conocer rutas de ayuda, participar y actuar con responsabilidad.</p></article>
+        <article class="project-pillar"><span class="project-pillar-icon">🧰</span><h3>Habilidades laborales</h3><p>Comunicar, planear, trabajar en equipo y resolver problemas con seguridad.</p></article>
+      </div>
+      <div class="section-head"><div><span class="eyebrow"><span class="eyebrow-dot"></span> Desarrollo interdisciplinario</span><h2>Lo que aporta cada asignatura</h2><p>Abre solo el tema que necesites. Los contenidos están agrupados para mantener esta página clara y fácil de recorrer.</p></div></div>
+      <div class="subject-list">
+        <details class="subject-detail">
+          <summary><span class="subject-emoji">🧭</span><span class="subject-title-wrap"><span>Convivencia, ciudadanía y riesgos laborales</span><small>Ciencias Sociales · Filosofía · Educación Religiosa · Ética y Valores</small></span></summary>
+          <div class="subject-body">
+            <h3>Sistema General de Riesgos Laborales (SGRL)</h3>
+            <p>Es el sistema que articula entidades públicas, ARL, empleadores y trabajadores para prevenir y atender accidentes y enfermedades relacionadas con el trabajo. Las responsabilidades son compartidas. Consulta la <a href="https://www2.minsalud.gov.co/salud/Documents/Contenidos/generalidades-SGRL.aspx" target="_blank" rel="noopener noreferrer">explicación del Ministerio de Salud</a>.</p>
+            <h3>Riesgos para investigar en Cali y la Comuna 18</h3>
+            <p>Son temas de investigación, no estadísticas ya comprobadas. La encuesta permitirá conocer cuáles aparecen en las respuestas reales.</p>
+            <div class="project-chip-list"><span>Empleo informal y protección</span><span>Ergonomía y posturas</span><span>Seguridad en el trabajo</span><span>Riesgos psicosociales</span><span>Riesgos ambientales</span><span>Convivencia comunitaria</span></div>
+            <p>La responsabilidad individual consiste en actuar con cuidado y seguir las normas; la colectiva incluye reportar riesgos por canales adecuados, cuidar espacios comunes y apoyar a otros sin exponerse innecesariamente.</p>
+            <div class="project-callout"><p><strong>Ruta ante un riesgo psicosocial:</strong> en el trabajo, informa la situación al responsable de seguridad y salud en el trabajo o al empleador y consulta la ARL cuando corresponda. En la escuela o la comunidad, busca a un adulto de confianza o a un servicio de orientación. En Cali, la Línea 106 ofrece teleorientación en salud mental; ante peligro inmediato, llama al 123.</p></div>
+            <div class="ethics-dilemma"><h3>Dilema ético para una infografía</h3><p>En un taller, alguien propone retirar una protección de una máquina para terminar más rápido. Un compañero nota el peligro, pero teme que lo culpen si lo reporta.</p><p><strong>Para debatir:</strong> ¿cómo proteger la vida, comunicar el riesgo y buscar apoyo de forma responsable? La infografía debe destacar la prevención y el reporte por canales adecuados.</p></div>
+            <h3>Directorio de atención y redes comunitarias</h3>
+            <div class="contact-grid">
+              <article class="contact-card"><strong>123 · Emergencias en Cali</strong><span>Línea única distrital para emergencias, urgencias y desastres.</span><a href="tel:123">Llamar al 123 ↗</a></article>
+              <article class="contact-card"><strong>119 · Bomberos</strong><span>Organismo de socorro local.</span><a href="tel:119">Llamar al 119 ↗</a></article>
+              <article class="contact-card"><strong>132 · Cruz Roja Valle</strong><span>Organismo de socorro incluido en el directorio distrital.</span><a href="https://cruzrojavalle.org.co/" target="_blank" rel="noopener noreferrer">Sitio oficial ↗</a></article>
+              <article class="contact-card"><strong>144 · Defensa Civil</strong><span>Organismo de socorro incluido en las líneas de atención de Cali.</span><a href="tel:144">Llamar al 144 ↗</a></article>
+              <article class="contact-card"><strong>106 · Salud mental</strong><span>Teleorientación en Cali, disponible 24/7 según la información distrital publicada.</span><a href="https://www.cali.gov.co/boletines/publicaciones/192156/alcaldia-de-cali-prioriza-la-salud-mental-calenos-tienen-a-disposicion-la-linea-106-para-teleorientacion/" target="_blank" rel="noopener noreferrer">Consultar canales ↗</a></article>
+              <article class="contact-card"><strong>Comisarías de Familia</strong><span>Orientación psicosocial, jurídica y rutas de protección familiar.</span><a href="https://www.cali.gov.co/seguridad/publicaciones/140079/comisarias-de-familia/" target="_blank" rel="noopener noreferrer">Ver directorio ↗</a></article>
+              <article class="contact-card"><strong>Juntas de Acción Comunal</strong><span>Consulta organizaciones comunitarias registradas en Cali.</span><a href="https://www.cali.gov.co/participacion/publicaciones/174276/organismos-de-accion-comunal/" target="_blank" rel="noopener noreferrer">Buscar JAC ↗</a></article>
+              <article class="contact-card"><strong>Mi Cali Bella se integra</strong><span>Orientación y servicios distritales en Alto Jordán, Comuna 18. Verifica horarios antes de acudir.</span><a href="https://www.cali.gov.co/boletines/publicaciones/194462/mi-cali-bella-se-integra-servicios-de-la-alcaldia-mas-cerca-de-la-comunidad/" target="_blank" rel="noopener noreferrer">Consultar servicio ↗</a></article>
+              <article class="contact-card"><strong>Parroquias y redes barriales</strong><span>Completa los nombres y contactos con datos confirmados con la comunidad y el docente.</span><a href="https://www.cali.gov.co/participacion/publicaciones/174276/juntas-de-accion-comunal/" target="_blank" rel="noopener noreferrer">Directorio comunitario ↗</a></article>
+            </div>
+            <div class="project-callout"><p><strong>Importante:</strong> ante peligro inmediato, llama al 123. Verifica directorios y horarios en fuentes oficiales; no publiques datos de personas afectadas ni rumores.</p></div>
+          </div>
+        </details>
+        <details class="subject-detail">
+          <summary><span class="subject-emoji">📊</span><span class="subject-title-wrap"><span>Encuesta, frecuencias y gráficos</span><small>Matemáticas · Física</small></span></summary>
+          <div class="subject-body">
+            <p>Registra los conteos agregados de la encuesta. Todos comienzan en cero y no representan resultados reales hasta que ingreses los datos recolectados. No escribas nombres ni información personal.</p>
+            <div class="project-callout"><p><strong>Relación con el cambio climático:</strong> investiga con fuentes como el <a href="https://www.ideam.gov.co/" target="_blank" rel="noopener noreferrer">IDEAM</a> cómo el calor extremo y las lluvias intensas pueden relacionarse con riesgos del territorio. Distingue esos riesgos de fenómenos geológicos como los sismos y no atribuyas un evento específico al cambio climático sin evidencia que lo respalde.</p></div>
+            <div class="risk-survey-inputs">
+              <label class="risk-input"><span>Riesgos laborales y ergonomía</span><input type="number" min="0" max="100000" value="0" data-risk-count="laboral" aria-label="Frecuencia de riesgos laborales"></label>
+              <label class="risk-input"><span>Empleo informal o falta de protección</span><input type="number" min="0" max="100000" value="0" data-risk-count="informal" aria-label="Frecuencia de empleo informal"></label>
+              <label class="risk-input"><span>Riesgos psicosociales</span><input type="number" min="0" max="100000" value="0" data-risk-count="psicosocial" aria-label="Frecuencia de riesgos psicosociales"></label>
+              <label class="risk-input"><span>Sismos</span><input type="number" min="0" max="100000" value="0" data-risk-count="sismo" aria-label="Frecuencia de sismos"></label>
+              <label class="risk-input"><span>Inundaciones</span><input type="number" min="0" max="100000" value="0" data-risk-count="inundacion" aria-label="Frecuencia de inundaciones"></label>
+              <label class="risk-input"><span>Deslizamientos</span><input type="number" min="0" max="100000" value="0" data-risk-count="deslizamiento" aria-label="Frecuencia de deslizamientos"></label>
+              <label class="risk-input"><span>Seguridad y convivencia comunitaria</span><input type="number" min="0" max="100000" value="0" data-risk-count="convivencia" aria-label="Frecuencia de situaciones de convivencia"></label>
+            </div>
+            <div class="survey-summary" aria-live="polite"><strong>Total de menciones: <span id="risk-total">0</span></strong><div id="risk-data-note">Aún no hay conteos ingresados.</div></div>
+            <div class="survey-viz-grid"><div class="survey-viz-panel"><h3>Gráfico de barras · Frecuencias</h3><div id="risk-bar-chart" class="risk-bar-list"></div></div><div class="survey-viz-panel"><h3>Gráfico circular · Porcentaje</h3><div class="risk-pie-wrap"><div class="risk-pie" id="risk-pie-chart" role="img" aria-label="No hay datos registrados"></div><div class="risk-pie-legend" id="risk-pie-legend"></div></div></div></div>
+            <h3>Tabla de frecuencias y porcentajes</h3><div class="stats-table-wrap"><table class="stats-table"><thead><tr><th scope="col">Riesgo o situación</th><th scope="col">Frecuencia</th><th scope="col">% de menciones</th></tr></thead><tbody id="risk-frequency-body"></tbody><tfoot><tr><th scope="row">Total</th><td id="risk-table-total">0</td><td id="risk-table-percent">0%</td></tr></tfoot></table></div>
+            <div class="project-callout"><p><strong>Fórmula:</strong> porcentaje = frecuencia de la categoría ÷ total de menciones × 100. Si la encuesta permitía marcar varias opciones, el porcentaje es sobre menciones, no sobre personas. Interpreta los resultados reales y propón acciones preventivas basadas en ellos.</p></div>
+            <button class="btn btn-quiet btn-small" id="reset-risk-counts" type="button">Restablecer conteos</button>
+          </div>
+        </details>
+        <details class="subject-detail">
+          <summary><span class="subject-emoji">🧪</span><span class="subject-title-wrap"><span>Fuentes veraces, escritura y bibliografía</span><small>Química · Lengua Castellana</small></span></summary>
+          <div class="subject-body"><p>Contrasta la información, identifica quién la publica y respalda las afirmaciones importantes. No inventes cifras, autores, fechas ni referencias.</p><ul><li>Registra autor u organismo, fecha, título y enlace de cada fuente.</li><li>Aplica las normas APA 7 en citas y bibliografía.</li><li>Revisa ortografía, claridad y organización antes de publicar.</li><li>Si una fuente no confirma una afirmación, no la presentes como hecho comprobado.</li></ul><p>Fuentes de partida: <a href="https://www2.minsalud.gov.co/salud/Documents/Contenidos/generalidades-SGRL.aspx" target="_blank" rel="noopener noreferrer">Ministerio de Salud · SGRL</a>, <a href="https://www.gestiondelriesgo.gov.co/" target="_blank" rel="noopener noreferrer">UNGRD</a> y <a href="https://www.cali.gov.co/gestiondelriesgo/publicaciones/140522/recomendaciones-en-caso-de-emergencias/" target="_blank" rel="noopener noreferrer">recomendaciones de emergencias de Cali</a>.</p></div>
+        </details>
+        <details class="subject-detail">
+          <summary><span class="subject-emoji">🎨</span><span class="subject-title-wrap"><span>Recursos gráficos claros y accesibles</span><small>Educación Artística</small></span></summary>
+          <div class="subject-body"><p>Los gráficos deben ayudar a comprender rutas y protocolos, no decorar sin propósito.</p><ul><li><strong>Simetría y proporciones:</strong> equilibran la composición y facilitan comparaciones.</li><li><strong>Perspectiva y punto de fuga:</strong> ayudan a representar espacios y recorridos.</li><li><strong>Módulo y supermódulo:</strong> crean patrones consistentes para señalizar secciones.</li><li><strong>Jerarquía visual:</strong> muestra primero la acción importante y evita saturar de texto.</li><li><strong>Accesibilidad:</strong> combina color con palabras o símbolos y conserva buen contraste.</li></ul><div class="project-callout"><p><strong>Producto sugerido:</strong> una infografía sobre un dilema ético o un protocolo, con pasos ordenados, fuente consultada y fecha de revisión.</p></div></div>
+        </details>
+        <details class="subject-detail">
+          <summary><span class="subject-emoji">🇬🇧</span><span class="subject-title-wrap"><span>Instrucciones de emergencia y pitch</span><small>Idioma Extranjero · Inglés</small></span></summary>
+          <div class="subject-body"><h3>Imperativo en inglés · instrucciones breves</h3><div class="english-example"><strong>Move to a safe area.</strong><p>Muévete a una zona segura.</p></div><div class="english-example"><strong>Follow official instructions.</strong><p>Sigue las instrucciones oficiales.</p></div><div class="english-example"><strong>Stay away from damaged buildings.</strong><p>Aléjate de edificios dañados.</p></div><div class="english-example"><strong>Call 123 in an emergency in Cali.</strong><p>Llama al 123 ante una emergencia en Cali.</p></div><h3>Pitch de 20–30 segundos · para presentar en vivo</h3><div class="project-callout"><p lang="en">Our website, ARKON, helps people prepare for emergencies, understand local risks, and find reliable support. It also develops citizenship, teamwork, and job skills. By using trusted sources and real community survey data, we can make safer choices and contribute to a stronger community.</p></div><p>Practícalo en voz alta y ajusta el ritmo para que dure entre 20 y 30 segundos. La sustentación debe ser en vivo, no pregrabada.</p></div>
+        </details>
+        <details class="subject-detail">
+          <summary><span class="subject-emoji">💻</span><span class="subject-title-wrap"><span>Construcción web y trabajo colaborativo</span><small>Informática · Tecnología · Emprendimiento</small></span></summary>
+          <div class="subject-body"><p>La web organiza la información en secciones navegables, usa controles accesibles y presenta rutas de prevención con enlaces a fuentes originales.</p><h3>Roles posibles en el equipo</h3><ul><li><strong>Gestor de contenidos:</strong> organiza información y referencias.</li><li><strong>Desarrollador o diseñador UI:</strong> construye la navegación y prueba la accesibilidad.</li><li><strong>Responsable de protocolos:</strong> contrasta recomendaciones con entidades oficiales.</li><li><strong>Comunicador:</strong> prepara la infografía, el pitch y la sustentación.</li></ul><p>Consulten orientaciones oficiales de gestión del riesgo, evacuación y primeros auxilios; asignen responsables y prueben enlaces, navegación y vista móvil. No presenten la página como un servicio de alertas en tiempo real.</p></div>
+        </details>
+        <details class="subject-detail">
+          <summary><span class="subject-emoji">🗓️</span><span class="subject-title-wrap"><span>Planeación, seguimiento y sustentación</span><small>Planeación · Educación Física · Organización del proyecto</small></span></summary>
+          <div class="subject-body"><p>Marca las etapas completadas por el equipo. El porcentaje se calcula con las casillas seleccionadas y se guarda en este navegador.</p><div class="survey-summary" aria-live="polite"><strong id="milestones-summary">0 de 5 etapas completadas · 0%</strong><div class="progress-shell"><div class="progress-fill" id="milestones-fill" style="width:0%"></div></div></div><div class="milestone-list">
+            <label class="milestone-row"><input type="checkbox" data-project-milestone="introduccion"><span><strong>21 de julio – 6 de agosto · Introducción y equipo</strong><small>Definir el proyecto, socializar criterios y asignar roles.</small></span></label>
+            <label class="milestone-row"><input type="checkbox" data-project-milestone="investigacion"><span><strong>10 de agosto – 11 de septiembre · Consulta e investigación</strong><small>Buscar fuentes, contrastar datos y registrar información.</small></span></label>
+            <label class="milestone-row"><input type="checkbox" data-project-milestone="producto"><span><strong>21 de septiembre – 23 de octubre · Elaboración del producto</strong><small>Integrar contenidos, encuesta y recursos visuales.</small></span></label>
+            <label class="milestone-row"><input type="checkbox" data-project-milestone="calidad"><span><strong>26 – 30 de octubre · Control de calidad</strong><small>Revisar enlaces, ortografía, fuentes y diseño adaptable.</small></span></label>
+            <label class="milestone-row"><input type="checkbox" data-project-milestone="sustentacion"><span><strong>11 – 13 de noviembre · Presentación y sustentación</strong><small>Explicar el proceso, responder preguntas y mostrar la web.</small></span></label>
+          </div><p>La bitácora pide registrar tareas, fechas y porcentaje de cumplimiento entre septiembre y noviembre de 2026. Actualicen esta lista según el avance real y preparen una sustentación grupal e individual.</p></div>
+        </details>
+      </div>
+      <div class="project-callout" style="margin-top:22px"><p><strong>Uso responsable:</strong> esta web es un recurso educativo, no un servicio de alerta en tiempo real. Sigue las instrucciones de las autoridades y verifica las rutas antes de publicarlas.</p></div>
+      <section class="creator-photo-section" aria-labelledby="creator-photos-title">
+        <div class="creator-photo-heading"><div><span class="eyebrow"><span class="eyebrow-dot"></span> Nuestro equipo</span><h2 id="creator-photos-title">Una foto de todo el equipo</h2></div><p>Añadan una sola foto grupal para presentar juntos a quienes crearon ARKON. Las fotos individuales estarán en Créditos.</p></div>
+        <div class="creator-photo-grid">
+          <article class="creator-photo-card" data-creator-photo-card="team">
+            <div class="creator-photo-frame" style="aspect-ratio:16/9"><div class="creator-photo-placeholder" id="creator-photo-placeholder-team"><span class="placeholder-icon" aria-hidden="true">📷</span><strong>Espacio para la foto grupal</strong><span>Seleccionen una imagen donde aparezca todo el equipo</span></div><img id="creator-photo-image-team" alt="Foto grupal del equipo de ARKON" hidden loading="lazy"></div>
+            <div class="creator-photo-meta"><strong>Equipo creador de ARKON</strong><p>Una sola imagen con todos los integrantes.</p><div class="creator-photo-actions"><input class="creator-photo-input" id="creator-photo-input-team" type="file" accept="image/*" data-creator-photo-input="team" aria-label="Seleccionar foto grupal del equipo"><button class="btn btn-primary" type="button" data-creator-photo-button="team">Añadir foto grupal</button><button class="btn btn-quiet" type="button" data-creator-photo-remove="team" hidden>Quitar</button></div><span class="photo-status" id="creator-photo-status-team" aria-live="polite"></span></div>
+          </article>
+        </div>
+        <div class="photo-privacy-note"><p><strong>Privacidad:</strong> las imágenes se reducen de tamaño y se guardan solo en el almacenamiento local de este navegador. No se envían a un servidor ni aparecen automáticamente en otros dispositivos. Suban fotos con el permiso de todas las personas que aparecen y, si alguien es menor de edad, con la autorización de su acudiente.</p></div>
+      </section>
+    </section>
+
+    <section class="page" id="page-desastres" aria-labelledby="disasters-title">
+      <div id="disaster-list-view">
+        <div class="page-intro"><span class="eyebrow"><span class="eyebrow-dot"></span> Ruta de prevención</span><h1 id="disasters-title">Conocer el riesgo es parte de prepararte.</h1><p>Explora fichas educativas para identificar riesgos, planear con anticipación y responder con calma. Las alertas y decisiones de emergencia corresponden a las autoridades.</p><div class="mini-stats"><span class="mini-stat"><strong>7</strong> fenómenos</span><span class="mini-stat"><strong>3</strong> momentos de preparación</span><span class="mini-stat">Fuentes institucionales</span></div></div>
+        <div class="notice"><span class="notice-icon">!</span><p><strong>Importante:</strong> este material sirve para aprender, no reemplaza alertas ni instrucciones oficiales. En una emergencia, sigue las indicaciones de las autoridades competentes y los protocolos locales.</p></div>
+        <div class="card-grid" id="disaster-grid"></div>
+      </div>
+      <div id="disaster-detail-view" hidden></div>
+    </section>
+
+    <section class="page" id="page-habilidades" aria-labelledby="skills-title">
+      <div id="skills-list-view">
+        <div class="page-intro"><span class="eyebrow"><span class="eyebrow-dot"></span> Ruta de desarrollo personal</span><h1 id="skills-title">Las habilidades se entrenan, no aparecen por arte de magia.</h1><p>Aprende con ejemplos cotidianos, practica con situaciones laborales y revisa qué puedes fortalecer en tu estudio, tus proyectos o tu futuro empleo.</p><div class="mini-stats"><span class="mini-stat"><strong>8</strong> módulos prácticos</span><span class="mini-stat">Ejemplos reales y ficticios</span><span class="mini-stat">Sin promesas de empleo</span></div></div>
+        <div class="card-grid" id="skills-grid"></div>
+      </div>
+      <div id="skill-detail-view" hidden></div>
+    </section>
+
+    <section class="page" id="page-biblioteca" aria-labelledby="library-title">
+      <div class="page-intro"><span class="eyebrow"><span class="eyebrow-dot"></span> Biblioteca de aprendizaje</span><h1 id="library-title">Busca justo lo que necesitas.</h1><p>Encuentra guías y ejercicios por tema, formato o dificultad. Los resultados se filtran en esta página, sin enviar tus búsquedas a un servidor.</p></div>
+      <div class="search-panel"><div class="search-field"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><input id="library-search" type="search" placeholder="Buscar por título, tema o palabra clave…" aria-label="Buscar recursos"></div><select id="filter-topic" aria-label="Filtrar por tema"><option value="todos">Todos los temas</option><option value="desastres">Desastres naturales</option><option value="laboral">Habilidades laborales</option><option value="web">Desarrollo web</option></select><select id="filter-level" aria-label="Filtrar por nivel"><option value="todos">Todos los niveles</option><option value="inicial">Inicial</option><option value="intermedio">Intermedio</option></select></div>
+      <div class="section-head" style="margin-top:24px"><div><h2 style="font-size:1.6rem;margin:0">Recursos disponibles</h2><p id="resource-count" style="margin-top:5px;font-size:.85rem"></p></div><button class="btn btn-quiet btn-small" id="clear-filters">Limpiar filtros</button></div>
+      <div class="card-grid" id="library-grid"></div>
+    </section>
+
+    <section class="page" id="page-fuentes" aria-labelledby="sources-title">
+      <div class="page-intro"><span class="eyebrow"><span class="eyebrow-dot"></span> Transparencia editorial</span><h1 id="sources-title">Las fuentes también hacen parte del aprendizaje.</h1><p>La biblioteca distingue entre orientación institucional, marcos técnicos y materiales de desarrollo web. Las referencias enlazan con páginas originales para que puedas ampliar o verificar la información.</p><div class="mini-stats"><span class="mini-stat"><strong>APA 7</strong> como formato base</span><span class="mini-stat">Consulta de fuentes: oct. 2026</span><span class="mini-stat">Enlaces externos identificados</span></div></div>
+      <div class="notice"><span class="notice-icon">i</span><p>Las páginas web pueden cambiar. Antes de usar una referencia en un trabajo académico, revisa de nuevo su título, fecha, autor institucional y el apartado concreto que consultaste. Una fuente general no respalda automáticamente todas las afirmaciones.</p></div>
+      <div class="source-list" id="source-list"></div>
+      <div class="feature-strip" style="margin-top:23px"><div class="feature-copy"><span class="card-icon icon-yellow">📝</span><div><h3>Una revisión antes de publicar</h3><p>Los contenidos de preparación ante amenazas deben validarse con la autoridad competente y las indicaciones locales.</p></div></div><button class="btn btn-quiet btn-small" data-nav="desastres">Volver a las guías</button></div>
+    </section>
+
+    <section class="page" id="page-acerca" aria-labelledby="about-title">
+      <div class="page-intro"><span class="eyebrow"><span class="eyebrow-dot"></span> Acerca del proyecto</span><h1 id="about-title">Un espacio para aprender habilidades útiles para la vida.</h1><p>ARKON conecta la prevención de riesgos con el desarrollo de competencias personales y laborales mediante contenidos sencillos, actividades y referencias abiertas.</p></div>
+      <div class="about-grid">
+        <div class="detail-panel"><span class="card-icon icon-mint">🌱</span><h2>Aprender para actuar mejor</h2><p>El objetivo no es memorizar datos, sino entender qué hacer, por qué importa y dónde consultar las indicaciones más confiables.</p><h3>Para quién</h3><p>Estudiantes, jóvenes, personas que buscan empleo, trabajadores y cualquier persona interesada en aprender habilidades útiles. El enfoque prioritario de los contenidos de prevención es Colombia, con enlaces de consulta internacional.</p><h3>Qué ofrece esta versión</h3><ul><li>Fichas educativas iniciales sobre fenómenos naturales.</li><li>Módulos prácticos de competencias laborales.</li><li>Buscador con filtros, cuestionarios y listas de comprobación.</li><li>Referencias externas y progreso local sin cuenta.</li></ul></div>
+        <div class="principles">
+          <div class="principle"><span class="principle-icon">🔗</span><div><h3>Fuentes visibles</h3><p>Los enlaces ayudan a distinguir la orientación documentada de los consejos generales que aún necesitan revisión.</p></div></div>
+          <div class="principle"><span class="principle-icon">🧩</span><div><h3>Aprender haciendo</h3><p>Los ejercicios permiten practicar decisiones y recibir una explicación, no solo una calificación.</p></div></div>
+          <div class="principle"><span class="principle-icon">🔒</span><div><h3>Datos mínimos</h3><p>El progreso se almacena en el almacenamiento local del navegador. No se solicita nombre, correo ni cuenta de usuario.</p></div></div>
+          <div class="principle"><span class="principle-icon">♿</span><div><h3>Diseño inclusivo</h3><p>Se priorizan navegación por teclado, foco visible, etiquetas claras y respeto por la preferencia de movimiento reducido. La conformidad debe evaluarse antes de publicar.</p></div></div>
+        </div>
+      </div>
+      <div class="notice"><span class="notice-icon">✓</span><p><strong>Estado de esta versión:</strong> prototipo interactivo de frontend con contenido inicial. No cuenta con backend, alertas en tiempo real, cuentas de usuario ni revisión profesional integral de cada ficha de riesgo.</p></div>
+      <button class="btn btn-primary" data-nav="biblioteca">Empezar a explorar <span aria-hidden="true">→</span></button>
+    </section>
+    <section class="page" id="page-creditos" aria-labelledby="credits-page-title">
+      <div class="credits-hero">
+        <div><span class="eyebrow"><span class="eyebrow-dot"></span> Hecho en equipo</span><h1 id="credits-page-title">Créditos del proyecto</h1><p id="credits-page-subtitle">Detrás de cada idea hay personas que aportan, aprenden y construyen juntas.</p></div>
+        <button class="btn btn-quiet" id="open-credits-editor"><span aria-hidden="true">✎</span> Personalizar créditos</button>
+      </div>
+      <div class="credits-grid" id="credits-grid" aria-live="polite"></div>
+      <div class="credits-note"><p><strong>¿Quieren cambiar algo?</strong> Usen “Personalizar créditos” para ajustar nombres, aportes, texto y color. Los cambios se guardan en este navegador y pueden restablecerse cuando quieran.</p></div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="shell footer-inner"><div><div class="footer-brand">ARKON <span style="color:var(--teal-ink)">✦</span></div><p>Aprendizaje práctico, prevención y habilidades para el futuro.</p></div><div class="footer-links"><button data-nav="fuentes">Fuentes</button><button data-nav="acerca">Acerca del proyecto</button><button id="reset-progress">Restablecer progreso local</button></div></div></footer>
 </div>
-<div class="section-head"><div><div class="eyebrow">Ruta de aprendizaje</div><h2>¿Qué quieres aprender?</h2></div><p>Elige un módulo para comenzar</p></div>
-<div class="modules searchable">
-<article class="module-card" data-search="convivencia respeto empatía comunicación conflictos"><div class="module-top"><div class="module-icon">🤝</div><span class="tag">Vida diaria</span></div><h3>Convivencia y respeto</h3><p>Mejora la comunicación, practica la empatía y aprende a resolver conflictos sin violencia.</p><div class="module-foot"><span>4 temas clave</span><button data-go="convivencia">Abrir módulo ↗</button></div></article>
-<article class="module-card" data-search="ciudadanía derechos deberes participación democracia comunidad"><div class="module-top"><div class="module-icon" style="background:#e9f8f4">🏛️</div><span class="tag">Comunidad</span></div><h3>Ciudadanía activa</h3><p>Conoce tus derechos y deberes, y descubre cómo participar responsablemente en tu comunidad.</p><div class="module-foot"><span>4 temas clave</span><button data-go="ciudadania">Abrir módulo ↗</button></div></article>
-<article class="module-card" data-search="habilidades laborales trabajo equipo liderazgo comunicación puntualidad"><div class="module-top"><div class="module-icon" style="background:#fff2df">💡</div><span class="tag">Futuro laboral</span></div><h3>Habilidades laborales</h3><p>Entrena el trabajo en equipo, la responsabilidad, el liderazgo y la solución de problemas.</p><div class="module-foot"><span>4 temas clave</span><button data-go="laborales">Abrir módulo ↗</button></div></article>
-<article class="module-card" data-search="prevención seguridad riesgos emergencias autocuidado salud"><div class="module-top"><div class="module-icon" style="background:#ffeded">🛡️</div><span class="tag">Autocuidado</span></div><h3>Prevención y seguridad</h3><p>Identifica riesgos, aprende hábitos preventivos y reconoce cómo actuar ante una emergencia.</p><div class="module-foot"><span>4 temas clave</span><button data-go="prevencion">Abrir módulo ↗</button></div></article>
-</div>
-<div class="lower-grid"><section class="panel"><h3>Tu ruta recomendada</h3><p class="panel-sub">Avanza paso a paso, a tu ritmo.</p><div class="activity-row"><div class="activity-symbol">🤝</div><div><strong>Convivencia y respeto</strong><small>Empieza por escuchar y comprender</small></div><span class="status">01</span></div><div class="activity-row"><div class="activity-symbol">🏛️</div><div><strong>Ciudadanía activa</strong><small>Conecta tus decisiones con la comunidad</small></div><span class="status">02</span></div><div class="activity-row"><div class="activity-symbol">✎</div><div><strong>Evaluación práctica</strong><small>Comprueba lo que has aprendido</small></div><span class="status">03</span></div></section><section class="panel"><h3>Idea para hoy</h3><p class="panel-sub">Una acción pequeña puede cambiar el ambiente.</p><div class="daily-tip"><div class="tip-icon">🌱</div><strong>Escucha antes de responder</strong><p>Cuando alguien tenga una opinión diferente, intenta comprender su punto de vista antes de dar el tuyo. Respetar no significa estar siempre de acuerdo.</p></div></section></div>
-</section>
-<section class="view" id="view-convivencia">
-<div class="eyebrow">Módulo 01 · Vida diaria</div><h1 class="page-title">Convivencia y respeto</h1><p class="page-intro">Convivir es compartir espacios con otras personas respetando sus derechos, diferencias y necesidades.</p>
-<div class="lesson-grid searchable">
-<article class="lesson" data-search="respeto tolerancia diferencias"><div class="module-icon">🤝</div><h3>1. Respeto y tolerancia</h3><p>El respeto reconoce el valor de cada persona. La tolerancia permite convivir con ideas, culturas y gustos diferentes sin agredir ni discriminar.</p><ul><li>Trata a los demás como personas con derechos.</li><li>Evita burlas, insultos y prejuicios.</li><li>Acepta que no todos piensan igual.</li></ul></article>
-<article class="lesson" data-search="comunicación escucha asertiva"><div class="module-icon">💬</div><h3>2. Comunicación asertiva</h3><p>Consiste en expresar lo que piensas y sientes de forma clara y respetuosa, sin atacar ni dejar de escuchar.</p><ul><li>Habla con calma y explica tus razones.</li><li>Escucha sin interrumpir.</li><li>Pregunta si algo no te queda claro.</li></ul></article>
-<article class="lesson" data-search="empatía emociones comprender"><div class="module-icon">💙</div><h3>3. Empatía</h3><p>Es intentar comprender cómo puede sentirse otra persona y considerar su situación antes de juzgarla.</p><ul><li>Presta atención a lo que la otra persona cuenta.</li><li>No minimices sus sentimientos.</li><li>Ofrece apoyo sin imponer soluciones.</li></ul></article>
-<article class="lesson" data-search="conflictos mediación acuerdos solución"><div class="module-icon">🧩</div><h3>4. Resolver conflictos</h3><p>Un conflicto puede solucionarse con diálogo, acuerdos y disposición para entender las necesidades de cada parte.</p><ul><li>Identifica el problema sin insultar.</li><li>Escucha a todas las personas involucradas.</li><li>Busca un acuerdo justo y seguro.</li></ul></article>
-</div><div class="callout"><strong>Para ponerlo en práctica:</strong> ante una discusión, describe el problema, escucha a la otra persona y propón una solución concreta que respete a todos.</div><button class="btn btn-primary" data-complete="convivencia">✓ Marcar módulo como explorado</button>
-</section>
-<section class="view" id="view-ciudadania">
-<div class="eyebrow">Módulo 02 · Comunidad</div><h1 class="page-title">Ciudadanía activa</h1><p class="page-intro">La ciudadanía implica tener derechos, cumplir responsabilidades y participar en las decisiones que afectan a la comunidad.</p>
-<div class="lesson-grid searchable">
-<article class="lesson" data-search="derechos humanos dignidad igualdad"><div class="module-icon">⚖️</div><h3>1. Derechos</h3><p>Son garantías que protegen la dignidad y la libertad de las personas. Deben respetarse sin discriminación.</p><ul><li>Derecho a la educación.</li><li>Derecho a la igualdad y al buen trato.</li><li>Derecho a expresar ideas con responsabilidad.</li></ul></article>
-<article class="lesson" data-search="deberes responsabilidades normas"><div class="module-icon">📌</div><h3>2. Deberes y responsabilidades</h3><p>Son compromisos que ayudan a proteger los derechos propios y los de los demás.</p><ul><li>Respetar las normas justas de convivencia.</li><li>Cuidar los espacios compartidos.</li><li>Responder por las consecuencias de los actos.</li></ul></article>
-<article class="lesson" data-search="participación ciudadana comunidad decisiones"><div class="module-icon">🗳️</div><h3>3. Participación</h3><p>Participar significa aportar ideas, escuchar a otras personas y colaborar en decisiones colectivas.</p><ul><li>Proponer mejoras para el colegio o barrio.</li><li>Participar en espacios democráticos.</li><li>Informarse antes de opinar o decidir.</li></ul></article>
-<article class="lesson" data-search="diversidad inclusión discriminación"><div class="module-icon">🌎</div><h3>4. Diversidad e inclusión</h3><p>Una comunidad inclusiva elimina barreras y permite que las personas participen con igualdad de oportunidades.</p><ul><li>Rechazar la discriminación.</li><li>Valorar diferentes experiencias y culturas.</li><li>Apoyar soluciones accesibles para todos.</li></ul></article>
-</div><div class="callout"><strong>Reto ciudadano:</strong> identifica una necesidad de tu entorno y escribe una propuesta respetuosa, posible y útil para atenderla.</div><button class="btn btn-primary" data-complete="ciudadania">✓ Marcar módulo como explorado</button>
-</section>
-<section class="view" id="view-laborales">
-<div class="eyebrow">Módulo 03 · Futuro laboral</div><h1 class="page-title">Habilidades laborales</h1><p class="page-intro">Las habilidades laborales combinan conocimientos, hábitos y actitudes para trabajar con otras personas y cumplir objetivos.</p>
-<div class="lesson-grid searchable">
-<article class="lesson" data-search="trabajo equipo colaboración metas"><div class="module-icon">🧑‍🤝‍🧑</div><h3>1. Trabajo en equipo</h3><p>Colaborar es compartir responsabilidades y unir capacidades para alcanzar una meta común.</p><ul><li>Define quién hace cada tarea.</li><li>Respeta las ideas del equipo.</li><li>Cumple los acuerdos y pide ayuda cuando la necesites.</li></ul></article>
-<article class="lesson" data-search="responsabilidad puntualidad organización"><div class="module-icon">🗓️</div><h3>2. Responsabilidad</h3><p>Significa cumplir compromisos, organizar el tiempo y reconocer los errores para corregirlos.</p><ul><li>Llega preparado y a tiempo.</li><li>Prioriza las tareas importantes.</li><li>Avisa con anticipación si surge un problema.</li></ul></article>
-<article class="lesson" data-search="liderazgo iniciativa decisiones"><div class="module-icon">🚀</div><h3>3. Liderazgo e iniciativa</h3><p>Liderar es orientar con el ejemplo, apoyar al equipo y tomar decisiones responsables, no mandar por mandar.</p><ul><li>Propón soluciones realistas.</li><li>Reconoce los aportes de otros.</li><li>Asume las consecuencias de tus decisiones.</li></ul></article>
-<article class="lesson" data-search="solución problemas creatividad pensamiento crítico"><div class="module-icon">🧠</div><h3>4. Solución de problemas</h3><p>Consiste en entender una dificultad, revisar opciones y elegir una respuesta segura y razonada.</p><ul><li>Define el problema con claridad.</li><li>Compara alternativas y consecuencias.</li><li>Evalúa si la solución funcionó.</li></ul></article>
-</div><div class="callout"><strong>Ejercicio:</strong> piensa en un trabajo grupal. ¿Qué tarea puedes asumir, cuándo la entregarás y cómo avisarás si necesitas apoyo?</div><button class="btn btn-primary" data-complete="laborales">✓ Marcar módulo como explorado</button>
-</section>
-<section class="view" id="view-prevencion">
-<div class="eyebrow">Módulo 04 · Autocuidado</div><h1 class="page-title">Prevención y seguridad</h1><p class="page-intro">Prevenir es reconocer peligros, reducir riesgos y actuar de manera organizada para proteger la vida y el bienestar.</p>
-<div class="lesson-grid searchable">
-<article class="lesson" data-search="peligro riesgo diferencia seguridad"><div class="module-icon">⚠️</div><h3>1. Peligro y riesgo</h3><p>Un peligro es algo que puede causar daño. El riesgo considera la posibilidad de que ocurra el daño y sus consecuencias.</p><ul><li>Observa el entorno antes de iniciar una actividad.</li><li>Reporta condiciones inseguras.</li><li>No improvises con equipos o materiales desconocidos.</li></ul></article>
-<article class="lesson" data-search="prevención hábitos autocuidado"><div class="module-icon">🦺</div><h3>2. Hábitos preventivos</h3><p>Las rutinas seguras reducen accidentes y protegen la salud en el colegio, la casa y el trabajo.</p><ul><li>Mantén las zonas de paso despejadas.</li><li>Sigue instrucciones y señalización.</li><li>Usa la protección indicada para cada tarea.</li></ul></article>
-<article class="lesson" data-search="emergencia evacuación alarma"><div class="module-icon">🚨</div><h3>3. Ante una emergencia</h3><p>Mantén la calma, sigue las instrucciones del personal responsable y prioriza llegar a un lugar seguro.</p><ul><li>Conoce las rutas y puntos de encuentro.</li><li>No uses ascensores durante una evacuación por incendio.</li><li>No regreses a una zona peligrosa por objetos personales.</li></ul></article>
-<article class="lesson" data-search="salud bienestar pausas hidratación ergonomía"><div class="module-icon">💚</div><h3>4. Bienestar y ergonomía</h3><p>El bienestar también depende de hábitos saludables y de adaptar el espacio a las necesidades de la actividad.</p><ul><li>Haz pausas razonables durante tareas prolongadas.</li><li>Mantén una postura cómoda y cambia de posición.</li><li>Informa si una tarea causa dolor o presenta un riesgo.</li></ul></article>
-</div><div class="callout"><strong>Importante:</strong> esta guía es educativa y no reemplaza la capacitación oficial, los protocolos de tu institución ni las instrucciones de los servicios de emergencia.</div><button class="btn btn-primary" data-complete="prevencion">✓ Marcar módulo como explorado</button>
-</section>
-<section class="view" id="view-evaluacion">
-<div class="eyebrow">Práctica interactiva</div><h1 class="page-title">Evaluar lo aprendido</h1><p class="page-intro">Responde cinco preguntas sobre convivencia, ciudadanía, habilidades laborales y prevención. Puedes intentarlo de nuevo.</p>
-<div class="quiz-box"><div class="question-count" id="questionCount">PREGUNTA 1 DE 5</div><div class="quiz-progress"><span id="quizBar"></span></div><h2 id="questionText">Cargando pregunta...</h2><div class="answers" id="answers"></div><div class="feedback" id="feedback" aria-live="polite"></div><div style="display:flex;justify-content:space-between;gap:10px"><button class="btn btn-outline" id="restartQuiz">↻ Reiniciar</button><button class="btn btn-primary" id="nextQuestion" disabled>Siguiente →</button></div></div>
-</section>
-<section class="view" id="view-recursos">
-<div class="eyebrow">Aprendizaje responsable</div><h1 class="page-title">Recursos y fuentes</h1><p class="page-intro">Consulta estas fuentes institucionales para profundizar. Los contenidos de ARKON son una introducción educativa, no sustituyen la normativa ni la orientación profesional.</p>
-<div class="resource-list">
-<article class="resource-card"><div class="resource-icon">🇨🇴</div><div><h3>Constitución Política de Colombia</h3><p>Referencia fundamental sobre derechos, deberes, participación y organización del Estado.</p><a href="https://www.secretariasenado.gov.co/constitucion-politica" target="_blank" rel="noopener noreferrer">Consultar Constitución ↗</a></div></article>
-<article class="resource-card"><div class="resource-icon">🌐</div><div><h3>Naciones Unidas: Derechos Humanos</h3><p>Material de referencia sobre dignidad, igualdad y derechos humanos.</p><a href="https://www.un.org/es/about-us/universal-declaration-of-human-rights" target="_blank" rel="noopener noreferrer">Leer la Declaración Universal ↗</a></div></article>
-<article class="resource-card"><div class="resource-icon">💼</div><div><h3>Organización Internacional del Trabajo (OIT)</h3><p>Información sobre trabajo decente, derechos laborales y seguridad en el trabajo.</p><a href="https://www.ilo.org/es" target="_blank" rel="noopener noreferrer">Visitar la OIT ↗</a></div></article>
-<article class="resource-card"><div class="resource-icon">🧯</div><div><h3>Ministerio del Trabajo de Colombia</h3><p>Consulta información institucional sobre el entorno laboral y la seguridad y salud en el trabajo.</p><a href="https://www.mintrabajo.gov.co/" target="_blank" rel="noopener noreferrer">Visitar el Ministerio ↗</a></div></article>
-<article class="resource-card"><div class="resource-icon">📖</div><div><h3>Cómo usar esta plataforma</h3><p>Lee cada módulo, conversa sobre los ejemplos, revisa las fuentes y completa la evaluación. El progreso se guarda en este navegador cuando el almacenamiento local está disponible.</p><button class="btn btn-outline" data-go="inicio">Volver al inicio</button></div></article>
-</div>
-</section>
-<footer class="footer"><span>© <span id="year"></span> ARKON · Plataforma educativa</span><span>Aprender · Convivir · Participar · Prevenir</span></footer>
-</main>
-</div>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<dialog id="article-dialog" aria-labelledby="article-dialog-title"><div class="dialog-content"><div class="dialog-header"><div><span class="eyebrow" id="article-dialog-label">Recurso</span><h2 id="article-dialog-title">Título</h2></div><button class="dialog-close" data-close="article-dialog" aria-label="Cerrar">×</button></div><div class="dialog-body" id="article-dialog-body"></div><div class="button-row" style="margin-top:20px"><button class="btn btn-primary" id="article-quiz-button">Practicar con un reto <span aria-hidden="true">→</span></button><button class="btn btn-quiet" data-close="article-dialog">Cerrar</button></div></div></dialog>
+<dialog id="quiz-dialog" aria-labelledby="quiz-title"><div class="dialog-content"><div class="dialog-header"><div><span class="eyebrow">Práctica rápida</span><h2 id="quiz-title">Comprueba lo que aprendiste</h2></div><button class="dialog-close" data-close="quiz-dialog" aria-label="Cerrar">×</button></div><div id="quiz-content" class="dialog-body"></div></div></dialog>
+
 <script>
-(function(){
-const views=['inicio','convivencia','ciudadania','laborales','prevencion','evaluacion','recursos'];
-const names={inicio:'Inicio',convivencia:'Convivencia',ciudadania:'Ciudadanía',laborales:'Habilidades laborales',prevencion:'Prevención y seguridad',evaluacion:'Evaluar lo aprendido',recursos:'Recursos y fuentes'};
-const modules=['convivencia','ciudadania','laborales','prevencion'];
-let explored=new Set();
-try{explored=new Set(JSON.parse(localStorage.getItem('arkon-explored')||'[]'))}catch(e){}
-const $=id=>document.getElementById(id);
-function toast(msg){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),2600)}
-function updateProgress(){const n=explored.size;const pct=Math.round(n/4*100);$('sideProgress').style.width=pct+'%';$('sideProgressText').textContent=n+' de 4 módulos explorados';$('completedStat').textContent=pct+'%';try{localStorage.setItem('arkon-explored',JSON.stringify([...explored]))}catch(e){}}
-function go(view){if(!views.includes(view))return;document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='view-'+view));document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));$('breadcrumb').textContent=names[view];$('sidebar').classList.remove('open');$('backdrop').classList.remove('show');window.scrollTo({top:0,behavior:'smooth'});if(view==='evaluacion'&&!quizStarted)renderQuestion()}
-document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.view)));
-document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
-document.querySelectorAll('[data-complete]').forEach(b=>b.addEventListener('click',()=>{const m=b.dataset.complete;if(explored.has(m)){toast('Ya exploraste este módulo. ¡Puedes repasarlo!')}else{explored.add(m);updateProgress();b.textContent='✓ Módulo explorado';toast('¡Buen trabajo! Tu progreso quedó actualizado.')}}));
-$('menuBtn').addEventListener('click',()=>{$('sidebar').classList.toggle('open');$('backdrop').classList.toggle('show')});$('backdrop').addEventListener('click',()=>{$('sidebar').classList.remove('open');$('backdrop').classList.remove('show')});
-$('themeBtn').addEventListener('click',()=>{document.body.classList.toggle('dark');const dark=document.body.classList.contains('dark');$('themeBtn').textContent=dark?'☀':'☾';try{localStorage.setItem('arkon-theme',dark?'dark':'light')}catch(e){}});
-try{if(localStorage.getItem('arkon-theme')==='dark'){document.body.classList.add('dark');$('themeBtn').textContent='☀'}}catch(e){}
-$('year').textContent=new Date().getFullYear();updateProgress();
-const search=$('searchInput');search.addEventListener('input',()=>{const q=search.value.trim().toLocaleLowerCase('es');let visible=0;document.querySelectorAll('.searchable [data-search], .searchable .module-card').forEach(el=>{const hay=(el.dataset.search||'')+' '+el.textContent;const match=!q||hay.toLocaleLowerCase('es').includes(q);el.style.display=match?'':'none';if(match)visible++});let empty=document.querySelector('.search-empty');if(!empty){empty=document.createElement('div');empty.className='search-empty';empty.textContent='No se encontraron resultados. Prueba con otra palabra.';document.querySelectorAll('.searchable').forEach(s=>s.after(empty.cloneNode(true)));}document.querySelectorAll('.search-empty').forEach(e=>e.style.display=q&&visible===0?'block':'none');if(q){const first=document.querySelector('.searchable');if(first&&first.closest('.view')&&!first.closest('.view').classList.contains('active'))go(first.closest('.view').id.replace('view-',''))}});
-const questions=[
-{q:'Durante una discusión, ¿qué acción demuestra comunicación asertiva?',a:['Insultar para que te escuchen.','Explicar tu opinión con calma y escuchar la otra parte.','Dejar que otra persona decida todo.'],correct:1,why:'La comunicación asertiva expresa ideas con claridad y respeto, y también escucha.'},
-{q:'¿Cuál es un ejemplo de participación ciudadana?',a:['Proponer una mejora para el barrio y dialogarla con la comunidad.','Ignorar los problemas compartidos.','Impedir que otros expresen sus opiniones.'],correct:0,why:'Participar es aportar ideas y colaborar responsablemente en asuntos comunes.'},
-{q:'¿Qué demuestra responsabilidad en un equipo de trabajo?',a:['Esperar que otros hagan todas las tareas.','Ocultar los errores.','Cumplir los acuerdos y avisar a tiempo si surge un problema.'],correct:2,why:'La responsabilidad implica cumplir compromisos y comunicar las dificultades.'},
-{q:'¿Qué deberías hacer si detectas una condición insegura?',a:['Continuar sin decir nada.','Evitar exponerte y reportarla a la persona responsable.','Intentar arreglarla aunque no sepas cómo.'],correct:1,why:'No te expongas a un peligro: informa a la persona responsable y sigue el protocolo.'},
-{q:'¿Qué significa tener empatía?',a:['Comprender cómo puede sentirse otra persona.','Estar siempre de acuerdo con todo el mundo.','Resolver los problemas de otros sin preguntar.'],correct:0,why:'La empatía busca comprender a otras personas sin exigir que piensen igual que tú.'}
+const reviewedDate = '19 de octubre de 2026';
+const sources = [
+  {id:'ungrd-sismo', org:'Unidad Nacional para la Gestión del Riesgo de Desastres', year:'2026', title:'Guía de preparativos ante sismo', url:'https://portal.gestiondelriesgo.gov.co/Paginas/Slide_home/GUIA-DE-PREPARATIVOS-ANTE-SISMO.aspx', role:'Fuente colombiana para preparar acciones individuales y comunitarias antes, durante y después de un sismo.', date:'10 de agosto de 2026', type:'Guía institucional'},
+  {id:'ungrd-inundaciones', org:'Unidad Nacional para la Gestión del Riesgo de Desastres', year:'s. f.', title:'Inundaciones', url:'https://portal.gestiondelriesgo.gov.co/Paginas/inundaciones.aspx', role:'Información nacional para conocer el fenómeno, reducir riesgos y preparar rutas de evacuación ante inundaciones.', date:'Página consultada el ' + reviewedDate, type:'Orientación institucional'},
+  {id:'ungrd-riesgos', org:'Sistema Nacional de Información para la Gestión del Riesgo de Desastres', year:'s. f.', title:'Fenómenos naturales', url:'https://www.gestiondelriesgo.gov.co/snigrd/pagina.aspx?id=112', role:'Índice institucional de amenazas como terremotos, deslizamientos, incendios, sequías, huracanes y tsunamis.', date:'Página consultada el ' + reviewedDate, type:'Portal institucional'},
+  {id:'ifrc-tsunami', org:'Federación Internacional de Sociedades de la Cruz Roja y de la Media Luna Roja', year:'s. f.', title:'Tsunamis', url:'https://www.ifrc.org/es/nuestro-trabajo/desastres-clima-y-crisis/que-es-desastre/tsunamis', role:'Orientación de preparación y respuesta: rutas de evacuación, terreno elevado y seguimiento de alertas oficiales.', date:'Página consultada el ' + reviewedDate, type:'Orientación humanitaria'},
+  {id:'ifrc-heat', org:'Federación Internacional de Sociedades de la Cruz Roja y de la Media Luna Roja', year:'s. f.', title:'Heat waves (olas de calor)', url:'https://www.ifrc.org/our-work/disasters-climate-and-crises/what-disaster/heat-waves', role:'Consejos de preparación ante calor extremo, hidratación y reducción de exposición.', date:'Página consultada el ' + reviewedDate, type:'Orientación humanitaria'},
+  {id:'ifrc-wildfire', org:'Federación Internacional de Sociedades de la Cruz Roja y de la Media Luna Roja', year:'s. f.', title:'Wildfires (incendios forestales)', url:'https://www.ifrc.org/our-work/disasters-climate-and-crises/what-disaster/wildfires', role:'Recomendaciones preventivas y preparación de rutas de evacuación en caso de incendios forestales.', date:'Página consultada el ' + reviewedDate, type:'Orientación humanitaria'},
+  {id:'ilo-skills', org:'International Labour Organization', year:'2026', title:'Technical and vocational training strengthens core skills for better youth employment in Ethiopia', url:'https://www.ilo.org/resource/news/technical-and-vocational-training-strengthens-core-skills-better-youth', role:'Ejemplo de formación en competencias transferibles: comunicación, trabajo en equipo, capacidades digitales y resolución de problemas. El artículo informa sobre un programa en Etiopía, no sobre resultados en Colombia.', date:'26 de junio de 2026', type:'Artículo institucional'},
+  {id:'wcag', org:'World Wide Web Consortium', year:'2024', title:'Web Content Accessibility Guidelines (WCAG) 2.2', url:'https://www.w3.org/TR/WCAG22/', role:'Estándar de recomendaciones verificables para aumentar la accesibilidad del contenido web.', date:'12 de diciembre de 2024', type:'Estándar técnico'},
+  {id:'react', org:'React', year:'s. f.', title:'Setup', url:'https://react.dev/learn/setup', role:'Documentación oficial para preparar el entorno de desarrollo de una aplicación basada en React.', date:'Página consultada el ' + reviewedDate, type:'Documentación técnica'},
+  {id:'mdn-react', org:'MDN Web Docs', year:'s. f.', title:'Getting started with React', url:'https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Frameworks_libraries/React_getting_started', role:'Introducción de desarrollo web a React y opciones para comenzar una aplicación.', date:'Página consultada el ' + reviewedDate, type:'Documentación técnica'}
+  ,{id:'sgrl-minsalud', org:'Ministerio de Salud y Protección Social', year:'s. f.', title:'Generalidades del Sistema General de Riesgos Laborales', url:'https://www2.minsalud.gov.co/salud/Documents/Contenidos/generalidades-SGRL.aspx', role:'Descripción del SGRL y responsabilidades de entidades, empleadores, ARL y trabajadores.', date:'Página consultada el ' + reviewedDate, type:'Fuente oficial'}
+  ,{id:'cali-emergencies', org:'Alcaldía de Santiago de Cali', year:'2025', title:'Decreto 457 de 2025: línea única NUSE 123 CALI', url:'https://normagrama.cali.gov.co/compilacion/docs/d_alcacali_0457_2025.htm', role:'Marco distrital para recibir comunicaciones de emergencias y coordinar líneas de respuesta.', date:'11 de julio de 2025', type:'Norma local'}
+  ,{id:'cali-emergency-guide', org:'Alcaldía de Santiago de Cali', year:'2024', title:'Recomendaciones en caso de emergencias', url:'https://www.cali.gov.co/gestiondelriesgo/publicaciones/140522/recomendaciones-en-caso-de-emergencias/', role:'Líneas institucionales y recomendaciones para comunicar una emergencia.', date:'Actualización: 9 de mayo de 2024', type:'Guía local'}
+  ,{id:'cali-linea106', org:'Alcaldía de Santiago de Cali', year:'2026', title:'Línea 106 para teleorientación en salud mental', url:'https://www.cali.gov.co/boletines/publicaciones/192156/alcaldia-de-cali-prioriza-la-salud-mental-calenos-tienen-a-disposicion-la-linea-106-para-teleorientacion/', role:'Información distrital sobre orientación psicosocial, canales y disponibilidad de la Línea 106.', date:'15 de abril de 2026', type:'Ruta de atención'}
+  ,{id:'cali-comisarias', org:'Alcaldía de Santiago de Cali', year:'s. f.', title:'Comisarías de Familia', url:'https://www.cali.gov.co/seguridad/publicaciones/140079/comisarias-de-familia/', role:'Directorio institucional y descripción de orientación psicosocial y jurídica.', date:'Consultar página oficial para datos vigentes', type:'Ruta de atención'}
+  ,{id:'cali-jac', org:'Alcaldía de Santiago de Cali', year:'2026', title:'Organismos de Acción Comunal', url:'https://www.cali.gov.co/participacion/publicaciones/174276/organismos-de-accion-comunal/', role:'Inventario institucional de organismos comunales y juntas registradas.', date:'Publicación: 4 de marzo de 2026', type:'Directorio comunitario'}
+  ,{id:'cali-alto-jordan', org:'Alcaldía de Santiago de Cali', year:'2026', title:'Mi Cali Bella se integra: servicios de la Alcaldía más cerca de la comunidad', url:'https://www.cali.gov.co/boletines/publicaciones/194462/mi-cali-bella-se-integra-servicios-de-la-alcaldia-mas-cerca-de-la-comunidad/', role:'Información de servicios y orientación distritales para el barrio Alto Jordán, Comuna 18.', date:'30 de agosto de 2026; modificación 23 de septiembre de 2026', type:'Servicio comunitario'}
+  ,{id:'ideam', org:'Instituto de Hidrología, Meteorología y Estudios Ambientales', year:'s. f.', title:'IDEAM: información hidrológica, meteorológica y ambiental', url:'https://www.ideam.gov.co/', role:'Punto de partida institucional para investigar clima, lluvias, calor y amenazas hidrometeorológicas; consulta publicaciones específicas antes de citarlas.', date:'Página consultada el ' + reviewedDate, type:'Fuente oficial'}
 ];
-let qi=0,selected=null,score=0,quizStarted=false,answered=false;
-function renderQuestion(){quizStarted=true;answered=false;selected=null;const q=questions[qi];$('questionCount').textContent='PREGUNTA '+(qi+1)+' DE '+questions.length;$('quizBar').style.width=(qi/questions.length*100)+'%';$('questionText').textContent=q.q;$('feedback').textContent='';$('nextQuestion').disabled=true;$('nextQuestion').textContent=qi===questions.length-1?'Ver resultado →':'Siguiente →';$('answers').innerHTML='';q.a.forEach((a,i)=>{const b=document.createElement('button');b.className='answer';b.textContent=String.fromCharCode(65+i)+'. '+a;b.addEventListener('click',()=>{if(answered)return;selected=i;document.querySelectorAll('.answer').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');$('nextQuestion').disabled=false});$('answers').appendChild(b)})}
-$('nextQuestion').addEventListener('click',()=>{if(!answered){if(selected===null)return;answered=true;const q=questions[qi];const buttons=[...document.querySelectorAll('.answer')];buttons[q.correct].classList.add('correct');if(selected===q.correct){score++;$('feedback').textContent='¡Correcto! '+q.why}else{buttons[selected].classList.add('wrong');$('feedback').textContent='Casi. '+q.why}$('quizBar').style.width=((qi+1)/questions.length*100)+'%';$('nextQuestion').textContent=qi===questions.length-1?'Ver resultado →':'Continuar →';return}if(qi<questions.length-1){qi++;renderQuestion()}else{showResult()}});
-function showResult(){const pct=Math.round(score/questions.length*100);$('questionCount').textContent='EVALUACIÓN COMPLETADA';$('quizBar').style.width='100%';$('questionText').textContent='Obtuviste '+score+' de '+questions.length+' respuestas correctas ('+pct+'%).';$('answers').innerHTML='<div class="daily-tip"><strong>'+(pct>=80?'¡Excelente trabajo!':pct>=60?'¡Vas avanzando!':'Cada intento es una oportunidad para aprender.')+'</strong><p>'+(pct>=80?'Tienes una buena base. Repasa los temas y sigue practicando.':'Vuelve a los módulos, revisa las explicaciones e inténtalo otra vez.')+'</p></div>';$('feedback').textContent='Esta práctica es formativa y no representa una calificación oficial.';$('nextQuestion').disabled=true;$('nextQuestion').textContent='Evaluación terminada';explored.add('evaluacion');try{localStorage.setItem('arkon-last-score',String(pct))}catch(e){}}
-$('restartQuiz').addEventListener('click',()=>{qi=0;score=0;renderQuestion()});
-})();
+const disasterTopics = [
+ {id:'sismo',title:'Terremotos y sismos',icon:'🌎',tone:'blue',summary:'Prepárate con un plan sencillo y conoce acciones generales para protegerte.',source:['ungrd-sismo','ungrd-riesgos'],description:'Un sismo es un movimiento del suelo asociado a la liberación de energía en la Tierra. La preparación individual y comunitaria ayuda a organizar una respuesta más segura.',before:['Identifica zonas seguras y rutas de salida con apoyo de las recomendaciones locales.','Asegura objetos que puedan caer y acuerda un punto de encuentro familiar.','Prepara un kit básico y conoce cómo se activa el plan de emergencia del lugar.'],during:['Si estás en el interior, agáchate, cúbrete y sujétate; protege cabeza y cuello.','Aléjate de ventanas y objetos que puedan caer. No uses ascensores.','Si estás afuera, aléjate de fachadas, postes, cables y otros elementos que puedan caer.'],after:['Cuando termine el movimiento, revisa si hay riesgos visibles y sigue las instrucciones de las autoridades.','Prepárate para posibles réplicas; no ingreses a edificios dañados hasta que sean evaluados.','Contacta a familiares con un plan previamente acordado y usa líneas de emergencia solo cuando sea necesario.'],check:['Definí un punto de encuentro familiar.','Ubico una zona segura en casa, estudio o trabajo.','Sé dónde consultar alertas e instrucciones oficiales.'],note:'La guía de la UNGRD es la fuente principal vinculada para esta ficha.'},
+ {id:'inundacion',title:'Inundaciones',icon:'🌊',tone:'blue',summary:'Reconoce factores de riesgo y planea cómo llegar a lugares seguros.',source:['ungrd-inundaciones','ungrd-riesgos'],description:'Una inundación ocurre cuando el agua supera los niveles habituales y ocupa áreas normalmente secas. Puede relacionarse con desbordamientos, lluvias intensas y condiciones del territorio.',before:['Identifica rutas de evacuación y puntos seguros en zonas altas.','Mantén despejados los drenajes de tu entorno sin exponerte a corrientes de agua.','Ten listo un kit y presta atención a cambios en ríos y quebradas y a los avisos de las autoridades.'],during:['Sigue las instrucciones de evacuación y desplázate hacia el lugar seguro indicado.','No camines, nades ni conduzcas a través de agua de inundación.','Evita acercarte a ríos, canales, alcantarillas y cables o instalaciones eléctricas mojadas.'],after:['Regresa a la vivienda cuando las autoridades lo indiquen.','No uses instalaciones de electricidad o gas si pueden estar dañadas.','Evita contacto con aguas estancadas y sigue las indicaciones locales para limpieza y agua segura.'],check:['Conozco una ruta de evacuación hacia una zona alta.','Tengo a mano documentos importantes y un kit básico.','Sé dónde consultar información oficial de la zona.'],note:'Se basa en la orientación de inundaciones de la UNGRD; las rutas concretas deben definirse localmente.'},
+ {id:'deslizamiento',title:'Deslizamientos de tierra',icon:'⛰️',tone:'mint',summary:'Aprende a reconocer condiciones de riesgo y a seguir alertas locales.',source:['ungrd-riesgos'],description:'Un deslizamiento es el movimiento de suelo, roca o material ladera abajo. La lluvia, el terreno y las intervenciones humanas pueden influir en el riesgo.',before:['Consulta mapas, antecedentes y alertas locales si vives o transitas cerca de laderas.','Evita modificar taludes o desviar agua de laderas sin asesoría técnica.','Identifica rutas de salida que no atraviesen la zona de amenaza.'],during:['Si la autoridad emite una evacuación, sal por la ruta indicada sin detenerte a recoger objetos.','Aléjate de laderas inestables, cauces y zonas donde el material pueda continuar moviéndose.','Reporta señales preocupantes a las autoridades; no te acerques para investigar.'],after:['No regreses al área hasta recibir autorización de la autoridad competente.','Ten en cuenta que puede haber nuevos movimientos después del primero.','Sigue instrucciones de servicios de emergencia y personal técnico.'],check:['Revisé los riesgos conocidos de mi sector.','Sé cómo recibir avisos oficiales de mi municipio.','Tengo acordada una forma de comunicación familiar.'],note:'Esta ficha es introductoria. Señales específicas y decisiones de evacuación deben ser verificadas con la autoridad geológica y de gestión del riesgo local.'},
+ {id:'incendio',title:'Incendios forestales',icon:'🔥',tone:'peach',summary:'Reduce fuentes de ignición y prepara una evacuación con anticipación.',source:['ifrc-wildfire','ungrd-riesgos'],description:'Los incendios forestales se propagan por vegetación y pueden amenazar viviendas, ecosistemas, vías y calidad del aire. La preparación se ajusta a las condiciones locales.',before:['Evita quemas abiertas y no dejes fogatas sin supervisión.','Mantén rutas de salida y contactos de emergencia identificados.','Sigue los avisos oficiales sobre riesgo de incendio y calidad del aire.'],during:['Evacúa cuando lo ordenen las autoridades y sigue la ruta recomendada.','No te acerques al fuego para observarlo ni regreses por objetos.','Si hay humo, aléjate de la zona afectada y sigue instrucciones de los servicios de emergencia.'],after:['No regreses hasta que la zona sea declarada segura.','Evita estructuras, árboles y líneas eléctricas dañadas.','Consulta recomendaciones oficiales si persiste humo o ceniza.'],check:['Sé por dónde evacuaría mi familia.','Evito fogatas y quemas en condiciones de riesgo.','Puedo recibir avisos oficiales locales.'],note:'Orientación inicial basada en la IFRC. Los procedimientos de evacuación corresponden a las autoridades y cuerpos de respuesta.'},
+ {id:'tormenta',title:'Huracanes y tormentas',icon:'🌪️',tone:'lilac',summary:'Planea con anticipación y atiende las alertas meteorológicas oficiales.',source:['ungrd-riesgos'],description:'Las tormentas fuertes y los ciclones tropicales pueden producir vientos, lluvias intensas, inundaciones y otros peligros secundarios. La exposición varía según la región.',before:['Consulta pronósticos y alertas de IDEAM y las autoridades locales.','Asegura objetos sueltos solo cuando sea seguro hacerlo y antes de que llegue el evento.','Ten definidos un lugar seguro, contactos y suministros básicos.'],during:['Permanece en un sitio resguardado y sigue las instrucciones oficiales.','Evita ventanas, zonas inundadas y desplazamientos innecesarios.','No te acerques a cables caídos ni a áreas costeras con oleaje peligroso.'],after:['Espera autorización antes de regresar a áreas evacuadas.','Evita árboles, techos, cables y estructuras dañadas.','Consulta recomendaciones oficiales antes de consumir agua o alimentos expuestos.'],check:['Sé dónde consultar alertas meteorológicas.','Tengo una forma acordada de contactar a mi familia.','Identifico qué objetos pueden asegurarse antes de una tormenta.'],note:'Verifica las alertas vigentes de IDEAM y de las autoridades territoriales; esta página no emite pronósticos.'},
+ {id:'calor',title:'Sequías y olas de calor',icon:'☀️',tone:'yellow',summary:'Comprende cómo reducir la exposición al calor y cuidar el agua.',source:['ifrc-heat','ungrd-riesgos'],description:'Las sequías son periodos prolongados de escasez de precipitación; las olas de calor son periodos de temperaturas inusualmente altas. Son fenómenos distintos y pueden tener impactos diferentes.',before:['Consulta avisos meteorológicos y medidas locales de ahorro y abastecimiento de agua.','Identifica lugares frescos y organiza actividades para evitar las horas de mayor calor.','Verifica con fuentes sanitarias oficiales las medidas de cuidado adecuadas para cada persona.'],during:['Busca sombra o un lugar fresco y bebe agua con regularidad, siguiendo indicaciones médicas si tienes restricciones.','Reduce la actividad física intensa durante las horas de más calor.','Pide ayuda médica ante señales de enfermedad por calor.'],after:['Reanuda gradualmente actividades exigentes según las condiciones.','Mantén el uso responsable del agua y sigue medidas de abastecimiento locales.','Consulta fuentes oficiales, no rumores, sobre la situación de la zona.'],check:['Sé cómo recibir avisos de calor o sequía.','Planeo reducir la exposición durante horas de más calor.','Conozco medidas de cuidado del agua recomendadas en mi municipio.'],note:'La IFRC ofrece orientación para olas de calor. Las recomendaciones de salud deben adaptarse a la situación personal y a las autoridades sanitarias.'},
+ {id:'tsunami',title:'Tsunamis',icon:'🏝️',tone:'blue',summary:'En zonas costeras, conoce las rutas a terreno alto y las alertas oficiales.',source:['ifrc-tsunami','ungrd-riesgos'],description:'Un tsunami es una serie de olas asociadas al desplazamiento de grandes volúmenes de agua, con frecuencia tras sismos submarinos. Puede generar corrientes peligrosas durante horas.',before:['Consulta si la zona costera que visitas cuenta con rutas y puntos de evacuación.','Aprende a identificar señales naturales y a recibir alertas oficiales.','Practica la ruta de evacuación hacia terreno alto o tierra adentro que indiquen las autoridades.'],during:['Ante un sismo muy fuerte o prolongado en la costa, muévete de inmediato a terreno alto o tierra adentro sin esperar una alerta, según la orientación de seguridad de la IFRC.','Aléjate de playas, estuarios, ríos y canales costeros.','Sigue las rutas previstas y las instrucciones de las autoridades.'],after:['No regreses a la costa hasta que la autoridad indique que es seguro.','Recuerda que pueden llegar varias olas y persistir corrientes peligrosas.','Evita agua contaminada y otros peligros secundarios.'],check:['Conozco una ruta de evacuación costera.','Sé cuáles son los puntos altos seguros indicados localmente.','Sé cómo consultar alertas oficiales de tsunami.'],note:'La preparación depende de la geografía local y de los protocolos oficiales de alerta y evacuación.'}
+];
+const skills = [
+ {id:'comunicacion',title:'Comunicación efectiva',icon:'💬',tone:'blue',summary:'Expresa tus ideas, escucha y confirma que el mensaje se entendió.',goal:'Transmitir ideas con claridad y escuchar antes de responder.',example:'En un trabajo en grupo, resume el acuerdo al final: quién hará cada tarea y cuándo la entregará.',steps:['Habla con una idea principal a la vez.','Escucha sin interrumpir y pregunta cuando algo no esté claro.','Adapta el mensaje a la persona y al contexto.'],exercise:'Tu compañero no entendió una instrucción. En vez de culparlo, vuelve a explicarla con palabras sencillas y pídele que te cuente cómo la entendió.',quiz:{q:'¿Qué ayuda más a confirmar que un mensaje se entendió?',options:['Hablar más fuerte','Pedir que la otra persona resuma el acuerdo','Enviar el mismo mensaje muchas veces'],correct:1,why:'Pedir un resumen permite comprobar el entendimiento y aclarar diferencias a tiempo.'}},
+ {id:'equipo',title:'Trabajo en equipo',icon:'🧩',tone:'mint',summary:'Coordina tareas, cumple acuerdos y resuelve desacuerdos con respeto.',goal:'Contribuir al objetivo común y mantener acuerdos claros.',example:'Antes de comenzar un proyecto, definan responsables, fechas y una forma de pedir ayuda.',steps:['Aclara el objetivo y los roles.','Cumple los compromisos o avisa si surge un problema.','Escucha propuestas y critica las ideas, no a las personas.'],exercise:'Dos integrantes quieren decidir el mismo detalle y el equipo se estanca. Comparen las opciones según el objetivo y acuerden cómo tomar la decisión.',quiz:{q:'¿Qué práctica favorece un equipo?',options:['Repartir tareas sin acordar fechas','Guardar los problemas hasta el final','Definir roles, plazos y una forma de comunicar avances'],correct:2,why:'Los acuerdos claros ayudan a coordinar esfuerzos y detectar bloqueos con anticipación.'}},
+ {id:'problemas',title:'Resolver problemas',icon:'🧠',tone:'lilac',summary:'Define el problema, revisa opciones y justifica tu decisión.',goal:'Resolver situaciones con un método sencillo, no solo con intuición.',example:'Si una entrega se retrasa, identifica la causa, define qué falta y acuerda una solución viable con el equipo.',steps:['Describe el problema con hechos concretos.','Enumera opciones y consecuencias.','Elige, prueba y revisa si la solución funcionó.'],exercise:'Una tarea no avanza porque falta información. Antes de rehacer todo, identifica exactamente qué dato falta y a quién puedes pedírselo.',quiz:{q:'¿Cuál es un buen primer paso para solucionar un problema?',options:['Definir qué está ocurriendo','Escoger la primera idea','Buscar a quién culpar'],correct:0,why:'Entender el problema evita dedicar tiempo a solucionar algo distinto.'}},
+ {id:'tiempo',title:'Gestión del tiempo',icon:'⏱️',tone:'yellow',summary:'Prioriza, calcula cuánto tarda una tarea y deja espacio para imprevistos.',goal:'Organizar el trabajo para cumplir acuerdos sin depender de la memoria.',example:'Divide una tarea grande en pasos pequeños y asigna un tiempo estimado a cada uno.',steps:['Anota tareas y fechas límite.','Prioriza por importancia y urgencia.','Revisa el plan y ajústalo si cambian las condiciones.'],exercise:'Tienes dos tareas para mañana. Revisa cuánto tiempo exige cada una, cuál es el plazo y divide el trabajo antes de empezar.',quiz:{q:'¿Qué vuelve más manejable un proyecto grande?',options:['Esperar a tener ganas','Dividirlo en pasos con plazos','Hacer todas las tareas al mismo tiempo'],correct:1,why:'Los pasos concretos facilitan ver avances y corregir atrasos a tiempo.'}},
+ {id:'hojadevida',title:'Hoja de vida y entrevista',icon:'📝',tone:'peach',summary:'Presenta experiencias y habilidades de forma clara y honesta.',goal:'Comunicar tus capacidades de manera concreta y adecuada a una oportunidad.',example:'En lugar de decir “soy responsable”, describe una situación real en la que cumpliste una tarea o coordinaste un proyecto.',steps:['Adapta el contenido a la oportunidad sin inventar experiencia.','Usa ejemplos breves y verificables.','Prepara preguntas sobre el rol, las tareas y el proceso.'],exercise:'Revisa una hoja de vida ficticia: identifica datos irrelevantes, errores de escritura y afirmaciones que necesitan un ejemplo concreto.',quiz:{q:'¿Qué conviene hacer al describir una habilidad en la hoja de vida?',options:['Afirmar que eres experto en todo','Inventar experiencia para llamar la atención','Acompañarla con una experiencia real y concreta'],correct:2,why:'Los ejemplos claros permiten entender qué hiciste sin atribuirte capacidades falsas.'}},
+ {id:'digital',title:'Competencias digitales',icon:'💻',tone:'blue',summary:'Organiza archivos, colabora en línea y protege la información.',goal:'Usar herramientas digitales para resolver tareas y compartir información con cuidado.',example:'Usa nombres de archivo consistentes y comprueba los permisos antes de compartir un documento.',steps:['Organiza carpetas y versiones.','Comprueba destinatarios y permisos antes de compartir.','Protege cuentas y evita publicar información sensible.'],exercise:'Antes de enviar un archivo a tu grupo, verifica que sea la versión correcta y que las personas adecuadas tengan acceso.',quiz:{q:'¿Qué es una buena práctica al compartir un documento?',options:['Comprobar destinatarios y permisos','Publicar el enlace con acceso abierto siempre','Usar contraseñas iguales para todos'],correct:0,why:'Verificar el acceso reduce errores y evita compartir información con personas no previstas.'}},
+ {id:'inteligencia',title:'Inteligencia emocional',icon:'🌿',tone:'mint',summary:'Reconoce emociones, regula la reacción y conversa con respeto.',goal:'Responder a situaciones difíciles sin ignorar el impacto de las emociones.',example:'Si recibes una crítica, espera un momento, identifica qué parte es útil y pregunta cómo mejorar.',steps:['Reconoce qué sientes y qué lo activó.','Haz una pausa antes de responder si la situación se intensifica.','Expresa lo que necesitas sin atacar a la otra persona.'],exercise:'Ante un desacuerdo, explica cómo te afectó una situación concreta y propone una acción para evitar que se repita.',quiz:{q:'¿Qué puede ayudar durante una conversación tensa?',options:['Interrumpir para ganar la discusión','Hacer una pausa y describir el problema sin atacar','Ignorar por completo a la otra persona'],correct:1,why:'Una pausa y un lenguaje respetuoso ayudan a centrarse en el problema y en posibles soluciones.'}},
+ {id:'etica',title:'Ética y responsabilidad',icon:'🤝',tone:'lilac',summary:'Cumple acuerdos, reconoce errores y trata datos y personas con respeto.',goal:'Actuar con honestidad, cuidado y responsabilidad en tareas compartidas.',example:'Si detectas un error en un informe, avisa y corrígelo en vez de ocultarlo.',steps:['Sé claro con lo que puedes cumplir.','Respeta la privacidad y el trabajo de otras personas.','Asume los errores y documenta cómo corregirlos.'],exercise:'Descubres que compartiste por equivocación un documento interno. Informa a la persona responsable y sigue el procedimiento de corrección.',quiz:{q:'¿Qué respuesta muestra responsabilidad ante un error?',options:['Ocultarlo para evitar preguntas','Culpar a un compañero sin revisar','Informarlo y colaborar en la corrección'],correct:2,why:'La transparencia permite reducir el impacto y aprender de lo sucedido.'}}
+];
+const articles = [
+ {id:'r-sismo',title:'Prepárate para un sismo',category:'desastres',categoryName:'Desastres naturales',level:'inicial',levelName:'Inicial',kind:'Guía práctica',time:'5 min',summary:'Organiza un plan y conoce las acciones generales antes, durante y después de un sismo.',keywords:'terremoto seguridad kit evacuación plan familia',icon:'🌎',tone:'blue',source:['ungrd-sismo'],body:'<p>La preparación ante un sismo es individual y colectiva. Revisa las recomendaciones de la UNGRD y conversa con las personas de tu hogar, estudio o trabajo para que el plan no dependa de improvisar.</p><h3>Antes</h3><ul><li>Identifica zonas seguras, rutas de salida y un punto de encuentro.</li><li>Revisa qué objetos pueden caer y conoce el plan de emergencia del lugar.</li><li>Prepara elementos básicos siguiendo las recomendaciones oficiales.</li></ul><h3>Durante</h3><ul><li>Si estás en el interior, agáchate, cúbrete y sujétate, protegiendo cabeza y cuello.</li><li>Aléjate de ventanas y no uses ascensores.</li><li>Sigue las instrucciones de las autoridades y los protocolos locales.</li></ul><h3>Después</h3><ul><li>Aléjate de estructuras dañadas y espera instrucciones oficiales antes de regresar.</li><li>Ten presente que pueden ocurrir réplicas.</li></ul><p><strong>Fuente:</strong> la ficha de la UNGRD enlazada en la sección Fuentes. Este resumen no sustituye el protocolo local.</p>',quiz:{q:'Si estás dentro de un edificio durante un sismo, ¿qué acción general se recomienda?',options:['Correr a usar el ascensor','Agacharte, cubrirte y sujetarte, protegiendo cabeza y cuello','Pararte junto a una ventana'],correct:1,why:'La guía de preparación ante sismos de la UNGRD recomienda prepararse antes y conocer las acciones adecuadas durante el evento. Sigue siempre las indicaciones locales.'}},
+ {id:'r-inundacion',title:'Plan de preparación ante inundaciones',category:'desastres',categoryName:'Desastres naturales',level:'inicial',levelName:'Inicial',kind:'Lista de comprobación',time:'4 min',summary:'Define rutas a zonas altas y conoce qué verificar antes de regresar a una zona afectada.',keywords:'agua lluvias río evacuación prevención inundación',icon:'🌊',tone:'blue',source:['ungrd-inundaciones'],body:'<p>La UNGRD explica que las inundaciones pueden relacionarse con desbordamientos, lluvias intensas y condiciones del territorio. La preparación local es clave.</p><h3>Antes</h3><ul><li>Define rutas de evacuación y lugares seguros en zonas altas.</li><li>Ten listo un kit básico y conoce cómo recibir indicaciones oficiales.</li></ul><h3>Durante</h3><ul><li>Acata las instrucciones de evacuación.</li><li>No te expongas a corrientes ni cruces por agua inundada a pie o en vehículo.</li></ul><h3>Después</h3><ul><li>Regresa solo cuando las autoridades lo indiquen.</li><li>Verifica la vivienda y sus instalaciones con orientación competente antes de usarlas.</li></ul>',quiz:{q:'¿Cuándo deberías regresar a una zona evacuada por inundación?',options:['Apenas baje un poco el agua','Cuando lo indiquen las autoridades','Cuando alguien comparta una foto'],correct:1,why:'La orientación de la UNGRD indica regresar a la vivienda cuando las autoridades lo indiquen.'}},
+ {id:'r-comunicacion',title:'Comunicación clara en equipos',category:'laboral',categoryName:'Habilidades laborales',level:'inicial',levelName:'Inicial',kind:'Ejercicio',time:'3 min',summary:'Practica escucha activa, mensajes claros y confirmación de acuerdos.',keywords:'comunicación escuchar equipo conflicto feedback trabajo',icon:'💬',tone:'mint',source:['ilo-skills'],body:'<p>La comunicación es una competencia transferible que se puede entrenar. Incluye expresar ideas con claridad, escuchar con atención y comprobar que los acuerdos quedaron entendidos.</p><h3>Prueba este método</h3><ul><li>Expón una idea principal.</li><li>Escucha sin interrumpir.</li><li>Pregunta qué falta por aclarar.</li><li>Al terminar, resume responsable y fecha de la tarea.</li></ul><p>Practica en una situación real de estudio, trabajo o proyecto. Adapta el tono y el detalle al contexto.</p>',quiz:skills[0].quiz},
+ {id:'r-equipo',title:'Cómo organizar un trabajo en equipo',category:'laboral',categoryName:'Habilidades laborales',level:'inicial',levelName:'Inicial',kind:'Guía práctica',time:'4 min',summary:'Reparte tareas, acuerda tiempos y prepara una forma de avisar de los bloqueos.',keywords:'equipo liderazgo cooperación plazos organización',icon:'🧩',tone:'mint',source:['ilo-skills'],body:'<p>El trabajo en equipo mejora cuando hay un objetivo compartido, tareas claras y una forma respetuosa de coordinarse. No significa estar siempre de acuerdo, sino construir una solución.</p><h3>Antes de empezar</h3><ul><li>Definan qué significa terminar la tarea.</li><li>Repartan responsabilidades según lo que hay que hacer.</li><li>Acuerden fechas y cómo compartirán avances.</li></ul><h3>Si hay desacuerdo</h3><ul><li>Vuelvan al objetivo.</li><li>Comparen las opciones con criterios claros.</li><li>Registren la decisión y quién hará qué.</li></ul>',quiz:skills[1].quiz},
+ {id:'r-problemas',title:'Resolver problemas paso a paso',category:'laboral',categoryName:'Habilidades laborales',level:'inicial',levelName:'Inicial',kind:'Ejercicio',time:'3 min',summary:'Define el problema, compara opciones y revisa el resultado.',keywords:'pensamiento crítico solución decisiones análisis',icon:'🧠',tone:'lilac',source:['ilo-skills'],body:'<p>Para resolver un problema, primero hay que entenderlo. Separar los hechos de las suposiciones ayuda a elegir una solución útil.</p><h3>Un método de cuatro pasos</h3><ul><li>Define el problema en una frase.</li><li>Busca información relevante.</li><li>Compara opciones y consecuencias.</li><li>Prueba una solución y revisa el resultado.</li></ul><p>Si no funciona, usa lo aprendido para ajustar el plan.</p>',quiz:skills[2].quiz},
+ {id:'r-hoja',title:'Hoja de vida honesta y clara',category:'laboral',categoryName:'Habilidades laborales',level:'intermedio',levelName:'Intermedio',kind:'Guía práctica',time:'6 min',summary:'Explica tus habilidades con ejemplos reales, revisa los datos y adapta el documento.',keywords:'hoja vida empleo cv entrevista experiencia competencias',icon:'📝',tone:'peach',source:['ilo-skills'],body:'<p>Una hoja de vida debe facilitar que el lector encuentre información pertinente y compruebe qué sabes hacer. No inventes experiencia, estudios, certificaciones ni resultados.</p><h3>Lista de revisión</h3><ul><li>Usa títulos claros y orden consistente.</li><li>Incluye experiencias, proyectos y formación relevantes.</li><li>Describe aportes concretos cuando puedas verificarlos.</li><li>Revisa datos de contacto, ortografía y formato.</li><li>Adapta el contenido a la oportunidad sin cambiar los hechos.</li></ul><p>La práctica de entrevistas ayuda a expresar tus ejemplos de manera breve y natural.</p>',quiz:skills[4].quiz},
+ {id:'r-calor',title:'Cuidado básico durante olas de calor',category:'desastres',categoryName:'Desastres naturales',level:'inicial',levelName:'Inicial',kind:'Guía práctica',time:'4 min',summary:'Reduce la exposición y consulta fuentes sanitarias cuando haga calor extremo.',keywords:'calor agua hidratación sol prevención sequía',icon:'☀️',tone:'yellow',source:['ifrc-heat'],body:'<p>El calor extremo puede afectar la salud. La IFRC recomienda mantenerse informado, reducir la exposición directa al sol, hidratarse y prestar atención a síntomas de enfermedad por calor.</p><h3>Medidas de preparación</h3><ul><li>Consulta avisos meteorológicos locales.</li><li>Busca sombra o lugares frescos cuando las temperaturas sean altas.</li><li>Evita actividad física intensa en las horas más calurosas.</li><li>Ante síntomas preocupantes, busca atención médica.</li></ul><p>Las necesidades de hidratación y salud pueden variar. Sigue recomendaciones de profesionales y autoridades sanitarias, especialmente si tienes indicaciones médicas específicas.</p>',quiz:{q:'¿Qué conducta suele ayudar a reducir la exposición durante una ola de calor?',options:['Hacer ejercicio intenso al mediodía','Buscar sombra o un lugar fresco y seguir avisos oficiales','Ignorar todos los avisos si todavía no sientes sed'],correct:1,why:'La IFRC recomienda reducir la exposición y seguir la información local durante episodios de calor extremo.'}},
+ {id:'r-web',title:'Buenas prácticas de accesibilidad web',category:'web',categoryName:'Desarrollo web',level:'intermedio',levelName:'Intermedio',kind:'Referencia técnica',time:'5 min',summary:'Revisa teclado, foco visible, etiquetas y legibilidad al diseñar interfaces.',keywords:'WCAG accesibilidad web teclado contraste etiquetas focus',icon:'♿',tone:'lilac',source:['wcag'],body:'<p>Las WCAG 2.2 reúnen recomendaciones para hacer contenido web más accesible a personas con distintas discapacidades y mejorar su uso en diferentes dispositivos.</p><h3>Primera comprobación</h3><ul><li>Prueba todos los controles con teclado.</li><li>Asegura un foco visible.</li><li>Asocia etiquetas con campos de formulario.</li><li>Comprueba contraste, reflujo de contenido y nombres de los controles.</li><li>Usa mensajes de error comprensibles.</li></ul><p>Una lista básica no demuestra conformidad total. Se necesita evaluar los criterios aplicables con pruebas adecuadas.</p>',quiz:{q:'¿Qué ayuda a una persona que navega con teclado?',options:['Eliminar los indicadores de foco','Hacer visible el foco del control activo','Poner todas las instrucciones dentro de imágenes'],correct:1,why:'El foco visible permite reconocer qué elemento interactivo está activo al navegar con teclado.'}}
+];
+const progressKey = 'ayp-progress-v1';
+let progress = loadProgress();
+let activeArticle = null;
+function loadProgress(){ try { return JSON.parse(localStorage.getItem(progressKey) || '{"checks":{},"scores":0,"right":0,"completed":[]}'); } catch(e) { return {checks:{},scores:0,right:0,completed:[]}; } }
+function saveProgress(){ try { localStorage.setItem(progressKey, JSON.stringify(progress)); } catch(e) {} updateProgressStats(); }
+function updateProgressStats(){ const allChecks = Object.values(progress.checks || {}).reduce((n,arr)=>n+(Array.isArray(arr)?arr.filter(Boolean).length:0),0); const score = Number(progress.right || 0); const a=document.getElementById('home-completed'); const b=document.getElementById('home-score'); if(a)a.textContent=allChecks; if(b)b.textContent=score; }
+function esc(value){ return String(value).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+const creditsKey = 'ayp-credits-v1';
+const defaultCredits = {title:'Créditos del proyecto',subtitle:'Detrás de cada idea hay personas que aportan, aprenden y construyen juntas.',accent:'#0F9488',people:[{id:'santiago',name:'Santiago Aponzá',role:'Integrante del proyecto'},{id:'juan',name:'Juan Esteban Quejada',role:'Integrante del proyecto'},{id:'stefania',name:'Stefania Garcia',role:'Integrante del proyecto'}]};
+function copyDefaultCredits(){return {...defaultCredits,people:defaultCredits.people.map(person=>({...person}))};}
+function loadCreditsSettings(){try{const saved=JSON.parse(localStorage.getItem(creditsKey)||'null');if(!saved||typeof saved!=='object')return copyDefaultCredits();return {...defaultCredits,...saved,people:defaultCredits.people.map(person=>({...person,...((Array.isArray(saved.people)?saved.people:[]).find(candidate=>candidate&&candidate.id===person.id)||{})}))};}catch(e){return copyDefaultCredits();}}
+let creditsSettings=loadCreditsSettings();
+function renderCredits(){const accent=/^#[0-9a-fA-F]{6}$/.test(creditsSettings.accent||'')?creditsSettings.accent:defaultCredits.accent;document.documentElement.style.setProperty('--hover-accent',accent);document.getElementById('credits-page-title').textContent=(creditsSettings.title||'').trim()||defaultCredits.title;document.getElementById('credits-page-subtitle').textContent=(creditsSettings.subtitle||'').trim()||defaultCredits.subtitle;document.getElementById('credits-grid').innerHTML=creditsSettings.people.map((person,index)=>'<article class="credit-card"><div class="creator-photo-frame"><div class="creator-photo-placeholder" id="creator-photo-placeholder-'+person.id+'"><span class="placeholder-icon" aria-hidden="true">📷</span><strong>Espacio para la foto</strong><span>Selecciona una imagen del dispositivo</span></div><img id="creator-photo-image-'+person.id+'" alt="Foto de '+esc(person.name)+'" hidden loading="lazy"></div><span class="credit-number">'+String(index+1).padStart(2,'0')+'</span><span class="credit-symbol" aria-hidden="true">✦</span><h2 class="credit-name">'+esc((person.name||'').trim()||'Integrante del proyecto')+'</h2><p class="credit-role">'+esc((person.role||'').trim()||'Integrante del proyecto')+'</p><div class="credit-photo-actions"><input class="creator-photo-input" id="creator-photo-input-'+person.id+'" type="file" accept="image/*" data-creator-photo-input="'+person.id+'" aria-label="Seleccionar foto de '+esc(person.name)+'"><button class="btn btn-primary" type="button" data-creator-photo-button="'+person.id+'">Añadir foto</button><button class="btn btn-quiet" type="button" data-creator-photo-remove="'+person.id+'" hidden>Quitar</button></div><span class="credit-photo-status" id="creator-photo-status-'+person.id+'" aria-live="polite"></span></article>').join('');creditsSettings.people.forEach(person=>showCreatorPhoto(person.id,creatorPhotos[person.id]||''));}
+function ensureCreditsEditor(){if(document.getElementById('credits-editor'))return;const dialog=document.createElement('dialog');dialog.id='credits-editor';dialog.setAttribute('aria-labelledby','credits-editor-title');dialog.innerHTML='<div class="dialog-content"><div class="dialog-header"><div><span class="eyebrow">Edición personalizable</span><h2 id="credits-editor-title">Personalizar créditos</h2><p>Los cambios se guardan en este navegador.</p></div><button class="dialog-close" data-close="credits-editor" aria-label="Cerrar editor de créditos">×</button></div><div class="credits-editor-grid"><label class="credits-field">Título de la página<input id="credits-input-title" maxlength="90"></label><label class="credits-field">Texto de presentación<input id="credits-input-subtitle" maxlength="180"></label><label class="credits-field color-field">Color de acento<input id="credits-input-color" type="color"></label><div aria-hidden="true"></div><div class="credits-editor-person"><h3>Integrante 1</h3><label class="credits-field">Nombre<input id="credits-input-santiago-name" maxlength="70"></label><label class="credits-field">Aporte o rol<input id="credits-input-santiago-role" maxlength="90"></label></div><div class="credits-editor-person"><h3>Integrante 2</h3><label class="credits-field">Nombre<input id="credits-input-juan-name" maxlength="70"></label><label class="credits-field">Aporte o rol<input id="credits-input-juan-role" maxlength="90"></label></div><div class="credits-editor-person"><h3>Integrante 3</h3><label class="credits-field">Nombre<input id="credits-input-stefania-name" maxlength="70"></label><label class="credits-field">Aporte o rol<input id="credits-input-stefania-role" maxlength="90"></label></div></div><div class="button-row" style="margin-top:20px"><button class="btn btn-primary" id="save-credits-settings">Guardar cambios</button><button class="btn btn-quiet" id="reset-credits-settings">Restablecer valores iniciales</button></div></div>';document.body.append(dialog);dialog.querySelectorAll('[data-close="credits-editor"]').forEach(button=>button.addEventListener('click',()=>dialog.close()));dialog.querySelector('#save-credits-settings').addEventListener('click',saveCreditsSettings);dialog.querySelector('#reset-credits-settings').addEventListener('click',resetCreditsSettings);}
+function openCreditsEditor(){ensureCreditsEditor();document.getElementById('credits-input-title').value=creditsSettings.title;document.getElementById('credits-input-subtitle').value=creditsSettings.subtitle;document.getElementById('credits-input-color').value=/^#[0-9a-fA-F]{6}$/.test(creditsSettings.accent||'')?creditsSettings.accent:defaultCredits.accent;creditsSettings.people.forEach(person=>{document.getElementById('credits-input-'+person.id+'-name').value=person.name;document.getElementById('credits-input-'+person.id+'-role').value=person.role;});document.getElementById('credits-editor').showModal();}
+function saveCreditsSettings(){const accent=document.getElementById('credits-input-color').value;creditsSettings={title:document.getElementById('credits-input-title').value.trim()||defaultCredits.title,subtitle:document.getElementById('credits-input-subtitle').value.trim()||defaultCredits.subtitle,accent:/^#[0-9a-fA-F]{6}$/.test(accent)?accent:defaultCredits.accent,people:defaultCredits.people.map(person=>({id:person.id,name:document.getElementById('credits-input-'+person.id+'-name').value.trim()||person.name,role:document.getElementById('credits-input-'+person.id+'-role').value.trim()||'Integrante del proyecto'}))};try{localStorage.setItem(creditsKey,JSON.stringify(creditsSettings));}catch(e){}renderCredits();document.getElementById('credits-editor').close();}
+function resetCreditsSettings(){creditsSettings=copyDefaultCredits();try{localStorage.removeItem(creditsKey);}catch(e){}renderCredits();document.getElementById('credits-editor').close();}
+const riskCategories = [
+  {id:'laboral',label:'Riesgos laborales y ergonomía',color:'#547CE7'},
+  {id:'informal',label:'Empleo informal o falta de protección',color:'#17A88A'},
+  {id:'psicosocial',label:'Riesgos psicosociales',color:'#A17AE6'},
+  {id:'sismo',label:'Sismos',color:'#F0B747'},
+  {id:'inundacion',label:'Inundaciones',color:'#E67F58'},
+  {id:'deslizamiento',label:'Deslizamientos',color:'#4B9FC4'},
+  {id:'convivencia',label:'Seguridad y convivencia comunitaria',color:'#D46F9F'}
+];
+const riskStorageKey='ayp-risk-counts-v1';
+const projectMilestoneKey='ayp-project-milestones-v1';
+function loadRiskCounts(){try{const saved=JSON.parse(localStorage.getItem(riskStorageKey)||'{}');return Object.fromEntries(riskCategories.map(item=>[item.id,Math.max(0,Math.floor(Number(saved[item.id])||0))]));}catch(e){return Object.fromEntries(riskCategories.map(item=>[item.id,0]));}}
+function loadProjectMilestones(){try{const saved=JSON.parse(localStorage.getItem(projectMilestoneKey)||'{}');return saved&&typeof saved==='object'?saved:{};}catch(e){return {};}}
+let riskCounts=loadRiskCounts();
+let projectMilestoneState=loadProjectMilestones();
+function renderRiskStats(){
+  const total=riskCategories.reduce((sum,item)=>sum+(riskCounts[item.id]||0),0);
+  const maxCount=Math.max(0,...riskCategories.map(item=>riskCounts[item.id]||0));
+  const formatPercent=value=>total?((value/total)*100).toFixed(1).replace('.',',')+'%':'0%';
+  const totalEl=document.getElementById('risk-total');
+  const note=document.getElementById('risk-data-note');
+  const tableTotal=document.getElementById('risk-table-total');
+  const tablePercent=document.getElementById('risk-table-percent');
+  const body=document.getElementById('risk-frequency-body');
+  if(!totalEl||!body)return;
+  totalEl.textContent=total.toLocaleString('es-CO');
+  note.textContent=total?'Porcentajes calculados a partir de los conteos ingresados. Comprueba que coincidan con tu encuesta.':'Aún no hay conteos ingresados; no se muestran resultados ficticios.';
+  tableTotal.textContent=total.toLocaleString('es-CO');
+  tablePercent.textContent=total?'100%':'0%';
+  body.innerHTML=riskCategories.map(item=>{const count=riskCounts[item.id]||0;return '<tr><th scope="row">'+esc(item.label)+'</th><td>'+count.toLocaleString('es-CO')+'</td><td>'+formatPercent(count)+'</td></tr>';}).join('');
+  document.getElementById('risk-bar-chart').innerHTML=riskCategories.map(item=>{const count=riskCounts[item.id]||0;const width=maxCount?count/maxCount*100:0;return '<div class="risk-bar-line"><div class="risk-bar-label"><span>'+esc(item.label)+'</span><strong>'+count.toLocaleString('es-CO')+'</strong></div><div class="risk-bar-track"><div class="risk-bar-fill" style="width:'+width+'%;background:'+item.color+'"></div></div></div>';}).join('');
+  let cumulative=0;
+  const slices=riskCategories.filter(item=>(riskCounts[item.id]||0)>0).map(item=>{const start=cumulative/total*100;cumulative+=riskCounts[item.id]||0;return item.color+' '+start.toFixed(2)+'% '+(cumulative/total*100).toFixed(2)+'%';});
+  const pie=document.getElementById('risk-pie-chart');
+  pie.style.background=total?'conic-gradient('+slices.join(',')+')':'var(--surface-soft)';
+  pie.setAttribute('aria-label',total?'Gráfico circular con '+total+' menciones registradas':'No hay datos registrados');
+  document.getElementById('risk-pie-legend').innerHTML=riskCategories.map(item=>'<span><span class="legend-name"><i class="legend-dot" style="background:'+item.color+'"></i>'+esc(item.label)+'</span><strong>'+formatPercent(riskCounts[item.id]||0)+'</strong></span>').join('');
+}
+function updateProjectMilestones(){
+  const boxes=[...document.querySelectorAll('[data-project-milestone]')];
+  const done=boxes.filter(box=>box.checked).length;
+  const percent=boxes.length?Math.round(done/boxes.length*100):0;
+  const summary=document.getElementById('milestones-summary');
+  const fill=document.getElementById('milestones-fill');
+  if(summary)summary.textContent=done+' de '+boxes.length+' etapas completadas · '+percent+'%';
+  if(fill)fill.style.width=percent+'%';
+}
+function initProjectTools(){
+  document.querySelectorAll('[data-risk-count]').forEach(input=>{
+    const key=input.dataset.riskCount;
+    input.value=riskCounts[key]||0;
+    input.addEventListener('input',()=>{
+      const raw=Number(input.value);
+      riskCounts[key]=Number.isFinite(raw)?Math.min(100000,Math.max(0,Math.floor(raw))):0;
+      try{localStorage.setItem(riskStorageKey,JSON.stringify(riskCounts));}catch(e){}
+      renderRiskStats();
+    });
+  });
+  const reset=document.getElementById('reset-risk-counts');
+  if(reset)reset.addEventListener('click',()=>{
+    riskCounts=Object.fromEntries(riskCategories.map(item=>[item.id,0]));
+    document.querySelectorAll('[data-risk-count]').forEach(input=>input.value=0);
+    try{localStorage.setItem(riskStorageKey,JSON.stringify(riskCounts));}catch(e){}
+    renderRiskStats();
+  });
+  document.querySelectorAll('[data-project-milestone]').forEach(box=>{
+    const key=box.dataset.projectMilestone;
+    box.checked=Boolean(projectMilestoneState[key]);
+    box.addEventListener('change',()=>{
+      projectMilestoneState[key]=box.checked;
+      try{localStorage.setItem(projectMilestoneKey,JSON.stringify(projectMilestoneState));}catch(e){}
+      updateProjectMilestones();
+    });
+  });
+  updateProjectMilestones();
+  renderRiskStats();
+}
+const creatorPhotoStorageKey='resilae-creator-photos-v1';
+const creatorPhotoIds=['santiago','juan','stefania','team'];
+function loadCreatorPhotos(){try{const saved=JSON.parse(localStorage.getItem(creatorPhotoStorageKey)||'{}');return saved&&typeof saved==='object'?saved:{};}catch(e){return {};}}
+let creatorPhotos=loadCreatorPhotos();
+function showCreatorPhoto(id,dataUrl){
+  const image=document.getElementById('creator-photo-image-'+id);
+  const placeholder=document.getElementById('creator-photo-placeholder-'+id);
+  const removeButton=document.querySelector('[data-creator-photo-remove="'+id+'"]');
+  const status=document.getElementById('creator-photo-status-'+id);
+  if(!image||!placeholder)return;
+  if(dataUrl){image.src=dataUrl;image.hidden=false;placeholder.hidden=true;if(removeButton)removeButton.hidden=false;if(status)status.textContent='Foto guardada en este navegador.';}
+  else{image.removeAttribute('src');image.hidden=true;placeholder.hidden=false;if(removeButton)removeButton.hidden=true;if(status)status.textContent='';}
+}
+function initCreatorPhotos(){
+  creatorPhotoIds.forEach(id=>showCreatorPhoto(id,creatorPhotos[id]||''));
+  document.addEventListener('click',event=>{
+    const addButton=event.target.closest('[data-creator-photo-button]');
+    if(addButton){const input=document.getElementById('creator-photo-input-'+addButton.dataset.creatorPhotoButton);if(input)input.click();return;}
+    const removeButton=event.target.closest('[data-creator-photo-remove]');
+    if(!removeButton)return;
+    const id=removeButton.dataset.creatorPhotoRemove;
+    const status=document.getElementById('creator-photo-status-'+id);
+    const input=document.getElementById('creator-photo-input-'+id);
+    delete creatorPhotos[id];
+    try{localStorage.setItem(creatorPhotoStorageKey,JSON.stringify(creatorPhotos));}
+    catch(error){if(status)status.textContent='No se pudo actualizar el almacenamiento local.';return;}
+    showCreatorPhoto(id,'');
+    if(input)input.value='';
+  });
+  document.addEventListener('change',event=>{
+    const input=event.target.closest('[data-creator-photo-input]');
+    if(!input)return;
+    const id=input.dataset.creatorPhotoInput;
+    const status=document.getElementById('creator-photo-status-'+id);
+    const file=input.files&&input.files[0];
+    if(!file)return;
+    if(!file.type.startsWith('image/')){status.textContent='Elige un archivo de imagen.';input.value='';return;}
+    if(file.size>10*1024*1024){status.textContent='La imagen pesa más de 10 MB. Elige una más pequeña.';input.value='';return;}
+    status.textContent='Preparando imagen…';
+    const reader=new FileReader();
+    reader.onerror=()=>{status.textContent='No se pudo leer la imagen. Intenta otra vez.';input.value='';};
+    reader.onload=()=>{
+      const image=new Image();
+      image.onerror=()=>{status.textContent='No se pudo abrir la imagen. Prueba otro archivo.';input.value='';};
+      image.onload=()=>{
+        const scale=Math.min(1,720/Math.max(image.naturalWidth,image.naturalHeight));
+        const canvas=document.createElement('canvas');
+        canvas.width=Math.max(1,Math.round(image.naturalWidth*scale));
+        canvas.height=Math.max(1,Math.round(image.naturalHeight*scale));
+        const context=canvas.getContext('2d');
+        if(!context){status.textContent='Este navegador no pudo procesar la imagen.';input.value='';return;}
+        context.fillStyle='#FFFFFF';context.fillRect(0,0,canvas.width,canvas.height);
+        context.drawImage(image,0,0,canvas.width,canvas.height);
+        try{
+          const resized=canvas.toDataURL('image/jpeg',0.74);
+          const previous=creatorPhotos[id];
+          creatorPhotos[id]=resized;
+          try{localStorage.setItem(creatorPhotoStorageKey,JSON.stringify(creatorPhotos));}
+          catch(error){if(previous)creatorPhotos[id]=previous;else delete creatorPhotos[id];status.textContent='No hubo espacio para guardar la foto. Prueba una imagen más pequeña.';input.value='';return;}
+          showCreatorPhoto(id,resized);
+        }catch(error){status.textContent='No se pudo guardar esa imagen. Prueba otra foto.';}
+        input.value='';
+      };
+      image.src=String(reader.result);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+function goTo(page){
+  const available = ['inicio','proyecto','desastres','habilidades','biblioteca','fuentes','acerca','creditos'];
+  if(!available.includes(page)) return;
+  document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
+  const section=document.getElementById('page-'+page); if(section)section.classList.add('active');
+  document.querySelectorAll('[data-nav]').forEach(el=>el.classList.toggle('active', el.dataset.nav===page));
+  document.getElementById('main-nav').classList.remove('open');document.getElementById('menu-toggle').setAttribute('aria-expanded','false');
+  window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+  if(page==='biblioteca') renderLibrary();
+  if(page==='fuentes') renderSources();
+}
+function cardHTML({title,icon,tone='blue',tag,summary,bottom='Explorar recurso',action,nav}){
+  const attr = nav ? `data-nav="${esc(nav)}"` : `data-action="${esc(action||'')}"`;
+  return `<article class="card interactive" ${attr}><div class="card-top"><span class="card-icon icon-${esc(tone)}">${icon}</span><span class="tag">${esc(tag||'Para explorar')}</span></div><h3>${esc(title)}</h3><p>${esc(summary)}</p><div class="card-bottom"><span>${esc(bottom)}</span><span class="arrow-circle">↗</span></div></article>`;
+}
+function renderDisasterGrid(){ document.getElementById('disaster-grid').innerHTML=disasterTopics.map(t=>cardHTML({title:t.title,icon:t.icon,tone:t.tone,tag:'Prevención',summary:t.summary,bottom:'Abrir ficha',action:'disaster:'+t.id})).join(''); }
+function renderSkillsGrid(){ document.getElementById('skills-grid').innerHTML=skills.map(s=>cardHTML({title:s.title,icon:s.icon,tone:s.tone,tag:'Habilidad práctica',summary:s.summary,bottom:'Practicar habilidad',action:'skill:'+s.id})).join(''); }
+function checklistHTML(key,items){ const checked = Array.isArray(progress.checks[key])?progress.checks[key]:[]; const done=items.reduce((n,_,i)=>n+(checked[i]?1:0),0); return `<div class="progress-summary"><div style="display:flex;justify-content:space-between;gap:10px;font-size:.78rem;color:var(--muted);font-weight:800"><span>Tu preparación</span><span id="check-label-${esc(key)}">${done} de ${items.length} completadas</span></div><div class="progress-shell"><div class="progress-fill" id="check-fill-${esc(key)}" style="width:${items.length?done/items.length*100:0}%"></div></div></div><div class="checklist">${items.map((text,i)=>`<label class="check-item"><input type="checkbox" data-check-key="${esc(key)}" data-check-index="${i}" ${checked[i]?'checked':''}><span>${esc(text)}</span></label>`).join('')}</div>`; }
+function renderDisasterDetail(id){ const t=disasterTopics.find(x=>x.id===id); if(!t)return; document.getElementById('disaster-list-view').hidden=true; const view=document.getElementById('disaster-detail-view'); view.hidden=false; view.innerHTML=`<button class="back-button" data-action="back-disasters">← Volver a los fenómenos</button><div class="page-intro" style="padding-top:4px"><span class="eyebrow"><span class="eyebrow-dot"></span> Ficha educativa</span><h1>${t.icon} ${esc(t.title)}</h1><p>${esc(t.description)}</p></div><div class="notice"><span class="notice-icon">!</span><p>${esc(t.note)} Sigue siempre las instrucciones de las autoridades y los protocolos locales cuando ocurra una emergencia.</p></div><div class="steps-grid"><div class="step-card"><span class="step-no">01</span><h3>Antes</h3><p>Reduce riesgos y deja un plan preparado.</p></div><div class="step-card"><span class="step-no">02</span><h3>Durante</h3><p>Prioriza la seguridad y sigue las instrucciones oficiales.</p></div><div class="step-card"><span class="step-no">03</span><h3>Después</h3><p>Evita zonas dañadas y espera confirmación para regresar.</p></div></div><div class="detail-layout"><div class="detail-panel"><h2>Qué debes tener presente</h2><h3>Antes del evento</h3><ul>${t.before.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><h3>Durante el evento</h3><ul>${t.during.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><h3>Después del evento</h3><ul>${t.after.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><h3>Tu lista de preparación</h3><p>Marca los puntos que ya revisaste. El progreso queda guardado en este navegador.</p>${checklistHTML('disaster-'+t.id,t.check)}</div><aside class="detail-panel side-card"><span class="card-icon icon-${esc(t.tone)}">${t.icon}</span><h3>Fuentes relacionadas</h3><p style="font-size:.84rem">Consulta la guía completa y adapta la información al contexto local.</p><div class="pill-row">${t.source.map(id=>{const s=sources.find(x=>x.id===id);return s?`<button class="pill" data-action="source:${esc(id)}">${esc(s.org)}</button>`:''}).join('')}</div><hr style="border:0;border-top:1px solid var(--border);margin:22px 0"><h3>Comprueba lo aprendido</h3><p style="font-size:.84rem">Responde una pregunta y revisa la explicación.</p><button class="btn btn-primary" data-action="quiz-disaster:${esc(t.id)}">Abrir reto <span aria-hidden="true">→</span></button></aside></div>`; }
+function renderSkillDetail(id){ const s=skills.find(x=>x.id===id); if(!s)return; document.getElementById('skills-list-view').hidden=true; const view=document.getElementById('skill-detail-view'); view.hidden=false; view.innerHTML=`<button class="back-button" data-action="back-skills">← Volver a las habilidades</button><div class="page-intro" style="padding-top:4px"><span class="eyebrow"><span class="eyebrow-dot"></span> Módulo práctico</span><h1>${s.icon} ${esc(s.title)}</h1><p>${esc(s.summary)}</p></div><div class="detail-layout"><div class="detail-panel"><h2>Qué vas a practicar</h2><p>${esc(s.goal)}</p><h3>Un método para empezar</h3><ol style="padding-left:22px;color:var(--muted);line-height:1.75">${s.steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol><h3>Ejemplo cotidiano</h3><p>${esc(s.example)}</p><div class="notice"><span class="notice-icon">✦</span><p><strong>Actividad:</strong> ${esc(s.exercise)}</p></div><h3>Plan de práctica</h3><p>Marca cada acción cuando la hayas intentado. Puedes volver a la lista y continuar después.</p>${checklistHTML('skill-'+s.id,['Elegí una situación para practicar esta habilidad.','Probé al menos una de las recomendaciones.','Pensé qué funcionó y qué puedo ajustar.'])}</div><aside class="detail-panel side-card"><span class="card-icon icon-${esc(s.tone)}">${s.icon}</span><h3>Practica con una pregunta</h3><p style="font-size:.88rem">La retroalimentación explica por qué una respuesta es más útil en esa situación.</p><button class="btn btn-primary" data-action="quiz-skill:${esc(s.id)}">Abrir reto <span aria-hidden="true">→</span></button><hr style="border:0;border-top:1px solid var(--border);margin:22px 0"><h3>Ampliar el tema</h3><p style="font-size:.84rem">La OIT incluye esta clase de competencias en sus materiales sobre habilidades transferibles, junto con competencias técnicas.</p><button class="pill" data-action="source:ilo-skills">Consultar referencia de la OIT ↗</button></aside></div>`; }
+function closeDetail(which){ if(which==='disasters'){document.getElementById('disaster-detail-view').hidden=true;document.getElementById('disaster-list-view').hidden=false;} if(which==='skills'){document.getElementById('skill-detail-view').hidden=true;document.getElementById('skills-list-view').hidden=false;} }
+function renderLibrary(){ const search=(document.getElementById('library-search').value||'').trim().toLocaleLowerCase('es'); const topic=document.getElementById('filter-topic').value; const level=document.getElementById('filter-level').value; const filtered=articles.filter(a=>{const hay=[a.title,a.summary,a.categoryName,a.keywords,a.kind].join(' ').toLocaleLowerCase('es');return (!search||hay.includes(search))&&(topic==='todos'||a.category===topic)&&(level==='todos'||a.level===level);}); document.getElementById('resource-count').textContent=`${filtered.length} ${filtered.length===1?'recurso encontrado':'recursos encontrados'}`; document.getElementById('library-grid').innerHTML=filtered.length?filtered.map(a=>cardHTML({title:a.title,icon:a.icon,tone:a.tone,tag:a.kind,summary:a.summary,bottom:`${a.time} · ${a.levelName}`,action:'article:'+a.id})).join(''):`<div class="empty-state"><span class="card-icon icon-lilac">🔎</span><h3>No encontramos resultados</h3><p>Prueba otra palabra o limpia los filtros para ver toda la biblioteca.</p><button class="btn btn-quiet btn-small" id="empty-clear">Limpiar filtros</button></div>`; }
+function renderSources(){ document.getElementById('source-list').innerHTML=sources.map((s,i)=>`<article class="source-item"><div class="source-number">${String(i+1).padStart(2,'0')}</div><div><span class="tag">${esc(s.type)}</span><h3>${esc(s.org)} (${esc(s.year)}). <em>${esc(s.title)}</em></h3><span class="source-meta">${esc(s.date)}</span><p>${esc(s.role)}</p><div class="source-meta" style="word-break:break-word">${esc(s.url)}</div></div><a class="btn btn-quiet btn-small" href="${esc(s.url)}" target="_blank" rel="noopener noreferrer" aria-label="Abrir ${esc(s.title)} en otra pestaña">Abrir ↗</a></article>`).join(''); }
+function openArticle(id){ const a=articles.find(x=>x.id===id); if(!a)return;activeArticle=a;document.getElementById('article-dialog-label').textContent=a.categoryName+' · '+a.kind;document.getElementById('article-dialog-title').textContent=a.title;document.getElementById('article-dialog-body').innerHTML=`<p>${esc(a.summary)}</p><div class="pill-row"><span class="tag">${esc(a.levelName)}</span><span class="tag">${esc(a.time)} de lectura</span></div>${a.body}<h3>Fuentes asociadas</h3><ul>${a.source.map(id=>{const s=sources.find(x=>x.id===id);return s?`<li><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(s.org)}. ${esc(s.title)} ↗</a></li>`:''}).join('')}</ul>`;document.getElementById('article-dialog').showModal(); }
+function quizForArticle(a){ if(a.quiz)return a.quiz; return null; }
+function launchQuiz(q,context){ if(!q)return;const target=document.getElementById('quiz-content');target.innerHTML=`<div class="quiz-progress">Pregunta de práctica · ${esc(context||'ARKON')}</div><h3>${esc(q.q)}</h3><div class="answer-list">${q.options.map((opt,i)=>`<button class="answer-btn" data-quiz-answer="${i}"><span class="letter">${String.fromCharCode(65+i)}</span><span>${esc(opt)}</span></button>`).join('')}</div><div id="quiz-feedback" class="quiz-result" hidden aria-live="polite"></div><button id="quiz-retry" class="btn btn-quiet btn-small" hidden>Intentar de nuevo ↻</button>`; const dialog=document.getElementById('quiz-dialog');if(!dialog.open)dialog.showModal(); }
+function answerQuiz(index,q){ const buttons=[...document.querySelectorAll('#quiz-content [data-quiz-answer]')];if(buttons.some(b=>b.disabled))return;const right=index===q.correct;buttons.forEach((b,i)=>{b.disabled=true;if(i===q.correct)b.classList.add('correct');if(i===index&&!right)b.classList.add('wrong');});const feed=document.getElementById('quiz-feedback');feed.hidden=false;feed.innerHTML=`<strong>${right?'¡Bien hecho!':'Buen intento. Revisa la explicación.'}</strong><p>${esc(q.why)}</p>`;if(right){progress.right=Number(progress.right||0)+1;progress.scores=Number(progress.scores||0)+1;saveProgress();}document.getElementById('quiz-retry').hidden=false; }
+function openSource(id){const s=sources.find(x=>x.id===id);if(!s)return;goTo('fuentes');setTimeout(()=>{const item=[...document.querySelectorAll('.source-item')].find(el=>el.textContent.includes(s.title));if(item){item.scrollIntoView({behavior:'smooth',block:'center'});item.style.borderColor='var(--site-secondary)';setTimeout(()=>item.style.borderColor='',1600);}},80);}
+function renderDailyQuiz(){ const q=articles[0].quiz;const holder=document.getElementById('daily-answers');holder.innerHTML=q.options.map((opt,i)=>`<button class="answer-btn" data-daily-answer="${i}"><span class="letter">${String.fromCharCode(65+i)}</span><span>${esc(opt)}</span></button>`).join('');document.getElementById('daily-feedback').textContent='';document.getElementById('daily-reset').hidden=true; }
+function answerDaily(i){const q=articles[0].quiz;const buttons=[...document.querySelectorAll('[data-daily-answer]')];if(buttons.some(b=>b.disabled))return;const right=i===q.correct;buttons.forEach((b,j)=>{b.disabled=true;if(j===q.correct)b.classList.add('correct');if(j===i&&!right)b.classList.add('wrong');});document.getElementById('daily-feedback').textContent=(right?'¡Correcto! ':'Buen intento. ')+q.why;document.getElementById('daily-reset').hidden=false;if(right){progress.right=Number(progress.right||0)+1;progress.scores=Number(progress.scores||0)+1;saveProgress();}}
+function doAction(action){if(action.startsWith('disaster:')){goTo('desastres');renderDisasterDetail(action.split(':')[1]);return;}if(action.startsWith('skill:')){goTo('habilidades');renderSkillDetail(action.split(':')[1]);return;}if(action==='back-disasters'){closeDetail('disasters');return;}if(action==='back-skills'){closeDetail('skills');return;}if(action.startsWith('article:')){openArticle(action.split(':')[1]);return;}if(action.startsWith('source:')){openSource(action.split(':').slice(1).join(':'));return;}if(action.startsWith('quiz-skill:')){const s=skills.find(x=>x.id===action.split(':')[1]);if(s)launchQuiz(s.quiz,s.title);return;}if(action.startsWith('quiz-disaster:')){const t=disasterTopics.find(x=>x.id===action.split(':')[1]);if(t){const a=articles.find(x=>x.id==='r-'+(t.id==='sismo'?'sismo':t.id==='inundacion'?'inundacion':t.id==='calor'?'calor':''));const q=a?.quiz||{q:`¿Qué es importante al prepararse ante ${t.title.toLocaleLowerCase('es')}?`,options:['Esperar a que ocurra para improvisar','Definir un plan y seguir fuentes oficiales','Confiar en cualquier mensaje reenviado'],correct:1,why:'Prepararse con anticipación y consultar orientaciones oficiales ayuda a tomar decisiones informadas.'};launchQuiz(q,t.title);}return;}}
+document.addEventListener('click',e=>{const nav=e.target.closest('[data-nav]');if(nav){goTo(nav.dataset.nav);return;}const act=e.target.closest('[data-action]');if(act){doAction(act.dataset.action);return;}const check=e.target.closest('[data-check-key]');if(check){const key=check.dataset.checkKey;const index=Number(check.dataset.checkIndex);if(!Array.isArray(progress.checks[key]))progress.checks[key]=[];progress.checks[key][index]=check.checked;saveProgress();const group=[...document.querySelectorAll(`[data-check-key="${CSS.escape(key)}"]`)];const done=group.filter(c=>c.checked).length;const label=document.getElementById('check-label-'+key);const fill=document.getElementById('check-fill-'+key);if(label)label.textContent=`${done} de ${group.length} completadas`;if(fill)fill.style.width=(group.length?done/group.length*100:0)+'%';return;}const daily=e.target.closest('[data-daily-answer]');if(daily){answerDaily(Number(daily.dataset.dailyAnswer));return;}const qa=e.target.closest('[data-quiz-answer]');if(qa){let q=null;if(activeArticle?.quiz&&document.getElementById('article-dialog').open)q=activeArticle.quiz;else{const title=document.getElementById('quiz-title').textContent;const skill=skills.find(s=>title.includes(s.title));if(skill)q=skill.quiz;else{const maybe=articles.find(a=>title.includes(a.title));if(maybe)q=maybe.quiz;}}if(!q){q=window.currentQuiz||null;}if(q)answerQuiz(Number(qa.dataset.quizAnswer),q);return;}if(e.target.id==='empty-clear'){clearFilters();}});
+function clearFilters(){document.getElementById('library-search').value='';document.getElementById('filter-topic').value='todos';document.getElementById('filter-level').value='todos';renderLibrary();}
+document.getElementById('library-search').addEventListener('input',renderLibrary);document.getElementById('filter-topic').addEventListener('change',renderLibrary);document.getElementById('filter-level').addEventListener('change',renderLibrary);document.getElementById('clear-filters').addEventListener('click',clearFilters);
+document.getElementById('global-search').addEventListener('click',()=>{goTo('biblioteca');setTimeout(()=>document.getElementById('library-search').focus(),80);});
+document.getElementById('menu-toggle').addEventListener('click',()=>{const nav=document.getElementById('main-nav');const open=nav.classList.toggle('open');document.getElementById('menu-toggle').setAttribute('aria-expanded',String(open));});
+document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>document.getElementById(b.dataset.close).close()));
+document.getElementById('article-quiz-button').addEventListener('click',()=>{if(!activeArticle?.quiz)return;const q=activeArticle.quiz;document.getElementById('article-dialog').close();window.currentQuiz=q;document.getElementById('quiz-title').textContent='Reto: '+activeArticle.title;launchQuiz(q,activeArticle.title);});
+document.getElementById('quiz-content').addEventListener('click',e=>{if(e.target.id==='quiz-retry'&&window.currentQuiz){launchQuiz(window.currentQuiz,document.getElementById('quiz-title').textContent);return;}const button=e.target.closest('[data-quiz-answer]');if(button&&window.currentQuiz)answerQuiz(Number(button.dataset.quizAnswer),window.currentQuiz);});
+document.getElementById('daily-reset').addEventListener('click',renderDailyQuiz);
+document.getElementById('reset-progress').addEventListener('click',()=>{const ok=confirm('¿Quieres restablecer todas las listas marcadas y el contador de retos de este navegador?');if(!ok)return;progress={checks:{},scores:0,right:0,completed:[]};saveProgress();document.querySelectorAll('[data-check-key]').forEach(c=>c.checked=false);document.querySelectorAll('.progress-fill').forEach(f=>f.style.width='0%');document.querySelectorAll('[id^="check-label-"]').forEach(l=>{const k=l.id.replace('check-label-','');const total=document.querySelectorAll(`[data-check-key="${CSS.escape(k)}"]`).length;l.textContent=`0 de ${total} completadas`;});renderDailyQuiz();});
+// Store the active quiz at launch so the feedback and retry controls always use the same checked question.
+document.getElementById('open-credits-editor').addEventListener('click',openCreditsEditor);
+const originalLaunchQuiz=launchQuiz;
+launchQuiz=function(q,context){window.currentQuiz=q;document.getElementById('quiz-title').textContent=context?`Reto: ${context}`:'Comprueba lo que aprendiste';originalLaunchQuiz(q,context);};
+renderDisasterGrid();renderSkillsGrid();renderSources();renderLibrary();renderDailyQuiz();renderCredits();initProjectTools();initCreatorPhotos();
+document.getElementById('featured-articles').innerHTML=[articles[0],articles[2],articles[4]].map(a=>cardHTML({title:a.title,icon:a.icon,tone:a.tone,tag:a.kind,summary:a.summary,bottom:a.time+' · '+a.levelName,action:'article:'+a.id})).join('');updateProgressStats();
 </script>
+
+<!--sites-preview-theme:start-->
+<style data-sites-preview-theme>:root{--site-primary:#183B70 !important;--site-on-primary:#FFFFFF !important;--site-secondary:#14B8A6 !important;--site-on-secondary:#062E2A !important;--site-background:#F3F7FC !important;--site-on-background:#172841 !important;--site-font-body:system-ui,sans-serif !important;--site-font-heading:system-ui,sans-serif !important;--site-heading-scale:1 !important}</style>
+<script type="application/json" data-sites-preview-theme>{"appearance":"custom","primary":"#183B70","secondary":"#14B8A6","background":"#F3F7FC","typography":"modern","spacing":null,"roundness":null,"headingScale":1,"decorationOpacity":1}</script>
+<!--sites-preview-theme:end-->
 </body>
 </html>
