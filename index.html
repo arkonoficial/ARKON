@@ -540,6 +540,50 @@ dialog::backdrop { background:rgba(8,21,39,.58);backdrop-filter:blur(4px); }
   .survey-pie-layout { grid-template-columns:1fr; }
   .survey-pie { width:min(65%,190px); }
 }
+
+/* Mapa visual e interactivo del cuestionario cerrado */
+dialog#survey-questions-dialog { width:min(940px,calc(100vw - 24px)); max-height:min(90vh,980px); }
+#survey-questions-dialog .dialog-content { padding:clamp(13px,3vw,28px); }
+.question-map-hero {
+  display:grid; grid-template-columns:minmax(0,1fr) 132px; gap:16px; align-items:center;
+  padding:clamp(17px,3vw,24px); margin-bottom:18px; border-radius:20px;
+  background:linear-gradient(120deg,#183B70 0%,#245486 60%,#12847f 100%); color:#fff; overflow:hidden;
+}
+.question-map-hero h3 { color:#fff; margin:9px 0 8px; font-size:clamp(1.25rem,3vw,1.8rem); line-height:1.15; }
+.question-map-hero p { color:rgba(255,255,255,.82); margin:0; font-size:.9rem; line-height:1.55; }
+.question-map-kicker { color:#9AF2E3; font-weight:850; font-size:.7rem; letter-spacing:.12em; text-transform:uppercase; }
+.question-map-art { width:100%; max-width:132px; height:auto; justify-self:end; }
+.question-map-metrics { display:flex; flex-wrap:wrap; gap:8px; margin-top:15px; }
+.question-map-metric { display:inline-flex; align-items:center; gap:6px; border:1px solid rgba(255,255,255,.24); border-radius:999px; padding:7px 10px; background:rgba(255,255,255,.1); color:#fff; font-size:.72rem; font-weight:750; }
+.question-map-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.question-group { min-width:0; padding:15px; border:1px solid var(--border); border-radius:17px; background:var(--surface-soft); }
+.question-group-wide { grid-column:1/-1; }
+.question-group-head { display:flex; gap:10px; align-items:flex-start; margin-bottom:12px; }
+.question-group-icon { display:grid; place-items:center; flex:0 0 36px; height:36px; border-radius:12px; background:var(--surface); font-size:1rem; border:1px solid var(--border); }
+.question-group-head h3 { margin:1px 0 4px; font-size:.95rem; color:var(--ink); line-height:1.3; }
+.question-group-head p { margin:0; font-size:.72rem; color:var(--muted); }
+.question-list { display:grid; gap:8px; list-style:none; margin:0; padding:0; }
+.question-list li { display:grid; grid-template-columns:29px minmax(0,1fr); gap:9px; align-items:start; padding:10px; background:var(--surface); border:1px solid var(--border); border-radius:12px; }
+.question-number { display:grid; place-items:center; width:28px; height:28px; border-radius:9px; background:var(--site-primary); color:var(--site-on-primary); font-weight:900; font-size:.68rem; }
+.question-list p { margin:2px 0 0; color:var(--ink); font-size:.81rem; line-height:1.5; }
+.question-group:nth-child(2) .question-number { background:#12847f; }
+.question-group:nth-child(3) .question-number { background:#8b6cd0; }
+.question-group:nth-child(4) .question-number { background:#b57b20; }
+.question-group:nth-child(5) .question-number { background:#b35b48; }
+.question-map-footer { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; margin-top:17px; padding-top:14px; border-top:1px solid var(--border); }
+.question-map-footer p { margin:0; color:var(--muted); font-size:.78rem; line-height:1.5; }
+.survey-open-questions { white-space:normal; min-height:44px; }
+@media (max-width:620px) {
+  .question-map-grid { grid-template-columns:1fr; }
+  .question-group-wide { grid-column:auto; }
+  .question-map-hero { grid-template-columns:minmax(0,1fr) 72px; gap:9px; }
+  .question-map-art { max-width:72px; }
+  .question-map-metric { font-size:.67rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .question-list li { transition:none; }
+}
+
 </style>
   <!-- ARKON: publicación actualizada 2026-10-24 -->
 </head>
@@ -729,7 +773,7 @@ dialog::backdrop { background:rgba(8,21,39,.58);backdrop-filter:blur(4px); }
               </article>
             </div>
             <div class="project-callout"><p><strong>Conclusión:</strong> conviene fortalecer la comunicación, resolver conflictos de manera pacífica y practicar el trabajo en equipo. La muestra es de 20 personas y no necesariamente representa a toda la comunidad educativa.</p></div>
-            <p><a href="https://tally.so/r/A7E5RW" target="_blank" rel="noopener noreferrer">Consultar la encuesta original ↗</a></p>
+            <p class="survey-static-note">El formulario de respuestas está cerrado. Este archivo visual conserva el cuestionario usado en la investigación para que puedas consultarlo sin salir de ARKON.</p>
           </div>
         </details>
         <details class="subject-detail">
@@ -772,7 +816,7 @@ dialog::backdrop { background:rgba(8,21,39,.58);backdrop-filter:blur(4px); }
             <h3 id="survey-results-title">¿Qué nos dijeron las 20 respuestas?</h3>
             <p>Resumen anónimo de las 20 respuestas completas recibidas en Tally. No se muestran nombres ni datos personales.</p>
           </div>
-          <a class="survey-source-link" href="https://tally.so/r/A7E5RW" target="_blank" rel="noopener noreferrer">Ver encuesta ↗</a>
+          <button class="btn btn-primary survey-open-questions" id="open-survey-questions" type="button" aria-haspopup="dialog" aria-controls="survey-questions-dialog"><span aria-hidden="true">▦</span> Explorar las 20 preguntas <span aria-hidden="true">↗</span></button>
         </div>
         <div class="survey-results-grid">
           <article class="survey-result-card">
@@ -951,6 +995,86 @@ dialog::backdrop { background:rgba(8,21,39,.58);backdrop-filter:blur(4px); }
 <dialog id="article-dialog" aria-labelledby="article-dialog-title"><div class="dialog-content"><div class="dialog-header"><div><span class="eyebrow" id="article-dialog-label">Recurso</span><h2 id="article-dialog-title">Título</h2></div><button class="dialog-close" data-close="article-dialog" aria-label="Cerrar">×</button></div><div class="dialog-body" id="article-dialog-body"></div><div class="button-row" style="margin-top:20px"><button class="btn btn-primary" id="article-quiz-button">Practicar con un reto <span aria-hidden="true">→</span></button><button class="btn btn-quiet" data-close="article-dialog">Cerrar</button></div></div></dialog>
 <dialog id="quiz-dialog" aria-labelledby="quiz-title"><div class="dialog-content"><div class="dialog-header"><div><span class="eyebrow">Práctica rápida</span><h2 id="quiz-title">Comprueba lo que aprendiste</h2></div><button class="dialog-close" data-close="quiz-dialog" aria-label="Cerrar">×</button></div><div id="quiz-content" class="dialog-body"></div></div></dialog>
 
+<dialog id="survey-questions-dialog" aria-labelledby="survey-questions-title">
+  <div class="dialog-content">
+    <div class="dialog-header">
+      <div><span class="eyebrow"><span class="eyebrow-dot"></span> Archivo de investigación</span><h2 id="survey-questions-title">El mapa de las 20 preguntas</h2></div>
+      <button class="dialog-close" data-close="survey-questions-dialog" aria-label="Cerrar el cuestionario">×</button>
+    </div>
+    <div class="question-map-hero">
+      <div>
+        <span class="question-map-kicker">Cuestionario original de ARKON</span>
+        <h3>Una encuesta, cinco rutas para entender la comunidad.</h3>
+        <p>Consulta las preguntas aplicadas a las 20 personas participantes. El formulario está cerrado, pero el instrumento queda guardado aquí como parte de la investigación.</p>
+        <div class="question-map-metrics"><span class="question-map-metric">20 preguntas</span><span class="question-map-metric">5 bloques temáticos</span><span class="question-map-metric">Sin datos personales</span></div>
+      </div>
+      <svg class="question-map-art" viewBox="0 0 150 160" role="img" aria-label="Ilustración de un cuestionario conectado con cinco áreas temáticas">
+        <rect x="31" y="11" width="87" height="115" rx="13" fill="#fff" fill-opacity=".97"/>
+        <rect x="48" y="26" width="53" height="7" rx="3.5" fill="#183B70"/>
+        <rect x="48" y="41" width="37" height="4" rx="2" fill="#9BAFC5"/>
+        <rect x="48" y="53" width="54" height="4" rx="2" fill="#9BAFC5"/>
+        <circle cx="45" cy="72" r="5" fill="#14B8A6"/><rect x="56" y="69" width="45" height="5" rx="2.5" fill="#7191A8"/>
+        <circle cx="45" cy="87" r="5" fill="#D6A33C"/><rect x="56" y="84" width="37" height="5" rx="2.5" fill="#7191A8"/>
+        <circle cx="45" cy="102" r="5" fill="#8978D8"/><rect x="56" y="99" width="43" height="5" rx="2.5" fill="#7191A8"/>
+        <path d="M75 126V140M75 140L33 149M75 140L117 149" fill="none" stroke="#9AF2E3" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="29" cy="150" r="10" fill="#14B8A6"/><circle cx="75" cy="143" r="10" fill="#D6A33C"/><circle cx="121" cy="150" r="10" fill="#8978D8"/>
+        <path d="M25 150l3 3 5-6M71 143l3 3 5-6M117 150l3 3 5-6" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="question-map-grid">
+      <section class="question-group" aria-labelledby="qgroup-convivencia">
+        <div class="question-group-head"><span class="question-group-icon" aria-hidden="true">🤝</span><div><h3 id="qgroup-convivencia">1. Convivencia y respeto</h3><p>Preguntas 1 a 4</p></div></div>
+        <ol class="question-list">
+          <li><span class="question-number">01</span><p>¿Cómo calificas actualmente la convivencia en la institución?</p></li>
+          <li><span class="question-number">02</span><p>¿Qué situación consideras que afecta más la convivencia y el trabajo en equipo?</p></li>
+          <li><span class="question-number">03</span><p>¿Qué acción contribuiría más a mejorar la convivencia entre los estudiantes?</p></li>
+          <li><span class="question-number">04</span><p>¿Qué tan importante consideras respetar las opiniones y diferencias de los demás para construir una buena convivencia?</p></li>
+        </ol>
+      </section>
+      <section class="question-group" aria-labelledby="qgroup-laboral">
+        <div class="question-group-head"><span class="question-group-icon" aria-hidden="true">🧭</span><div><h3 id="qgroup-laboral">2. Habilidades para el trabajo</h3><p>Preguntas 5 a 9</p></div></div>
+        <ol class="question-list">
+          <li><span class="question-number">05</span><p>¿Qué habilidad consideras más importante para desenvolverte adecuadamente en un trabajo?</p></li>
+          <li><span class="question-number">06</span><p>¿Qué tan preparado/a te sientes para ingresar al mundo laboral?</p></li>
+          <li><span class="question-number">07</span><p>¿Qué habilidad consideras que necesitas fortalecer antes de ingresar al mundo laboral?</p></li>
+          <li><span class="question-number">08</span><p>¿Qué tan dispuesto/a estás a desarrollar habilidades que te ayuden en tu futuro laboral?</p></li>
+          <li><span class="question-number">09</span><p>¿Qué tan importante consideras la puntualidad y el cumplimiento de responsabilidades en un entorno laboral?</p></li>
+        </ol>
+      </section>
+      <section class="question-group" aria-labelledby="qgroup-matematicas">
+        <div class="question-group-head"><span class="question-group-icon" aria-hidden="true">📊</span><div><h3 id="qgroup-matematicas">3. Matemáticas y análisis de datos</h3><p>Preguntas 10 a 13</p></div></div>
+        <ol class="question-list">
+          <li><span class="question-number">10</span><p>¿Qué tan importante consideras el manejo de las matemáticas para tu futuro laboral?</p></li>
+          <li><span class="question-number">11</span><p>¿En cuál de estas situaciones consideras que las matemáticas son útiles en el mundo laboral?</p></li>
+          <li><span class="question-number">12</span><p>¿Qué tan capaz te consideras para analizar información presentada en tablas y gráficas?</p></li>
+          <li><span class="question-number">13</span><p>¿En qué situación laboral consideras que sería más útil saber interpretar porcentajes, estadísticas o gráficos?</p></li>
+        </ol>
+      </section>
+      <section class="question-group" aria-labelledby="qgroup-ciudadania">
+        <div class="question-group-head"><span class="question-group-icon" aria-hidden="true">🌎</span><div><h3 id="qgroup-ciudadania">4. Ciudadanía y comunidad</h3><p>Preguntas 14 a 18</p></div></div>
+        <ol class="question-list">
+          <li><span class="question-number">14</span><p>¿Qué tan importante consideras participar activamente en la solución de problemas de tu comunidad?</p></li>
+          <li><span class="question-number">15</span><p>¿Cuál de estas acciones representa mejor una actitud ciudadana responsable?</p></li>
+          <li><span class="question-number">16</span><p>¿Consideras que las habilidades de convivencia y ciudadanía también son importantes para conseguir y conservar un empleo?</p></li>
+          <li><span class="question-number">17</span><p>¿Qué tan preparado/a te sientes para resolver un conflicto mediante el diálogo y el respeto?</p></li>
+          <li><span class="question-number">18</span><p>¿Qué tema consideras que debería fortalecerse más en la institución para preparar a los estudiantes para la vida y el mundo laboral?</p></li>
+        </ol>
+      </section>
+      <section class="question-group question-group-wide" aria-labelledby="qgroup-abiertas">
+        <div class="question-group-head"><span class="question-group-icon" aria-hidden="true">✍️</span><div><h3 id="qgroup-abiertas">5. Ideas y propuestas abiertas</h3><p>Preguntas 19 y 20</p></div></div>
+        <ol class="question-list">
+          <li><span class="question-number">19</span><p>Desde tu perspectiva, ¿qué podría hacer la institución para fortalecer la preparación de los estudiantes para el mundo laboral?</p></li>
+          <li><span class="question-number">20</span><p>¿Qué otra recomendación darías para mejorar la convivencia, fortalecer la ciudadanía y preparar a los estudiantes para el mundo laboral?</p></li>
+        </ol>
+      </section>
+    </div>
+    <div class="question-map-footer">
+      <p>Cuestionario archivado para consulta académica. No contiene nombres ni respuestas individuales.</p>
+      <button class="btn btn-quiet" data-close="survey-questions-dialog" type="button">Cerrar mapa</button>
+    </div>
+  </div>
+</dialog>
+
 <script>
 const reviewedDate = '19 de octubre de 2026';
 const sources = [
@@ -1073,6 +1197,7 @@ document.getElementById('library-search').addEventListener('input',renderLibrary
 document.getElementById('global-search').addEventListener('click',()=>{goTo('biblioteca');setTimeout(()=>document.getElementById('library-search').focus(),80);});
 document.getElementById('menu-toggle').addEventListener('click',()=>{const nav=document.getElementById('main-nav');const open=nav.classList.toggle('open');document.getElementById('menu-toggle').setAttribute('aria-expanded',String(open));});
 document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>document.getElementById(b.dataset.close).close()));
+document.getElementById('open-survey-questions').addEventListener('click',()=>document.getElementById('survey-questions-dialog').showModal());
 document.getElementById('article-quiz-button').addEventListener('click',()=>{if(!activeArticle?.quiz)return;const q=activeArticle.quiz;document.getElementById('article-dialog').close();window.currentQuiz=q;document.getElementById('quiz-title').textContent='Reto: '+activeArticle.title;launchQuiz(q,activeArticle.title);});
 document.getElementById('quiz-content').addEventListener('click',e=>{if(e.target.id==='quiz-retry'&&window.currentQuiz){launchQuiz(window.currentQuiz,document.getElementById('quiz-title').textContent);return;}const button=e.target.closest('[data-quiz-answer]');if(button&&window.currentQuiz)answerQuiz(Number(button.dataset.quizAnswer),window.currentQuiz);});
 document.getElementById('daily-reset').addEventListener('click',renderDailyQuiz);
