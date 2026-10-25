@@ -253,6 +253,43 @@ dialog::backdrop { background:rgba(8,21,39,.58);backdrop-filter:blur(4px); }
 .ethics-dilemma { padding:17px 18px; margin:18px 0; border:1px solid #E9C87D; border-radius:16px; background:light-dark(#FFF8E8,#3C3322); }
 .ethics-dilemma h3 { margin-top:0; color:light-dark(#74531A,#F3D58A); }
 .ethics-dilemma p { margin-bottom:8px; color:light-dark(#72531C,#F3D58A); }
+.ethics-infographic { overflow:hidden; margin:22px 0; border:1px solid var(--border); border-radius:22px; background:var(--surface); box-shadow:var(--shadow); }
+.ethics-infographic-top { position:relative; padding:clamp(22px,4vw,34px); color:#F4FBFF; background:linear-gradient(125deg,#12354A 0%,#176D78 60%,#159A91 100%); }
+.ethics-infographic-kicker { display:inline-block; padding:6px 9px; border:1px solid rgba(255,255,255,.3); border-radius:999px; color:#D6F9F2; font-size:.68rem; font-weight:850; letter-spacing:.09em; }
+.ethics-infographic-symbol { position:absolute; top:22px; right:clamp(18px,3vw,30px); display:grid; place-items:center; width:54px; height:54px; border:1px solid rgba(255,255,255,.3); border-radius:18px; background:rgba(255,255,255,.12); font-size:1.7rem; }
+.ethics-infographic-top h3 { max-width:650px; margin:20px 70px 8px 0; color:#FFF; font-size:clamp(1.45rem,3.5vw,2.25rem); line-height:1.12; }
+.ethics-infographic-lead { max-width:650px; margin:0; color:#E0F5F5; font-size:.92rem; }
+.ethics-infographic-situation { display:flex; gap:13px; padding:20px clamp(18px,3vw,28px); border-bottom:1px solid var(--border); background:var(--surface-soft); }
+.ethics-infographic-number { display:grid; flex:0 0 38px; place-items:center; width:38px; height:38px; border-radius:12px; background:#D8F3EE; color:#145A62; font-weight:900; }
+.ethics-infographic-situation strong,.ethics-infographic-steps>h4,.ethics-infographic-bottom strong { color:var(--ink); font-size:.76rem; letter-spacing:.07em; }
+.ethics-infographic-situation p { margin:5px 0 0; font-size:.86rem; line-height:1.65; }
+.ethics-infographic-choices { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; padding:18px clamp(18px,3vw,28px); }
+.ethics-choice { padding:17px; border:1px solid var(--border); border-radius:16px; background:var(--surface); }
+.ethics-choice-icon { display:grid; place-items:center; width:38px; height:38px; margin-bottom:10px; border-radius:12px; font-size:1.15rem; font-weight:900; }
+.ethics-choice h4 { margin:0 0 7px; color:var(--ink); font-size:.96rem; }
+.ethics-choice p { margin:0 0 12px; font-size:.82rem; line-height:1.6; }
+.ethics-choice-result { display:block; padding-top:10px; border-top:1px solid var(--border); font-size:.74rem; font-weight:800; }
+.ethics-choice-risk { border-color:#E9C7A7; background:light-dark(#FFF8F2,#342924); }
+.ethics-choice-risk .ethics-choice-icon { background:#FCE5D4; color:#8B3E18; }
+.ethics-choice-risk .ethics-choice-result { color:light-dark(#99451E,#FFB98E); }
+.ethics-choice-safe { border-color:#A5D9C7; background:light-dark(#F1FBF6,#20352F); }
+.ethics-choice-safe .ethics-choice-icon { background:#D8F4E5; color:#17623E; }
+.ethics-choice-safe .ethics-choice-result { color:light-dark(#17623E,#92E3B7); }
+.ethics-infographic-steps { padding:5px clamp(18px,3vw,28px) 23px; }
+.ethics-infographic-steps>h4 { margin:10px 0 14px; }
+.ethics-infographic-steps ol { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin:0; padding:0; list-style:none; }
+.ethics-infographic-steps li { display:flex; align-items:flex-start; gap:10px; padding:13px; border:1px solid var(--border); border-radius:14px; background:var(--surface-soft); }
+.ethics-infographic-steps li>span { display:grid; flex:0 0 28px; place-items:center; width:28px; height:28px; border-radius:9px; background:var(--accent); color:#FFF; font-size:.78rem; font-weight:900; }
+.ethics-infographic-steps li strong,.ethics-infographic-steps li small { display:block; }
+.ethics-infographic-steps li strong { color:var(--ink); font-size:.79rem; line-height:1.4; }
+.ethics-infographic-steps li small { margin-top:5px; color:var(--muted); font-size:.73rem; line-height:1.55; }
+.ethics-infographic-bottom { display:flex; gap:13px; padding:18px clamp(18px,3vw,28px); background:light-dark(#EAF6FF,#1E3445); }
+.ethics-infographic-bottom>span { font-size:1.55rem; }
+.ethics-infographic-bottom p { margin:5px 0 7px; color:var(--ink); font-weight:800; line-height:1.5; }
+.ethics-infographic-bottom small { display:block; color:var(--muted); font-size:.78rem; line-height:1.6; }
+.ethics-infographic-source { padding:13px clamp(18px,3vw,28px); border-top:1px solid var(--border); color:var(--muted); font-size:.7rem; line-height:1.6; }
+.ethics-infographic-source a { margin-left:5px; color:var(--teal-ink); font-weight:800; text-underline-offset:3px; }
+@media(max-width:650px){.ethics-infographic-choices,.ethics-infographic-steps ol{grid-template-columns:1fr}.ethics-infographic-symbol{width:44px;height:44px}.ethics-infographic-top h3{margin-right:48px}.ethics-infographic-steps li{padding:12px}}
 .contact-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:11px; margin:15px 0; }
 .contact-card { display:flex; flex-direction:column; gap:7px; min-width:0; padding:15px; border:1px solid var(--border); border-radius:15px; background:var(--surface); transition:background-color .2s ease,border-color .2s ease,transform .2s ease; }
 .contact-card:hover { background:light-dark(#E7F7F3,#213B49); border-color:var(--hover-accent); transform:translateY(-3px); }
@@ -517,7 +554,17 @@ dialog::backdrop { background:rgba(8,21,39,.58);backdrop-filter:blur(4px); }
             <div class="project-chip-list"><span>Empleo informal y protección</span><span>Ergonomía y posturas</span><span>Seguridad en el trabajo</span><span>Riesgos psicosociales</span><span>Riesgos ambientales</span><span>Convivencia comunitaria</span></div>
             <p>La responsabilidad individual consiste en actuar con cuidado y seguir las normas; la colectiva incluye reportar riesgos por canales adecuados, cuidar espacios comunes y apoyar a otros sin exponerse innecesariamente.</p>
             <div class="project-callout"><p><strong>Ruta ante un riesgo psicosocial:</strong> en el trabajo, informa la situación al responsable de seguridad y salud en el trabajo o al empleador y consulta la ARL cuando corresponda. En la escuela o la comunidad, busca a un adulto de confianza o a un servicio de orientación. En Cali, la Línea 106 ofrece teleorientación en salud mental; ante peligro inmediato, llama al 123.</p></div>
-            <div class="ethics-dilemma"><h3>Dilema ético para una infografía</h3><p>En un taller, alguien propone retirar una protección de una máquina para terminar más rápido. Un compañero nota el peligro, pero teme que lo culpen si lo reporta.</p><p><strong>Para debatir:</strong> ¿cómo proteger la vida, comunicar el riesgo y buscar apoyo de forma responsable? La infografía debe destacar la prevención y el reporte por canales adecuados.</p></div>
+            <section class="ethics-infographic" aria-labelledby="ethics-infographic-title">
+              <div class="ethics-infographic-top"><span class="ethics-infographic-kicker">INFOGRAFÍA · ÉTICA Y SEGURIDAD LABORAL</span><span class="ethics-infographic-symbol" aria-hidden="true">🛡️</span><h3 id="ethics-infographic-title">¿Terminar rápido o trabajar seguro?</h3><p class="ethics-infographic-lead">Un dilema ético sobre la responsabilidad individual y colectiva en el trabajo.</p></div>
+              <div class="ethics-infographic-situation"><span class="ethics-infographic-number">01</span><div><strong>EL DILEMA</strong><p>En un taller, alguien propone quitar la protección de una máquina para terminar más rápido. Otra persona identifica el peligro, pero teme que la culpen por reportarlo.</p></div></div>
+              <div class="ethics-infographic-choices">
+                <article class="ethics-choice ethics-choice-risk"><span class="ethics-choice-icon" aria-hidden="true">⚠️</span><h4>La decisión peligrosa</h4><p>Callar o permitir que retiren la protección para ahorrar tiempo.</p><span class="ethics-choice-result">Aumenta el riesgo de accidente.</span></article>
+                <article class="ethics-choice ethics-choice-safe"><span class="ethics-choice-icon" aria-hidden="true">✓</span><h4>La decisión responsable</h4><p>No retirar la protección, advertir del peligro y reportarlo al supervisor o responsable de seguridad.</p><span class="ethics-choice-result">Protege a todo el equipo.</span></article>
+              </div>
+              <div class="ethics-infographic-steps"><h4>02 · ¿QUÉ HACER?</h4><ol><li><span>1</span><div><strong>Detener la acción insegura</strong><small>No usar la máquina si la protección no está instalada.</small></div></li><li><span>2</span><div><strong>Avisar sin exponerse</strong><small>Informar al supervisor o al responsable de Seguridad y Salud en el Trabajo.</small></div></li><li><span>3</span><div><strong>Buscar una solución segura</strong><small>Reanudar la tarea solo cuando el riesgo esté controlado.</small></div></li></ol></div>
+              <div class="ethics-infographic-bottom"><span aria-hidden="true">💬</span><div><strong>PREGUNTA PARA REFLEXIONAR</strong><p>¿Es correcto poner en riesgo la seguridad de todos por terminar una tarea más rápido?</p><small>Conclusión: la vida y la seguridad están por encima de la prisa. Reportar un peligro es una responsabilidad, no una traición al equipo.</small></div></div>
+              <div class="ethics-infographic-source">Fuente: Ministerio de Salud y Protección Social, “Lo que debe saber sobre riesgos laborales”. <a href="https://www2.minsalud.gov.co/proteccionsocial/RiesgosLaborales/Paginas/preguntas-frecuentes.aspx" target="_blank" rel="noopener noreferrer">Consultar fuente oficial ↗</a> · Elaboración educativa ARKON · 2026</div>
+            </section>
             <h3>Directorio de atención y redes comunitarias</h3>
             <div class="contact-grid">
               <article class="contact-card"><strong>123 · Emergencias en Cali</strong><span>Línea única distrital para emergencias, urgencias y desastres.</span><a href="tel:123">Llamar al 123 ↗</a></article>
@@ -582,16 +629,6 @@ dialog::backdrop { background:rgba(8,21,39,.58);backdrop-filter:blur(4px); }
         </details>
       </div>
       <div class="project-callout" style="margin-top:22px"><p><strong>Uso responsable:</strong> esta web es un recurso educativo, no un servicio de alerta en tiempo real. Sigue las instrucciones de las autoridades y verifica las rutas antes de publicarlas.</p></div>
-      <section class="creator-photo-section" aria-labelledby="creator-photos-title">
-        <div class="creator-photo-heading"><div><span class="eyebrow"><span class="eyebrow-dot"></span> Nuestro equipo</span><h2 id="creator-photos-title">Una foto de todo el equipo</h2></div><p>Añadan una sola foto grupal para presentar juntos a quienes crearon ARKON. Las fotos individuales estarán en Créditos.</p></div>
-        <div class="creator-photo-grid">
-          <article class="creator-photo-card" data-creator-photo-card="team">
-            <div class="creator-photo-frame" style="aspect-ratio:16/9"><div class="creator-photo-placeholder" id="creator-photo-placeholder-team"><span class="placeholder-icon" aria-hidden="true">📷</span><strong>Espacio para la foto grupal</strong><span>Seleccionen una imagen donde aparezca todo el equipo</span></div><img id="creator-photo-image-team" alt="Foto grupal del equipo de ARKON" hidden loading="lazy"></div>
-            <div class="creator-photo-meta"><strong>Equipo creador de ARKON</strong><p>Una sola imagen con todos los integrantes.</p><div class="creator-photo-actions"><input class="creator-photo-input" id="creator-photo-input-team" type="file" accept="image/*" data-creator-photo-input="team" aria-label="Seleccionar foto grupal del equipo"><button class="btn btn-primary" type="button" data-creator-photo-button="team">Añadir foto grupal</button><button class="btn btn-quiet" type="button" data-creator-photo-remove="team" hidden>Quitar</button></div><span class="photo-status" id="creator-photo-status-team" aria-live="polite"></span></div>
-          </article>
-        </div>
-        <div class="photo-privacy-note"><p><strong>Privacidad:</strong> las imágenes se reducen de tamaño y se guardan solo en el almacenamiento local de este navegador. No se envían a un servidor ni aparecen automáticamente en otros dispositivos. Suban fotos con el permiso de todas las personas que aparecen y, si alguien es menor de edad, con la autorización de su acudiente.</p></div>
-      </section>
     </section>
 
     <section class="page" id="page-desastres" aria-labelledby="disasters-title">
@@ -792,74 +829,6 @@ function initProjectTools(){
   updateProjectMilestones();
   renderRiskStats();
 }
-const creatorPhotoStorageKey='resilae-creator-photos-v1';
-const creatorPhotoIds=['santiago','juan','stefania','team'];
-function loadCreatorPhotos(){try{const saved=JSON.parse(localStorage.getItem(creatorPhotoStorageKey)||'{}');return saved&&typeof saved==='object'?saved:{};}catch(e){return {};}}
-let creatorPhotos=loadCreatorPhotos();
-function showCreatorPhoto(id,dataUrl){
-  const image=document.getElementById('creator-photo-image-'+id);
-  const placeholder=document.getElementById('creator-photo-placeholder-'+id);
-  const removeButton=document.querySelector('[data-creator-photo-remove="'+id+'"]');
-  const status=document.getElementById('creator-photo-status-'+id);
-  if(!image||!placeholder)return;
-  if(dataUrl){image.src=dataUrl;image.hidden=false;placeholder.hidden=true;if(removeButton)removeButton.hidden=false;if(status)status.textContent='Foto guardada en este navegador.';}
-  else{image.removeAttribute('src');image.hidden=true;placeholder.hidden=false;if(removeButton)removeButton.hidden=true;if(status)status.textContent='';}
-}
-function initCreatorPhotos(){
-  creatorPhotoIds.forEach(id=>showCreatorPhoto(id,creatorPhotos[id]||''));
-  document.addEventListener('click',event=>{
-    const addButton=event.target.closest('[data-creator-photo-button]');
-    if(addButton){const input=document.getElementById('creator-photo-input-'+addButton.dataset.creatorPhotoButton);if(input)input.click();return;}
-    const removeButton=event.target.closest('[data-creator-photo-remove]');
-    if(!removeButton)return;
-    const id=removeButton.dataset.creatorPhotoRemove;
-    const status=document.getElementById('creator-photo-status-'+id);
-    const input=document.getElementById('creator-photo-input-'+id);
-    delete creatorPhotos[id];
-    try{localStorage.setItem(creatorPhotoStorageKey,JSON.stringify(creatorPhotos));}
-    catch(error){if(status)status.textContent='No se pudo actualizar el almacenamiento local.';return;}
-    showCreatorPhoto(id,'');
-    if(input)input.value='';
-  });
-  document.addEventListener('change',event=>{
-    const input=event.target.closest('[data-creator-photo-input]');
-    if(!input)return;
-    const id=input.dataset.creatorPhotoInput;
-    const status=document.getElementById('creator-photo-status-'+id);
-    const file=input.files&&input.files[0];
-    if(!file)return;
-    if(!file.type.startsWith('image/')){status.textContent='Elige un archivo de imagen.';input.value='';return;}
-    if(file.size>10*1024*1024){status.textContent='La imagen pesa más de 10 MB. Elige una más pequeña.';input.value='';return;}
-    status.textContent='Preparando imagen…';
-    const reader=new FileReader();
-    reader.onerror=()=>{status.textContent='No se pudo leer la imagen. Intenta otra vez.';input.value='';};
-    reader.onload=()=>{
-      const image=new Image();
-      image.onerror=()=>{status.textContent='No se pudo abrir la imagen. Prueba otro archivo.';input.value='';};
-      image.onload=()=>{
-        const scale=Math.min(1,720/Math.max(image.naturalWidth,image.naturalHeight));
-        const canvas=document.createElement('canvas');
-        canvas.width=Math.max(1,Math.round(image.naturalWidth*scale));
-        canvas.height=Math.max(1,Math.round(image.naturalHeight*scale));
-        const context=canvas.getContext('2d');
-        if(!context){status.textContent='Este navegador no pudo procesar la imagen.';input.value='';return;}
-        context.fillStyle='#FFFFFF';context.fillRect(0,0,canvas.width,canvas.height);
-        context.drawImage(image,0,0,canvas.width,canvas.height);
-        try{
-          const resized=canvas.toDataURL('image/jpeg',0.74);
-          const previous=creatorPhotos[id];
-          creatorPhotos[id]=resized;
-          try{localStorage.setItem(creatorPhotoStorageKey,JSON.stringify(creatorPhotos));}
-          catch(error){if(previous)creatorPhotos[id]=previous;else delete creatorPhotos[id];status.textContent='No hubo espacio para guardar la foto. Prueba una imagen más pequeña.';input.value='';return;}
-          showCreatorPhoto(id,resized);
-        }catch(error){status.textContent='No se pudo guardar esa imagen. Prueba otra foto.';}
-        input.value='';
-      };
-      image.src=String(reader.result);
-    };
-    reader.readAsDataURL(file);
-  });
-}
 function goTo(page){
   const available = ['inicio','proyecto','desastres','habilidades','biblioteca','fuentes','acerca','creditos'];
   if(!available.includes(page)) return;
@@ -904,7 +873,7 @@ document.getElementById('reset-progress').addEventListener('click',()=>{const ok
 // Store the active quiz at launch so the feedback and retry controls always use the same checked question.
 const originalLaunchQuiz=launchQuiz;
 launchQuiz=function(q,context){window.currentQuiz=q;document.getElementById('quiz-title').textContent=context?`Reto: ${context}`:'Comprueba lo que aprendiste';originalLaunchQuiz(q,context);};
-renderDisasterGrid();renderSkillsGrid();renderSources();renderLibrary();renderDailyQuiz();renderCredits();initProjectTools();initCreatorPhotos();
+renderDisasterGrid();renderSkillsGrid();renderSources();renderLibrary();renderDailyQuiz();renderCredits();initProjectTools();
 document.getElementById('featured-articles').innerHTML=[articles[0],articles[2],articles[4]].map(a=>cardHTML({title:a.title,icon:a.icon,tone:a.tone,tag:a.kind,summary:a.summary,bottom:a.time+' · '+a.levelName,action:'article:'+a.id})).join('');updateProgressStats();
 </script>
 
