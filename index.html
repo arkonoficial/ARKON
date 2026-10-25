@@ -646,22 +646,47 @@ dialog::backdrop { background:rgba(8,21,39,.58);backdrop-filter:blur(4px); }
         <details class="subject-detail">
           <summary><span class="subject-emoji">📊</span><span class="subject-title-wrap"><span>Encuesta, frecuencias y gráficos</span><small>Matemáticas · Física</small></span></summary>
           <div class="subject-body">
-            <p>Registra los conteos agregados de la encuesta. Todos comienzan en cero y no representan resultados reales hasta que ingreses los datos recolectados. No escribas nombres ni información personal.</p>
-            <div class="project-callout"><p><strong>Relación con el cambio climático:</strong> investiga con fuentes como el <a href="https://www.ideam.gov.co/" target="_blank" rel="noopener noreferrer">IDEAM</a> cómo el calor extremo y las lluvias intensas pueden relacionarse con riesgos del territorio. Distingue esos riesgos de fenómenos geológicos como los sismos y no atribuyas un evento específico al cambio climático sin evidencia que lo respalde.</p></div>
-            <div class="risk-survey-inputs">
-              <label class="risk-input"><span>Riesgos laborales y ergonomía</span><input type="number" min="0" max="100000" value="0" data-risk-count="laboral" aria-label="Frecuencia de riesgos laborales"></label>
-              <label class="risk-input"><span>Empleo informal o falta de protección</span><input type="number" min="0" max="100000" value="0" data-risk-count="informal" aria-label="Frecuencia de empleo informal"></label>
-              <label class="risk-input"><span>Riesgos psicosociales</span><input type="number" min="0" max="100000" value="0" data-risk-count="psicosocial" aria-label="Frecuencia de riesgos psicosociales"></label>
-              <label class="risk-input"><span>Sismos</span><input type="number" min="0" max="100000" value="0" data-risk-count="sismo" aria-label="Frecuencia de sismos"></label>
-              <label class="risk-input"><span>Inundaciones</span><input type="number" min="0" max="100000" value="0" data-risk-count="inundacion" aria-label="Frecuencia de inundaciones"></label>
-              <label class="risk-input"><span>Deslizamientos</span><input type="number" min="0" max="100000" value="0" data-risk-count="deslizamiento" aria-label="Frecuencia de deslizamientos"></label>
-              <label class="risk-input"><span>Seguridad y convivencia comunitaria</span><input type="number" min="0" max="100000" value="0" data-risk-count="convivencia" aria-label="Frecuencia de situaciones de convivencia"></label>
+            <p>Estos son los resultados definitivos de las 20 respuestas completas de la encuesta de ARKON. Las cifras son de consulta: no se pueden editar ni reiniciar desde la página.</p>
+            <div class="survey-results-grid" aria-label="Resultados fijos de la encuesta">
+              <article class="survey-result-card">
+                <div class="survey-result-top"><span>Comunicación</span><strong>40%</strong></div>
+                <p>Señalaron la falta de comunicación como el principal factor que afecta la convivencia y el trabajo en equipo.</p>
+                <div class="survey-bar" role="img" aria-label="40 por ciento, 8 de 20 respuestas"><span style="width:40%"></span></div>
+                <small>8 de 20 respuestas</small>
+              </article>
+              <article class="survey-result-card">
+                <div class="survey-result-top"><span>Trabajo en equipo</span><strong>35%</strong></div>
+                <p>Lo identificaron como una habilidad que debe fortalecerse para el futuro laboral.</p>
+                <div class="survey-bar" role="img" aria-label="35 por ciento, 7 de 20 respuestas"><span style="width:35%"></span></div>
+                <small>7 de 20 respuestas</small>
+              </article>
+              <article class="survey-result-card">
+                <div class="survey-result-top"><span>Preparación laboral</span><strong>55%</strong></div>
+                <p>Se consideran preparados o muy preparados para ingresar al mundo laboral.</p>
+                <div class="survey-bar" role="img" aria-label="55 por ciento, 11 de 20 respuestas"><span style="width:55%"></span></div>
+                <small>11 de 20 respuestas</small>
+              </article>
+              <article class="survey-result-card">
+                <div class="survey-result-top"><span>Disposición para aprender</span><strong>90%</strong></div>
+                <p>Están dispuestos o muy dispuestos a desarrollar habilidades para su futuro laboral.</p>
+                <div class="survey-bar" role="img" aria-label="90 por ciento, 18 de 20 respuestas"><span style="width:90%"></span></div>
+                <small>18 de 20 respuestas</small>
+              </article>
+              <article class="survey-result-card">
+                <div class="survey-result-top"><span>Respeto a las diferencias</span><strong>85%</strong></div>
+                <p>Consideran importante o muy importante respetar opiniones y diferencias.</p>
+                <div class="survey-bar" role="img" aria-label="85 por ciento, 17 de 20 respuestas"><span style="width:85%"></span></div>
+                <small>17 de 20 respuestas</small>
+              </article>
+              <article class="survey-result-card">
+                <div class="survey-result-top"><span>Convivencia difícil</span><strong>40%</strong></div>
+                <p>Calificaron la convivencia como mala o muy mala, un aspecto que merece atención.</p>
+                <div class="survey-bar" role="img" aria-label="40 por ciento, 8 de 20 respuestas"><span style="width:40%"></span></div>
+                <small>8 de 20 respuestas</small>
+              </article>
             </div>
-            <div class="survey-summary" aria-live="polite"><strong>Total de menciones: <span id="risk-total">0</span></strong><div id="risk-data-note">Aún no hay conteos ingresados.</div></div>
-            <div class="survey-viz-grid"><div class="survey-viz-panel"><h3>Gráfico de barras · Frecuencias</h3><div id="risk-bar-chart" class="risk-bar-list"></div></div><div class="survey-viz-panel"><h3>Gráfico circular · Porcentaje</h3><div class="risk-pie-wrap"><div class="risk-pie" id="risk-pie-chart" role="img" aria-label="No hay datos registrados"></div><div class="risk-pie-legend" id="risk-pie-legend"></div></div></div></div>
-            <h3>Tabla de frecuencias y porcentajes</h3><div class="stats-table-wrap"><table class="stats-table"><thead><tr><th scope="col">Riesgo o situación</th><th scope="col">Frecuencia</th><th scope="col">% de menciones</th></tr></thead><tbody id="risk-frequency-body"></tbody><tfoot><tr><th scope="row">Total</th><td id="risk-table-total">0</td><td id="risk-table-percent">0%</td></tr></tfoot></table></div>
-            <div class="project-callout"><p><strong>Fórmula:</strong> porcentaje = frecuencia de la categoría ÷ total de menciones × 100. Si la encuesta permitía marcar varias opciones, el porcentaje es sobre menciones, no sobre personas. Interpreta los resultados reales y propón acciones preventivas basadas en ellos.</p></div>
-            <button class="btn btn-quiet btn-small" id="reset-risk-counts" type="button">Restablecer conteos</button>
+            <div class="project-callout"><p><strong>Conclusión:</strong> conviene fortalecer la comunicación, resolver conflictos de manera pacífica y practicar el trabajo en equipo. La muestra es de 20 personas y no necesariamente representa a toda la comunidad educativa.</p></div>
+            <p><a href="https://tally.so/r/A7E5RW" target="_blank" rel="noopener noreferrer">Consultar la encuesta original ↗</a></p>
           </div>
         </details>
         <details class="subject-detail">
@@ -806,7 +831,7 @@ dialog::backdrop { background:rgba(8,21,39,.58);backdrop-filter:blur(4px); }
     </section>
   </main>
 
-  <footer class="footer"><div class="shell footer-inner"><div><div class="footer-brand">ARKON <span style="color:var(--teal-ink)">✦</span></div><p>Aprendizaje práctico, prevención y habilidades para el futuro.</p></div><div class="footer-links"><button data-nav="fuentes">Fuentes</button><button data-nav="acerca">Acerca del proyecto</button><button id="reset-progress">Restablecer progreso local</button></div></div></footer>
+  <footer class="footer"><div class="shell footer-inner"><div><div class="footer-brand">ARKON <span style="color:var(--teal-ink)">✦</span></div><p>Aprendizaje práctico, prevención y habilidades para el futuro.</p></div><div class="footer-links"><button data-nav="fuentes">Fuentes</button><button data-nav="acerca">Acerca del proyecto</button></div></div></footer>
 </div>
 
 <dialog id="article-dialog" aria-labelledby="article-dialog-title"><div class="dialog-content"><div class="dialog-header"><div><span class="eyebrow" id="article-dialog-label">Recurso</span><h2 id="article-dialog-title">Título</h2></div><button class="dialog-close" data-close="article-dialog" aria-label="Cerrar">×</button></div><div class="dialog-body" id="article-dialog-body"></div><div class="button-row" style="margin-top:20px"><button class="btn btn-primary" id="article-quiz-button">Practicar con un reto <span aria-hidden="true">→</span></button><button class="btn btn-quiet" data-close="article-dialog">Cerrar</button></div></div></dialog>
@@ -873,44 +898,9 @@ function esc(value){ return String(value).replace(/[&<>"']/g, c=>({'&':'&amp;','
 const defaultCredits = {title:'Créditos del proyecto',subtitle:'Detrás de cada idea hay personas que aportan, aprenden y construyen juntas.',accent:'#0F9488',people:[{id:'santiago',name:'Santiago Aponzá',role:'Integrante del proyecto'},{id:'juan',name:'Juan Esteban Quejada',role:'Integrante del proyecto'},{id:'stefania',name:'Stefania Garcia',role:'Integrante del proyecto'}]};
 const publicCreatorPhotos={santiago:'imagenes/IMG-20261020-WA0051.jpg',juan:'imagenes/file_00000000fdd081f8807f83c4b35dab7d.png',stefania:'imagenes/IMG-20260929-WA0017(1).jpg'};
 function renderCredits(){document.documentElement.style.setProperty('--hover-accent',defaultCredits.accent);document.getElementById('credits-page-title').textContent=defaultCredits.title;document.getElementById('credits-page-subtitle').textContent=defaultCredits.subtitle;document.getElementById('credits-grid').innerHTML=defaultCredits.people.map((person,index)=>'<article class="credit-card"><div class="creator-photo-frame"><img src="'+esc(publicCreatorPhotos[person.id]||'')+'" alt="Foto de '+esc(person.name)+'" loading="lazy"></div><span class="credit-number">'+String(index+1).padStart(2,'0')+'</span><span class="credit-symbol" aria-hidden="true">✦</span><h2 class="credit-name">'+esc(person.name)+'</h2><p class="credit-role">'+esc(person.role)+'</p></article>').join('');}
-const riskCategories = [
-  {id:'laboral',label:'Riesgos laborales y ergonomía',color:'#547CE7'},
-  {id:'informal',label:'Empleo informal o falta de protección',color:'#17A88A'},
-  {id:'psicosocial',label:'Riesgos psicosociales',color:'#A17AE6'},
-  {id:'sismo',label:'Sismos',color:'#F0B747'},
-  {id:'inundacion',label:'Inundaciones',color:'#E67F58'},
-  {id:'deslizamiento',label:'Deslizamientos',color:'#4B9FC4'},
-  {id:'convivencia',label:'Seguridad y convivencia comunitaria',color:'#D46F9F'}
-];
-const riskStorageKey='ayp-risk-counts-v1';
 const projectMilestoneKey='ayp-project-milestones-v1';
-function loadRiskCounts(){try{const saved=JSON.parse(localStorage.getItem(riskStorageKey)||'{}');return Object.fromEntries(riskCategories.map(item=>[item.id,Math.max(0,Math.floor(Number(saved[item.id])||0))]));}catch(e){return Object.fromEntries(riskCategories.map(item=>[item.id,0]));}}
 function loadProjectMilestones(){try{const saved=JSON.parse(localStorage.getItem(projectMilestoneKey)||'{}');return saved&&typeof saved==='object'?saved:{};}catch(e){return {};}}
-let riskCounts=loadRiskCounts();
 let projectMilestoneState=loadProjectMilestones();
-function renderRiskStats(){
-  const total=riskCategories.reduce((sum,item)=>sum+(riskCounts[item.id]||0),0);
-  const maxCount=Math.max(0,...riskCategories.map(item=>riskCounts[item.id]||0));
-  const formatPercent=value=>total?((value/total)*100).toFixed(1).replace('.',',')+'%':'0%';
-  const totalEl=document.getElementById('risk-total');
-  const note=document.getElementById('risk-data-note');
-  const tableTotal=document.getElementById('risk-table-total');
-  const tablePercent=document.getElementById('risk-table-percent');
-  const body=document.getElementById('risk-frequency-body');
-  if(!totalEl||!body)return;
-  totalEl.textContent=total.toLocaleString('es-CO');
-  note.textContent=total?'Porcentajes calculados a partir de los conteos ingresados. Comprueba que coincidan con tu encuesta.':'Aún no hay conteos ingresados; no se muestran resultados ficticios.';
-  tableTotal.textContent=total.toLocaleString('es-CO');
-  tablePercent.textContent=total?'100%':'0%';
-  body.innerHTML=riskCategories.map(item=>{const count=riskCounts[item.id]||0;return '<tr><th scope="row">'+esc(item.label)+'</th><td>'+count.toLocaleString('es-CO')+'</td><td>'+formatPercent(count)+'</td></tr>';}).join('');
-  document.getElementById('risk-bar-chart').innerHTML=riskCategories.map(item=>{const count=riskCounts[item.id]||0;const width=maxCount?count/maxCount*100:0;return '<div class="risk-bar-line"><div class="risk-bar-label"><span>'+esc(item.label)+'</span><strong>'+count.toLocaleString('es-CO')+'</strong></div><div class="risk-bar-track"><div class="risk-bar-fill" style="width:'+width+'%;background:'+item.color+'"></div></div></div>';}).join('');
-  let cumulative=0;
-  const slices=riskCategories.filter(item=>(riskCounts[item.id]||0)>0).map(item=>{const start=cumulative/total*100;cumulative+=riskCounts[item.id]||0;return item.color+' '+start.toFixed(2)+'% '+(cumulative/total*100).toFixed(2)+'%';});
-  const pie=document.getElementById('risk-pie-chart');
-  pie.style.background=total?'conic-gradient('+slices.join(',')+')':'var(--surface-soft)';
-  pie.setAttribute('aria-label',total?'Gráfico circular con '+total+' menciones registradas':'No hay datos registrados');
-  document.getElementById('risk-pie-legend').innerHTML=riskCategories.map(item=>'<span><span class="legend-name"><i class="legend-dot" style="background:'+item.color+'"></i>'+esc(item.label)+'</span><strong>'+formatPercent(riskCounts[item.id]||0)+'</strong></span>').join('');
-}
 function updateProjectMilestones(){
   const boxes=[...document.querySelectorAll('[data-project-milestone]')];
   const done=boxes.filter(box=>box.checked).length;
@@ -921,23 +911,6 @@ function updateProjectMilestones(){
   if(fill)fill.style.width=percent+'%';
 }
 function initProjectTools(){
-  document.querySelectorAll('[data-risk-count]').forEach(input=>{
-    const key=input.dataset.riskCount;
-    input.value=riskCounts[key]||0;
-    input.addEventListener('input',()=>{
-      const raw=Number(input.value);
-      riskCounts[key]=Number.isFinite(raw)?Math.min(100000,Math.max(0,Math.floor(raw))):0;
-      try{localStorage.setItem(riskStorageKey,JSON.stringify(riskCounts));}catch(e){}
-      renderRiskStats();
-    });
-  });
-  const reset=document.getElementById('reset-risk-counts');
-  if(reset)reset.addEventListener('click',()=>{
-    riskCounts=Object.fromEntries(riskCategories.map(item=>[item.id,0]));
-    document.querySelectorAll('[data-risk-count]').forEach(input=>input.value=0);
-    try{localStorage.setItem(riskStorageKey,JSON.stringify(riskCounts));}catch(e){}
-    renderRiskStats();
-  });
   document.querySelectorAll('[data-project-milestone]').forEach(box=>{
     const key=box.dataset.projectMilestone;
     box.checked=Boolean(projectMilestoneState[key]);
@@ -948,7 +921,6 @@ function initProjectTools(){
     });
   });
   updateProjectMilestones();
-  renderRiskStats();
 }
 function goTo(page){
   const available = ['inicio','proyecto','desastres','habilidades','biblioteca','fuentes','acerca','creditos'];
@@ -990,7 +962,6 @@ document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',
 document.getElementById('article-quiz-button').addEventListener('click',()=>{if(!activeArticle?.quiz)return;const q=activeArticle.quiz;document.getElementById('article-dialog').close();window.currentQuiz=q;document.getElementById('quiz-title').textContent='Reto: '+activeArticle.title;launchQuiz(q,activeArticle.title);});
 document.getElementById('quiz-content').addEventListener('click',e=>{if(e.target.id==='quiz-retry'&&window.currentQuiz){launchQuiz(window.currentQuiz,document.getElementById('quiz-title').textContent);return;}const button=e.target.closest('[data-quiz-answer]');if(button&&window.currentQuiz)answerQuiz(Number(button.dataset.quizAnswer),window.currentQuiz);});
 document.getElementById('daily-reset').addEventListener('click',renderDailyQuiz);
-document.getElementById('reset-progress').addEventListener('click',()=>{const ok=confirm('¿Quieres restablecer todas las listas marcadas y el contador de retos de este navegador?');if(!ok)return;progress={checks:{},scores:0,right:0,completed:[]};saveProgress();document.querySelectorAll('[data-check-key]').forEach(c=>c.checked=false);document.querySelectorAll('.progress-fill').forEach(f=>f.style.width='0%');document.querySelectorAll('[id^="check-label-"]').forEach(l=>{const k=l.id.replace('check-label-','');const total=document.querySelectorAll(`[data-check-key="${CSS.escape(k)}"]`).length;l.textContent=`0 de ${total} completadas`;});renderDailyQuiz();});
 // Store the active quiz at launch so the feedback and retry controls always use the same checked question.
 const originalLaunchQuiz=launchQuiz;
 launchQuiz=function(q,context){window.currentQuiz=q;document.getElementById('quiz-title').textContent=context?`Reto: ${context}`:'Comprueba lo que aprendiste';originalLaunchQuiz(q,context);};
