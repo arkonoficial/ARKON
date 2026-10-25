@@ -434,6 +434,34 @@ dialog::backdrop { background:rgba(8,21,39,.58);backdrop-filter:blur(4px); }
   .subject-detail summary { padding:14px; gap:10px; }
   .subject-body { padding:3px 14px 18px; }
 }
+
+/* Ilustraciones originales ARKON: ligeras, adaptables y alojadas en el repositorio. */
+.card-top-art {
+  width:58px; height:50px; flex:0 0 58px; object-fit:contain;
+  border-radius:12px; background:var(--surface-soft); padding:2px;
+  transition:transform .22s ease;
+}
+.card.interactive:hover .card-top-art { transform:translateY(-2px) scale(1.04); }
+.project-pillar-art {
+  display:block; width:94px; height:72px; object-fit:contain;
+  margin:0 0 5px; border-radius:14px; transition:transform .22s ease;
+}
+.project-pillar:hover .project-pillar-art { transform:translateY(-3px); }
+.ethics-infographic-art {
+  position:absolute; top:16px; right:clamp(18px,3vw,30px);
+  width:106px; height:100px; object-fit:contain;
+  border-radius:18px; filter:drop-shadow(0 8px 12px rgba(0,0,0,.12));
+}
+@media (max-width:760px) {
+  .card-top-art { width:44px; height:40px; flex-basis:44px; }
+  .project-pillar-art { width:78px; height:62px; }
+  .ethics-infographic-art { width:72px; height:72px; top:12px; right:14px; }
+  .ethics-infographic-top h3 { margin-right:78px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .card-top-art, .project-pillar-art { transition:none; }
+}
+
 </style>
   <!-- ARKON: publicación actualizada 2026-10-24 -->
 </head>
@@ -501,9 +529,9 @@ dialog::backdrop { background:rgba(8,21,39,.58);backdrop-filter:blur(4px); }
 
       <div class="section-head"><div><span class="eyebrow"><span class="eyebrow-dot"></span> Dos rutas, un mismo objetivo</span><h2>Tu próximo paso empieza aquí</h2><p>Aprende a anticiparte a los riesgos y a desarrollar competencias que puedes practicar cada día.</p></div></div>
       <div class="card-grid">
-        <article class="card interactive" data-nav="desastres"><div class="card-top"><span class="card-icon icon-blue">🌦️</span><span class="tag">Ruta 01 · Prevención</span></div><h3>Prepárate para los desastres</h3><p>Conoce distintos fenómenos, organiza un plan de preparación y aprende a seguir orientaciones oficiales.</p><div class="card-bottom"><span>7 temas para explorar</span><span class="arrow-circle">↗</span></div></article>
-        <article class="card interactive" data-nav="habilidades"><div class="card-top"><span class="card-icon icon-mint">🧠</span><span class="tag">Ruta 02 · Trabajo</span></div><h3>Fortalece tus habilidades laborales</h3><p>Practica comunicación, trabajo en equipo, resolución de problemas y herramientas útiles para el empleo.</p><div class="card-bottom"><span>8 competencias prácticas</span><span class="arrow-circle">↗</span></div></article>
-        <article class="card interactive" data-nav="biblioteca"><div class="card-top"><span class="card-icon icon-yellow">📚</span><span class="tag">Recursos</span></div><h3>Encuentra una guía a tu ritmo</h3><p>Busca por tema, nivel o tipo de recurso. Guarda lo aprendido en este dispositivo.</p><div class="card-bottom"><span>Buscador y filtros</span><span class="arrow-circle">↗</span></div></article>
+        <article class="card interactive" data-nav="desastres"><div class="card-top"><span class="card-icon icon-blue">🌦️</span><span class="tag">Ruta 01 · Prevención</span><img class="card-top-art" src="imagenes/arkon-prevencion.svg" alt="" loading="lazy" decoding="async"></div><h3>Prepárate para los desastres</h3><p>Conoce distintos fenómenos, organiza un plan de preparación y aprende a seguir orientaciones oficiales.</p><div class="card-bottom"><span>7 temas para explorar</span><span class="arrow-circle">↗</span></div></article>
+        <article class="card interactive" data-nav="habilidades"><div class="card-top"><span class="card-icon icon-mint">🧠</span><span class="tag">Ruta 02 · Trabajo</span><img class="card-top-art" src="imagenes/arkon-equipo.svg" alt="" loading="lazy" decoding="async"></div><h3>Fortalece tus habilidades laborales</h3><p>Practica comunicación, trabajo en equipo, resolución de problemas y herramientas útiles para el empleo.</p><div class="card-bottom"><span>8 competencias prácticas</span><span class="arrow-circle">↗</span></div></article>
+        <article class="card interactive" data-nav="biblioteca"><div class="card-top"><span class="card-icon icon-yellow">📚</span><span class="tag">Recursos</span><img class="card-top-art" src="imagenes/arkon-biblioteca.svg" alt="" loading="lazy" decoding="async"></div><h3>Encuentra una guía a tu ritmo</h3><p>Busca por tema, nivel o tipo de recurso. Guarda lo aprendido en este dispositivo.</p><div class="card-bottom"><span>Buscador y filtros</span><span class="arrow-circle">↗</span></div></article>
       </div>
       <div class="feature-strip"><div class="feature-copy"><span class="card-icon icon-lilac">🔎</span><div><h3>Aprendizaje con fuentes claras</h3><p>Los contenidos enlazan con organismos oficiales y materiales originales para que puedas consultar más.</p></div></div><button class="btn btn-quiet btn-small" data-nav="fuentes">Revisar bibliografía <span aria-hidden="true">→</span></button></div>
 
@@ -538,9 +566,9 @@ dialog::backdrop { background:rgba(8,21,39,.58);backdrop-filter:blur(4px); }
         <article class="project-fact"><span class="fact-label">Producto final</span><strong>Web para la atención y prevención de riesgos y emergencias</strong></article>
       </div>
       <div class="project-pillars-grid">
-        <article class="project-pillar"><span class="project-pillar-icon">🤝</span><h3>Convivencia</h3><p>Escuchar, resolver desacuerdos con respeto y construir acuerdos.</p></article>
-        <article class="project-pillar"><span class="project-pillar-icon">🏘️</span><h3>Ciudadanía</h3><p>Conocer rutas de ayuda, participar y actuar con responsabilidad.</p></article>
-        <article class="project-pillar"><span class="project-pillar-icon">🧰</span><h3>Habilidades laborales</h3><p>Comunicar, planear, trabajar en equipo y resolver problemas con seguridad.</p></article>
+        <article class="project-pillar"><img class="project-pillar-art" src="imagenes/arkon-equipo.svg" alt="" loading="lazy" decoding="async"><h3>Convivencia</h3><p>Escuchar, resolver desacuerdos con respeto y construir acuerdos.</p></article>
+        <article class="project-pillar"><img class="project-pillar-art" src="imagenes/arkon-comunidad.svg" alt="" loading="lazy" decoding="async"><h3>Ciudadanía</h3><p>Conocer rutas de ayuda, participar y actuar con responsabilidad.</p></article>
+        <article class="project-pillar"><img class="project-pillar-art" src="imagenes/arkon-seguridad.svg" alt="" loading="lazy" decoding="async"><h3>Habilidades laborales</h3><p>Comunicar, planear, trabajar en equipo y resolver problemas con seguridad.</p></article>
       </div>
       <div class="section-head"><div><span class="eyebrow"><span class="eyebrow-dot"></span> Desarrollo interdisciplinario</span><h2>Lo que aporta cada asignatura</h2><p>Abre solo el tema que necesites. Los contenidos están agrupados para mantener esta página clara y fácil de recorrer.</p></div></div>
       <div class="subject-list">
@@ -555,7 +583,7 @@ dialog::backdrop { background:rgba(8,21,39,.58);backdrop-filter:blur(4px); }
             <p>La responsabilidad individual consiste en actuar con cuidado y seguir las normas; la colectiva incluye reportar riesgos por canales adecuados, cuidar espacios comunes y apoyar a otros sin exponerse innecesariamente.</p>
             <div class="project-callout"><p><strong>Ruta ante un riesgo psicosocial:</strong> en el trabajo, informa la situación al responsable de seguridad y salud en el trabajo o al empleador y consulta la ARL cuando corresponda. En la escuela o la comunidad, busca a un adulto de confianza o a un servicio de orientación. En Cali, la Línea 106 ofrece teleorientación en salud mental; ante peligro inmediato, llama al 123.</p></div>
             <section class="ethics-infographic" aria-labelledby="ethics-infographic-title">
-              <div class="ethics-infographic-top"><span class="ethics-infographic-kicker">INFOGRAFÍA · ÉTICA Y SEGURIDAD LABORAL</span><span class="ethics-infographic-symbol" aria-hidden="true">🛡️</span><h3 id="ethics-infographic-title">¿Terminar rápido o trabajar seguro?</h3><p class="ethics-infographic-lead">Un dilema ético sobre la responsabilidad individual y colectiva en el trabajo.</p></div>
+              <div class="ethics-infographic-top"><span class="ethics-infographic-kicker">INFOGRAFÍA · ÉTICA Y SEGURIDAD LABORAL</span><img class="ethics-infographic-art" src="imagenes/arkon-seguridad.svg" alt="Ilustración de un trabajador junto a una máquina protegida" loading="lazy" decoding="async"><h3 id="ethics-infographic-title">¿Terminar rápido o trabajar seguro?</h3><p class="ethics-infographic-lead">Un dilema ético sobre la responsabilidad individual y colectiva en el trabajo.</p></div>
               <div class="ethics-infographic-situation"><span class="ethics-infographic-number">01</span><div><strong>EL DILEMA</strong><p>En un taller, alguien propone quitar la protección de una máquina para terminar más rápido. Otra persona identifica el peligro, pero teme que la culpen por reportarlo.</p></div></div>
               <div class="ethics-infographic-choices">
                 <article class="ethics-choice ethics-choice-risk"><span class="ethics-choice-icon" aria-hidden="true">⚠️</span><h4>La decisión peligrosa</h4><p>Callar o permitir que retiren la protección para ahorrar tiempo.</p><span class="ethics-choice-result">Aumenta el riesgo de accidente.</span></article>
