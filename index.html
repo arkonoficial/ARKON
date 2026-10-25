@@ -497,6 +497,49 @@ dialog::backdrop { background:rgba(8,21,39,.58);backdrop-filter:blur(4px); }
   .survey-results-grid { grid-template-columns:1fr; }
 }
 
+
+/* Gráficos estadísticos fijos: datos reales de 20 respuestas Tally */
+.survey-analytics { margin-top:24px; }
+.survey-analytics-title { margin:0 0 6px; font-size:1.12rem; }
+.survey-analytics-intro { margin:0 0 16px; color:var(--muted); font-size:.92rem; line-height:1.55; }
+.survey-visuals { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+.survey-chart-panel { min-width:0; padding:clamp(15px,2.5vw,20px); border:1px solid var(--border); border-radius:17px; background:var(--surface-soft); }
+.survey-chart-panel h4 { margin:0 0 6px; font-size:1rem; line-height:1.4; }
+.survey-chart-panel > p { margin:0 0 17px; color:var(--muted); font-size:.86rem; line-height:1.55; }
+.survey-pie-layout { display:grid; grid-template-columns:minmax(120px,.95fr) minmax(0,1.05fr); gap:14px; align-items:center; }
+.survey-pie { width:min(100%,220px); aspect-ratio:1; margin:auto; position:relative; border-radius:50%; background:conic-gradient(#168b91 0% 30%,#d6a33c 30% 60%,#dc7956 60% 85%,#8978d8 85% 100%); }
+.survey-pie::after { content:""; position:absolute; inset:24%; border-radius:50%; background:var(--surface-soft); border:1px solid var(--border); }
+.survey-pie-center { position:absolute; inset:0; z-index:1; display:grid; place-content:center; text-align:center; font-size:1.22rem; font-weight:800; color:var(--ink); line-height:1.1; }
+.survey-pie-center small { display:block; margin-top:4px; font-size:.68rem; font-weight:600; color:var(--muted); }
+.survey-legend { list-style:none; display:grid; gap:10px; padding:0; margin:0; }
+.survey-legend li { display:grid; grid-template-columns:10px minmax(0,1fr); gap:7px; align-items:start; font-size:.83rem; line-height:1.35; }
+.survey-legend i { display:block; width:10px; height:10px; margin-top:3px; border-radius:3px; }
+.survey-legend strong { display:block; margin-top:2px; color:var(--muted); font-size:.78rem; font-weight:600; }
+.survey-chart-rows { display:grid; gap:13px; }
+.survey-chart-row { min-width:0; }
+.survey-chart-label { display:flex; align-items:flex-start; justify-content:space-between; gap:10px; margin-bottom:6px; font-size:.84rem; line-height:1.35; }
+.survey-chart-label span { min-width:0; }
+.survey-chart-label strong { white-space:nowrap; font-size:.82rem; }
+.survey-chart-track { height:9px; overflow:hidden; border-radius:999px; background:var(--border); }
+.survey-chart-fill { display:block; height:100%; border-radius:inherit; background:linear-gradient(90deg,#168b91,#64c9b5); }
+.survey-chart-fill.gold { background:linear-gradient(90deg,#c38b26,#efc76b); }
+.survey-chart-fill.blue { background:linear-gradient(90deg,#547ce7,#8ca8ff); }
+.survey-data-panel { grid-column:1 / -1; }
+.survey-table-wrap { overflow-x:auto; }
+.survey-data-table { width:100%; border-collapse:collapse; font-size:.88rem; }
+.survey-data-table th,.survey-data-table td { padding:10px 9px; text-align:left; border-bottom:1px solid var(--border); }
+.survey-data-table th { font-size:.78rem; color:var(--muted); font-weight:750; }
+.survey-data-table td:nth-child(2),.survey-data-table td:nth-child(3),.survey-data-table th:nth-child(2),.survey-data-table th:nth-child(3) { text-align:right; font-variant-numeric:tabular-nums; }
+.survey-data-table tfoot th,.survey-data-table tfoot td { font-weight:800; color:var(--ink); border-bottom:0; border-top:1px solid var(--border); }
+.survey-static-note { margin:14px 0 0; color:var(--muted); font-size:.8rem; line-height:1.5; }
+@media (max-width:760px) {
+  .survey-visuals { grid-template-columns:1fr; }
+  .survey-data-panel { grid-column:auto; }
+}
+@media (max-width:460px) {
+  .survey-pie-layout { grid-template-columns:1fr; }
+  .survey-pie { width:min(65%,190px); }
+}
 </style>
   <!-- ARKON: publicación actualizada 2026-10-24 -->
 </head>
@@ -769,6 +812,77 @@ dialog::backdrop { background:rgba(8,21,39,.58);backdrop-filter:blur(4px); }
             <small>8 de 20 respuestas</small>
           </article>
         </div>
+        <section class="survey-analytics" aria-label="Gráficos estadísticos fijos de la encuesta">
+          <h4 class="survey-analytics-title">Gráficos y distribución de respuestas</h4>
+          <p class="survey-analytics-intro">Cada gráfico se calculó con las 20 respuestas reales. Las barras muestran frecuencia y porcentaje; el gráfico circular distribuye las respuestas de una misma pregunta y suma 100%. Las cifras están fijadas para que todos vean los mismos resultados.</p>
+          <div class="survey-visuals">
+            <article class="survey-chart-panel">
+              <h4>Gráfico circular: convivencia en la institución</h4>
+              <p>¿Cómo califican actualmente la convivencia? Distribución de las 20 respuestas.</p>
+              <div class="survey-pie-layout">
+                <div class="survey-pie" role="img" aria-label="Gráfico circular de convivencia: Buena 6 respuestas, 30 por ciento; Regular 6, 30 por ciento; Mala 5, 25 por ciento; Muy mala 3, 15 por ciento.">
+                  <span class="survey-pie-center">20<small>respuestas</small></span>
+                </div>
+                <ul class="survey-legend">
+                  <li><i style="background:#168b91"></i><span>Buena<strong>6 respuestas · 30%</strong></span></li>
+                  <li><i style="background:#d6a33c"></i><span>Regular<strong>6 respuestas · 30%</strong></span></li>
+                  <li><i style="background:#dc7956"></i><span>Mala<strong>5 respuestas · 25%</strong></span></li>
+                  <li><i style="background:#8978d8"></i><span>Muy mala<strong>3 respuestas · 15%</strong></span></li>
+                </ul>
+              </div>
+            </article>
+            <article class="survey-chart-panel">
+              <h4>Gráfico de barras: factores que afectan la convivencia</h4>
+              <p>¿Qué situación afecta más la convivencia y el trabajo en equipo?</p>
+              <div class="survey-chart-rows" role="list" aria-label="Factores y número de respuestas">
+                <div class="survey-chart-row" role="listitem"><div class="survey-chart-label"><span>Falta de comunicación</span><strong>8 · 40%</strong></div><div class="survey-chart-track"><span class="survey-chart-fill" style="width:40%"></span></div></div>
+                <div class="survey-chart-row" role="listitem"><div class="survey-chart-label"><span>Irresponsabilidad</span><strong>4 · 20%</strong></div><div class="survey-chart-track"><span class="survey-chart-fill" style="width:20%"></span></div></div>
+                <div class="survey-chart-row" role="listitem"><div class="survey-chart-label"><span>Falta de compromiso</span><strong>3 · 15%</strong></div><div class="survey-chart-track"><span class="survey-chart-fill" style="width:15%"></span></div></div>
+                <div class="survey-chart-row" role="listitem"><div class="survey-chart-label"><span>Falta de respeto</span><strong>3 · 15%</strong></div><div class="survey-chart-track"><span class="survey-chart-fill" style="width:15%"></span></div></div>
+                <div class="survey-chart-row" role="listitem"><div class="survey-chart-label"><span>Intolerancia</span><strong>2 · 10%</strong></div><div class="survey-chart-track"><span class="survey-chart-fill" style="width:10%"></span></div></div>
+              </div>
+            </article>
+            <article class="survey-chart-panel">
+              <h4>Gráfico de barras: habilidades por fortalecer</h4>
+              <p>¿Qué habilidad consideran que necesitan fortalecer antes de ingresar al mundo laboral?</p>
+              <div class="survey-chart-rows" role="list" aria-label="Habilidades por fortalecer">
+                <div class="survey-chart-row" role="listitem"><div class="survey-chart-label"><span>Trabajo en equipo</span><strong>7 · 35%</strong></div><div class="survey-chart-track"><span class="survey-chart-fill blue" style="width:35%"></span></div></div>
+                <div class="survey-chart-row" role="listitem"><div class="survey-chart-label"><span>Comunicación</span><strong>5 · 25%</strong></div><div class="survey-chart-track"><span class="survey-chart-fill blue" style="width:25%"></span></div></div>
+                <div class="survey-chart-row" role="listitem"><div class="survey-chart-label"><span>Responsabilidad y organización</span><strong>3 · 15%</strong></div><div class="survey-chart-track"><span class="survey-chart-fill blue" style="width:15%"></span></div></div>
+                <div class="survey-chart-row" role="listitem"><div class="survey-chart-label"><span>Liderazgo</span><strong>2 · 10%</strong></div><div class="survey-chart-track"><span class="survey-chart-fill blue" style="width:10%"></span></div></div>
+                <div class="survey-chart-row" role="listitem"><div class="survey-chart-label"><span>Otra</span><strong>2 · 10%</strong></div><div class="survey-chart-track"><span class="survey-chart-fill blue" style="width:10%"></span></div></div>
+                <div class="survey-chart-row" role="listitem"><div class="survey-chart-label"><span>Herramientas tecnológicas</span><strong>1 · 5%</strong></div><div class="survey-chart-track"><span class="survey-chart-fill blue" style="width:5%"></span></div></div>
+              </div>
+            </article>
+            <article class="survey-chart-panel">
+              <h4>Gráfico de barras: preparación laboral</h4>
+              <p>¿Qué tan preparados se sienten para ingresar al mundo laboral?</p>
+              <div class="survey-chart-rows" role="list" aria-label="Preparación para el mundo laboral">
+                <div class="survey-chart-row" role="listitem"><div class="survey-chart-label"><span>Preparado/a</span><strong>9 · 45%</strong></div><div class="survey-chart-track"><span class="survey-chart-fill gold" style="width:45%"></span></div></div>
+                <div class="survey-chart-row" role="listitem"><div class="survey-chart-label"><span>Medianamente preparado/a</span><strong>8 · 40%</strong></div><div class="survey-chart-track"><span class="survey-chart-fill gold" style="width:40%"></span></div></div>
+                <div class="survey-chart-row" role="listitem"><div class="survey-chart-label"><span>Muy preparado/a</span><strong>2 · 10%</strong></div><div class="survey-chart-track"><span class="survey-chart-fill gold" style="width:10%"></span></div></div>
+                <div class="survey-chart-row" role="listitem"><div class="survey-chart-label"><span>Poco preparado/a</span><strong>1 · 5%</strong></div><div class="survey-chart-track"><span class="survey-chart-fill gold" style="width:5%"></span></div></div>
+              </div>
+            </article>
+            <article class="survey-chart-panel survey-data-panel">
+              <h4>Tabla de frecuencias y porcentajes: factores de convivencia</h4>
+              <div class="survey-table-wrap">
+                <table class="survey-data-table">
+                  <thead><tr><th scope="col">Situación señalada</th><th scope="col">Frecuencia</th><th scope="col">Porcentaje</th></tr></thead>
+                  <tbody>
+                    <tr><td>Falta de comunicación</td><td>8</td><td>40%</td></tr>
+                    <tr><td>Irresponsabilidad</td><td>4</td><td>20%</td></tr>
+                    <tr><td>Falta de compromiso</td><td>3</td><td>15%</td></tr>
+                    <tr><td>Falta de respeto</td><td>3</td><td>15%</td></tr>
+                    <tr><td>Intolerancia</td><td>2</td><td>10%</td></tr>
+                  </tbody>
+                  <tfoot><tr><th scope="row">Total</th><td>20</td><td>100%</td></tr></tfoot>
+                </table>
+              </div>
+              <p class="survey-static-note">Cálculo: frecuencia ÷ 20 × 100. Los porcentajes corresponden a la muestra encuestada, no necesariamente a toda la comunidad escolar. Estos gráficos son de solo lectura y no se pueden reiniciar ni editar desde ARKON.</p>
+            </article>
+          </div>
+        </section>
         <p class="survey-results-note"><strong>Lectura general:</strong> los resultados sugieren reforzar la comunicación, la resolución pacífica de conflictos y el trabajo en equipo, aprovechando la disposición de la mayoría para seguir aprendiendo. Los porcentajes se calculan sobre 20 respuestas y pueden no representar a toda la comunidad educativa.</p>
       </section>
       <div class="project-answer" style="margin-top:20px">
