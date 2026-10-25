@@ -462,6 +462,41 @@ dialog::backdrop { background:rgba(8,21,39,.58);backdrop-filter:blur(4px); }
   .card-top-art, .project-pillar-art { transition:none; }
 }
 
+/* Resultados anónimos de la encuesta Tally */
+.survey-results {
+  margin-top:26px; padding:clamp(18px,3vw,28px);
+  border:1px solid var(--border); border-radius:22px;
+  background:var(--surface, #fff);
+}
+.survey-results-heading {
+  display:flex; align-items:flex-end; justify-content:space-between;
+  gap:18px; margin-bottom:20px;
+}
+.survey-results-heading h3 { margin:8px 0 7px; }
+.survey-results-heading p { margin:0; max-width:650px; }
+.survey-source-link { white-space:nowrap; font-weight:700; }
+.survey-results-grid {
+  display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:13px;
+}
+.survey-result-card {
+  min-width:0; padding:16px; border:1px solid var(--border);
+  border-radius:16px; background:var(--surface-soft, #f5f9fc);
+}
+.survey-result-top {
+  display:flex; align-items:flex-start; justify-content:space-between;
+  gap:12px; font-weight:700; margin-bottom:8px;
+}
+.survey-result-top strong { color:var(--primary, #176b82); font-size:1.22rem; }
+.survey-result-card p { margin:0 0 14px; font-size:.94rem; line-height:1.5; }
+.survey-bar { height:8px; border-radius:999px; background:var(--border, #dce6ed); overflow:hidden; }
+.survey-bar span { display:block; height:100%; border-radius:inherit; background:linear-gradient(90deg,#168b91,#63c9b5); }
+.survey-result-card small { display:block; margin-top:7px; color:var(--muted, #627487); }
+.survey-results-note { margin:18px 0 0; font-size:.94rem; line-height:1.6; }
+@media (max-width:640px) {
+  .survey-results-heading { align-items:flex-start; flex-direction:column; }
+  .survey-results-grid { grid-template-columns:1fr; }
+}
+
 </style>
   <!-- ARKON: publicación actualizada 2026-10-24 -->
 </head>
@@ -661,11 +696,59 @@ dialog::backdrop { background:rgba(8,21,39,.58);backdrop-filter:blur(4px); }
       <div class="project-pillars-grid" aria-label="Aportes y continuidad del proyecto">
         <article class="project-pillar"><span class="project-pillar-icon" aria-hidden="true">📘</span><h3>Aprendizaje integrado</h3><p>Relaciona convivencia, ciudadanía, prevención de riesgos y competencias laborales en un mismo espacio.</p></article>
         <article class="project-pillar"><span class="project-pillar-icon" aria-hidden="true">🧭</span><h3>Orientación confiable</h3><p>Organiza recomendaciones, recursos y enlaces para que las personas sepan dónde ampliar la información.</p></article>
-        <article class="project-pillar"><span class="project-pillar-icon" aria-hidden="true">📊</span><h3>Evaluación y mejora</h3><p>El siguiente paso es incorporar los resultados reales de la encuesta, revisar el contenido con el docente y corregir lo que haga falta.</p></article>
+        <article class="project-pillar"><span class="project-pillar-icon" aria-hidden="true">📊</span><h3>Evaluación y mejora</h3><p>La encuesta ya cuenta con 20 respuestas completas. Sus resultados orientan qué temas conviene fortalecer en la institución.</p></article>
       </div>
+      <section class="survey-results" aria-labelledby="survey-results-title">
+        <div class="survey-results-heading">
+          <div><span class="eyebrow"><span class="eyebrow-dot"></span> Resultados de la encuesta</span>
+            <h3 id="survey-results-title">¿Qué nos dijeron las 20 respuestas?</h3>
+            <p>Resumen anónimo de las 20 respuestas completas recibidas en Tally. No se muestran nombres ni datos personales.</p>
+          </div>
+          <a class="survey-source-link" href="https://tally.so/r/A7E5RW" target="_blank" rel="noopener noreferrer">Ver encuesta ↗</a>
+        </div>
+        <div class="survey-results-grid">
+          <article class="survey-result-card">
+            <div class="survey-result-top"><span>Comunicación</span><strong>40%</strong></div>
+            <p>La falta de comunicación fue señalada como el principal factor que afecta la convivencia y el trabajo en equipo.</p>
+            <div class="survey-bar" role="img" aria-label="40 por ciento, 8 de 20 respuestas"><span style="width:40%"></span></div>
+            <small>8 de 20 respuestas</small>
+          </article>
+          <article class="survey-result-card">
+            <div class="survey-result-top"><span>Trabajo en equipo</span><strong>35%</strong></div>
+            <p>Fue la habilidad más mencionada entre las que se necesitan fortalecer para el futuro laboral.</p>
+            <div class="survey-bar" role="img" aria-label="35 por ciento, 7 de 20 respuestas"><span style="width:35%"></span></div>
+            <small>7 de 20 respuestas</small>
+          </article>
+          <article class="survey-result-card">
+            <div class="survey-result-top"><span>Preparación laboral</span><strong>55%</strong></div>
+            <p>Se considera preparado/a o muy preparado/a para ingresar al mundo laboral.</p>
+            <div class="survey-bar" role="img" aria-label="55 por ciento, 11 de 20 respuestas"><span style="width:55%"></span></div>
+            <small>11 de 20 respuestas</small>
+          </article>
+          <article class="survey-result-card">
+            <div class="survey-result-top"><span>Ganas de aprender</span><strong>90%</strong></div>
+            <p>Se declara dispuesto/a o muy dispuesto/a a desarrollar habilidades para su futuro laboral.</p>
+            <div class="survey-bar" role="img" aria-label="90 por ciento, 18 de 20 respuestas"><span style="width:90%"></span></div>
+            <small>18 de 20 respuestas</small>
+          </article>
+          <article class="survey-result-card">
+            <div class="survey-result-top"><span>Respeto a las diferencias</span><strong>85%</strong></div>
+            <p>Considera importante o muy importante respetar opiniones y diferencias para convivir mejor.</p>
+            <div class="survey-bar" role="img" aria-label="85 por ciento, 17 de 20 respuestas"><span style="width:85%"></span></div>
+            <small>17 de 20 respuestas</small>
+          </article>
+          <article class="survey-result-card">
+            <div class="survey-result-top"><span>Convivencia difícil</span><strong>40%</strong></div>
+            <p>Calificó la convivencia como mala o muy mala, lo que indica un aspecto que merece atención.</p>
+            <div class="survey-bar" role="img" aria-label="40 por ciento, 8 de 20 respuestas"><span style="width:40%"></span></div>
+            <small>8 de 20 respuestas</small>
+          </article>
+        </div>
+        <p class="survey-results-note"><strong>Lectura general:</strong> los resultados sugieren reforzar la comunicación, la resolución pacífica de conflictos y el trabajo en equipo, aprovechando la disposición de la mayoría para seguir aprendiendo. Los porcentajes se calculan sobre 20 respuestas y pueden no representar a toda la comunidad educativa.</p>
+      </section>
       <div class="project-answer" style="margin-top:20px">
         <h3>Conclusión del proyecto</h3>
-        <p>ARKON muestra que la tecnología puede apoyar la formación ciudadana y laboral cuando reúne información comprensible, actividades prácticas y fuentes consultables. Su aporte esperado es ayudar a reconocer riesgos, tomar decisiones responsables y trabajar con respeto. La utilidad del sitio debe comprobarse con la revisión del equipo y las respuestas reales de la comunidad; por eso, no se presentan resultados de encuesta que todavía no hayan sido verificados.</p>
+        <p>ARKON muestra cómo la tecnología puede apoyar la formación ciudadana y laboral al reunir información clara, actividades prácticas y fuentes consultables. La encuesta aplicada a 20 personas identifica la comunicación y el trabajo en equipo como aspectos importantes para fortalecer. Estos resultados son una primera referencia del grupo encuestado y no representan necesariamente a toda la institución. El sitio puede seguir mejorando con la retroalimentación del docente y de la comunidad.</p>
       </div>
     </section>
 
