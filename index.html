@@ -901,18 +901,17 @@ p, .lead, .card p, .detail-panel li, .source-item p, .principle p {
 }
 html,body { background:#050B16; color:#F0F7FF; }
 body {
- background:
-  radial-gradient(ellipse at 50% -18%, rgba(20,184,166,.23), transparent 42rem),
-  radial-gradient(ellipse at 100% 22%, rgba(37,99,235,.15), transparent 36rem),
-  radial-gradient(ellipse at 0% 62%, rgba(13,148,136,.09), transparent 34rem),
-  linear-gradient(180deg,#050B16 0%,#081322 48%,#050B16 100%);
+ background-color:#040914;
+ background-image:
+  radial-gradient(ellipse 70% 42% at 50% 0%, rgba(20,184,166,.30) 0%, rgba(20,184,166,.10) 42%, transparent 78%),
+  radial-gradient(ellipse 54% 42% at 100% 28%, rgba(37,99,235,.22) 0%, transparent 76%),
+  radial-gradient(ellipse 50% 40% at 0% 66%, rgba(8,145,178,.16) 0%, transparent 76%),
+  linear-gradient(180deg,#050A14 0%,#091426 35%,#07101F 70%,#030711 100%);
  background-attachment:fixed;
 }
 #app {
  color:#F0F7FF;
- background:
-  radial-gradient(ellipse at 50% 0%,rgba(20,184,166,.06),transparent 45rem),
-  linear-gradient(180deg,rgba(5,11,22,.98),rgba(8,19,34,.99) 48%,#050B16 100%);
+ background:transparent;
 }
 header {
  background:rgba(5,11,22,.88);
@@ -934,15 +933,7 @@ h1,h2,h3,h4 { color:#F0F7FF; }
 p,.lead { color:#AABBD0; }
 .btn-primary { background:linear-gradient(135deg,#5EEAD4,#2DD4BF); color:#042A2B; box-shadow:0 8px 28px rgba(45,212,191,.18); }
 .btn-primary:hover { box-shadow:0 12px 34px rgba(45,212,191,.28); }
-.card,.detail-panel,.challenge-question,.source-item,.principle,.feature-strip,.search-panel,.mini-stat {
- background:linear-gradient(145deg,rgba(17,35,56,.96),rgba(10,23,39,.98));
- border-color:rgba(115,151,183,.22);
- box-shadow:0 18px 45px rgba(0,0,0,.18);
-}
-.card:hover,.feature-strip:hover,.principle:hover {
- border-color:rgba(94,234,212,.42);
- box-shadow:0 20px 48px rgba(0,0,0,.26),0 0 0 1px rgba(45,212,191,.05);
-}
+/* Las burbujas y tarjetas conservan sus colores originales. */
 input,select,textarea { background:#0A1728; color:#F0F7FF; border-color:#29445C; }
 ::selection { background:#5EEAD4; color:#042A2B; }
 a { color:#5EEAD4; }
