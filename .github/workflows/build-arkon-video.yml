@@ -25,7 +25,7 @@ jobs:
 
       - name: Render narrated ARKON MP4
         env:
-          VOICE_URL: "https://storage.googleapis.com/xi-backend/database/workspace/b75a16ed3a6d44d0924b33ece76c892f/content_generation/0MpJrIT6LrAwrSMpOHIL/XH6Tgf27z9p9MBZBHtGI/content.mp3?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=xi-backend-prod%40xi-labs.iam.gserviceaccount.com%2F20261026%2Fauto%2Fgoog4_request&X-Goog-Date=20261026T193029Z&X-Goog-Expires=7200&X-Goog-SignedHeaders=host&X-Goog-Signature=6b881c5eef120ea01e54674bacffca9df7c0e67d3649de1e9e0bc487cc36351b9adf3227292b650b9ac688968b521453ddbf1fb715018239e89c399d0fcfdf4faa70794b601cdf127b44bc02887e7b9149d9085d9c1bd051216f1805435645d4e9c55870b1a5e931cdc7e94731eff35ac15b6da46674b2f5ff4fe545573d0ca35c3de132ad870009ae90632a08dae9c8cf83b61abaf556a4174b16fbaaeefc5d8c6bbef0156d79384f3c734c972fba97eb5e2a6e586c2e68e51656a859c050ca817f1022eaaf9674c41e335179b33a043a48b19e69de573cff7fb763dd5503797eac1a8128ea70e747a5cb6ae86e8d1ea51e9ea1ee19654326218fe3d381a44c"
+          VOICE_URL: "SET_A_VALID_AUDIO_URL_LOCALLY_BEFORE_RUNNING"
         run: |
           set -euo pipefail
           curl --fail --location --retry 2 --connect-timeout 20 "$VOICE_URL" --output voiceover.mp3
