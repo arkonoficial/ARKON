@@ -8,275 +8,89 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: arkon-video-render
+  cancel-in-progress: true
+
 jobs:
   render:
     if: ${{ !contains(github.event.head_commit.message, '[cleanup-video-source]') }}
     runs-on: ubuntu-latest
+    timeout-minutes: 8
     steps:
       - name: Checkout ARKON
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Prepare rendering tools
+      - name: Check built-in rendering tools
         run: |
           set -euo pipefail
-          if ! command -v ffmpeg >/dev/null 2>&1 || ! command -v ffprobe >/dev/null 2>&1; then
-            sudo apt-get update
-            sudo apt-get install -y ffmpeg
-          fi
-          if ! fc-match "DejaVu Sans" >/dev/null 2>&1; then
-            sudo apt-get update
-            sudo apt-get install -y fonts-dejavu-core fontconfig
-          fi
-          python -c "from PIL import Image" 2>/dev/null || python -m pip install pillow
+          command -v ffmpeg
+          command -v ffprobe
+          test -f /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
+          test -f /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
 
       - name: Render narrated ARKON MP4
         run: |
           set -euo pipefail
-          # Reuse the short-lived AI narration URL already stored in the initial workflow commit.
-          # The URL is read at runtime, never copied into the current source file or printed to logs.
+          # Read the old short-lived narration URL only at runtime; never print or re-commit it.
           VOICE_URL="$(git show 020ccf8bb474da62e683d88fd5a422fb36f743a4:.github/workflows/build-arkon-video.yml | sed -n 's/^[[:space:]]*VOICE_URL: "\(.*\)"/\1/p')"
           test -n "$VOICE_URL"
           curl --fail --location --retry 2 --connect-timeout 20 "$VOICE_URL" --output voiceover.mp3
           test -s voiceover.mp3
 
-          python - <<'PY'
-          from PIL import Image, ImageDraw, ImageFont, ImageFilter
-          import math, os, random
-
-          W, H = 1920, 1080
-          random.seed(27)
-          FONT_REG = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
-          FONT_BOLD = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
-          MINT = (118, 245, 219)
-          CYAN = (76, 203, 237)
-          WHITE = (242, 248, 255)
-          MUTED = (160, 184, 207)
-          BG = (5, 13, 28)
-
-          def font(size, bold=False):
-              return ImageFont.truetype(FONT_BOLD if bold else FONT_REG, size)
-
-          def mix(a, b, t):
-              return tuple(int(a[i] * (1-t) + b[i] * t) for i in range(3))
-
-          def rounded(draw, box, radius, fill, outline=None, width=1):
-              draw.rounded_rectangle(box, radius=radius, fill=fill, outline=outline, width=width)
-
-          scenes = [
-              {
-                  "eyebrow": "PLATAFORMA EDUCATIVA",
-                  "title": ["Aprende.", "Conecta.", "Transforma."],
-                  "subtitle": "Ideas que se convierten en acciones.",
-                  "tag": "APRENDIZAJE ACTIVO",
-                  "kind": "orbit",
-              },
-              {
-                  "eyebrow": "CURIOSIDAD EN MOVIMIENTO",
-                  "title": ["Conocimiento", "que abre", "caminos."],
-                  "subtitle": "Conecta ideas y descubre nuevas posibilidades.",
-                  "tag": "EXPLORA · CREA · CRECE",
-                  "kind": "cards",
-              },
-              {
-                  "eyebrow": "CONVIVENCIA Y CIUDADANÍA",
-                  "title": ["Convivir es", "construir", "comunidad."],
-                  "subtitle": "Respeto, escucha y participación para crecer juntos.",
-                  "tag": "CADA VOZ CUENTA",
-                  "kind": "people",
-              },
-              {
-                  "eyebrow": "HABILIDADES PARA EL FUTURO",
-                  "title": ["Habilidades", "para el", "futuro."],
-                  "subtitle": "Comunicación, colaboración y solución de problemas.",
-                  "tag": "PREPARADOS PARA APORTAR",
-                  "kind": "skills",
-              },
-              {
-                  "eyebrow": "EL CAMBIO EMPIEZA CONTIGO",
-                  "title": ["Aprendemos hoy.", "Transformamos", "mañana."],
-                  "subtitle": "Explora, participa y aporta a tu comunidad.",
-                  "tag": "ARKON · APRENDER PARA TRANSFORMAR",
-                  "kind": "final",
-              },
-          ]
-
-          def draw_glow(base, x, y, radius, color, alpha=90):
-              layer = Image.new("RGBA", base.size, (0, 0, 0, 0))
-              ld = ImageDraw.Draw(layer)
-              ld.ellipse((x-radius, y-radius, x+radius, y+radius), fill=(*color, alpha))
-              layer = layer.filter(ImageFilter.GaussianBlur(radius * 0.45))
-              base.alpha_composite(layer)
-
-          def draw_motif(base, kind, scene_num):
-              d = ImageDraw.Draw(base)
-              cx, cy = 1460, 510
-              draw_glow(base, cx, cy, 280, (19, 153, 174), 70)
-              d = ImageDraw.Draw(base)
-              if kind in ("orbit", "final"):
-                  for r, col, wid in [(292, (40, 109, 139, 165), 2), (230, (66, 164, 184, 190), 3), (164, (75, 206, 198, 200), 3)]:
-                      d.ellipse((cx-r, cy-r, cx+r, cy+r), outline=col, width=wid)
-                  for ang in range(0, 360, 45):
-                      rad = math.radians(ang + scene_num * 9)
-                      x, y = cx + int(230 * math.cos(rad)), cy + int(230 * math.sin(rad))
-                      d.line((cx, cy, x, y), fill=(42, 100, 130, 140), width=2)
-                      d.ellipse((x-11, y-11, x+11, y+11), fill=(*((MINT if ang % 90 == 0 else CYAN)), 255))
-                  rounded(d, (cx-125, cy-79, cx+125, cy+80), 34, (10, 35, 54, 255), (75, 207, 192, 255), 3)
-                  d.text((cx, cy-18), "ARKON", font=font(43, True), fill=WHITE, anchor="mm")
-                  d.text((cx, cy+33), "IDEAS EN ACCIÓN", font=font(16, True), fill=MINT, anchor="mm")
-              elif kind == "cards":
-                  cards = [
-                      ((1110, 305, 1410, 455), "01", "DESCUBRE", (75, 203, 237)),
-                      ((1360, 485, 1660, 635), "02", "CONECTA", (118, 245, 219)),
-                      ((1110, 665, 1410, 815), "03", "CREA", (157, 178, 255)),
-                  ]
-                  for box, num, label, color in cards:
-                      rounded(d, box, 24, (13, 34, 55, 235), (color[0], color[1], color[2], 225), 2)
-                      d.text((box[0]+28, box[1]+28), num, font=font(19, True), fill=color)
-                      d.text((box[0]+28, box[1]+80), label, font=font(26, True), fill=WHITE)
-                      d.line((box[0]+28, box[1]+119, box[2]-28, box[1]+119), fill=(54, 94, 122, 255), width=2)
-                  d.line((1410, 380, 1482, 482), fill=(83, 202, 211, 210), width=3)
-                  d.line((1360, 560, 1290, 655), fill=(83, 202, 211, 210), width=3)
-              elif kind == "people":
-                  positions = [(1250, 380), (1540, 330), (1380, 570), (1625, 675), (1155, 700)]
-                  for i, (x, y) in enumerate(positions):
-                      for j, (x2, y2) in enumerate(positions):
-                          if j > i and (i+j) % 2 == 1:
-                              d.line((x, y, x2, y2), fill=(43, 128, 154, 180), width=3)
-                  for i, (x, y) in enumerate(positions):
-                      color = [MINT, CYAN, (158, 180, 255), (255, 199, 118), (110, 228, 190)][i]
-                      d.ellipse((x-54, y-54, x+54, y+54), fill=(13, 39, 60, 255), outline=(*color, 255), width=4)
-                      d.ellipse((x-15, y-24, x+15, y+6), fill=(*color, 255))
-                      d.rounded_rectangle((x-29, y+9, x+29, y+39), radius=15, fill=(*color, 255))
-                  rounded(d, (1280, 795, 1585, 865), 22, (15, 44, 61, 245), (82, 183, 188, 230), 2)
-                  d.text((1432, 830), "CADA VOZ CUENTA", font=font(21, True), fill=WHITE, anchor="mm")
-              elif kind == "skills":
-                  items = [
-                      ("COMUNICACIÓN", "01", MINT),
-                      ("COLABORACIÓN", "02", CYAN),
-                      ("SOLUCIONES", "03", (160, 180, 255)),
-                  ]
-                  for i, (label, num, color) in enumerate(items):
-                      y = 300 + i * 180
-                      rounded(d, (1080, y, 1710, y+128), 26, (12, 34, 54, 242), (*color, 215), 2)
-                      d.ellipse((1114, y+31, 1178, y+95), outline=(*color, 255), width=3)
-                      d.text((1146, y+63), num, font=font(18, True), fill=color, anchor="mm")
-                      d.text((1210, y+65), label, font=font(25, True), fill=WHITE, anchor="lm")
-                      d.ellipse((1648, y+53, 1666, y+71), fill=(*color, 255))
-              else:
-                  for r in (300, 238, 176):
-                      d.ellipse((cx-r, cy-r, cx+r, cy+r), outline=(64, 153, 175, 170), width=3)
-                  for ang in range(0, 360, 30):
-                      rad = math.radians(ang + 12)
-                      x, y = cx + int(238 * math.cos(rad)), cy + int(238 * math.sin(rad))
-                      d.line((cx, cy, x, y), fill=(35, 86, 117, 130), width=2)
-                      d.ellipse((x-7, y-7, x+7, y+7), fill=(*MINT, 235))
-                  rounded(d, (cx-130, cy-84, cx+130, cy+84), 30, (9, 32, 53, 255), (*MINT, 255), 3)
-                  d.text((cx, cy-12), "ARKON", font=font(47, True), fill=WHITE, anchor="mm")
-                  d.text((cx, cy+39), "SIGUE CRECIENDO", font=font(15, True), fill=MINT, anchor="mm")
-
-          def make_scene(scene, idx):
-              base = Image.new("RGBA", (W, H), (0,0,0,255))
-              pix = base.load()
-              top, bottom = (5, 13, 29), (8, 27, 48)
-              for y in range(H):
-                  t = y / (H-1)
-                  c = mix(top, bottom, t)
-                  for x in range(W):
-                      # A slight horizontal tint keeps the left copy crisp and the right side luminous.
-                      h = max(0.0, 1 - abs(x-1450)/1150)
-                      pix[x,y] = (min(255,int(c[0]+2*h)), min(255,int(c[1]+8*h)), min(255,int(c[2]+13*h)), 255)
-              draw_glow(base, 1510, 460, 400, (13, 113, 145), 78)
-              draw_glow(base, 260, 830, 290, (20, 94, 103), 42)
-              d = ImageDraw.Draw(base)
-              for x in range(65, W, 80):
-                  d.line((x, 155, x, 955), fill=(16, 43, 65, 120), width=1)
-              for y in range(170, 960, 80):
-                  d.line((60, y, W-60, y), fill=(16, 43, 65, 100), width=1)
-              # Fine glowing points in the background.
-              for _ in range(110):
-                  x, y = random.randint(65, W-65), random.randint(170, 950)
-                  r = random.choice([1, 1, 2])
-                  d.ellipse((x-r, y-r, x+r, y+r), fill=(42, 101, 127, 105))
-
-              # Brand chip and scene count.
-              rounded(d, (105, 60, 348, 125), 20, (11, 32, 51, 238), (41, 108, 127, 255), 2)
-              d.ellipse((126, 82, 151, 107), outline=(*MINT, 255), width=3)
-              d.line((132, 94, 140, 101, 147, 87), fill=(*MINT, 255), width=3)
-              d.text((166, 75), "ARKON", font=font(26, True), fill=WHITE)
-              d.text((166, 103), "APRENDER · CONECTAR · TRANSFORMAR", font=font(10, True), fill=MUTED)
-              d.text((1770, 88), f"0{idx+1} / 05", font=font(21, True), fill=MINT, anchor="ra")
-              d.text((140, 190), scene["eyebrow"], font=font(21, True), fill=CYAN)
-              y = 265
-              title_size = 83 if len(scene["title"]) == 3 else 86
-              for line in scene["title"]:
-                  chosen = font(title_size, True)
-                  # Keep the headline inside the left half even for longer lines.
-                  while d.textbbox((0,0), line, font=chosen)[2] > 850 and title_size > 58:
-                      title_size -= 2
-                      chosen = font(title_size, True)
-                  color = MINT if line in ("Transforma.", "comunidad.", "futuro.", "mañana.") else WHITE
-                  d.text((135, y), line, font=chosen, fill=color, stroke_width=0)
-                  y += int(title_size * 1.18)
-              sub_y = max(y + 28, 670)
-              d.text((140, sub_y), scene["subtitle"], font=font(27), fill=MUTED)
-              rounded(d, (140, 870, 650, 927), 17, (12, 37, 57, 225), (40, 98, 122, 185), 2)
-              d.text((165, 884), scene["tag"], font=font(18, True), fill=MINT)
-              d.line((105, 974, 1810, 974), fill=(39, 87, 111, 230), width=2)
-              d.text((105, 997), "ARKON  /  EDUCACIÓN PARA LA VIDA", font=font(14, True), fill=(126, 156, 181))
-              d.text((1810, 997), "CONVIVENCIA  ·  CIUDADANÍA  ·  FUTURO", font=font(14, True), fill=(126, 156, 181), anchor="ra")
-              draw_motif(base, scene["kind"], idx)
-              # A subtle dark fade on the left keeps all copy readable over the glow.
-              shade = Image.new("RGBA", (W, H), (0,0,0,0))
-              sd = ImageDraw.Draw(shade)
-              for x in range(0, 1080, 8):
-                  alpha = int(45 * (1 - x/1080))
-                  sd.rectangle((x, 150, x+8, 970), fill=(3, 12, 26, alpha))
-              base.alpha_composite(shade)
-              base.convert("RGB").save(f"scene{idx+1}.png", quality=95)
-
-          for idx, scene in enumerate(scenes):
-              make_scene(scene, idx)
-          PY
-
           cat > subtitles.srt <<'SRT'
           1
           00:00:00,250 --> 00:00:04,050
           Bienvenido a ARKON.
-          
+
           2
           00:00:04,050 --> 00:00:13,600
           Un espacio para aprender, conectar ideas y construir un mejor futuro.
-          
+
           3
           00:00:13,600 --> 00:00:25,300
-          Aquí fortalecemos la convivencia, la ciudadanía y las habilidades
+          Aqui fortalecemos la convivencia, la ciudadania y las habilidades
           que nos preparan para trabajar en equipo.
-          
+
           4
           00:00:25,300 --> 00:00:35,150
           Resolver problemas y aportar a nuestra comunidad.
-          
+
           5
           00:00:35,150 --> 00:00:41,750
-          Explora, participa y convierte el conocimiento en acción.
-          
+          Explora, participa y convierte el conocimiento en accion.
+
           6
           00:00:41,750 --> 00:00:46,050
-          ARKON: aprendemos hoy, transformamos mañana.
+          ARKON: aprendemos hoy, transformamos manana.
           SRT
 
+          cat > filters.txt <<'FILTERS'
+          [0:v]drawbox=x=0:y=0:w=1920:h=1080:color=0x07172b@1:t=fill,drawbox=x=1040:y=180:w=790:h=720:color=0x0c263d@0.8:t=fill,drawbox=x=1040:y=180:w=790:h=720:color=0x2d657e@0.9:t=4,drawbox=x=90:y=60:w=340:h=66:color=0x0c2437@0.95:t=fill,drawbox=x=90:y=60:w=340:h=66:color=0x2d657e@0.9:t=2,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='ARKON':fontcolor=white:fontsize=32:x=118:y=75,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:text='APRENDER  /  CONECTAR  /  TRANSFORMAR':fontcolor=0x76f5db:fontsize=15:x=460:y=83,drawbox=x=90:y=955:w=1740:h=2:color=0x2d657e@0.8:t=fill,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='ARKON  /  EDUCACION PARA LA VIDA':fontcolor=0x91a9c2:fontsize=17:x=100:y=985,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='CONVIVENCIA  -  CIUDADANIA  -  FUTURO':fontcolor=0x91a9c2:fontsize=17:x=1815-tw:y=985,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='01 / 05':fontcolor=0x76f5db:fontsize=26:x=1690:y=225,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='Aprende.':fontcolor=white:fontsize=86:x=140:y=300,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='Conecta.':fontcolor=white:fontsize=86:x=140:y=410,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='Transforma.':fontcolor=0x76f5db:fontsize=86:x=140:y=520,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:text='Ideas que se convierten en acciones.':fontcolor=0xa0b8cf:fontsize=28:x=145:y=680,drawbox=x=1110:y=310:w=650:h=110:color=0x142f45@1:t=fill,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='DESCUBRE':fontcolor=0x76f5db:fontsize=30:x=1160:y=350,drawbox=x=1110:y=460:w=650:h=110:color=0x142f45@1:t=fill,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='CONECTA':fontcolor=0x4ccbed:fontsize=30:x=1160:y=500,drawbox=x=1110:y=610:w=650:h=110:color=0x142f45@1:t=fill,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='CREA':fontcolor=0x9eb4ff:fontsize=30:x=1160:y=650[v0];
+          [1:v]drawbox=x=0:y=0:w=1920:h=1080:color=0x07172b@1:t=fill,drawbox=x=1040:y=180:w=790:h=720:color=0x0c263d@0.8:t=fill,drawbox=x=1040:y=180:w=790:h=720:color=0x2d657e@0.9:t=4,drawbox=x=90:y=60:w=340:h=66:color=0x0c2437@0.95:t=fill,drawbox=x=90:y=60:w=340:h=66:color=0x2d657e@0.9:t=2,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='ARKON':fontcolor=white:fontsize=32:x=118:y=75,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:text='APRENDER  /  CONECTAR  /  TRANSFORMAR':fontcolor=0x76f5db:fontsize=15:x=460:y=83,drawbox=x=90:y=955:w=1740:h=2:color=0x2d657e@0.8:t=fill,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='ARKON  /  EDUCACION PARA LA VIDA':fontcolor=0x91a9c2:fontsize=17:x=100:y=985,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='CONVIVENCIA  -  CIUDADANIA  -  FUTURO':fontcolor=0x91a9c2:fontsize=17:x=1815-tw:y=985,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='02 / 05':fontcolor=0x76f5db:fontsize=26:x=1690:y=225,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='Conocimiento':fontcolor=white:fontsize=75:x=140:y=300,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='que abre':fontcolor=white:fontsize=86:x=140:y=410,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='caminos.':fontcolor=0x76f5db:fontsize=86:x=140:y=520,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:text='Conecta ideas y descubre nuevas posibilidades.':fontcolor=0xa0b8cf:fontsize=24:x=145:y=680,drawbox=x=1110:y=310:w=650:h=110:color=0x142f45@1:t=fill,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='IDEAS':fontcolor=0x76f5db:fontsize=30:x=1160:y=350,drawbox=x=1110:y=460:w=650:h=110:color=0x142f45@1:t=fill,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='CURIOSIDAD':fontcolor=0x4ccbed:fontsize=30:x=1160:y=500,drawbox=x=1110:y=610:w=650:h=110:color=0x142f45@1:t=fill,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='CREATIVIDAD':fontcolor=0x9eb4ff:fontsize=26:x=1160:y=650[v1];
+          [2:v]drawbox=x=0:y=0:w=1920:h=1080:color=0x07172b@1:t=fill,drawbox=x=1040:y=180:w=790:h=720:color=0x0c263d@0.8:t=fill,drawbox=x=1040:y=180:w=790:h=720:color=0x2d657e@0.9:t=4,drawbox=x=90:y=60:w=340:h=66:color=0x0c2437@0.95:t=fill,drawbox=x=90:y=60:w=340:h=66:color=0x2d657e@0.9:t=2,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='ARKON':fontcolor=white:fontsize=32:x=118:y=75,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:text='APRENDER  /  CONECTAR  /  TRANSFORMAR':fontcolor=0x76f5db:fontsize=15:x=460:y=83,drawbox=x=90:y=955:w=1740:h=2:color=0x2d657e@0.8:t=fill,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='ARKON  /  EDUCACION PARA LA VIDA':fontcolor=0x91a9c2:fontsize=17:x=100:y=985,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='CONVIVENCIA  -  CIUDADANIA  -  FUTURO':fontcolor=0x91a9c2:fontsize=17:x=1815-tw:y=985,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='03 / 05':fontcolor=0x76f5db:fontsize=26:x=1690:y=225,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='Convivir es':fontcolor=white:fontsize=82:x=140:y=300,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='construir':fontcolor=white:fontsize=86:x=140:y=410,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='comunidad.':fontcolor=0x76f5db:fontsize=82:x=140:y=520,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:text='Respeto, escucha y participacion para crecer juntos.':fontcolor=0xa0b8cf:fontsize=23:x=145:y=680,drawbox=x=1110:y=310:w=650:h=110:color=0x142f45@1:t=fill,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='RESPETO':fontcolor=0x76f5db:fontsize=29:x=1160:y=350,drawbox=x=1110:y=460:w=650:h=110:color=0x142f45@1:t=fill,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='DIALOGO':fontcolor=0x4ccbed:fontsize=29:x=1160:y=500,drawbox=x=1110:y=610:w=650:h=110:color=0x142f45@1:t=fill,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='PARTICIPACION':fontcolor=0x9eb4ff:fontsize=25:x=1160:y=650[v2];
+          [3:v]drawbox=x=0:y=0:w=1920:h=1080:color=0x07172b@1:t=fill,drawbox=x=1040:y=180:w=790:h=720:color=0x0c263d@0.8:t=fill,drawbox=x=1040:y=180:w=790:h=720:color=0x2d657e@0.9:t=4,drawbox=x=90:y=60:w=340:h=66:color=0x0c2437@0.95:t=fill,drawbox=x=90:y=60:w=340:h=66:color=0x2d657e@0.9:t=2,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='ARKON':fontcolor=white:fontsize=32:x=118:y=75,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:text='APRENDER  /  CONECTAR  /  TRANSFORMAR':fontcolor=0x76f5db:fontsize=15:x=460:y=83,drawbox=x=90:y=955:w=1740:h=2:color=0x2d657e@0.8:t=fill,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='ARKON  /  EDUCACION PARA LA VIDA':fontcolor=0x91a9c2:fontsize=17:x=100:y=985,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='CONVIVENCIA  -  CIUDADANIA  -  FUTURO':fontcolor=0x91a9c2:fontsize=17:x=1815-tw:y=985,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='04 / 05':fontcolor=0x76f5db:fontsize=26:x=1690:y=225,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='Habilidades':fontcolor=white:fontsize=78:x=140:y=300,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='para el':fontcolor=white:fontsize=86:x=140:y=410,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='futuro.':fontcolor=0x76f5db:fontsize=86:x=140:y=520,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:text='Comunicacion, colaboracion y solucion de problemas.':fontcolor=0xa0b8cf:fontsize=22:x=145:y=680,drawbox=x=1110:y=310:w=650:h=110:color=0x142f45@1:t=fill,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='COMUNICACION':fontcolor=0x76f5db:fontsize=25:x=1160:y=350,drawbox=x=1110:y=460:w=650:h=110:color=0x142f45@1:t=fill,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='COLABORACION':fontcolor=0x4ccbed:fontsize=25:x=1160:y=500,drawbox=x=1110:y=610:w=650:h=110:color=0x142f45@1:t=fill,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='SOLUCIONES':fontcolor=0x9eb4ff:fontsize=28:x=1160:y=650[v3];
+          [4:v]drawbox=x=0:y=0:w=1920:h=1080:color=0x07172b@1:t=fill,drawbox=x=1040:y=180:w=790:h=720:color=0x0c263d@0.8:t=fill,drawbox=x=1040:y=180:w=790:h=720:color=0x2d657e@0.9:t=4,drawbox=x=90:y=60:w=340:h=66:color=0x0c2437@0.95:t=fill,drawbox=x=90:y=60:w=340:h=66:color=0x2d657e@0.9:t=2,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='ARKON':fontcolor=white:fontsize=32:x=118:y=75,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:text='APRENDER  /  CONECTAR  /  TRANSFORMAR':fontcolor=0x76f5db:fontsize=15:x=460:y=83,drawbox=x=90:y=955:w=1740:h=2:color=0x2d657e@0.8:t=fill,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='ARKON  /  EDUCACION PARA LA VIDA':fontcolor=0x91a9c2:fontsize=17:x=100:y=985,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='CONVIVENCIA  -  CIUDADANIA  -  FUTURO':fontcolor=0x91a9c2:fontsize=17:x=1815-tw:y=985,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='05 / 05':fontcolor=0x76f5db:fontsize=26:x=1690:y=225,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='Aprendemos hoy.':fontcolor=white:fontsize=71:x=140:y=300,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='Transformamos':fontcolor=white:fontsize=72:x=140:y=410,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='manana.':fontcolor=0x76f5db:fontsize=86:x=140:y=520,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:text='Explora, participa y aporta a tu comunidad.':fontcolor=0xa0b8cf:fontsize=26:x=145:y=680,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='ARKON':fontcolor=0x76f5db:fontsize=58:x=1310:y=430,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='APRENDEMOS HOY':fontcolor=white:fontsize=25:x=1200:y=540,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='TRANSFORMAMOS MANANA':fontcolor=0x76f5db:fontsize=22:x=1200:y=590[v4];
+          [v0][v1]xfade=transition=fade:duration=0.8:offset=9.2[x1];
+          [x1][v2]xfade=transition=fade:duration=0.8:offset=18.4[x2];
+          [x2][v3]xfade=transition=fade:duration=0.8:offset=27.6[x3];
+          [x3][v4]xfade=transition=fade:duration=0.8:offset=36.8[x4];
+          [x4]subtitles=subtitles.srt:force_style='FontName=DejaVu Sans,FontSize=25,PrimaryColour=&H00FFFFFF,OutlineColour=&H00101A2A,BorderStyle=3,Outline=1,Shadow=0,MarginV=48',fade=t=out:st=45.3:d=0.7[v];
+          [5:a]loudnorm=I=-18:TP=-1.5:LRA=7,afade=t=in:st=0:d=0.25[a]
+          FILTERS
+
           ffmpeg -hide_banner -loglevel error -y \
-            -loop 1 -framerate 30 -t 10 -i scene1.png \
-            -loop 1 -framerate 30 -t 10 -i scene2.png \
-            -loop 1 -framerate 30 -t 10 -i scene3.png \
-            -loop 1 -framerate 30 -t 10 -i scene4.png \
-            -loop 1 -framerate 30 -t 10 -i scene5.png \
+            -f lavfi -i "color=c=#050d1c:s=1920x1080:r=30:d=10" \
+            -f lavfi -i "color=c=#050d1c:s=1920x1080:r=30:d=10" \
+            -f lavfi -i "color=c=#050d1c:s=1920x1080:r=30:d=10" \
+            -f lavfi -i "color=c=#050d1c:s=1920x1080:r=30:d=10" \
+            -f lavfi -i "color=c=#050d1c:s=1920x1080:r=30:d=10" \
             -i voiceover.mp3 \
-            -filter_complex "[0:v]zoompan=z='min(1+on*0.0002,1.06)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=1920x1080:fps=30,setsar=1,settb=AVTB,setpts=PTS-STARTPTS[v0];[1:v]zoompan=z='min(1.06-on*0.0002,1.06)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=1920x1080:fps=30,setsar=1,settb=AVTB,setpts=PTS-STARTPTS[v1];[2:v]zoompan=z='min(1+on*0.0002,1.06)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=1920x1080:fps=30,setsar=1,settb=AVTB,setpts=PTS-STARTPTS[v2];[3:v]zoompan=z='min(1.06-on*0.0002,1.06)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=1920x1080:fps=30,setsar=1,settb=AVTB,setpts=PTS-STARTPTS[v3];[4:v]zoompan=z='min(1+on*0.0002,1.06)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=1920x1080:fps=30,setsar=1,settb=AVTB,setpts=PTS-STARTPTS[v4];[v0][v1]xfade=transition=fade:duration=0.8:offset=9.2[x1];[x1][v2]xfade=transition=fade:duration=0.8:offset=18.4[x2];[x2][v3]xfade=transition=fade:duration=0.8:offset=27.6[x3];[x3][v4]xfade=transition=fade:duration=0.8:offset=36.8[x4];[x4]subtitles=subtitles.srt:force_style='FontName=DejaVu Sans,FontSize=25,PrimaryColour=&H00FFFFFF,OutlineColour=&H00101A2A,BorderStyle=3,Outline=1,Shadow=0,MarginV=48',fade=t=out:st=45.3:d=0.7[v];[5:a]loudnorm=I=-18:TP=-1.5:LRA=7,afade=t=in:st=0:d=0.25[a]" \
+            -filter_complex_script filters.txt \
             -map "[v]" -map "[a]" -t 46.068 \
-            -c:v libx264 -preset medium -crf 21 -pix_fmt yuv420p \
+            -c:v libx264 -preset veryfast -crf 22 -pix_fmt yuv420p \
             -c:a aac -b:a 192k -movflags +faststart arkon-intro.mp4
 
           test -s arkon-intro.mp4
