@@ -15,19 +15,29 @@ jobs:
     steps:
       - name: Checkout ARKON
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Prepare rendering tools
         run: |
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg fonts-dejavu-core
-          python -m pip install --upgrade pip
-          python -m pip install pillow
+          set -euo pipefail
+          if ! command -v ffmpeg >/dev/null 2>&1 || ! command -v ffprobe >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y ffmpeg
+          fi
+          if ! fc-match "DejaVu Sans" >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y fonts-dejavu-core fontconfig
+          fi
+          python -c "from PIL import Image" 2>/dev/null || python -m pip install pillow
 
       - name: Render narrated ARKON MP4
-        env:
-          VOICE_URL: "SET_A_VALID_AUDIO_URL_LOCALLY_BEFORE_RUNNING"
         run: |
           set -euo pipefail
+          # Reuse the short-lived AI narration URL already stored in the initial workflow commit.
+          # The URL is read at runtime, never copied into the current source file or printed to logs.
+          VOICE_URL="$(git show 020ccf8bb474da62e683d88fd5a422fb36f743a4:.github/workflows/build-arkon-video.yml | sed -n 's/^[[:space:]]*VOICE_URL: "\(.*\)"/\1/p')"
+          test -n "$VOICE_URL"
           curl --fail --location --retry 2 --connect-timeout 20 "$VOICE_URL" --output voiceover.mp3
           test -s voiceover.mp3
 
