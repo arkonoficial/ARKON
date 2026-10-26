@@ -62,9 +62,10 @@ jobs:
               minutes, total = divmod(total, 60_000)
               seconds, millis = divmod(total, 1000)
               return f"{hours:02}:{minutes:02}:{seconds:02},{millis:03}"
-          with open("subtitles.srt", "w", encoding="utf-8") as file:
-              for number, (start, end, text) in enumerate(captions, 1):
-                  file.write(f"{number}\n{stamp(start*duration)} --> {stamp(end*duration)}\n{text}\n\n")
+          with open("arkon-intro.vtt", "w", encoding="utf-8") as file:
+              file.write("WEBVTT\\n\\n")
+              for start, end, text in captions:
+                  file.write(f"{stamp(start*duration).replace(',', '.')} --> {stamp(end*duration).replace(',', '.')}\\n{text}\\n\\n")
           PY
 
           cat > filters.txt <<'FILTERS'
@@ -77,7 +78,7 @@ jobs:
           [x1][v2]xfade=transition=fade:duration=0.8:offset=18.4[x2];
           [x2][v3]xfade=transition=fade:duration=0.8:offset=27.6[x3];
           [x3][v4]xfade=transition=fade:duration=0.8:offset=36.8[x4];
-          [x4]subtitles=subtitles.srt:force_style='FontName=DejaVu Sans,FontSize=25,PrimaryColour=&H00FFFFFF,OutlineColour=&H00101A2A,BorderStyle=3,Outline=1,Shadow=0,MarginV=48',fade=t=out:st=45.3:d=0.7[v];
+          [x4]fade=t=out:st=45.3:d=0.7[v];
           [5:a]loudnorm=I=-18:TP=-1.5:LRA=7,afade=t=in:st=0:d=0.25[a]
           FILTERS
           sed -i -e "s/offset=9.2/offset=$O1/g" -e "s/offset=18.4/offset=$O2/g" -e "s/offset=27.6/offset=$O3/g" -e "s/offset=36.8/offset=$O4/g" -e "s/fade=t=out:st=45.3:d=0.7/fade=t=out:st=$FADE_START:d=0.5/" filters.txt
@@ -100,6 +101,6 @@ jobs:
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add arkon-intro.mp4 arkon-intro-poster.jpg
+          git add arkon-intro.mp4 arkon-intro-poster.jpg arkon-intro.vtt
           git commit -m "Add narrated ARKON intro MP4"
           git push
