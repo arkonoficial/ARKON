@@ -880,6 +880,76 @@ p, .lead, .card p, .detail-panel li, .source-item p, .principle p {
 }
 ::selection { color: #04111C; background: #5EEAD4; }
 
+
+/* ARKON premium night redesign: strong visible contrast, layered surfaces, teal glow */
+:root {
+ color-scheme: dark;
+ --site-primary:#2DD4BF;
+ --site-secondary:#5EEAD4;
+ --site-background:#050B16;
+ --site-on-primary:#042A2B;
+ --site-on-secondary:#042A2B;
+ --site-on-background:#F0F7FF;
+ --ink:#F0F7FF;
+ --muted:#AABBD0;
+ --surface:#0D192B;
+ --surface-soft:#12243A;
+ --border:#263D56;
+ --shadow:0 22px 60px rgba(0,0,0,.34);
+ --teal-ink:#5EEAD4;
+ --hover-accent:#5EEAD4;
+}
+html,body { background:#050B16; color:#F0F7FF; }
+body {
+ background:
+  radial-gradient(ellipse at 50% -18%, rgba(20,184,166,.23), transparent 42rem),
+  radial-gradient(ellipse at 100% 22%, rgba(37,99,235,.15), transparent 36rem),
+  radial-gradient(ellipse at 0% 62%, rgba(13,148,136,.09), transparent 34rem),
+  linear-gradient(180deg,#050B16 0%,#081322 48%,#050B16 100%);
+ background-attachment:fixed;
+}
+#app {
+ color:#F0F7FF;
+ background:
+  radial-gradient(ellipse at 50% 0%,rgba(20,184,166,.06),transparent 45rem),
+  linear-gradient(180deg,rgba(5,11,22,.98),rgba(8,19,34,.99) 48%,#050B16 100%);
+}
+header {
+ background:rgba(5,11,22,.88);
+ border-bottom:1px solid rgba(94,234,212,.16);
+ box-shadow:0 8px 30px rgba(0,0,0,.16);
+}
+.topline { height:4px; background:linear-gradient(90deg,#0F766E,#2DD4BF 48%,#60A5FA 78%,#2DD4BF); }
+.brand-mark {
+ background:linear-gradient(145deg,#2DD4BF,#0F766E);
+ color:#042A2B;
+ box-shadow:0 0 28px rgba(45,212,191,.22);
+}
+.nav button { color:#AABBD0; }
+.nav button:hover,.nav button.active { color:#5EEAD4; background:rgba(45,212,191,.10); }
+.icon-btn { background:rgba(15,29,48,.9); border-color:#29445C; }
+.eyebrow { color:#5EEAD4; }
+.eyebrow-dot { background:#5EEAD4; box-shadow:0 0 0 4px rgba(45,212,191,.13),0 0 18px rgba(45,212,191,.45); }
+h1,h2,h3,h4 { color:#F0F7FF; }
+p,.lead { color:#AABBD0; }
+.btn-primary { background:linear-gradient(135deg,#5EEAD4,#2DD4BF); color:#042A2B; box-shadow:0 8px 28px rgba(45,212,191,.18); }
+.btn-primary:hover { box-shadow:0 12px 34px rgba(45,212,191,.28); }
+.card,.detail-panel,.challenge-question,.source-item,.principle,.feature-strip,.search-panel,.mini-stat {
+ background:linear-gradient(145deg,rgba(17,35,56,.96),rgba(10,23,39,.98));
+ border-color:rgba(115,151,183,.22);
+ box-shadow:0 18px 45px rgba(0,0,0,.18);
+}
+.card:hover,.feature-strip:hover,.principle:hover {
+ border-color:rgba(94,234,212,.42);
+ box-shadow:0 20px 48px rgba(0,0,0,.26),0 0 0 1px rgba(45,212,191,.05);
+}
+input,select,textarea { background:#0A1728; color:#F0F7FF; border-color:#29445C; }
+::selection { background:#5EEAD4; color:#042A2B; }
+a { color:#5EEAD4; }
+@media (prefers-reduced-motion:no-preference) {
+ .btn-primary { transition:transform .2s ease,box-shadow .2s ease; }
+}
+
 </style>
   <!-- ARKON: publicación actualizada 2026-10-24 -->
 <style id="arkon-animated-background">
