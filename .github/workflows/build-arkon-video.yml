@@ -16,56 +16,45 @@ jobs:
   render:
     if: ${{ !contains(github.event.head_commit.message, '[cleanup-video-source]') }}
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 12
     steps:
       - name: Checkout ARKON
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 1
 
-      - name: Check built-in rendering tools
+      - name: Install rendering and neural voice tools
         run: |
           set -euo pipefail
-          command -v ffmpeg
-          command -v ffprobe
-          test -f /usr/share/fonts/truetype/dejavu/DejaVuSans.ttf
-          test -f /usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg fonts-dejavu-core fontconfig
+          python -m pip install --upgrade pip edge-tts
 
       - name: Render narrated ARKON MP4
         run: |
           set -euo pipefail
-          # Read the old short-lived narration URL only at runtime; never print or re-commit it.
-          VOICE_URL="$(git show 020ccf8bb474da62e683d88fd5a422fb36f743a4:.github/workflows/build-arkon-video.yml | sed -n 's/^[[:space:]]*VOICE_URL: "\(.*\)"/\1/p')"
-          test -n "$VOICE_URL"
-          curl --fail --location --retry 2 --connect-timeout 20 "$VOICE_URL" --output voiceover.mp3
-          test -s voiceover.mp3
-
-          cat > subtitles.srt <<'SRT'
-          1
-          00:00:00,250 --> 00:00:04,050
-          Bienvenido a ARKON.
-
-          2
-          00:00:04,050 --> 00:00:13,600
-          Un espacio para aprender, conectar ideas y construir un mejor futuro.
-
-          3
-          00:00:13,600 --> 00:00:25,300
-          Aqui fortalecemos la convivencia, la ciudadania y las habilidades
-          que nos preparan para trabajar en equipo.
-
-          4
-          00:00:25,300 --> 00:00:35,150
-          Resolver problemas y aportar a nuestra comunidad.
-
-          5
-          00:00:35,150 --> 00:00:41,750
-          Explora, participa y convierte el conocimiento en accion.
-
-          6
-          00:00:41,750 --> 00:00:46,050
-          ARKON: aprendemos hoy, transformamos manana.
-          SRT
+          SCRIPT="Bienvenido a ARKON. Un espacio para aprender, conectar ideas y construir un mejor futuro. Aquí fortalecemos la convivencia, la ciudadanía y las habilidades que nos preparan para trabajar en equipo, resolver problemas y aportar a nuestra comunidad. Explora, participa y convierte el conocimiento en acción. ARKON: aprendemos hoy, transformamos mañana."
+          python -m edge_tts --voice es-CO-GonzaloNeural           python - "$DURATION" <<'PY'
+          import sys
+          duration = float(sys.argv[1])
+          captions = [
+              (0.00, 0.07, "Bienvenido a ARKON."),
+              (0.07, 0.27, "Un espacio para aprender, conectar ideas y construir un mejor futuro."),
+              (0.27, 0.56, "Aqui fortalecemos la convivencia, la ciudadania y las habilidades\nque nos preparan para trabajar en equipo."),
+              (0.56, 0.71, "Resolver problemas y aportar a nuestra comunidad."),
+              (0.71, 0.89, "Explora, participa y convierte el conocimiento en accion."),
+              (0.89, 1.00, "ARKON: aprendemos hoy, transformamos manana."),
+          ]
+          def stamp(seconds):
+              total = max(0, round(seconds * 1000))
+              hours, total = divmod(total, 3_600_000)
+              minutes, total = divmod(total, 60_000)
+              seconds, millis = divmod(total, 1000)
+              return f"{hours:02}:{minutes:02}:{seconds:02},{millis:03}"
+          with open("subtitles.srt", "w", encoding="utf-8") as file:
+              for number, (start, end, text) in enumerate(captions, 1):
+                  file.write(f"{number}\n{stamp(start*duration)} --> {stamp(end*duration)}\n{text}\n\n")
+          PY
 
           cat > filters.txt <<'FILTERS'
           [0:v]drawbox=x=0:y=0:w=1920:h=1080:color=0x07172b@1:t=fill,drawbox=x=1040:y=180:w=790:h=720:color=0x0c263d@0.8:t=fill,drawbox=x=1040:y=180:w=790:h=720:color=0x2d657e@0.9:t=4,drawbox=x=90:y=60:w=340:h=66:color=0x0c2437@0.95:t=fill,drawbox=x=90:y=60:w=340:h=66:color=0x2d657e@0.9:t=2,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='ARKON':fontcolor=white:fontsize=32:x=118:y=75,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:text='APRENDER  /  CONECTAR  /  TRANSFORMAR':fontcolor=0x76f5db:fontsize=15:x=460:y=83,drawbox=x=90:y=955:w=1740:h=2:color=0x2d657e@0.8:t=fill,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='ARKON  /  EDUCACION PARA LA VIDA':fontcolor=0x91a9c2:fontsize=17:x=100:y=985,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='CONVIVENCIA  -  CIUDADANIA  -  FUTURO':fontcolor=0x91a9c2:fontsize=17:x=1815-tw:y=985,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='01 / 05':fontcolor=0x76f5db:fontsize=26:x=1690:y=225,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='Aprende.':fontcolor=white:fontsize=86:x=140:y=300,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='Conecta.':fontcolor=white:fontsize=86:x=140:y=410,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='Transforma.':fontcolor=0x76f5db:fontsize=86:x=140:y=520,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf:text='Ideas que se convierten en acciones.':fontcolor=0xa0b8cf:fontsize=28:x=145:y=680,drawbox=x=1110:y=310:w=650:h=110:color=0x142f45@1:t=fill,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='DESCUBRE':fontcolor=0x76f5db:fontsize=30:x=1160:y=350,drawbox=x=1110:y=460:w=650:h=110:color=0x142f45@1:t=fill,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='CONECTA':fontcolor=0x4ccbed:fontsize=30:x=1160:y=500,drawbox=x=1110:y=610:w=650:h=110:color=0x142f45@1:t=fill,drawtext=fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf:text='CREA':fontcolor=0x9eb4ff:fontsize=30:x=1160:y=650[v0];
@@ -81,15 +70,16 @@ jobs:
           [5:a]loudnorm=I=-18:TP=-1.5:LRA=7,afade=t=in:st=0:d=0.25[a]
           FILTERS
 
+          sed -i -e "s/offset=9.2/offset=$O1/g" -e "s/offset=18.4/offset=$O2/g" -e "s/offset=27.6/offset=$O3/g" -e "s/offset=36.8/offset=$O4/g" filters.txt
           ffmpeg -hide_banner -loglevel error -y \
-            -f lavfi -i "color=c=#050d1c:s=1920x1080:r=30:d=10" \
-            -f lavfi -i "color=c=#050d1c:s=1920x1080:r=30:d=10" \
-            -f lavfi -i "color=c=#050d1c:s=1920x1080:r=30:d=10" \
-            -f lavfi -i "color=c=#050d1c:s=1920x1080:r=30:d=10" \
-            -f lavfi -i "color=c=#050d1c:s=1920x1080:r=30:d=10" \
+            -f lavfi -i "color=c=#050d1c:s=1920x1080:r=30:d=$SEGMENT" \
+            -f lavfi -i "color=c=#050d1c:s=1920x1080:r=30:d=$SEGMENT" \
+            -f lavfi -i "color=c=#050d1c:s=1920x1080:r=30:d=$SEGMENT" \
+            -f lavfi -i "color=c=#050d1c:s=1920x1080:r=30:d=$SEGMENT" \
+            -f lavfi -i "color=c=#050d1c:s=1920x1080:r=30:d=$SEGMENT" \
             -i voiceover.mp3 \
             -filter_complex_script filters.txt \
-            -map "[v]" -map "[a]" -t 46.068 \
+            -map "[v]" -map "[a]" -t "$DURATION" \
             -c:v libx264 -preset veryfast -crf 22 -pix_fmt yuv420p \
             -c:a aac -b:a 192k -movflags +faststart arkon-intro.mp4
 
