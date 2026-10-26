@@ -818,6 +818,18 @@ dialog#survey-questions-dialog { width:min(940px,calc(100vw - 24px)); max-height
   }
 }
 
+
+/* Subtítulos opcionales, más discretos y pequeños */
+#arkon-video-real .arkon-video-player::cue {
+  font-size: 72%;
+  color: #ffffff;
+  background-color: rgba(3, 12, 25, 0.82);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+#arkon-video-real .arkon-video-player::-webkit-media-text-track-container {
+  font-size: 72%;
+}
+
 </style>
   <!-- ARKON: publicación actualizada 2026-10-24 -->
 <style id="arkon-animated-background">
@@ -940,15 +952,16 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
         <div class="arkon-video-player-wrap">
           <video class="arkon-video-player" controls playsinline preload="metadata"
             poster="./arkon-intro-poster.jpg"
-            aria-label="Video de bienvenida a ARKON, con narración neural masculina colombiana y subtítulos integrados.">
+            aria-label="Video de bienvenida a ARKON. Los subtítulos en español se pueden activar o desactivar desde los controles del reproductor.">
             <source src="./arkon-intro.mp4" type="video/mp4">
+            <track src="./arkon-intro.vtt" kind="captions" srclang="es" label="Español">
             Tu navegador no admite la reproducción de video HTML5.
           </video>
         </div>
         <div class="arkon-video-meta">
           <div class="arkon-video-specs">
             <span>▶ Narración neural en español</span>
-            <span>CC Subtítulos integrados</span>
+            <span>CC Subtítulos opcionales</span>
             <span>1080p · 24 s</span>
           </div>
           <a class="arkon-video-download" href="./arkon-intro.mp4" download="ARKON-video-de-bienvenida.mp4">
