@@ -599,8 +599,54 @@ dialog#survey-questions-dialog { width:min(940px,calc(100vw - 24px)); max-height
 
 </style>
   <!-- ARKON: publicación actualizada 2026-10-24 -->
+<style id="arkon-animated-background">
+/* ARKON: fondo ambiental animado, discreto y accesible */
+html { background: #e8f0fb; }
+body { position: relative; isolation: isolate; background: #e8f0fb !important; }
+#arkon-ambient {
+  position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none;
+  background: linear-gradient(135deg, #e8f0fb 0%, #eaf5fb 48%, #e7edfc 100%);
+}
+#arkon-ambient::before, #arkon-ambient::after {
+  content: ""; position: absolute; width: min(68vw, 760px); height: min(68vw, 760px);
+  border-radius: 50%; filter: blur(58px); opacity: .55; will-change: transform;
+}
+#arkon-ambient::before {
+  left: -15%; top: -28%;
+  background: radial-gradient(circle at 38% 42%, rgba(20,184,166,.52), rgba(69,145,226,.23) 42%, transparent 72%);
+  animation: arkonFloatOne 22s ease-in-out infinite alternate;
+}
+#arkon-ambient::after {
+  right: -18%; bottom: -35%;
+  background: radial-gradient(circle at 45% 45%, rgba(93,119,220,.42), rgba(74,183,211,.24) 44%, transparent 72%);
+  animation: arkonFloatTwo 27s ease-in-out infinite alternate;
+}
+#app {
+  position: relative; z-index: 1;
+  background: linear-gradient(180deg, rgba(232,240,251,.60), rgba(238,244,252,.68) 45%, rgba(228,237,249,.72)) !important;
+}
+.topline { position: relative; z-index: 2; }
+@keyframes arkonFloatOne {
+  0% { transform: translate3d(0,0,0) scale(1); }
+  50% { transform: translate3d(15vw,12vh,0) scale(1.12); }
+  100% { transform: translate3d(7vw,25vh,0) scale(.94); }
+}
+@keyframes arkonFloatTwo {
+  0% { transform: translate3d(0,0,0) scale(1); }
+  50% { transform: translate3d(-14vw,-12vh,0) scale(1.08); }
+  100% { transform: translate3d(-8vw,-22vh,0) scale(.96); }
+}
+@media (max-width: 600px) {
+  #arkon-ambient::before, #arkon-ambient::after { width: 105vw; height: 105vw; filter: blur(44px); opacity: .48; }
+  #app { background: linear-gradient(180deg, rgba(232,240,251,.54), rgba(238,244,252,.64) 45%, rgba(228,237,249,.68)) !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #arkon-ambient::before, #arkon-ambient::after { animation: none; }
+}
+</style>
 </head>
 <body>
+<div id="arkon-ambient" aria-hidden="true"></div>
 <div class="topline" aria-hidden="true"></div>
 <div id="app" data-sites-preview-theme="custom">
   <header>
