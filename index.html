@@ -1658,6 +1658,23 @@ document.getElementById('featured-articles').innerHTML=[articles[0],articles[2],
 <script type="application/json" data-sites-preview-theme>{"appearance":"custom","primary":"#183B70","secondary":"#14B8A6","background":"#E8F0FB","typography":"modern","spacing":null,"roundness":null,"headingScale":1,"decorationOpacity":1}</script>
 <!--sites-preview-theme:end-->
 
+<style id="arkon-white-bubbles">
+  :root {
+    --surface: #FFFFFF !important;
+    --surface-soft: #F1F5F9 !important;
+    --border: #D8E2EF !important;
+    --ink: #172841 !important;
+    --muted: #5D6D82 !important;
+    --teal-ink: #087F75 !important;
+  }
+  .card, .challenge-question, .answer-btn, .search-panel, .mini-stat,
+  .detail-panel, .check-item, .source-item, .principle, .credits-note,
+  .credit-card, .empty-state, .icon-btn, .dialog-content {
+    color: var(--ink);
+  }
+</style>
+
+
 <script id="arkon-cinema-script">
 (function(){
   const root = document.getElementById('arkon-cinema');
