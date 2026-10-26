@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   render:
-    if: github.event.head_commit.message != '[cleanup-video-source]'
+    if: !contains(github.event.head_commit.message, '[cleanup-video-source]')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout ARKON
