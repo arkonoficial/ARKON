@@ -941,6 +941,33 @@ a { color:#5EEAD4; }
  .btn-primary { transition:transform .2s ease,box-shadow .2s ease; }
 }
 
+
+/* ARKON: tarjetas claras y fondo suave, sin modificar el contenido */
+:root {
+  color-scheme: light;
+  --ink: #183047;
+  --muted: #607286;
+  --surface: #FFFFFF;
+  --surface-soft: #F0F5F8;
+  --border: #DCE6EC;
+  --site-on-background: #183047;
+  --teal-ink: #087F75;
+}
+body {
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 12% 0%, rgba(20,184,166,.13), transparent 34rem),
+    radial-gradient(ellipse at 92% 18%, rgba(37,99,235,.09), transparent 38rem),
+    linear-gradient(180deg, #EAF0F3 0%, #F3F6F8 52%, #E7EEF2 100%);
+  background-attachment: fixed;
+}
+#app {
+  color: var(--ink);
+  background: transparent;
+}
+header { background: rgba(255,255,255,.94); }
+.nav button:hover, .nav button.active { color: #0F766E; background: #DDF5EF; }
+
 </style>
   <!-- ARKON: publicación actualizada 2026-10-24 -->
 <style id="arkon-animated-background">
