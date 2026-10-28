@@ -1908,7 +1908,12 @@ body { background-image:linear-gradient(135deg,var(--arkon-bg-a),var(--arkon-bg-
  #app .nav button:hover, #app .nav button.active {
   color:#FFFFFF !important; background:var(--arkon-accent) !important;
  }
- #app .nav button { min-height:44px; }
+ #app .nav.open {
+  display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  grid-auto-rows:min-content !important; align-content:start !important; gap:6px 8px !important;
+  max-height:calc(100vh - 90px) !important; overflow-y:auto !important;
+ }
+ #app .nav button { min-height:44px; height:auto; }
 }
 #arkon-theme-button {
  position:fixed; right:16px; bottom:16px; z-index:10000;
