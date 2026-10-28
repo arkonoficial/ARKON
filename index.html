@@ -2068,165 +2068,65 @@ body { background-image:linear-gradient(135deg,var(--arkon-bg-a),var(--arkon-bg-
 
 
 <style id="arkon-skills-contrast-fix">
-/* Contraste fijo para Habilidades laborales: la paleta elegida solo aporta acentos. */
+/* Mantener fondos y paletas originales; fijar el texto en negro para legibilidad. */
 #app #page-habilidades .card,
 #app #page-habilidades .detail-panel,
-#app #page-habilidades .side-card {
-  background:#142333 !important;
-  color:#F3F7FB !important;
-  border-color:#40566B !important;
-  box-shadow:0 12px 28px rgba(0,0,0,.16) !important;
+#app #page-habilidades .side-card,
+#quiz-dialog,
+#quiz-dialog .dialog-content,
+#quiz-dialog .dialog-body {
+  color:#000000 !important;
 }
+#app #page-habilidades .card h1,
 #app #page-habilidades .card h2,
 #app #page-habilidades .card h3,
 #app #page-habilidades .card h4,
+#app #page-habilidades .card p,
+#app #page-habilidades .card .card-bottom,
+#app #page-habilidades .card strong,
+#app #page-habilidades .detail-panel h1,
 #app #page-habilidades .detail-panel h2,
 #app #page-habilidades .detail-panel h3,
 #app #page-habilidades .detail-panel h4,
-#app #page-habilidades .card strong {
-  color:#FFFFFF !important;
-  opacity:1 !important;
-}
-#app #page-habilidades .card p,
-#app #page-habilidades .card .card-bottom,
 #app #page-habilidades .detail-panel p,
 #app #page-habilidades .detail-panel li,
 #app #page-habilidades .detail-panel span:not(.card-icon),
 #app #page-habilidades .progress-summary,
-#app #page-habilidades .progress-summary span {
-  color:#D8E2EC !important;
+#app #page-habilidades .progress-summary span,
+#app #page-habilidades .check-item span,
+#app #page-habilidades .notice p,
+#app #page-habilidades .notice strong,
+#app #page-habilidades .back-button,
+#app #page-habilidades a,
+#app #page-habilidades .text-link,
+#app #page-habilidades .pill,
+#app #page-habilidades .btn-primary,
+#app #page-habilidades .btn-quiet {
+  color:#000000 !important;
   opacity:1 !important;
-}
-#app #page-habilidades .tag,
-#app #page-habilidades .arrow-circle,
-#app #page-habilidades .card-icon,
-#app #page-habilidades .step-no,
-#app #page-habilidades .pill {
-  background:#263B4E !important;
-  color:#F4F8FC !important;
-  border-color:#526A80 !important;
-}
-#app #page-habilidades .card.interactive:hover,
-#app #page-habilidades .card:hover {
-  background:#1C3548 !important;
-  border-color:#69DCC9 !important;
-  box-shadow:0 14px 30px rgba(0,0,0,.22) !important;
 }
 #app #page-habilidades .card:hover h3,
 #app #page-habilidades .card:hover p,
 #app #page-habilidades .card:hover .card-bottom {
-  color:#FFFFFF !important;
+  color:#000000 !important;
 }
-#app #page-habilidades .back-button,
-#app #page-habilidades a,
-#app #page-habilidades .text-link {
-  color:#76E7D4 !important;
-}
-#app #page-habilidades .notice {
-  background:#263344 !important;
-  border-color:#D9B765 !important;
-}
-#app #page-habilidades .notice p,
-#app #page-habilidades .notice strong {
-  color:#FFF0C7 !important;
-  opacity:1 !important;
-}
-#app #page-habilidades .check-item,
-#app #page-habilidades .pill {
-  background:#1B2D3F !important;
-  color:#F0F5FA !important;
-  border-color:#40566B !important;
-}
-#app #page-habilidades .check-item span {
-  color:#E3EAF1 !important;
-}
-#app #page-habilidades .progress-shell {
-  background:#35495D !important;
-}
-#app #page-habilidades .progress-fill {
-  background:#4DD7BF !important;
-}
-#app #page-habilidades .btn-primary,
-#app #page-habilidades .btn-primary:hover {
-  background:#087F75 !important;
-  color:#FFFFFF !important;
-  border-color:#5AE0CB !important;
-}
-#app #page-habilidades .btn-quiet {
-  background:#26394C !important;
-  color:#FFFFFF !important;
-  border-color:#526A80 !important;
-}
-/* Reto y respuestas: conservar legibilidad aunque cambie cualquier tema. */
-#quiz-dialog {
-  background:#142333 !important;
-  color:#F3F7FB !important;
-  border-color:#40566B !important;
-}
-#quiz-dialog .dialog-content,
-#quiz-dialog .dialog-body {
-  background:#142333 !important;
-  color:#E0E8F0 !important;
-}
+/* El reto conserva su fondo original; solo se fija la tipografía negra. */
+#quiz-dialog h1,
 #quiz-dialog h2,
 #quiz-dialog h3,
-#quiz-dialog strong {
-  color:#FFFFFF !important;
-  opacity:1 !important;
-}
+#quiz-dialog p,
+#quiz-dialog strong,
 #quiz-dialog .eyebrow,
-#quiz-dialog .quiz-progress {
-  color:#80EBD9 !important;
-  opacity:1 !important;
-}
-#quiz-dialog .answer-btn {
-  background:#203548 !important;
-  color:#F5F8FB !important;
-  border-color:#526A80 !important;
-  opacity:1 !important;
-}
+#quiz-dialog .quiz-progress,
+#quiz-dialog .answer-btn,
 #quiz-dialog .answer-btn span,
-#quiz-dialog .answer-btn .letter {
-  color:#FFFFFF !important;
-  opacity:1 !important;
-}
-#quiz-dialog .answer-btn .letter {
-  background:#314B60 !important;
-}
-#quiz-dialog .answer-btn:hover,
-#quiz-dialog .answer-btn:focus-visible {
-  background:#2D4A5F !important;
-  border-color:#70E7D3 !important;
-}
-#quiz-dialog .answer-btn.correct {
-  background:#17463D !important;
-  border-color:#4DD7A8 !important;
-}
-#quiz-dialog .answer-btn.wrong {
-  background:#512F36 !important;
-  border-color:#F18D8D !important;
-}
-#quiz-dialog .quiz-result {
-  background:#203548 !important;
-  color:#F3F7FB !important;
-  border:1px solid #526A80 !important;
-}
-#quiz-dialog .quiz-result p {
-  color:#E0E8F0 !important;
-  opacity:1 !important;
-}
-#quiz-dialog .btn-quiet {
-  background:#26394C !important;
-  color:#FFFFFF !important;
-  border-color:#526A80 !important;
-}
+#quiz-dialog .answer-btn .letter,
+#quiz-dialog .quiz-result,
+#quiz-dialog .quiz-result p,
+#quiz-dialog .btn-quiet,
 #quiz-dialog .dialog-close {
-  background:#26394C !important;
-  color:#FFFFFF !important;
-  border-color:#526A80 !important;
-}
-#quiz-dialog::backdrop {
-  background:rgba(2,8,15,.78) !important;
+  color:#000000 !important;
+  opacity:1 !important;
 }
 </style>
 
