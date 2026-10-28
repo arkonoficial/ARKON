@@ -2270,5 +2270,89 @@ dialog .dialog-body li,
   color: var(--arkon-ink) !important;
 }
 </style>
+
+<style id="arkon-final-readable-text">
+/* Solo mejora la legibilidad del texto. Conserva intactos fondos, tarjetas y paletas. */
+#app .page :is(h1,h2,h3,h4) {
+  color:var(--arkon-ink) !important;
+  opacity:1 !important;
+  text-shadow:none !important;
+}
+#app .page :is(p,li,small,.lead,.card-bottom,.tag,.mini-stat,.source-meta,
+  .progress-summary,.feedback,.pill,.back-button,.credit-role,.credit-photo-status,
+  .subject-title-wrap small,.dialog-body) {
+  color:var(--arkon-muted) !important;
+  opacity:1 !important;
+  text-shadow:none !important;
+}
+#app .page :is(strong,summary,label) {
+  color:var(--arkon-ink) !important;
+  opacity:1 !important;
+  text-shadow:none !important;
+}
+#app .page span:not(.eyebrow):not(.eyebrow-dot):not(.card-icon):not(.step-no)
+  :not(.source-number):not(.arrow-circle):not(.notice-icon):not(.project-kicker)
+  :not(.credit-number):not(.credit-symbol) {
+  color:var(--arkon-ink) !important;
+  opacity:1 !important;
+  text-shadow:none !important;
+}
+#app .page .check-item span,
+#app .page .progress-summary,
+#app .page .progress-summary span,
+#app .page .detail-panel p,
+#app .page .detail-panel li,
+#app .page .step-card p,
+#app .page .page-intro p,
+#app .page .section-head p,
+#app .page .contact-card span {
+  color:var(--arkon-muted) !important;
+  opacity:1 !important;
+  text-shadow:none !important;
+}
+/* Las tareas marcadas siguen distinguiéndose, sin volver tenue su texto. */
+#app .page .check-item:has(input:checked) span {
+  color:var(--arkon-ink) !important;
+  opacity:1 !important;
+}
+/* Avisos con fondo propio mantienen texto oscuro y legible. */
+#app .page .notice p,
+#app .page .notice p strong {
+  color:var(--arkon-ink) !important;
+  opacity:1 !important;
+}
+/* Mantener texto claro sobre los banners oscuros, sin tocar sus fondos. */
+#app .page .hero :is(h1,h2,h3,h4,p,span,strong,small,a,.hero-note),
+#app .page .project-question-hero :is(h1,h2,h3,h4,p,span,strong,small,a),
+#app .page .credits-hero :is(h1,h2,h3,h4,p,span,strong,small,a),
+#app .page .question-map-hero :is(h1,h2,h3,h4,p,span,strong,small,a) {
+  color:#FFFFFF !important;
+  opacity:1 !important;
+  text-shadow:none !important;
+}
+#app .page .hero .eyebrow,
+#app .page .project-question-hero .project-kicker,
+#app .page .credits-hero .eyebrow,
+#app .page .question-map-hero .question-map-kicker {
+  color:#B9F5E9 !important;
+  opacity:1 !important;
+}
+#app .page .hero .hero-note .check {
+  color:#062E2A !important;
+  opacity:1 !important;
+}
+/* Texto del pie y de las ventanas de actividad. */
+#app .footer-brand { color:var(--arkon-ink) !important; opacity:1 !important; }
+#app .footer p, #app .footer-links button {
+  color:var(--arkon-muted) !important;
+  opacity:1 !important;
+  text-shadow:none !important;
+}
+dialog :is(h1,h2,h3,h4,p,li,small,strong,span,.quiz-progress,.quiz-result,.dialog-body) {
+  opacity:1 !important;
+  text-shadow:none !important;
+}
+</style>
+
 </body>
 </html>
