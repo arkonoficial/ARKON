@@ -1044,6 +1044,28 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
 
   <main id="main-content" class="shell">
     <section class="page active" id="page-inicio" aria-labelledby="home-title">
+
+      <section class="arkon-audio-guide" id="arkon-audio-guide" aria-labelledby="arkon-audio-title">
+        <div class="arkon-audio-icon" aria-hidden="true">♫</div>
+        <div class="arkon-audio-copy">
+          <span class="arkon-audio-kicker">GUÍA DE BIENVENIDA</span>
+          <h2 id="arkon-audio-title">Escucha cómo usar ARKON</h2>
+          <p>Una guía breve para recorrer las asignaturas, las habilidades laborales y la sección de desastres.</p>
+          <audio id="arkonNarrationAudio" controls preload="metadata" aria-label="Narración de bienvenida y uso de ARKON">
+            <source src="https://storage.googleapis.com/xi-backend/database/workspace/b75a16ed3a6d44d0924b33ece76c892f/content_generation/yz6zyLrGwhcQ2cEUj5sP/73mJmtvJruIiLWqB4c9S/content.mp3?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=xi-backend-prod%40xi-labs.iam.gserviceaccount.com%2F20261028%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20261028T212225Z&X-Goog-Expires=7200&X-Goog-SignedHeaders=host&X-Goog-Signature=4cf2db43ad424c656be5902fa9e4da3ca5daf7766c4801d58c145488511d54dd44375fabc8389a8302ea5b86b0ff669f48a35d371e401e4ba5edee1eadafdaa25b1d2e8d98b8e7aec458d54a47ed5084b9e2c6dacfc84a151f48d14fa3d96e7d1e9ed8d7cb0b283e9e80622f1d73748059cdd8b42f1665b07003e37181c28bb35c9d28e2e0806734ac97c2443609c3a3388590e1014e6806468e4c7fdeb975f4283693e1ec15d824c81ae7d738e1941d953cc2cc0cebe2087d2293107fd4b381ef70309134af71bacb30068340ac9c54497d4cd81dae640fe0cb6465fc507" type="audio/mpeg">
+            Tu navegador no pudo cargar el audio.
+          </audio>
+          <div class="arkon-audio-actions">
+            <button class="btn btn-secondary btn-small" id="arkonBrowserVoice" type="button">▶ Escuchar guía alternativa</button>
+            <span id="arkonAudioStatus" role="status" aria-live="polite">Puedes pausar o adelantar la narración con los controles.</span>
+          </div>
+          <details class="arkon-transcript">
+            <summary>Leer la narración</summary>
+            <p>Bienvenido a ARKON, una plataforma educativa creada para aprender de forma sencilla e interactiva. Para comenzar, entra en Inicio y conoce el propósito de la página. Después, abre el menú de navegación para explorar las asignaturas y selecciona una ficha para leer su contenido. En la sección de Habilidades Laborales encontrarás competencias importantes y retos que te ayudan a poner en práctica lo aprendido. En Desastres podrás consultar información y recomendaciones para saber cómo actuar de manera segura ante distintas emergencias. También puedes visitar la Pregunta Problematizadora para conocer el tema central que conecta el proyecto. Recorre cada sección con calma, lee las fichas y utiliza los botones disponibles para descubrir más información. ¡Gracias por visitar ARKON! Explora, participa y sigue aprendiendo.</p>
+          </details>
+        </div>
+      </section>
+
       <div class="hero">
         <div>
           <span class="eyebrow"><span class="eyebrow-dot"></span> Habilidades que te preparan</span>
@@ -2351,6 +2373,62 @@ dialog :is(h1,h2,h3,h4,p,li,small,strong,span,.quiz-progress,.quiz-result,.dialo
   text-shadow:none !important;
 }
 </style>
+
+<style id="arkon-audio-guide-style">
+#page-inicio .arkon-audio-guide {
+  display:grid; grid-template-columns:54px minmax(0,1fr); gap:18px;
+  align-items:start; margin:0 0 24px; padding:24px;
+  border:1px solid var(--border); border-radius:22px;
+  background:var(--surface); box-shadow:var(--shadow);
+}
+#page-inicio .arkon-audio-icon {
+  width:54px;height:54px;display:grid;place-items:center;border-radius:17px;
+  background:var(--site-secondary);color:#062E2A;font-size:1.65rem;font-weight:900;
+}
+#page-inicio .arkon-audio-kicker {display:block;color:var(--site-secondary);font-size:.72rem;font-weight:900;letter-spacing:.12em;margin:0 0 7px}
+#page-inicio .arkon-audio-copy h2 {font-size:clamp(1.35rem,2.6vw,1.9rem);margin:0 0 7px;color:var(--ink);letter-spacing:-.03em}
+#page-inicio .arkon-audio-copy p {margin:0 0 14px;color:var(--muted);line-height:1.65}
+#page-inicio #arkonNarrationAudio {display:block;width:100%;max-width:720px;margin:12px 0}
+#page-inicio .arkon-audio-actions {display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+#page-inicio #arkonAudioStatus {font-size:.8rem;color:var(--muted)}
+#page-inicio .arkon-transcript {margin-top:15px;border-top:1px solid var(--border);padding-top:12px}
+#page-inicio .arkon-transcript summary {cursor:pointer;font-weight:800;color:var(--ink)}
+#page-inicio .arkon-transcript p {margin:10px 0 0;font-size:.9rem}
+@media(max-width:600px){#page-inicio .arkon-audio-guide{grid-template-columns:1fr;padding:18px;gap:12px}#page-inicio .arkon-audio-icon{width:46px;height:46px;border-radius:14px}}
+</style>
+
+
+<script id="arkon-audio-guide-script">
+(function(){
+  const audio = document.getElementById('arkonNarrationAudio');
+  const fallback = document.getElementById('arkonBrowserVoice');
+  const status = document.getElementById('arkonAudioStatus');
+  const narration = "Bienvenido a ARKON, una plataforma educativa creada para aprender de forma sencilla e interactiva. Para comenzar, entra en Inicio y conoce el propósito de la página. Después, abre el menú de navegación para explorar las asignaturas y selecciona una ficha para leer su contenido. En la sección de Habilidades Laborales encontrarás competencias importantes y retos que te ayudan a poner en práctica lo aprendido. En Desastres podrás consultar información y recomendaciones para saber cómo actuar de manera segura ante distintas emergencias. También puedes visitar la Pregunta Problematizadora para conocer el tema central que conecta el proyecto. Recorre cada sección con calma, lee las fichas y utiliza los botones disponibles para descubrir más información. ¡Gracias por visitar ARKON! Explora, participa y sigue aprendiendo.";
+  if(!audio || !fallback || !status) return;
+  audio.addEventListener('error', function(){status.textContent='El audio grabado no está disponible en este momento. Puedes usar la guía alternativa.';});
+  fallback.addEventListener('click', function(){
+    if(!('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)){
+      status.textContent='La voz alternativa no está disponible en este navegador. Abre “Leer la narración”.';
+      return;
+    }
+    if(window.speechSynthesis.speaking){
+      window.speechSynthesis.cancel();
+      fallback.textContent='▶ Escuchar guía alternativa';
+      status.textContent='Narración pausada.';
+      return;
+    }
+    const utterance = new SpeechSynthesisUtterance(narration);
+    utterance.lang='es-CO';
+    utterance.rate=0.94;
+    utterance.pitch=1;
+    utterance.onstart=function(){fallback.textContent='■ Detener guía alternativa';status.textContent='Reproduciendo la guía alternativa.';};
+    utterance.onend=function(){fallback.textContent='▶ Escuchar guía alternativa';status.textContent='Guía finalizada.';};
+    utterance.onerror=function(){fallback.textContent='▶ Escuchar guía alternativa';status.textContent='No se pudo reproducir la voz. Puedes leer la transcripción.';};
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utterance);
+  });
+})();
+</script>
 
 </body>
 </html>
