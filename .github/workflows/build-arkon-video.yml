@@ -1,4 +1,4 @@
-name: Render ARKON intro video
+name: Render ARKON intro video (captions only as a separate track)
 
 on:
   push:
