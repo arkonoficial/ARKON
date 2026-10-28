@@ -1766,194 +1766,224 @@ document.getElementById('featured-articles').innerHTML=[articles[0],articles[2],
 
 
 <style id="arkon-theme-control">
-/* Contraste reforzado: texto oscuro, tarjetas blancas y fondos suaves */
-html {
-  color-scheme: light !important;
-}
+/* Contraste y temas accesibles: tarjetas claras, texto legible, fondos coordinados */
+html { color-scheme: light !important; }
 html[data-arkon-palette="azul"] {
-  --arkon-bg-a: #D0DCE5;
-  --arkon-bg-b: #DFE7ED;
-  --arkon-bg-c: #C7D4DE;
-  --arkon-card: #FFFFFF;
-  --arkon-soft: #E5EDF2;
-  --arkon-ink: #172B3E;
-  --arkon-muted: #354C60;
-  --arkon-border: #B8C8D3;
+ --arkon-bg-a:#B8CAD6; --arkon-bg-b:#D1DDE5; --arkon-bg-c:#B4C5D1;
+ --arkon-card:#FFFFFF; --arkon-soft:#E0EAF0; --arkon-ink:#152B3C; --arkon-muted:#30495D;
+ --arkon-border:#A8BBC8; --arkon-accent:#087F75; --arkon-hover:#D8EFEB;
+ --arkon-banner-a:#18334F; --arkon-banner-b:#20526F; --arkon-banner-c:#126D70;
+ --arkon-button:#102436; --arkon-button-text:#FFFFFF;
 }
 html[data-arkon-palette="verde"] {
-  --arkon-bg-a: #CFDED7;
-  --arkon-bg-b: #DFE9E3;
-  --arkon-bg-c: #C4D8CF;
-  --arkon-card: #FFFFFF;
-  --arkon-soft: #E4EEE8;
-  --arkon-ink: #19372F;
-  --arkon-muted: #35574C;
-  --arkon-border: #B6CEC3;
+ --arkon-bg-a:#BBD2C5; --arkon-bg-b:#D6E4DB; --arkon-bg-c:#B3CCBE;
+ --arkon-card:#FFFFFF; --arkon-soft:#E2EEE7; --arkon-ink:#163127; --arkon-muted:#315346;
+ --arkon-border:#A8C1B3; --arkon-accent:#267458; --arkon-hover:#D7F0E1;
+ --arkon-banner-a:#16362B; --arkon-banner-b:#215744; --arkon-banner-c:#256B5B;
+ --arkon-button:#12271F; --arkon-button-text:#FFFFFF;
 }
 html[data-arkon-palette="lila"] {
-  --arkon-bg-a: #D8D7E5;
-  --arkon-bg-b: #E7E5EF;
-  --arkon-bg-c: #CDCDDE;
-  --arkon-card: #FFFFFF;
-  --arkon-soft: #EAE9F2;
-  --arkon-ink: #282943;
-  --arkon-muted: #484965;
-  --arkon-border: #C4C4D8;
+ --arkon-bg-a:#C8C6DA; --arkon-bg-b:#DEDBE9; --arkon-bg-c:#C1BED5;
+ --arkon-card:#FFFFFF; --arkon-soft:#E9E7F1; --arkon-ink:#26223D; --arkon-muted:#48445F;
+ --arkon-border:#B5B2CC; --arkon-accent:#6550A5; --arkon-hover:#E9E2FA;
+ --arkon-banner-a:#29223F; --arkon-banner-b:#493E68; --arkon-banner-c:#5B477B;
+ --arkon-button:#211A33; --arkon-button-text:#FFFFFF;
 }
 html[data-arkon-palette="arena"] {
-  --arkon-bg-a: #E2D9CD;
-  --arkon-bg-b: #EFE8DE;
-  --arkon-bg-c: #D8CCBD;
-  --arkon-card: #FFFFFF;
-  --arkon-soft: #F1EAE0;
-  --arkon-ink: #3B3025;
-  --arkon-muted: #5D4C3C;
-  --arkon-border: #D1C2B1;
+ --arkon-bg-a:#D2C6B7; --arkon-bg-b:#E7DED3; --arkon-bg-c:#CDBEAD;
+ --arkon-card:#FFFFFF; --arkon-soft:#F1E8DE; --arkon-ink:#382B20; --arkon-muted:#5A4938;
+ --arkon-border:#C4B3A0; --arkon-accent:#815333; --arkon-hover:#F8EADB;
+ --arkon-banner-a:#30251D; --arkon-banner-b:#57402D; --arkon-banner-c:#785038;
+ --arkon-button:#211913; --arkon-button-text:#FFFFFF;
 }
+html[data-arkon-palette="rosa"] {
+ --arkon-bg-a:#D9AAB8; --arkon-bg-b:#EDCED8; --arkon-bg-c:#D39BAE;
+ --arkon-card:#FFFFFF; --arkon-soft:#F6E2E9; --arkon-ink:#25121A; --arkon-muted:#492631;
+ --arkon-border:#C88FA1; --arkon-accent:#8D294B; --arkon-hover:#F8DCE5;
+ --arkon-banner-a:#1B1116; --arkon-banner-b:#4D1C31; --arkon-banner-c:#7A2946;
+ --arkon-button:#161014; --arkon-button-text:#FFFFFF;
+}
+html[data-arkon-palette="rojo"] {
+ --arkon-bg-a:#C9898E; --arkon-bg-b:#E2BFC2; --arkon-bg-c:#BE747C;
+ --arkon-card:#FFFFFF; --arkon-soft:#F2DDDF; --arkon-ink:#251113; --arkon-muted:#4A2529;
+ --arkon-border:#B9757C; --arkon-accent:#861E2A; --arkon-hover:#F5D6D8;
+ --arkon-banner-a:#100D0E; --arkon-banner-b:#41151D; --arkon-banner-c:#721E2B;
+ --arkon-button:#120D0E; --arkon-button-text:#FFFFFF;
+}
+/* Ensure theme values beat the preview's injected theme values */
 :root {
-  --ink: var(--arkon-ink) !important;
-  --muted: var(--arkon-muted) !important;
-  --surface: var(--arkon-card) !important;
-  --surface-soft: var(--arkon-soft) !important;
-  --border: var(--arkon-border) !important;
-  --site-on-background: var(--arkon-ink) !important;
-  --teal-ink: #006C63 !important;
+ --site-primary:var(--arkon-accent) !important;
+ --site-secondary:var(--arkon-accent) !important;
+ --site-background:var(--arkon-bg-b) !important;
+ --site-on-background:var(--arkon-ink) !important;
+ --ink:var(--arkon-ink) !important;
+ --muted:var(--arkon-muted) !important;
+ --surface:var(--arkon-card) !important;
+ --surface-soft:var(--arkon-soft) !important;
+ --border:var(--arkon-border) !important;
+ --teal-ink:var(--arkon-accent) !important;
+ --hover-accent:var(--arkon-accent) !important;
 }
-html, body {
-  color: var(--arkon-ink) !important;
-  background: var(--arkon-bg-b) !important;
-}
-#arkon-ambient {
-  background: linear-gradient(135deg, var(--arkon-bg-a) 0%, var(--arkon-bg-b) 48%, var(--arkon-bg-c) 100%) !important;
-}
-#arkon-ambient::before, #arkon-ambient::after { opacity: .26 !important; }
-#app {
-  color: var(--arkon-ink) !important;
-  background: rgba(255,255,255,.06) !important;
-}
-#app h1, #app h2, #app h3, #app h4,
-#app .page-intro h1, #app .section-head h2,
-#app .card h3, #app .feature-copy h3,
-#app .challenge-question h3 {
-  color: var(--arkon-ink) !important;
-  opacity: 1 !important;
-}
-#app p, #app .lead, #app .card-bottom, #app .tag,
-#app .feature-copy p, #app .page-intro p, #app .section-head p,
-#app .mini-stat, #app .text-link {
-  color: var(--arkon-muted) !important;
-  opacity: 1 !important;
-}
-#app .card, #app .feature-strip, #app .challenge-question,
-#app .search-panel, #app .answer-btn, #app .mini-stat,
-#app .tag, #app .float-card {
-  background-color: var(--arkon-card) !important;
-  border-color: var(--arkon-border) !important;
-}
-#app .card, #app .feature-strip, #app .challenge-question,
-#app .search-panel, #app .answer-btn, #app .mini-stat {
-  color: var(--arkon-ink) !important;
-}
-#app .card h3, #app .challenge-question h3,
-#app .feature-copy h3 { color: var(--arkon-ink) !important; }
-#app .hero { color: #FFFFFF !important; }
-#app .hero h1, #app .hero h2, #app .hero h3,
-#app .hero p, #app .hero .eyebrow, #app .hero .hero-note {
-  color: #FFFFFF !important;
-}
-#app header {
-  background: rgba(14, 29, 46, .97) !important;
-  border-bottom-color: #29445C !important;
-}
-#app .brand, #app .brand-name, #app .nav button {
-  color: #F4F8FC !important;
-}
-#app .brand-caption { color: #CBD6E2 !important; }
+html, body { color:var(--arkon-ink) !important; background:var(--arkon-bg-b) !important; }
+body { background-image:linear-gradient(135deg,var(--arkon-bg-a),var(--arkon-bg-b) 52%,var(--arkon-bg-c)) !important; background-attachment:fixed !important; }
+#arkon-ambient { background:linear-gradient(135deg,var(--arkon-bg-a),var(--arkon-bg-b) 52%,var(--arkon-bg-c)) !important; }
+#arkon-ambient::before { background:radial-gradient(circle, color-mix(in srgb,var(--arkon-accent) 30%,transparent), transparent 70%) !important; opacity:.2 !important; }
+#arkon-ambient::after { background:radial-gradient(circle, color-mix(in srgb,var(--arkon-banner-c) 28%,transparent), transparent 70%) !important; opacity:.18 !important; }
+#app { color:var(--arkon-ink) !important; background:rgba(255,255,255,.06) !important; }
+#app header { background:#101A27 !important; border-bottom:1px solid #314455 !important; }
+#app .brand, #app .brand-name, #app .nav button, #app .icon-btn { color:#F5F8FC !important; }
+#app .brand-caption { color:#D0DBE5 !important; }
+#app .brand-mark { background:var(--arkon-accent) !important; }
+#app .header-actions .icon-btn { background:#1C2C3C !important; border-color:#405468 !important; }
 #app .nav button:hover, #app .nav button.active {
-  color: #5EEAD4 !important;
-  background: rgba(45, 212, 191, .12) !important;
+ color:#FFFFFF !important; background:var(--arkon-accent) !important;
+ box-shadow:inset 0 -2px 0 rgba(255,255,255,.38) !important;
 }
+#app .hero, #app .project-question-hero {
+ background:linear-gradient(125deg,var(--arkon-banner-a),var(--arkon-banner-b) 62%,var(--arkon-banner-c)) !important;
+ color:#FFFFFF !important;
+}
+#app .hero h1, #app .hero h2, #app .hero h3, #app .hero p, #app .hero .eyebrow,
+#app .hero .hero-note, #app .project-question-hero h1, #app .project-question-hero p,
+#app .project-question-hero .project-kicker {
+ color:#FFFFFF !important; opacity:1 !important;
+}
+#app .project-kicker { background:rgba(255,255,255,.11) !important; border-color:rgba(255,255,255,.3) !important; }
+#app h1, #app h2, #app h3, #app h4, #app .card h3, #app .page-intro h1,
+#app .section-head h2, #app .project-answer h2, #app .feature-copy h3,
+#app .challenge-question h3 { color:var(--arkon-ink) !important; opacity:1 !important; }
+#app p, #app .lead, #app .card p, #app .card-bottom, #app .tag,
+#app .feature-copy p, #app .page-intro p, #app .section-head p,
+#app .mini-stat, #app .project-answer p, #app .answer-point p,
+#app .project-pillar p, #app .project-fact strong {
+ color:var(--arkon-muted) !important; opacity:1 !important;
+}
+#app .card, #app .feature-strip, #app .challenge, #app .challenge-question,
+#app .search-panel, #app .answer-btn, #app .mini-stat, #app .project-fact,
+#app .project-pillar, #app .principle, #app .step-card, #app .check-item,
+#app .contact-card, #app .side-card, #app .source-item, #app .detail-card,
+#app .challenge-question, #app .answer-point, #app .project-answer {
+ background-color:var(--arkon-card) !important;
+ border-color:var(--arkon-border) !important;
+ color:var(--arkon-ink) !important;
+}
+#app .tag, #app .arrow-circle, #app .card-icon { background-color:var(--arkon-soft) !important; }
+#app .arrow-circle { color:var(--arkon-ink) !important; }
 #app input, #app select, #app textarea {
-  color: #172B3E !important;
-  background: #FFFFFF !important;
-  border-color: var(--arkon-border) !important;
+ color:var(--arkon-ink) !important; background:#FFFFFF !important; border-color:var(--arkon-border) !important;
 }
-#app .card p, #app .feature-copy p, #app .challenge-question p {
-  color: var(--arkon-muted) !important;
-  opacity: 1 !important;
+#app a, #app .text-link { color:var(--arkon-accent) !important; }
+#app .hero a, #app .hero .text-link, #app .project-question-hero a { color:#FFFFFF !important; }
+/* Whole-card hover: the entire card changes, with text kept readable */
+#app .card.interactive, #app .card, #app .feature-strip, #app .project-fact,
+#app .project-pillar, #app .principle, #app .step-card, #app .check-item,
+#app .mini-stat, #app .answer-btn, #app .contact-card, #app .source-item,
+#app .detail-card, #app .answer-point {
+ transition:background-color .22s ease,border-color .22s ease,box-shadow .22s ease,transform .22s ease !important;
 }
-#app .arrow-circle { background: var(--arkon-soft) !important; color: var(--arkon-ink) !important; }
-#arkon-theme-control *, #arkon-theme-control-panel * { box-sizing: border-box; }
+#app .card:hover, #app .card.interactive:hover, #app .feature-strip:hover,
+#app .project-fact:hover, #app .project-pillar:hover, #app .principle:hover,
+#app .step-card:hover, #app .check-item:hover, #app .mini-stat:hover,
+#app .answer-btn:hover, #app .contact-card:hover, #app .source-item:hover,
+#app .detail-card:hover, #app .answer-point:hover {
+ background:var(--arkon-hover) !important;
+ border-color:var(--arkon-accent) !important;
+ box-shadow:0 12px 28px rgba(14,28,42,.14) !important;
+ transform:translateY(-2px);
+}
+#app .card:hover h3, #app .card:hover p, #app .card:hover .card-bottom,
+#app .project-fact:hover strong, #app .project-pillar:hover h3,
+#app .project-pillar:hover p, #app .contact-card:hover strong, #app .contact-card:hover span {
+ color:var(--arkon-ink) !important;
+}
+/* On phones, the dropdown is a dark readable panel, never a giant white sheet */
+@media (max-width:760px) {
+ #app header { position:sticky !important; z-index:500 !important; }
+ #app .nav, #app .nav.open {
+  background:#101A27 !important; border:1px solid #314455 !important;
+  border-top:0 !important; box-shadow:0 18px 32px rgba(0,0,0,.3) !important;
+  border-radius:0 0 18px 18px !important; padding:12px 14px 16px !important;
+ }
+ #app .nav button { color:#F5F8FC !important; background:transparent !important; }
+ #app .nav button:hover, #app .nav button.active {
+  color:#FFFFFF !important; background:var(--arkon-accent) !important;
+ }
+ #app .nav button { min-height:44px; }
+}
 #arkon-theme-button {
-  position: fixed; right: 16px; bottom: 16px; z-index: 10000;
-  border: 0; border-radius: 999px; padding: 13px 17px;
-  background: #0E293B; color: #FFFFFF; font: 700 14px/1.2 system-ui, sans-serif;
-  box-shadow: 0 8px 24px rgba(18,38,56,.25); cursor: pointer;
+ position:fixed; right:16px; bottom:16px; z-index:10000;
+ border:1px solid rgba(255,255,255,.35); border-radius:999px; padding:13px 17px;
+ background:var(--arkon-button); color:var(--arkon-button-text);
+ font:800 14px/1.2 system-ui,sans-serif; box-shadow:0 8px 24px rgba(18,25,35,.3); cursor:pointer;
 }
-#arkon-theme-button:hover { background: #17465A; }
+#arkon-theme-button:hover { filter:brightness(1.22); transform:translateY(-2px); }
 #arkon-theme-control-panel {
-  position: fixed; right: 16px; bottom: 70px; z-index: 10000;
-  width: min(300px, calc(100vw - 32px)); padding: 16px;
-  border: 1px solid #B8C8D3; border-radius: 18px; background: #FFFFFF;
-  color: #172B3E; box-shadow: 0 14px 38px rgba(18,38,56,.23);
-  font: 14px/1.4 system-ui, sans-serif;
+ position:fixed; right:16px; bottom:72px; z-index:10001;
+ width:min(310px,calc(100vw - 32px)); max-height:min(72vh,540px); overflow:auto; padding:16px;
+ border:1px solid #AEBCC8; border-radius:18px; background:#FFFFFF; color:#172B3E;
+ box-shadow:0 14px 38px rgba(18,38,56,.28); font:14px/1.4 system-ui,sans-serif;
 }
-#arkon-theme-control-panel[hidden] { display: none !important; }
-#arkon-theme-control-panel h3 { margin: 0 0 5px; font-size: 16px; color: #172B3E !important; }
-#arkon-theme-control-panel p { margin: 0 0 12px; font-size: 12px; color: #43576A !important; }
+#arkon-theme-control-panel[hidden] { display:none !important; }
+#arkon-theme-control-panel h3 { margin:0 0 5px; font-size:16px; color:#172B3E !important; }
+#arkon-theme-control-panel p { margin:0 0 12px; font-size:12px; color:#35495B !important; }
 .arkon-palette-choice {
-  display: flex; align-items: center; gap: 10px; width: 100%; margin: 7px 0;
-  padding: 9px 10px; border: 1px solid #CFD9E1; border-radius: 12px;
-  color: #172B3E; background: #F7FAFC; font: 600 13px system-ui, sans-serif;
-  text-align: left; cursor: pointer;
+ display:flex; align-items:center; gap:10px; width:100%; min-height:42px; margin:7px 0;
+ padding:9px 10px; border:1px solid #CBD5DE; border-radius:12px; color:#172B3E;
+ background:#F7FAFC; font:700 13px system-ui,sans-serif; text-align:left; cursor:pointer;
 }
 .arkon-palette-choice:hover, .arkon-palette-choice[aria-pressed="true"] {
-  border-color: #087F75; background: #E7F5F1;
+ border-color:#087F75; background:#E7F5F1; box-shadow:0 0 0 2px rgba(8,127,117,.1);
 }
-.arkon-palette-dot { width: 22px; height: 22px; flex: 0 0 22px; border-radius: 50%; border: 1px solid rgba(0,0,0,.15); }
-@media (max-width: 600px) {
-  #arkon-theme-button { right: 12px; bottom: 12px; padding: 12px 14px; }
-  #arkon-theme-control-panel { right: 12px; bottom: 64px; }
+.arkon-palette-dot { width:23px; height:23px; flex:0 0 23px; border-radius:50%; border:1px solid rgba(0,0,0,.18); box-shadow:inset 0 0 0 3px rgba(255,255,255,.35); }
+@media(max-width:600px) {
+ #arkon-theme-button { right:12px; bottom:12px; padding:12px 14px; }
+ #arkon-theme-control-panel { right:12px; bottom:64px; }
+}
+@media(prefers-reduced-motion:reduce) {
+ #arkon-ambient::before,#arkon-ambient::after { animation:none !important; }
+ #app .card:hover,#app .card.interactive:hover { transform:none; }
 }
 </style>
 <button id="arkon-theme-button" type="button" aria-expanded="false" aria-controls="arkon-theme-control-panel">🎨 Cambiar colores</button>
 <div id="arkon-theme-control-panel" role="dialog" aria-label="Personalizar los colores de ARKON" hidden>
-  <h3>Personaliza ARKON</h3>
-  <p>Elige el color de fondo. Las tarjetas siguen blancas y las letras oscuras para que se lean bien.</p>
-  <button class="arkon-palette-choice" type="button" data-palette="azul" aria-pressed="true"><span class="arkon-palette-dot" style="background:#D0DCE5"></span> Azul gris</button>
-  <button class="arkon-palette-choice" type="button" data-palette="verde" aria-pressed="false"><span class="arkon-palette-dot" style="background:#CFDED7"></span> Verde suave</button>
-  <button class="arkon-palette-choice" type="button" data-palette="lila" aria-pressed="false"><span class="arkon-palette-dot" style="background:#D8D7E5"></span> Lila suave</button>
-  <button class="arkon-palette-choice" type="button" data-palette="arena" aria-pressed="false"><span class="arkon-palette-dot" style="background:#E2D9CD"></span> Arena</button>
+ <h3>Personaliza ARKON</h3>
+ <p>Elige un fondo. Las tarjetas quedan claras y las letras se ajustan para mantener el contraste.</p>
+ <button class="arkon-palette-choice" type="button" data-palette="azul" aria-pressed="true"><span class="arkon-palette-dot" style="background:#B8CAD6"></span> Azul gris + turquesa</button>
+ <button class="arkon-palette-choice" type="button" data-palette="verde" aria-pressed="false"><span class="arkon-palette-dot" style="background:#BBD2C5"></span> Verde + negro</button>
+ <button class="arkon-palette-choice" type="button" data-palette="lila" aria-pressed="false"><span class="arkon-palette-dot" style="background:#C8C6DA"></span> Lila + negro</button>
+ <button class="arkon-palette-choice" type="button" data-palette="arena" aria-pressed="false"><span class="arkon-palette-dot" style="background:#D2C6B7"></span> Arena + negro</button>
+ <button class="arkon-palette-choice" type="button" data-palette="rosa" aria-pressed="false"><span class="arkon-palette-dot" style="background:#D9AAB8"></span> Rosado + negro</button>
+ <button class="arkon-palette-choice" type="button" data-palette="rojo" aria-pressed="false"><span class="arkon-palette-dot" style="background:#C9898E"></span> Rojo + negro</button>
 </div>
 <script id="arkon-theme-control-script">
 (function () {
-  const html = document.documentElement;
-  const openButton = document.getElementById('arkon-theme-button');
-  const panel = document.getElementById('arkon-theme-control-panel');
-  const choices = Array.from(document.querySelectorAll('.arkon-palette-choice'));
-  if (!openButton || !panel || !choices.length) return;
-  function setPalette(name) {
-    const valid = ['azul', 'verde', 'lila', 'arena'].includes(name) ? name : 'azul';
-    html.setAttribute('data-arkon-palette', valid);
-    choices.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.palette === valid)));
-    try { localStorage.setItem('arkon-palette', valid); } catch (error) {}
+ const html=document.documentElement;
+ const openButton=document.getElementById('arkon-theme-button');
+ const panel=document.getElementById('arkon-theme-control-panel');
+ const choices=Array.from(document.querySelectorAll('.arkon-palette-choice'));
+ if(!openButton||!panel||!choices.length)return;
+ function setPalette(name){
+  const valid=['azul','verde','lila','arena','rosa','rojo'].includes(name)?name:'azul';
+  html.setAttribute('data-arkon-palette',valid);
+  choices.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.palette===valid)));
+  try{localStorage.setItem('arkon-palette',valid);}catch(error){}
+ }
+ let saved='azul';
+ try{saved=localStorage.getItem('arkon-palette')||'azul';}catch(error){}
+ setPalette(saved);
+ openButton.addEventListener('click',function(){
+  const opening=panel.hidden; panel.hidden=!opening;
+  openButton.setAttribute('aria-expanded',String(opening));
+ });
+ choices.forEach(button=>button.addEventListener('click',()=>setPalette(button.dataset.palette)));
+ document.addEventListener('click',function(event){
+  if(!panel.hidden&&!panel.contains(event.target)&&event.target!==openButton){
+   panel.hidden=true;openButton.setAttribute('aria-expanded','false');
   }
-  let saved = 'azul';
-  try { saved = localStorage.getItem('arkon-palette') || 'azul'; } catch (error) {}
-  setPalette(saved);
-  openButton.addEventListener('click', function () {
-    const opening = panel.hidden;
-    panel.hidden = !opening;
-    openButton.setAttribute('aria-expanded', String(opening));
-  });
-  choices.forEach(button => button.addEventListener('click', () => setPalette(button.dataset.palette)));
-  document.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && !panel.hidden) {
-      panel.hidden = true;
-      openButton.setAttribute('aria-expanded', 'false');
-      openButton.focus();
-    }
-  });
+ });
+ document.addEventListener('keydown',function(event){
+  if(event.key==='Escape'&&!panel.hidden){panel.hidden=true;openButton.setAttribute('aria-expanded','false');openButton.focus();}
+ });
 })();
 </script>
 
