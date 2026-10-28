@@ -1095,158 +1095,52 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
             <track src="./arkon-intro.vtt" kind="captions" srclang="es" label="Español" default>
             Tu navegador no admite la reproducción de video HTML5.
           </video>
+          <div class="arkon-video-avatar" id="arkon-video-avatar" aria-hidden="true">
+            <div class="arkon-video-avatar-label">ARKON te acompaña</div>
+            <svg viewBox="0 0 220 260" role="presentation" focusable="false">
+              <ellipse cx="110" cy="246" rx="62" ry="8" fill="#020A12" opacity=".34"/>
+              <g class="arkon-avatar-body">
+                <path d="M64 144 Q110 124 156 144 L178 236 L42 236Z" fill="#14364D"/>
+                <path d="M83 143 L110 178 L137 143 L145 236 L75 236Z" fill="#2DD4BF"/>
+                <path d="M80 145 L110 178 L99 201 L78 157Z M140 145 L110 178 L121 201 L142 157Z" fill="#FFFFFF"/>
+                <path d="M68 154 Q47 164 42 190" fill="none" stroke="#14364D" stroke-width="19" stroke-linecap="round"/>
+                <path d="M152 154 Q169 165 171 183" fill="none" stroke="#14364D" stroke-width="19" stroke-linecap="round"/>
+                <g class="arkon-avatar-wave">
+                  <path d="M171 185 L179 153" stroke="#DDA783" stroke-width="15" stroke-linecap="round"/>
+                  <path d="M178 156 Q166 144 173 137 Q181 132 185 145 Q186 132 193 134 Q200 140 190 154 Q202 145 207 152 Q207 161 190 168Z" fill="#E7B692"/>
+                </g>
+                <path d="M91 128 L91 153 Q110 172 129 153 L129 128Z" fill="#DDA783"/>
+              </g>
+              <g class="arkon-avatar-head">
+                <circle cx="64" cy="79" r="10" fill="#DDA783"/><circle cx="156" cy="79" r="10" fill="#DDA783"/>
+                <path d="M65 65 Q67 21 110 20 Q154 22 155 66 L148 104 Q140 133 110 139 Q80 132 72 104Z" fill="#E7B692"/>
+                <path d="M61 76 Q48 25 91 13 Q130 -1 157 31 Q171 51 159 80 L150 52 Q119 62 84 40 Q78 65 61 76Z" fill="#172637"/>
+                <path d="M75 75 Q87 67 98 75 M123 75 Q135 67 146 76" fill="none" stroke="#172637" stroke-width="4" stroke-linecap="round"/>
+                <g class="arkon-avatar-eyes" fill="#172637"><ellipse cx="88" cy="87" rx="4.5" ry="6"/><ellipse cx="133" cy="87" rx="4.5" ry="6"/></g>
+                <path d="M110 87 L105 101 Q110 105 116 101" fill="none" stroke="#C88C68" stroke-width="2.5" stroke-linecap="round"/>
+                <path class="arkon-avatar-mouth" d="M91 114 Q110 125 130 113 Q125 132 110 132 Q97 130 91 114Z" fill="#783747"/>
+                <path d="M97 116 Q110 121 124 116" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+              </g>
+              <circle cx="76" cy="108" r="6" fill="#D98782" opacity=".36"/><circle cx="145" cy="108" r="6" fill="#D98782" opacity=".36"/>
+            </svg>
+          </div>
         </div>
         <div class="arkon-video-meta">
           <div class="arkon-video-specs">
             <span>▶ Narración neural en español</span>
-            <span>CC Subtítulos opcionales</span>
+            <span class="arkon-caption-hint">Subtítulos pequeños · opcionales</span>
             <span>1080p · 24 s</span>
           </div>
+          <button type="button" id="arkon-caption-toggle" class="arkon-caption-toggle" aria-pressed="true">CC Subtítulos: activados</button>
           <a class="arkon-video-download" href="./arkon-intro.mp4" download="ARKON-video-de-bienvenida.mp4">
             <span aria-hidden="true">↓</span> Descargar video MP4
           </a>
         </div>
       </section>
 
-      <section id="arkon-presenter" aria-labelledby="arkon-presenter-title">
-        <div class="arkon-presenter-copy">
-          <span class="arkon-presenter-kicker"><span aria-hidden="true">✦</span> Presentador virtual</span>
-          <h2 id="arkon-presenter-title">Conoce ARKON en unos segundos</h2>
-          <p>Escucha una explicación rápida de la plataforma. El personaje se mueve mientras habla y muestra el texto para que puedas seguirlo.</p>
-          <div id="arkon-presenter-caption" class="arkon-presenter-caption" aria-live="polite">¡Hola! Pulsa “Escuchar presentación” para conocer ARKON.</div>
-          <div class="arkon-presenter-controls">
-            <button type="button" id="arkon-presenter-play" class="arkon-presenter-play">▶ Escuchar presentación</button>
-            <button type="button" id="arkon-presenter-stop" class="arkon-presenter-stop" disabled>■ Detener</button>
-          </div>
-          <p class="arkon-presenter-note" id="arkon-presenter-status" aria-live="polite">La voz utiliza el idioma español disponible en tu dispositivo.</p>
-        </div>
-        <div class="arkon-presenter-stage" id="arkon-presenter-stage" aria-label="Personaje ilustrado animado que presenta ARKON">
-          <div class="arkon-presenter-glow"></div>
-          <div class="arkon-presenter-float arkon-presenter-float-a">Aprender ✦</div>
-          <div class="arkon-presenter-float arkon-presenter-float-b">Prevenir ✓</div>
-          <svg class="arkon-presenter-svg" viewBox="0 0 340 360" role="img" aria-labelledby="arkon-presenter-svg-title">
-            <title id="arkon-presenter-svg-title">Presentador virtual ilustrado de ARKON</title>
-            <ellipse cx="170" cy="337" rx="88" ry="13" fill="#0C2336" opacity=".14"/>
-            <g id="arkon-presenter-body">
-              <path d="M111 213 C90 228 76 268 74 315 L266 315 C264 268 250 228 229 213 C212 202 191 199 170 199 C149 199 128 202 111 213Z" fill="#173A52"/>
-              <path d="M142 205 L170 244 L198 205 L213 315 L127 315Z" fill="#2DD4BF"/>
-              <path d="M145 205 L170 244 L155 270 L139 223Z" fill="#FFFFFF" opacity=".92"/>
-              <path d="M195 205 L170 244 L185 270 L201 223Z" fill="#FFFFFF" opacity=".92"/>
-              <path d="M128 229 C109 236 100 256 93 276" stroke="#173A52" stroke-width="27" stroke-linecap="round" fill="none"/>
-              <path d="M212 229 C229 221 238 202 243 183" stroke="#173A52" stroke-width="27" stroke-linecap="round" fill="none"/>
-              <g id="arkon-presenter-wave">
-                <path d="M245 188 C251 173 257 158 259 146" stroke="#DDA783" stroke-width="18" stroke-linecap="round" fill="none"/>
-                <path d="M248 151 C240 142 239 132 243 126 C248 121 253 129 255 137 C255 126 262 119 267 124 C271 130 267 140 264 146 C272 137 280 139 280 145 C279 151 271 158 264 162Z" fill="#E7B692"/>
-                <path d="M244 138 Q237 132 239 126" stroke="#C98D6A" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-              </g>
-              <path d="M151 180 L151 211 Q170 229 189 211 L189 180Z" fill="#DDA783"/>
-            </g>
-            <g id="arkon-presenter-head">
-              <circle cx="117" cy="127" r="13" fill="#E4AD87"/>
-              <circle cx="223" cy="127" r="13" fill="#E4AD87"/>
-              <path d="M118 103 C118 61 142 42 171 42 C207 42 224 67 222 105 L215 150 C211 180 191 196 171 196 C147 196 127 177 123 149Z" fill="#E7B692"/>
-              <path d="M115 119 C104 81 118 48 151 39 C182 28 215 46 226 72 C233 91 225 109 221 116 L212 91 C185 97 153 86 135 70 C132 91 126 106 115 119Z" fill="#172637"/>
-              <path d="M127 113 C139 104 151 104 160 111" stroke="#172637" stroke-width="5" stroke-linecap="round" fill="none"/>
-              <path d="M183 111 C193 104 205 105 213 113" stroke="#172637" stroke-width="5" stroke-linecap="round" fill="none"/>
-              <g id="arkon-presenter-eyes" fill="#172637">
-                <ellipse cx="145" cy="124" rx="5" ry="7"/>
-                <ellipse cx="197" cy="124" rx="5" ry="7"/>
-              </g>
-              <path d="M169 126 L163 145 Q170 150 177 145" stroke="#C98D6A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              <path id="arkon-presenter-mouth" d="M151 159 Q170 174 191 158 Q185 181 170 181 Q155 178 151 159Z" fill="#7C3542" transform-box="fill-box" transform-origin="center"/>
-              <path d="M155 162 Q170 169 187 161" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" fill="none"/>
-              <path d="M124 91 C135 63 157 57 179 59" stroke="#26394B" stroke-width="7" stroke-linecap="round" fill="none" opacity=".8"/>
-            </g>
-            <circle cx="129" cy="146" r="7" fill="#D98782" opacity=".35"/>
-            <circle cx="211" cy="146" r="7" fill="#D98782" opacity=".35"/>
-          </svg>
-          <div class="arkon-presenter-brand"><span class="arkon-presenter-brand-mark">A</span><span><strong>ARKON</strong><small>Aprende y prepárate</small></span></div>
-        </div>
-      </section>
+      
 
-      <section id="arkon-cinema" aria-labelledby="cinema-main-title">
-        <div class="cinema-top">
-          <span class="cinema-kicker"><span aria-hidden="true">✦</span> ARKON · experiencia audiovisual</span>
-          <span class="cinema-live"><i aria-hidden="true"></i> Recorrido interactivo · 4 escenas</span>
-        </div>
-        <div class="cinema-layout">
-          <div class="cinema-copy">
-            <div class="cinema-index" id="cinema-index">ESCENA 01 / 04</div>
-            <h2 class="cinema-title" id="cinema-main-title">Ideas que conectan.<br><span>Un futuro que crece.</span></h2>
-            <p class="cinema-description" id="cinema-description" aria-live="polite">ARKON reúne conocimientos prácticos para convivir mejor, cuidarnos y prepararnos para nuevos desafíos.</p>
-            <div class="cinema-bullets" id="cinema-bullets"><span class="cinema-chip">Aprender</span><span class="cinema-chip">Conectar</span><span class="cinema-chip">Transformar</span></div>
-            <div class="cinema-actions">
-              <button class="cinema-btn primary" id="cinema-narration" type="button"><span aria-hidden="true">▶</span> Escuchar bienvenida</button>
-              <button class="cinema-btn" id="cinema-transcript-toggle" type="button" aria-expanded="false"><span aria-hidden="true">☰</span> Ver narración</button>
-            </div>
-            <div class="cinema-status" id="cinema-status" aria-live="polite">Activa la voz y descubre el recorrido.</div>
-          </div>
-          <div class="cinema-screen" id="cinema-screen" role="region" aria-label="Escenas animadas de ARKON">
-            <div class="cinema-scene active" data-scene="0" aria-hidden="false">
-              <div class="scene-orbit"></div><div class="scene-orbit two"></div>
-              <div class="scene-core" aria-hidden="true">
-                <svg viewBox="0 0 100 100" fill="none"><path d="M50 7 82 20v24c0 22-12 38-32 49C30 82 18 66 18 44V20L50 7Z" stroke="#a5f4e5" stroke-width="3" fill="rgba(48,206,178,.11)"/><path d="m31 51 12 12 27-28" stroke="#a5f4e5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="74" cy="22" r="6" fill="#9ebaff"/></svg>
-              </div>
-              <div class="scene-card card-a"><span class="scene-card-icon">✦</span><b>Aprendizaje activo</b><span>Descubrir nuevas ideas</span></div>
-              <div class="scene-card card-b"><span class="scene-card-icon">◎</span><b>Conexiones reales</b><span>Personas y comunidad</span></div>
-              <div class="scene-card card-c"><span class="scene-card-icon">↗</span><b>Un paso adelante</b><span>Conocimiento en acción</span></div>
-              <div class="scene-words">Aprender · Conectar · Crecer</div>
-              <div class="scene-note"><span><strong>El comienzo</strong><br>Una plataforma, muchas posibilidades</span><small>01 / 04</small></div>
-            </div>
-            <div class="cinema-scene" data-scene="1" aria-hidden="true">
-              <div class="scene-orbit"></div><div class="scene-orbit two"></div>
-              <div class="scene-core" aria-hidden="true">
-                <svg viewBox="0 0 100 100" fill="none"><circle cx="35" cy="33" r="14" fill="#81e5d7" fill-opacity=".25" stroke="#a5f4e5" stroke-width="3"/><circle cx="67" cy="35" r="13" fill="#9ebaff" fill-opacity=".22" stroke="#b7cbff" stroke-width="3"/><path d="M10 80c1-18 13-28 25-28s24 10 25 28M49 80c1-16 9-26 19-26 11 0 20 10 22 26" stroke="#a5f4e5" stroke-width="4" stroke-linecap="round"/><path d="m41 68 8 8 16-18" stroke="#9ebaff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <div class="scene-card card-a"><span class="scene-card-icon">🤝</span><b>Escuchar</b><span>Respeto a las diferencias</span></div>
-              <div class="scene-card card-b"><span class="scene-card-icon">🌐</span><b>Participar</b><span>Ser parte de la comunidad</span></div>
-              <div class="scene-card card-c"><span class="scene-card-icon">💬</span><b>Dialogar</b><span>Resolver sin excluir</span></div>
-              <div class="scene-words">Respeto · Diálogo · Ciudadanía</div>
-              <div class="scene-note"><span><strong>Convivencia</strong><br>Construir espacios donde cabemos todos</span><small>02 / 04</small></div>
-            </div>
-            <div class="cinema-scene" data-scene="2" aria-hidden="true">
-              <div class="scene-orbit"></div><div class="scene-orbit two"></div>
-              <div class="scene-core" aria-hidden="true">
-                <svg viewBox="0 0 100 100" fill="none"><rect x="13" y="16" width="74" height="63" rx="12" fill="rgba(110,151,255,.15)" stroke="#b7cbff" stroke-width="3"/><path d="M25 32h20M25 43h49M25 54h35M25 65h25" stroke="#a5f4e5" stroke-width="4" stroke-linecap="round"/><circle cx="75" cy="76" r="14" fill="#0c3048" stroke="#80e7d8" stroke-width="3"/><path d="m68 76 5 5 9-11" stroke="#80e7d8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <div class="scene-card card-a"><span class="scene-card-icon">🧩</span><b>Resolver problemas</b><span>Analizar y proponer</span></div>
-              <div class="scene-card card-b"><span class="scene-card-icon">👥</span><b>Trabajo en equipo</b><span>Avanzar juntos</span></div>
-              <div class="scene-card card-c"><span class="scene-card-icon">🎯</span><b>Comunicar</b><span>Expresar con claridad</span></div>
-              <div class="scene-words">Habilidades para la vida laboral</div>
-              <div class="scene-note"><span><strong>Preparación</strong><br>Competencias para retos reales</span><small>03 / 04</small></div>
-            </div>
-            <div class="cinema-scene" data-scene="3" aria-hidden="true">
-              <div class="scene-orbit"></div><div class="scene-orbit two"></div>
-              <div class="scene-core" aria-hidden="true">
-                <svg viewBox="0 0 100 100" fill="none"><path d="M15 79h70M23 69V44h15v25M44 69V30h15v39M65 69V17h15v52" stroke="#a5f4e5" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="m22 34 21-15 16 7L79 10" stroke="#9ebaff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M68 10h11v11" stroke="#9ebaff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <div class="scene-card card-a"><span class="scene-card-icon">🛡️</span><b>Prevenir</b><span>Anticiparse a los riesgos</span></div>
-              <div class="scene-card card-b"><span class="scene-card-icon">🌱</span><b>Crecer</b><span>Aprender durante el proceso</span></div>
-              <div class="scene-card card-c"><span class="scene-card-icon">✨</span><b>Transformar</b><span>Aportar al entorno</span></div>
-              <div class="scene-words">Conocimiento convertido en acción</div>
-              <div class="scene-note"><span><strong>El siguiente paso</strong><br>Lo que aprendes también construye comunidad</span><small>04 / 04</small></div>
-            </div>
-          </div>
-        </div>
-        <div class="cinema-under">
-          <div class="cinema-track" aria-label="Seleccionar escena">
-            <button type="button" class="active" data-scene-go="0" aria-label="Ver escena 1" aria-current="step"></button>
-            <button type="button" data-scene-go="1" aria-label="Ver escena 2"></button>
-            <button type="button" data-scene-go="2" aria-label="Ver escena 3"></button>
-            <button type="button" data-scene-go="3" aria-label="Ver escena 4"></button>
-            <span class="cinema-counter" id="cinema-counter">01 / 04</span>
-          </div>
-          <div class="cinema-under-actions">
-            <button class="cinema-btn" id="cinema-prev" type="button" aria-label="Escena anterior">← Anterior</button>
-            <button class="cinema-btn" id="cinema-autoplay" type="button" aria-pressed="false">▷ Recorrido automático</button>
-            <button class="cinema-btn" id="cinema-next" type="button">Siguiente →</button>
-          </div>
-        </div>
-        <div class="cinema-transcript" id="cinema-transcript" role="region" aria-label="Texto de la narración"><strong>Narración de bienvenida</strong><br>Bienvenido a ARKON. Un espacio para aprender, conectar ideas y construir un mejor futuro. Aquí fortalecemos la convivencia, la ciudadanía y las habilidades que nos preparan para trabajar en equipo, resolver problemas y aportar a nuestra comunidad. Explora, participa y convierte el conocimiento en acción. ARKON: aprendemos hoy, transformamos mañana.</div>
-        <audio id="arkon-intro-audio" preload="none"></audio>
-      </section>
-
-      <div class="section-head"><div><span class="eyebrow"><span class="eyebrow-dot"></span> Dos rutas, un mismo objetivo</span><h2>Tu próximo paso empieza aquí</h2><p>Aprende a anticiparte a los riesgos y a desarrollar competencias que puedes practicar cada día.</p></div></div>
+            <div class="section-head"><div><span class="eyebrow"><span class="eyebrow-dot"></span> Dos rutas, un mismo objetivo</span><h2>Tu próximo paso empieza aquí</h2><p>Aprende a anticiparte a los riesgos y a desarrollar competencias que puedes practicar cada día.</p></div></div>
       <div class="card-grid">
         <article class="card interactive" data-nav="desastres"><div class="card-top"><span class="card-icon icon-blue">🌦️</span><span class="tag">Ruta 01 · Prevención</span><img class="card-top-art" src="imagenes/arkon-prevencion.svg" alt="" loading="lazy" decoding="async"></div><h3>Prepárate para los desastres</h3><p>Conoce distintos fenómenos, organiza un plan de preparación y aprende a seguir orientaciones oficiales.</p><div class="card-bottom"><span>7 temas para explorar</span><span class="arrow-circle">↗</span></div></article>
         <article class="card interactive" data-nav="habilidades"><div class="card-top"><span class="card-icon icon-mint">🧠</span><span class="tag">Ruta 02 · Trabajo</span><img class="card-top-art" src="imagenes/arkon-equipo.svg" alt="" loading="lazy" decoding="async"></div><h3>Fortalece tus habilidades laborales</h3><p>Practica comunicación, trabajo en equipo, resolución de problemas y herramientas útiles para el empleo.</p><div class="card-bottom"><span>8 competencias prácticas</span><span class="arrow-circle">↗</span></div></article>
@@ -1744,81 +1638,7 @@ document.getElementById('featured-articles').innerHTML=[articles[0],articles[2],
 
 
 
-<script id="arkon-cinema-script">
-(function(){
-  const root = document.getElementById('arkon-cinema');
-  if (!root || root.dataset.ready === 'true') return;
-  root.dataset.ready = 'true';
-  const scenes = [
-    {title:'Ideas que conectan.<br><span>Un futuro que crece.</span>', description:'ARKON reúne conocimientos prácticos para convivir mejor, cuidarnos y prepararnos para nuevos desafíos.', chips:['Aprender','Conectar','Transformar']},
-    {title:'Convivir mejor.<br><span>Construir comunidad.</span>', description:'La escucha, el respeto y la participación nos ayudan a resolver diferencias y crear espacios donde todos cuentan.', chips:['Respeto','Diálogo','Ciudadanía']},
-    {title:'Habilidades reales.<br><span>Preparación para el trabajo.</span>', description:'Comunicación, colaboración y resolución de problemas: competencias que se practican paso a paso.', chips:['Comunicación','Equipo','Soluciones']},
-    {title:'Aprende hoy.<br><span>Transforma mañana.</span>', description:'Prevenir riesgos, proponer ideas y actuar con responsabilidad convierte el conocimiento en una contribución real.', chips:['Prevenir','Crecer','Aportar']}
-  ];
-  const panel = root.querySelectorAll('.cinema-scene');
-  const dots = root.querySelectorAll('[data-scene-go]');
-  const title = root.querySelector('#cinema-main-title');
-  const description = root.querySelector('#cinema-description');
-  const chips = root.querySelector('#cinema-bullets');
-  const index = root.querySelector('#cinema-index');
-  const counter = root.querySelector('#cinema-counter');
-  const status = root.querySelector('#cinema-status');
-  const autoBtn = root.querySelector('#cinema-autoplay');
-  const narrationBtn = root.querySelector('#cinema-narration');
-  const transcriptBtn = root.querySelector('#cinema-transcript-toggle');
-  const transcript = root.querySelector('#cinema-transcript');
-  const audio = root.querySelector('#arkon-intro-audio');
-  const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const spokenText = 'Bienvenido a ARKON. Un espacio para aprender, conectar ideas y construir un mejor futuro. Aquí fortalecemos la convivencia, la ciudadanía y las habilidades que nos preparan para trabajar en equipo, resolver problemas y aportar a nuestra comunidad. Explora, participa y convierte el conocimiento en acción. ARKON: aprendemos hoy, transformamos mañana.';
-  let current = 0, timer = null, audioMode = '', utterance = null, auto = false;
-  function renderScene(next, announce=true){
-    current = (next + scenes.length) % scenes.length;
-    const data = scenes[current];
-    panel.forEach((el,i)=>{const active=i===current;el.classList.toggle('active',active);el.setAttribute('aria-hidden',String(!active));});
-    dots.forEach((el,i)=>{const active=i===current;el.classList.toggle('active',active);if(active)el.setAttribute('aria-current','step');else el.removeAttribute('aria-current');});
-    title.innerHTML = data.title;
-    description.textContent = data.description;
-    chips.innerHTML = data.chips.map(x=>'<span class="cinema-chip">'+x+'</span>').join('');
-    index.textContent = 'ESCENA '+String(current+1).padStart(2,'0')+' / 04';
-    counter.textContent = String(current+1).padStart(2,'0')+' / 04';
-    if(announce) status.textContent = 'Escena '+(current+1)+' de 4: '+data.chips.join(', ')+'.';
-  }
-  function stopAuto(){if(timer)window.clearInterval(timer);timer=null;auto=false;autoBtn.setAttribute('aria-pressed','false');autoBtn.textContent='▷ Recorrido automático';}
-  function startAuto(){if(reducedMotion){status.textContent='La reproducción automática se desactivó por la preferencia de movimiento reducido.';return;}stopAuto();auto=true;autoBtn.setAttribute('aria-pressed','true');autoBtn.textContent='Ⅱ Pausar recorrido';timer=window.setInterval(()=>renderScene(current+1,false),6500);status.textContent='Recorrido automático activo. Usa las flechas para cambiar de escena.';}
-  root.querySelector('#cinema-prev').addEventListener('click',()=>{renderScene(current-1);});
-  root.querySelector('#cinema-next').addEventListener('click',()=>{renderScene(current+1);});
-  dots.forEach((el,i)=>el.addEventListener('click',()=>renderScene(i)));
-  autoBtn.addEventListener('click',()=>auto?stopAuto():startAuto());
-  transcriptBtn.addEventListener('click',()=>{const open=!transcript.classList.contains('open');transcript.classList.toggle('open',open);transcriptBtn.setAttribute('aria-expanded',String(open));transcriptBtn.innerHTML=open?'<span aria-hidden="true">⌃</span> Ocultar narración':'<span aria-hidden="true">☰</span> Ver narración';});
-  function updateNarrationButton(label,icon){narrationBtn.innerHTML='<span aria-hidden="true">'+icon+'</span> '+label;}
-  function finishVoice(){audioMode='';utterance=null;updateNarrationButton('Escuchar bienvenida','▶');}
-  narrationBtn.addEventListener('click',async()=>{
-    if(audioMode==='audio' && audio && !audio.paused){audio.pause();audioMode='audio-paused';updateNarrationButton('Continuar voz','▶');status.textContent='Narración pausada.';return;}
-    if(audioMode==='speech' && window.speechSynthesis && window.speechSynthesis.speaking){window.speechSynthesis.pause();audioMode='speech-paused';updateNarrationButton('Continuar voz','▶');status.textContent='Narración pausada.';return;}
-    if(audioMode==='audio-paused' && audio){try{await audio.play();audioMode='audio';updateNarrationButton('Pausar voz','Ⅱ');status.textContent='Narración en reproducción.';return;}catch(e){audioMode='';}}
-    if(audioMode==='speech-paused' && window.speechSynthesis){window.speechSynthesis.resume();audioMode='speech';updateNarrationButton('Pausar voz','Ⅱ');status.textContent='Narración en reproducción.';return;}
-    if(audio){audio.pause();audio.currentTime=0;}
-    if(window.speechSynthesis)window.speechSynthesis.cancel();
-    if(audio && audio.getAttribute('src') && audio.getAttribute('src')!==''){
-      try{await audio.play();audioMode='audio';updateNarrationButton('Pausar voz','Ⅱ');status.textContent='Narración en reproducción.';return;}catch(e){/* El audio aún no está publicado o no puede reproducirse. Se utiliza la voz del dispositivo. */}
-    }
-    if(window.speechSynthesis && window.SpeechSynthesisUtterance){
-      utterance=new SpeechSynthesisUtterance(spokenText);
-      utterance.lang='es-CO';utterance.rate=.94;utterance.pitch=1.02;
-      const voices=window.speechSynthesis.getVoices();
-      const chosen=voices.find(v=>/^es-CO$/i.test(v.lang))||voices.find(v=>/^es-MX$/i.test(v.lang))||voices.find(v=>/^es(-|$)/i.test(v.lang));
-      if(chosen)utterance.voice=chosen;
-      utterance.onend=finishVoice;utterance.onerror=()=>{finishVoice();status.textContent='El dispositivo no pudo reproducir la voz. Prueba de nuevo o lee la narración.';};
-      window.speechSynthesis.speak(utterance);audioMode='speech';updateNarrationButton('Pausar voz','Ⅱ');status.textContent='Reproduciendo la voz disponible en este dispositivo.';
-    }else{
-      status.textContent='Este navegador no dispone de narración por voz. Abre “Ver narración” para leer el texto.';
-    }
-  });
-  if(audio){audio.addEventListener('ended',finishVoice);audio.addEventListener('error',()=>{if(audioMode==='audio'){finishVoice();status.textContent='No se pudo cargar el audio externo; se puede usar la voz del dispositivo.';}});}
-  document.addEventListener('visibilitychange',()=>{if(document.hidden && auto)stopAuto();});
-  renderScene(0,false);
-})();
-</script>
+
 
 
 <style id="arkon-theme-control">
@@ -2142,155 +1962,106 @@ body { background-image:linear-gradient(135deg,var(--arkon-bg-a),var(--arkon-bg-
 </script>
 
 
-<style id="arkon-presenter-style">
-#arkon-presenter {
-  display:grid; grid-template-columns:minmax(0,1.05fr) minmax(260px,.95fr);
-  gap:clamp(20px,4vw,46px); align-items:center; margin:24px auto 44px;
-  padding:clamp(20px,4vw,38px); max-width:1140px; border-radius:26px;
-  color:#EDF7FB; background:linear-gradient(135deg,#102436,#17364B 58%,#1C4B57);
-  border:1px solid rgba(45,212,191,.24); box-shadow:0 18px 48px rgba(9,29,44,.12);
-  overflow:hidden; position:relative;
+
+
+
+<style id="arkon-welcome-video-polish">
+/* A single welcome experience: original video, integrated moving presenter, optional compact captions */
+#arkon-video-real .arkon-video-player-wrap { position:relative; overflow:hidden; }
+#arkon-video-real .arkon-video-player::cue {
+  color:#FFFFFF; background-color:rgba(0,0,0,.78);
+  font-size:68%; font-weight:600; text-shadow:0 1px 2px #000;
 }
-#arkon-presenter .arkon-presenter-copy { position:relative; z-index:2; min-width:0; }
-#arkon-presenter .arkon-presenter-kicker {
- display:inline-flex; align-items:center; gap:8px; border-radius:999px;
- padding:7px 11px; color:#9EF3E2; background:rgba(45,212,191,.1);
- border:1px solid rgba(45,212,191,.24); font-size:.74rem; font-weight:850; letter-spacing:.07em; text-transform:uppercase;
+#arkon-video-real .arkon-video-avatar {
+ position:absolute; z-index:4; right:clamp(10px,2.2%,22px); bottom:clamp(44px,10%,78px);
+ width:clamp(88px,16%,165px); aspect-ratio:220/260;
+ display:flex; align-items:center; justify-content:center;
+ border-radius:18px; padding:2px 4px 0; pointer-events:none;
+ background:linear-gradient(180deg,rgba(9,24,37,.06),rgba(9,24,37,.35));
+ filter:drop-shadow(0 8px 14px rgba(0,0,0,.22));
 }
-#arkon-presenter h2 { margin:16px 0 12px; color:#FFFFFF; font-size:clamp(1.6rem,3.5vw,2.55rem); line-height:1.13; letter-spacing:-.035em; }
-#arkon-presenter .arkon-presenter-copy > p { color:#D4E2EC; line-height:1.65; }
-#arkon-presenter .arkon-presenter-caption {
- min-height:78px; margin:18px 0 14px; padding:15px 17px;
- border-left:4px solid #2DD4BF; border-radius:0 15px 15px 0;
- background:rgba(4,17,29,.64); color:#FFFFFF; font-size:1rem; line-height:1.65; font-weight:650;
+#arkon-video-real .arkon-video-avatar svg { width:100%; height:100%; overflow:visible; }
+#arkon-video-real .arkon-video-avatar-label {
+ position:absolute; z-index:2; right:0; top:0; padding:5px 7px;
+ border-radius:8px; color:#FFFFFF; background:rgba(8,25,38,.9);
+ border:1px solid rgba(118,245,219,.35); font-size:clamp(8px,.72vw,10px);
+ font-weight:800; white-space:nowrap; letter-spacing:.015em;
 }
-#arkon-presenter .arkon-presenter-controls { display:flex; flex-wrap:wrap; gap:9px; }
-#arkon-presenter button { min-height:43px; border-radius:12px; padding:11px 15px; font:800 .85rem system-ui,sans-serif; cursor:pointer; transition:transform .18s ease,filter .18s ease,background .18s ease; }
-#arkon-presenter button:hover:not(:disabled) { transform:translateY(-2px); filter:brightness(1.08); }
-#arkon-presenter button:focus-visible { outline:3px solid #FFCA66; outline-offset:3px; }
-#arkon-presenter .arkon-presenter-play { color:#052B2D; background:#2DD4BF; border:1px solid #70E9DA; }
-#arkon-presenter .arkon-presenter-stop { color:#F0F7FA; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.22); }
-#arkon-presenter .arkon-presenter-stop:disabled { opacity:.45; cursor:not-allowed; }
-#arkon-presenter .arkon-presenter-note { color:#AFC4D3; margin:12px 0 0; font-size:.75rem; }
-#arkon-presenter .arkon-presenter-stage {
- position:relative; min-height:340px; display:flex; align-items:center; justify-content:center;
- border-radius:24px; background:radial-gradient(circle at 52% 42%,rgba(45,212,191,.19),transparent 58%),rgba(3,16,28,.26);
- border:1px solid rgba(255,255,255,.08); overflow:hidden;
+#arkon-video-real .arkon-avatar-body { transform-origin:110px 236px; animation:arkon-avatar-breathe 3.1s ease-in-out infinite; }
+#arkon-video-real .arkon-avatar-head { transform-origin:110px 135px; animation:arkon-avatar-nod 4s ease-in-out infinite; }
+#arkon-video-real .arkon-avatar-wave { transform-origin:173px 185px; animation:arkon-avatar-wave 2.5s ease-in-out infinite; }
+#arkon-video-real .arkon-avatar-eyes { transform-origin:center; animation:arkon-avatar-blink 5.2s infinite; }
+#arkon-video-real .arkon-avatar-mouth { transform-box:fill-box; transform-origin:center; }
+#arkon-video-real[data-avatar-speaking="true"] .arkon-avatar-mouth { animation:arkon-avatar-mouth .17s ease-in-out infinite alternate; }
+#arkon-video-real[data-avatar-speaking="true"] .arkon-avatar-head { animation:arkon-avatar-nod .85s ease-in-out infinite; }
+#arkon-video-real[data-avatar-speaking="true"] .arkon-avatar-wave { animation:arkon-avatar-wave 1.2s ease-in-out infinite; }
+#arkon-video-real .arkon-caption-toggle {
+ display:inline-flex; align-items:center; justify-content:center; gap:6px;
+ min-height:38px; padding:8px 12px; border-radius:11px; cursor:pointer;
+ border:1px solid rgba(118,245,219,.3); background:#102B3D; color:#F6FCFF;
+ font:800 .76rem system-ui,sans-serif; transition:background .18s ease,transform .18s ease;
 }
-#arkon-presenter .arkon-presenter-glow {
- position:absolute; width:230px; height:230px; border-radius:50%;
- background:radial-gradient(circle,rgba(45,212,191,.22),rgba(45,212,191,.02) 65%,transparent 72%);
-}
-#arkon-presenter .arkon-presenter-svg { width:min(100%,330px); height:auto; position:relative; z-index:1; overflow:visible; }
-#arkon-presenter #arkon-presenter-body { transform-origin:170px 315px; animation:arkon-presenter-breathe 3.6s ease-in-out infinite; }
-#arkon-presenter #arkon-presenter-head { transform-origin:170px 190px; animation:arkon-presenter-nod 4.4s ease-in-out infinite; }
-#arkon-presenter #arkon-presenter-wave { transform-origin:246px 199px; animation:arkon-presenter-wave 2.4s ease-in-out infinite; }
-#arkon-presenter #arkon-presenter-eyes { transform-origin:center; animation:arkon-presenter-blink 5.2s infinite; }
-#arkon-presenter #arkon-presenter-mouth { transform-origin:center; }
-#arkon-presenter[data-speaking="true"] #arkon-presenter-mouth { animation:arkon-presenter-mouth  .19s ease-in-out infinite alternate; }
-#arkon-presenter[data-speaking="true"] #arkon-presenter-head { animation:arkon-presenter-nod .8s ease-in-out infinite; }
-#arkon-presenter .arkon-presenter-float {
- position:absolute; z-index:2; padding:9px 12px; border-radius:13px; font-size:.76rem; font-weight:850;
- color:#F4FFFC; background:rgba(18,44,61,.93); border:1px solid rgba(118,245,219,.25);
- box-shadow:0 9px 20px rgba(0,0,0,.16); animation:arkon-presenter-float 4s ease-in-out infinite;
-}
-#arkon-presenter .arkon-presenter-float-a { top:17%; left:5%; }
-#arkon-presenter .arkon-presenter-float-b { right:4%; top:52%; animation-delay:-1.8s; }
-#arkon-presenter .arkon-presenter-brand { position:absolute; z-index:3; bottom:14px; left:15px; display:flex; align-items:center; gap:9px; color:#FFFFFF; }
-#arkon-presenter .arkon-presenter-brand-mark { display:grid; place-items:center; width:33px; height:33px; border-radius:10px; color:#062D30; background:#2DD4BF; font-weight:950; }
-#arkon-presenter .arkon-presenter-brand strong { display:block; font-size:.78rem; letter-spacing:.08em; }
-#arkon-presenter .arkon-presenter-brand small { display:block; margin-top:2px; color:#B9CCD9; font-size:.65rem; }
-@keyframes arkon-presenter-breathe { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-3px)} }
-@keyframes arkon-presenter-nod { 0%,100%{transform:rotate(0)} 35%{transform:rotate(-2deg)} 70%{transform:rotate(1.4deg)} }
-@keyframes arkon-presenter-wave { 0%,100%{transform:rotate(0)} 14%{transform:rotate(9deg)} 29%{transform:rotate(-10deg)} 44%{transform:rotate(9deg)} 58%{transform:rotate(-4deg)} 72%{transform:rotate(0)} }
-@keyframes arkon-presenter-blink { 0%,46%,50%,100%{transform:scaleY(1)} 48%{transform:scaleY(.12)} }
-@keyframes arkon-presenter-mouth { from{transform:scaleY(.55)} to{transform:scaleY(1.3)} }
-@keyframes arkon-presenter-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
-@media(max-width:760px) {
- #arkon-presenter { grid-template-columns:1fr; padding:20px; gap:16px; }
- #arkon-presenter .arkon-presenter-stage { min-height:300px; order:-1; }
- #arkon-presenter .arkon-presenter-svg { width:min(88%,300px); }
- #arkon-presenter .arkon-presenter-float-a { top:10%; left:4%; }
- #arkon-presenter .arkon-presenter-float-b { top:48%; right:3%; }
+#arkon-video-real .arkon-caption-toggle[aria-pressed="false"] { background:#263746; color:#DAE3EA; border-color:#667987; }
+#arkon-video-real .arkon-caption-toggle:hover { transform:translateY(-1px); }
+#arkon-video-real .arkon-caption-toggle:focus-visible { outline:3px solid #2DD4BF; outline-offset:3px; }
+#arkon-video-real .arkon-caption-hint { font-size:.73rem; }
+@keyframes arkon-avatar-breathe { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-2px)} }
+@keyframes arkon-avatar-nod { 0%,100%{transform:rotate(0)} 35%{transform:rotate(-1.5deg)} 70%{transform:rotate(1.2deg)} }
+@keyframes arkon-avatar-wave { 0%,100%{transform:rotate(0)} 15%{transform:rotate(8deg)} 30%{transform:rotate(-9deg)} 45%{transform:rotate(7deg)} 60%{transform:rotate(-3deg)} 75%{transform:rotate(0)} }
+@keyframes arkon-avatar-blink { 0%,46%,50%,100%{transform:scaleY(1)} 48%{transform:scaleY(.12)} }
+@keyframes arkon-avatar-mouth { from{transform:scaleY(.55)} to{transform:scaleY(1.25)} }
+@media(max-width:620px) {
+ #arkon-video-real .arkon-video-avatar { width:clamp(70px,19%,108px); right:10px; bottom:11%; border-radius:12px; }
+ #arkon-video-real .arkon-video-avatar-label { font-size:7px; padding:4px 5px; }
+ #arkon-video-real .arkon-video-player::cue { font-size:62%; }
+ #arkon-video-real .arkon-video-meta { align-items:flex-start; }
+ #arkon-video-real .arkon-video-specs { gap:8px 12px; }
+ #arkon-video-real .arkon-caption-toggle { min-height:35px; }
 }
 @media(prefers-reduced-motion:reduce) {
- #arkon-presenter #arkon-presenter-body,#arkon-presenter #arkon-presenter-head,
- #arkon-presenter #arkon-presenter-wave,#arkon-presenter #arkon-presenter-eyes,
- #arkon-presenter .arkon-presenter-float,#arkon-presenter #arkon-presenter-mouth { animation:none !important; }
+ #arkon-video-real .arkon-avatar-body,#arkon-video-real .arkon-avatar-head,
+ #arkon-video-real .arkon-avatar-wave,#arkon-video-real .arkon-avatar-eyes,
+ #arkon-video-real .arkon-avatar-mouth { animation:none !important; }
 }
 </style>
-<script id="arkon-presenter-script">
+<script id="arkon-welcome-video-polish-script">
 (function(){
- const root=document.getElementById('arkon-presenter');
- if(!root||root.dataset.ready==='true')return;
- root.dataset.ready='true';
- const playButton=document.getElementById('arkon-presenter-play');
- const stopButton=document.getElementById('arkon-presenter-stop');
- const caption=document.getElementById('arkon-presenter-caption');
- const status=document.getElementById('arkon-presenter-status');
- const segments=[
-  '¡Hola! Bienvenido a ARKON.',
-  'Aquí puedes aprender a prevenir desastres, consultar fuentes confiables y fortalecer tus habilidades laborales.',
-  'Explora las secciones, resuelve los retos y descubre cómo puedes ayudar a tu comunidad.',
-  '¡Aprendamos juntos!'
- ];
- const fullText=segments.join(' ');
- let utterance=null, fallbackTimers=[], boundarySeen=false;
- function clearFallback(){fallbackTimers.forEach(timer=>window.clearTimeout(timer));fallbackTimers=[];}
- function finish(){
-  clearFallback(); root.dataset.speaking='false'; utterance=null;
-  playButton.disabled=false; stopButton.disabled=true;
-  status.textContent='Presentación finalizada. Puedes volver a escucharla cuando quieras.';
-  caption.textContent='¡Gracias por conocer ARKON!';
- }
- function stop(showMessage=true){
-  clearFallback();
-  if(window.speechSynthesis)window.speechSynthesis.cancel();
-  root.dataset.speaking='false'; utterance=null;
-  playButton.disabled=false; stopButton.disabled=true;
-  if(showMessage)status.textContent='Presentación detenida.';
- }
- function setCaptionByPosition(position){
-  let offset=0;
-  for(const segment of segments){
-   if(position<=offset+segment.length){caption.textContent=segment;return;}
-   offset+=segment.length+1;
+ const section=document.getElementById('arkon-video-real');
+ const video=section?.querySelector('video.arkon-video-player');
+ const avatar=section?.querySelector('#arkon-video-avatar');
+ const toggle=document.getElementById('arkon-caption-toggle');
+ if(!section||!video||!avatar||!toggle)return;
+ const list=video.textTracks;
+ function captionTrack(){
+  for(let i=0;i<list.length;i++){
+   if(list[i].kind==='captions'||list[i].kind==='subtitles')return list[i];
   }
-  caption.textContent=segments[segments.length-1];
+  return null;
  }
- playButton.addEventListener('click',function(){
-  if(!('speechSynthesis' in window)||!('SpeechSynthesisUtterance' in window)){
-   status.textContent='Este navegador no ofrece voz automática. Puedes leer el texto que aparece aquí.';
-   caption.textContent=fullText;return;
-  }
-  window.speechSynthesis.cancel();clearFallback();boundarySeen=false;
-  utterance=new SpeechSynthesisUtterance(fullText);
-  utterance.lang='es-CO';utterance.rate=.94;utterance.pitch=1.02;utterance.volume=1;
-  const voices=window.speechSynthesis.getVoices();
-  const voice=voices.find(v=>/^es-CO$/i.test(v.lang))||voices.find(v=>/^es-MX$/i.test(v.lang))||voices.find(v=>/^es(-|_)/i.test(v.lang));
-  if(voice)utterance.voice=voice;
-  root.dataset.speaking='true';caption.textContent=segments[0];
-  playButton.disabled=true;stopButton.disabled=false;
-  status.textContent=voice?'Reproduciendo en español.':'Reproduciendo con la voz española disponible en tu dispositivo.';
-  let offset=0;
-  segments.forEach((segment,index)=>{
-   const start=offset;offset+=segment.length+1;
-   const delay=Math.max(1350,segment.length*64);
-   const timer=window.setTimeout(()=>{
-    if(!boundarySeen&&root.dataset.speaking==='true')caption.textContent=segment;
-   },segments.slice(0,index).reduce((sum,s)=>sum+Math.max(1350,s.length*64),0));
-   fallbackTimers.push(timer);
-  });
-  utterance.onboundary=function(event){
-   boundarySeen=true;clearFallback();
-   if(typeof event.charIndex==='number')setCaptionByPosition(event.charIndex);
-  };
-  utterance.onend=finish;
-  utterance.onerror=function(){stop(false);status.textContent='No se pudo reproducir la voz en este dispositivo. Puedes leer el texto mostrado.';caption.textContent=fullText;};
-  window.speechSynthesis.speak(utterance);
+ function refreshToggle(){
+  const track=captionTrack();
+  const active=!!track&&track.mode==='showing';
+  toggle.setAttribute('aria-pressed',String(active));
+  toggle.textContent=active?'CC Subtítulos: activados':'CC Subtítulos: desactivados';
+ }
+ function setCaptions(show){
+  const track=captionTrack();
+  if(track)track.mode=show?'showing':'disabled';
+  refreshToggle();
+ }
+ toggle.addEventListener('click',function(){
+  const track=captionTrack();
+  setCaptions(!(track&&track.mode==='showing'));
  });
- stopButton.addEventListener('click',()=>stop());
- document.addEventListener('visibilitychange',()=>{if(document.hidden&&root.dataset.speaking==='true')stop();});
+ video.addEventListener('loadedmetadata',()=>setCaptions(true));
+ video.addEventListener('play',()=>{section.dataset.avatarSpeaking='true';});
+ ['pause','ended','waiting','stalled','emptied'].forEach(eventName=>{
+  video.addEventListener(eventName,()=>{section.dataset.avatarSpeaking='false';});
+ });
+ if(list.addEventListener)list.addEventListener('change',refreshToggle);
+ if(list.length)setCaptions(true);
+ else video.addEventListener('loadeddata',()=>setCaptions(true),{once:true});
+ refreshToggle();
 })();
 </script>
 
