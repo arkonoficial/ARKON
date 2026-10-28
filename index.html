@@ -1764,5 +1764,198 @@ document.getElementById('featured-articles').innerHTML=[articles[0],articles[2],
 })();
 </script>
 
+
+<style id="arkon-theme-control">
+/* Contraste reforzado: texto oscuro, tarjetas blancas y fondos suaves */
+html {
+  color-scheme: light !important;
+}
+html[data-arkon-palette="azul"] {
+  --arkon-bg-a: #D0DCE5;
+  --arkon-bg-b: #DFE7ED;
+  --arkon-bg-c: #C7D4DE;
+  --arkon-card: #FFFFFF;
+  --arkon-soft: #E5EDF2;
+  --arkon-ink: #172B3E;
+  --arkon-muted: #354C60;
+  --arkon-border: #B8C8D3;
+}
+html[data-arkon-palette="verde"] {
+  --arkon-bg-a: #CFDED7;
+  --arkon-bg-b: #DFE9E3;
+  --arkon-bg-c: #C4D8CF;
+  --arkon-card: #FFFFFF;
+  --arkon-soft: #E4EEE8;
+  --arkon-ink: #19372F;
+  --arkon-muted: #35574C;
+  --arkon-border: #B6CEC3;
+}
+html[data-arkon-palette="lila"] {
+  --arkon-bg-a: #D8D7E5;
+  --arkon-bg-b: #E7E5EF;
+  --arkon-bg-c: #CDCDDE;
+  --arkon-card: #FFFFFF;
+  --arkon-soft: #EAE9F2;
+  --arkon-ink: #282943;
+  --arkon-muted: #484965;
+  --arkon-border: #C4C4D8;
+}
+html[data-arkon-palette="arena"] {
+  --arkon-bg-a: #E2D9CD;
+  --arkon-bg-b: #EFE8DE;
+  --arkon-bg-c: #D8CCBD;
+  --arkon-card: #FFFFFF;
+  --arkon-soft: #F1EAE0;
+  --arkon-ink: #3B3025;
+  --arkon-muted: #5D4C3C;
+  --arkon-border: #D1C2B1;
+}
+:root {
+  --ink: var(--arkon-ink) !important;
+  --muted: var(--arkon-muted) !important;
+  --surface: var(--arkon-card) !important;
+  --surface-soft: var(--arkon-soft) !important;
+  --border: var(--arkon-border) !important;
+  --site-on-background: var(--arkon-ink) !important;
+  --teal-ink: #006C63 !important;
+}
+html, body {
+  color: var(--arkon-ink) !important;
+  background: var(--arkon-bg-b) !important;
+}
+#arkon-ambient {
+  background: linear-gradient(135deg, var(--arkon-bg-a) 0%, var(--arkon-bg-b) 48%, var(--arkon-bg-c) 100%) !important;
+}
+#arkon-ambient::before, #arkon-ambient::after { opacity: .26 !important; }
+#app {
+  color: var(--arkon-ink) !important;
+  background: rgba(255,255,255,.06) !important;
+}
+#app h1, #app h2, #app h3, #app h4,
+#app .page-intro h1, #app .section-head h2,
+#app .card h3, #app .feature-copy h3,
+#app .challenge-question h3 {
+  color: var(--arkon-ink) !important;
+  opacity: 1 !important;
+}
+#app p, #app .lead, #app .card-bottom, #app .tag,
+#app .feature-copy p, #app .page-intro p, #app .section-head p,
+#app .mini-stat, #app .text-link {
+  color: var(--arkon-muted) !important;
+  opacity: 1 !important;
+}
+#app .card, #app .feature-strip, #app .challenge-question,
+#app .search-panel, #app .answer-btn, #app .mini-stat,
+#app .tag, #app .float-card {
+  background-color: var(--arkon-card) !important;
+  border-color: var(--arkon-border) !important;
+}
+#app .card, #app .feature-strip, #app .challenge-question,
+#app .search-panel, #app .answer-btn, #app .mini-stat {
+  color: var(--arkon-ink) !important;
+}
+#app .card h3, #app .challenge-question h3,
+#app .feature-copy h3 { color: var(--arkon-ink) !important; }
+#app .hero { color: #FFFFFF !important; }
+#app .hero h1, #app .hero h2, #app .hero h3,
+#app .hero p, #app .hero .eyebrow, #app .hero .hero-note {
+  color: #FFFFFF !important;
+}
+#app header {
+  background: rgba(14, 29, 46, .97) !important;
+  border-bottom-color: #29445C !important;
+}
+#app .brand, #app .brand-name, #app .nav button {
+  color: #F4F8FC !important;
+}
+#app .brand-caption { color: #CBD6E2 !important; }
+#app .nav button:hover, #app .nav button.active {
+  color: #5EEAD4 !important;
+  background: rgba(45, 212, 191, .12) !important;
+}
+#app input, #app select, #app textarea {
+  color: #172B3E !important;
+  background: #FFFFFF !important;
+  border-color: var(--arkon-border) !important;
+}
+#app .card p, #app .feature-copy p, #app .challenge-question p {
+  color: var(--arkon-muted) !important;
+  opacity: 1 !important;
+}
+#app .arrow-circle { background: var(--arkon-soft) !important; color: var(--arkon-ink) !important; }
+#arkon-theme-control *, #arkon-theme-control-panel * { box-sizing: border-box; }
+#arkon-theme-button {
+  position: fixed; right: 16px; bottom: 16px; z-index: 10000;
+  border: 0; border-radius: 999px; padding: 13px 17px;
+  background: #0E293B; color: #FFFFFF; font: 700 14px/1.2 system-ui, sans-serif;
+  box-shadow: 0 8px 24px rgba(18,38,56,.25); cursor: pointer;
+}
+#arkon-theme-button:hover { background: #17465A; }
+#arkon-theme-control-panel {
+  position: fixed; right: 16px; bottom: 70px; z-index: 10000;
+  width: min(300px, calc(100vw - 32px)); padding: 16px;
+  border: 1px solid #B8C8D3; border-radius: 18px; background: #FFFFFF;
+  color: #172B3E; box-shadow: 0 14px 38px rgba(18,38,56,.23);
+  font: 14px/1.4 system-ui, sans-serif;
+}
+#arkon-theme-control-panel[hidden] { display: none !important; }
+#arkon-theme-control-panel h3 { margin: 0 0 5px; font-size: 16px; color: #172B3E !important; }
+#arkon-theme-control-panel p { margin: 0 0 12px; font-size: 12px; color: #43576A !important; }
+.arkon-palette-choice {
+  display: flex; align-items: center; gap: 10px; width: 100%; margin: 7px 0;
+  padding: 9px 10px; border: 1px solid #CFD9E1; border-radius: 12px;
+  color: #172B3E; background: #F7FAFC; font: 600 13px system-ui, sans-serif;
+  text-align: left; cursor: pointer;
+}
+.arkon-palette-choice:hover, .arkon-palette-choice[aria-pressed="true"] {
+  border-color: #087F75; background: #E7F5F1;
+}
+.arkon-palette-dot { width: 22px; height: 22px; flex: 0 0 22px; border-radius: 50%; border: 1px solid rgba(0,0,0,.15); }
+@media (max-width: 600px) {
+  #arkon-theme-button { right: 12px; bottom: 12px; padding: 12px 14px; }
+  #arkon-theme-control-panel { right: 12px; bottom: 64px; }
+}
+</style>
+<button id="arkon-theme-button" type="button" aria-expanded="false" aria-controls="arkon-theme-control-panel">🎨 Cambiar colores</button>
+<div id="arkon-theme-control-panel" role="dialog" aria-label="Personalizar los colores de ARKON" hidden>
+  <h3>Personaliza ARKON</h3>
+  <p>Elige el color de fondo. Las tarjetas siguen blancas y las letras oscuras para que se lean bien.</p>
+  <button class="arkon-palette-choice" type="button" data-palette="azul" aria-pressed="true"><span class="arkon-palette-dot" style="background:#D0DCE5"></span> Azul gris</button>
+  <button class="arkon-palette-choice" type="button" data-palette="verde" aria-pressed="false"><span class="arkon-palette-dot" style="background:#CFDED7"></span> Verde suave</button>
+  <button class="arkon-palette-choice" type="button" data-palette="lila" aria-pressed="false"><span class="arkon-palette-dot" style="background:#D8D7E5"></span> Lila suave</button>
+  <button class="arkon-palette-choice" type="button" data-palette="arena" aria-pressed="false"><span class="arkon-palette-dot" style="background:#E2D9CD"></span> Arena</button>
+</div>
+<script id="arkon-theme-control-script">
+(function () {
+  const html = document.documentElement;
+  const openButton = document.getElementById('arkon-theme-button');
+  const panel = document.getElementById('arkon-theme-control-panel');
+  const choices = Array.from(document.querySelectorAll('.arkon-palette-choice'));
+  if (!openButton || !panel || !choices.length) return;
+  function setPalette(name) {
+    const valid = ['azul', 'verde', 'lila', 'arena'].includes(name) ? name : 'azul';
+    html.setAttribute('data-arkon-palette', valid);
+    choices.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.palette === valid)));
+    try { localStorage.setItem('arkon-palette', valid); } catch (error) {}
+  }
+  let saved = 'azul';
+  try { saved = localStorage.getItem('arkon-palette') || 'azul'; } catch (error) {}
+  setPalette(saved);
+  openButton.addEventListener('click', function () {
+    const opening = panel.hidden;
+    panel.hidden = !opening;
+    openButton.setAttribute('aria-expanded', String(opening));
+  });
+  choices.forEach(button => button.addEventListener('click', () => setPalette(button.dataset.palette)));
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !panel.hidden) {
+      panel.hidden = true;
+      openButton.setAttribute('aria-expanded', 'false');
+      openButton.focus();
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
