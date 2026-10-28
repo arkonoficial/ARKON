@@ -63,7 +63,7 @@ jobs:
               seconds, millis = divmod(total, 1000)
               return f"{hours:02}:{minutes:02}:{seconds:02},{millis:03}"
           with open("arkon-intro.vtt", "w", encoding="utf-8") as file:
-              file.write("WEBVTT\\n\\n")
+              file.write("WEBVTT\n\n")
               for start, end, text in captions:
                   file.write(f"{stamp(start*duration).replace(',', '.')} --> {stamp(end*duration).replace(',', '.')}\\n{text}\\n\\n")
           PY
