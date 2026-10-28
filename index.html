@@ -1092,7 +1092,7 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
             poster="./arkon-intro-poster.jpg"
             aria-label="Video de bienvenida a ARKON. Los subtítulos en español se pueden activar o desactivar desde los controles del reproductor.">
             <source src="./arkon-intro.mp4" type="video/mp4">
-            <track src="./arkon-intro.vtt" kind="captions" srclang="es" label="Español">
+            <track src="./arkon-intro.vtt" kind="captions" srclang="es" label="Español" default>
             Tu navegador no admite la reproducción de video HTML5.
           </video>
         </div>
@@ -1105,6 +1105,62 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
           <a class="arkon-video-download" href="./arkon-intro.mp4" download="ARKON-video-de-bienvenida.mp4">
             <span aria-hidden="true">↓</span> Descargar video MP4
           </a>
+        </div>
+      </section>
+
+      <section id="arkon-presenter" aria-labelledby="arkon-presenter-title">
+        <div class="arkon-presenter-copy">
+          <span class="arkon-presenter-kicker"><span aria-hidden="true">✦</span> Presentador virtual</span>
+          <h2 id="arkon-presenter-title">Conoce ARKON en unos segundos</h2>
+          <p>Escucha una explicación rápida de la plataforma. El personaje se mueve mientras habla y muestra el texto para que puedas seguirlo.</p>
+          <div id="arkon-presenter-caption" class="arkon-presenter-caption" aria-live="polite">¡Hola! Pulsa “Escuchar presentación” para conocer ARKON.</div>
+          <div class="arkon-presenter-controls">
+            <button type="button" id="arkon-presenter-play" class="arkon-presenter-play">▶ Escuchar presentación</button>
+            <button type="button" id="arkon-presenter-stop" class="arkon-presenter-stop" disabled>■ Detener</button>
+          </div>
+          <p class="arkon-presenter-note" id="arkon-presenter-status" aria-live="polite">La voz utiliza el idioma español disponible en tu dispositivo.</p>
+        </div>
+        <div class="arkon-presenter-stage" id="arkon-presenter-stage" aria-label="Personaje ilustrado animado que presenta ARKON">
+          <div class="arkon-presenter-glow"></div>
+          <div class="arkon-presenter-float arkon-presenter-float-a">Aprender ✦</div>
+          <div class="arkon-presenter-float arkon-presenter-float-b">Prevenir ✓</div>
+          <svg class="arkon-presenter-svg" viewBox="0 0 340 360" role="img" aria-labelledby="arkon-presenter-svg-title">
+            <title id="arkon-presenter-svg-title">Presentador virtual ilustrado de ARKON</title>
+            <ellipse cx="170" cy="337" rx="88" ry="13" fill="#0C2336" opacity=".14"/>
+            <g id="arkon-presenter-body">
+              <path d="M111 213 C90 228 76 268 74 315 L266 315 C264 268 250 228 229 213 C212 202 191 199 170 199 C149 199 128 202 111 213Z" fill="#173A52"/>
+              <path d="M142 205 L170 244 L198 205 L213 315 L127 315Z" fill="#2DD4BF"/>
+              <path d="M145 205 L170 244 L155 270 L139 223Z" fill="#FFFFFF" opacity=".92"/>
+              <path d="M195 205 L170 244 L185 270 L201 223Z" fill="#FFFFFF" opacity=".92"/>
+              <path d="M128 229 C109 236 100 256 93 276" stroke="#173A52" stroke-width="27" stroke-linecap="round" fill="none"/>
+              <path d="M212 229 C229 221 238 202 243 183" stroke="#173A52" stroke-width="27" stroke-linecap="round" fill="none"/>
+              <g id="arkon-presenter-wave">
+                <path d="M245 188 C251 173 257 158 259 146" stroke="#DDA783" stroke-width="18" stroke-linecap="round" fill="none"/>
+                <path d="M248 151 C240 142 239 132 243 126 C248 121 253 129 255 137 C255 126 262 119 267 124 C271 130 267 140 264 146 C272 137 280 139 280 145 C279 151 271 158 264 162Z" fill="#E7B692"/>
+                <path d="M244 138 Q237 132 239 126" stroke="#C98D6A" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              </g>
+              <path d="M151 180 L151 211 Q170 229 189 211 L189 180Z" fill="#DDA783"/>
+            </g>
+            <g id="arkon-presenter-head">
+              <circle cx="117" cy="127" r="13" fill="#E4AD87"/>
+              <circle cx="223" cy="127" r="13" fill="#E4AD87"/>
+              <path d="M118 103 C118 61 142 42 171 42 C207 42 224 67 222 105 L215 150 C211 180 191 196 171 196 C147 196 127 177 123 149Z" fill="#E7B692"/>
+              <path d="M115 119 C104 81 118 48 151 39 C182 28 215 46 226 72 C233 91 225 109 221 116 L212 91 C185 97 153 86 135 70 C132 91 126 106 115 119Z" fill="#172637"/>
+              <path d="M127 113 C139 104 151 104 160 111" stroke="#172637" stroke-width="5" stroke-linecap="round" fill="none"/>
+              <path d="M183 111 C193 104 205 105 213 113" stroke="#172637" stroke-width="5" stroke-linecap="round" fill="none"/>
+              <g id="arkon-presenter-eyes" fill="#172637">
+                <ellipse cx="145" cy="124" rx="5" ry="7"/>
+                <ellipse cx="197" cy="124" rx="5" ry="7"/>
+              </g>
+              <path d="M169 126 L163 145 Q170 150 177 145" stroke="#C98D6A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path id="arkon-presenter-mouth" d="M151 159 Q170 174 191 158 Q185 181 170 181 Q155 178 151 159Z" fill="#7C3542" transform-box="fill-box" transform-origin="center"/>
+              <path d="M155 162 Q170 169 187 161" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+              <path d="M124 91 C135 63 157 57 179 59" stroke="#26394B" stroke-width="7" stroke-linecap="round" fill="none" opacity=".8"/>
+            </g>
+            <circle cx="129" cy="146" r="7" fill="#D98782" opacity=".35"/>
+            <circle cx="211" cy="146" r="7" fill="#D98782" opacity=".35"/>
+          </svg>
+          <div class="arkon-presenter-brand"><span class="arkon-presenter-brand-mark">A</span><span><strong>ARKON</strong><small>Aprende y prepárate</small></span></div>
         </div>
       </section>
 
@@ -2082,6 +2138,159 @@ body { background-image:linear-gradient(135deg,var(--arkon-bg-a),var(--arkon-bg-
  document.addEventListener('keydown',function(event){
   if(event.key==='Escape'&&!panel.hidden){panel.hidden=true;openButton.setAttribute('aria-expanded','false');openButton.focus();}
  });
+})();
+</script>
+
+
+<style id="arkon-presenter-style">
+#arkon-presenter {
+  display:grid; grid-template-columns:minmax(0,1.05fr) minmax(260px,.95fr);
+  gap:clamp(20px,4vw,46px); align-items:center; margin:24px auto 44px;
+  padding:clamp(20px,4vw,38px); max-width:1140px; border-radius:26px;
+  color:#EDF7FB; background:linear-gradient(135deg,#102436,#17364B 58%,#1C4B57);
+  border:1px solid rgba(45,212,191,.24); box-shadow:0 18px 48px rgba(9,29,44,.12);
+  overflow:hidden; position:relative;
+}
+#arkon-presenter .arkon-presenter-copy { position:relative; z-index:2; min-width:0; }
+#arkon-presenter .arkon-presenter-kicker {
+ display:inline-flex; align-items:center; gap:8px; border-radius:999px;
+ padding:7px 11px; color:#9EF3E2; background:rgba(45,212,191,.1);
+ border:1px solid rgba(45,212,191,.24); font-size:.74rem; font-weight:850; letter-spacing:.07em; text-transform:uppercase;
+}
+#arkon-presenter h2 { margin:16px 0 12px; color:#FFFFFF; font-size:clamp(1.6rem,3.5vw,2.55rem); line-height:1.13; letter-spacing:-.035em; }
+#arkon-presenter .arkon-presenter-copy > p { color:#D4E2EC; line-height:1.65; }
+#arkon-presenter .arkon-presenter-caption {
+ min-height:78px; margin:18px 0 14px; padding:15px 17px;
+ border-left:4px solid #2DD4BF; border-radius:0 15px 15px 0;
+ background:rgba(4,17,29,.64); color:#FFFFFF; font-size:1rem; line-height:1.65; font-weight:650;
+}
+#arkon-presenter .arkon-presenter-controls { display:flex; flex-wrap:wrap; gap:9px; }
+#arkon-presenter button { min-height:43px; border-radius:12px; padding:11px 15px; font:800 .85rem system-ui,sans-serif; cursor:pointer; transition:transform .18s ease,filter .18s ease,background .18s ease; }
+#arkon-presenter button:hover:not(:disabled) { transform:translateY(-2px); filter:brightness(1.08); }
+#arkon-presenter button:focus-visible { outline:3px solid #FFCA66; outline-offset:3px; }
+#arkon-presenter .arkon-presenter-play { color:#052B2D; background:#2DD4BF; border:1px solid #70E9DA; }
+#arkon-presenter .arkon-presenter-stop { color:#F0F7FA; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.22); }
+#arkon-presenter .arkon-presenter-stop:disabled { opacity:.45; cursor:not-allowed; }
+#arkon-presenter .arkon-presenter-note { color:#AFC4D3; margin:12px 0 0; font-size:.75rem; }
+#arkon-presenter .arkon-presenter-stage {
+ position:relative; min-height:340px; display:flex; align-items:center; justify-content:center;
+ border-radius:24px; background:radial-gradient(circle at 52% 42%,rgba(45,212,191,.19),transparent 58%),rgba(3,16,28,.26);
+ border:1px solid rgba(255,255,255,.08); overflow:hidden;
+}
+#arkon-presenter .arkon-presenter-glow {
+ position:absolute; width:230px; height:230px; border-radius:50%;
+ background:radial-gradient(circle,rgba(45,212,191,.22),rgba(45,212,191,.02) 65%,transparent 72%);
+}
+#arkon-presenter .arkon-presenter-svg { width:min(100%,330px); height:auto; position:relative; z-index:1; overflow:visible; }
+#arkon-presenter #arkon-presenter-body { transform-origin:170px 315px; animation:arkon-presenter-breathe 3.6s ease-in-out infinite; }
+#arkon-presenter #arkon-presenter-head { transform-origin:170px 190px; animation:arkon-presenter-nod 4.4s ease-in-out infinite; }
+#arkon-presenter #arkon-presenter-wave { transform-origin:246px 199px; animation:arkon-presenter-wave 2.4s ease-in-out infinite; }
+#arkon-presenter #arkon-presenter-eyes { transform-origin:center; animation:arkon-presenter-blink 5.2s infinite; }
+#arkon-presenter #arkon-presenter-mouth { transform-origin:center; }
+#arkon-presenter[data-speaking="true"] #arkon-presenter-mouth { animation:arkon-presenter-mouth  .19s ease-in-out infinite alternate; }
+#arkon-presenter[data-speaking="true"] #arkon-presenter-head { animation:arkon-presenter-nod .8s ease-in-out infinite; }
+#arkon-presenter .arkon-presenter-float {
+ position:absolute; z-index:2; padding:9px 12px; border-radius:13px; font-size:.76rem; font-weight:850;
+ color:#F4FFFC; background:rgba(18,44,61,.93); border:1px solid rgba(118,245,219,.25);
+ box-shadow:0 9px 20px rgba(0,0,0,.16); animation:arkon-presenter-float 4s ease-in-out infinite;
+}
+#arkon-presenter .arkon-presenter-float-a { top:17%; left:5%; }
+#arkon-presenter .arkon-presenter-float-b { right:4%; top:52%; animation-delay:-1.8s; }
+#arkon-presenter .arkon-presenter-brand { position:absolute; z-index:3; bottom:14px; left:15px; display:flex; align-items:center; gap:9px; color:#FFFFFF; }
+#arkon-presenter .arkon-presenter-brand-mark { display:grid; place-items:center; width:33px; height:33px; border-radius:10px; color:#062D30; background:#2DD4BF; font-weight:950; }
+#arkon-presenter .arkon-presenter-brand strong { display:block; font-size:.78rem; letter-spacing:.08em; }
+#arkon-presenter .arkon-presenter-brand small { display:block; margin-top:2px; color:#B9CCD9; font-size:.65rem; }
+@keyframes arkon-presenter-breathe { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-3px)} }
+@keyframes arkon-presenter-nod { 0%,100%{transform:rotate(0)} 35%{transform:rotate(-2deg)} 70%{transform:rotate(1.4deg)} }
+@keyframes arkon-presenter-wave { 0%,100%{transform:rotate(0)} 14%{transform:rotate(9deg)} 29%{transform:rotate(-10deg)} 44%{transform:rotate(9deg)} 58%{transform:rotate(-4deg)} 72%{transform:rotate(0)} }
+@keyframes arkon-presenter-blink { 0%,46%,50%,100%{transform:scaleY(1)} 48%{transform:scaleY(.12)} }
+@keyframes arkon-presenter-mouth { from{transform:scaleY(.55)} to{transform:scaleY(1.3)} }
+@keyframes arkon-presenter-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+@media(max-width:760px) {
+ #arkon-presenter { grid-template-columns:1fr; padding:20px; gap:16px; }
+ #arkon-presenter .arkon-presenter-stage { min-height:300px; order:-1; }
+ #arkon-presenter .arkon-presenter-svg { width:min(88%,300px); }
+ #arkon-presenter .arkon-presenter-float-a { top:10%; left:4%; }
+ #arkon-presenter .arkon-presenter-float-b { top:48%; right:3%; }
+}
+@media(prefers-reduced-motion:reduce) {
+ #arkon-presenter #arkon-presenter-body,#arkon-presenter #arkon-presenter-head,
+ #arkon-presenter #arkon-presenter-wave,#arkon-presenter #arkon-presenter-eyes,
+ #arkon-presenter .arkon-presenter-float,#arkon-presenter #arkon-presenter-mouth { animation:none !important; }
+}
+</style>
+<script id="arkon-presenter-script">
+(function(){
+ const root=document.getElementById('arkon-presenter');
+ if(!root||root.dataset.ready==='true')return;
+ root.dataset.ready='true';
+ const playButton=document.getElementById('arkon-presenter-play');
+ const stopButton=document.getElementById('arkon-presenter-stop');
+ const caption=document.getElementById('arkon-presenter-caption');
+ const status=document.getElementById('arkon-presenter-status');
+ const segments=[
+  '¡Hola! Bienvenido a ARKON.',
+  'Aquí puedes aprender a prevenir desastres, consultar fuentes confiables y fortalecer tus habilidades laborales.',
+  'Explora las secciones, resuelve los retos y descubre cómo puedes ayudar a tu comunidad.',
+  '¡Aprendamos juntos!'
+ ];
+ const fullText=segments.join(' ');
+ let utterance=null, fallbackTimers=[], boundarySeen=false;
+ function clearFallback(){fallbackTimers.forEach(timer=>window.clearTimeout(timer));fallbackTimers=[];}
+ function finish(){
+  clearFallback(); root.dataset.speaking='false'; utterance=null;
+  playButton.disabled=false; stopButton.disabled=true;
+  status.textContent='Presentación finalizada. Puedes volver a escucharla cuando quieras.';
+  caption.textContent='¡Gracias por conocer ARKON!';
+ }
+ function stop(showMessage=true){
+  clearFallback();
+  if(window.speechSynthesis)window.speechSynthesis.cancel();
+  root.dataset.speaking='false'; utterance=null;
+  playButton.disabled=false; stopButton.disabled=true;
+  if(showMessage)status.textContent='Presentación detenida.';
+ }
+ function setCaptionByPosition(position){
+  let offset=0;
+  for(const segment of segments){
+   if(position<=offset+segment.length){caption.textContent=segment;return;}
+   offset+=segment.length+1;
+  }
+  caption.textContent=segments[segments.length-1];
+ }
+ playButton.addEventListener('click',function(){
+  if(!('speechSynthesis' in window)||!('SpeechSynthesisUtterance' in window)){
+   status.textContent='Este navegador no ofrece voz automática. Puedes leer el texto que aparece aquí.';
+   caption.textContent=fullText;return;
+  }
+  window.speechSynthesis.cancel();clearFallback();boundarySeen=false;
+  utterance=new SpeechSynthesisUtterance(fullText);
+  utterance.lang='es-CO';utterance.rate=.94;utterance.pitch=1.02;utterance.volume=1;
+  const voices=window.speechSynthesis.getVoices();
+  const voice=voices.find(v=>/^es-CO$/i.test(v.lang))||voices.find(v=>/^es-MX$/i.test(v.lang))||voices.find(v=>/^es(-|_)/i.test(v.lang));
+  if(voice)utterance.voice=voice;
+  root.dataset.speaking='true';caption.textContent=segments[0];
+  playButton.disabled=true;stopButton.disabled=false;
+  status.textContent=voice?'Reproduciendo en español.':'Reproduciendo con la voz española disponible en tu dispositivo.';
+  let offset=0;
+  segments.forEach((segment,index)=>{
+   const start=offset;offset+=segment.length+1;
+   const delay=Math.max(1350,segment.length*64);
+   const timer=window.setTimeout(()=>{
+    if(!boundarySeen&&root.dataset.speaking==='true')caption.textContent=segment;
+   },segments.slice(0,index).reduce((sum,s)=>sum+Math.max(1350,s.length*64),0));
+   fallbackTimers.push(timer);
+  });
+  utterance.onboundary=function(event){
+   boundarySeen=true;clearFallback();
+   if(typeof event.charIndex==='number')setCaptionByPosition(event.charIndex);
+  };
+  utterance.onend=finish;
+  utterance.onerror=function(){stop(false);status.textContent='No se pudo reproducir la voz en este dispositivo. Puedes leer el texto mostrado.';caption.textContent=fullText;};
+  window.speechSynthesis.speak(utterance);
+ });
+ stopButton.addEventListener('click',()=>stop());
+ document.addEventListener('visibilitychange',()=>{if(document.hidden&&root.dataset.speaking==='true')stop();});
 })();
 </script>
 
