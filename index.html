@@ -2131,208 +2131,136 @@ body { background-image:linear-gradient(135deg,var(--arkon-bg-a),var(--arkon-bg-
 </style>
 
 
-<style id="arkon-skill-contrast-fix">
-/* Contraste fijo en todas las fichas de Habilidades laborales.
-   Los colores elegidos para el resto del sitio no alteran estas superficies. */
-#app #skill-detail-view .detail-panel {
-  background: #0A1727 !important;
-  background-color: #0A1727 !important;
-  color: #F4F8FF !important;
-  border: 1px solid #29445E !important;
-  box-shadow: 0 16px 38px rgba(0,0,0,.24) !important;
-}
-#app #skill-detail-view .detail-panel h1,
-#app #skill-detail-view .detail-panel h2,
-#app #skill-detail-view .detail-panel h3,
-#app #skill-detail-view .detail-panel h4 {
-  color: #FFFFFF !important;
+
+
+<style id="arkon-global-text-contrast">
+/* Solo contraste del texto. No modificar fondos, bordes ni paletas. */
+#app .page h1,
+#app .page h2,
+#app .page h3,
+#app .page h4,
+#app .page .card h3,
+#app .page .detail-panel h2,
+#app .page .detail-panel h3,
+#app .page .step-card h3,
+#app .page .feature-copy h3,
+#app .page .source-item h3,
+#app .page .project-fact strong,
+#app .page .project-pillar h3 {
+  color: var(--arkon-ink) !important;
   opacity: 1 !important;
   text-shadow: none !important;
 }
-#app #skill-detail-view .detail-panel p,
-#app #skill-detail-view .detail-panel li,
-#app #skill-detail-view .detail-panel label,
-#app #skill-detail-view .detail-panel .progress-summary,
-#app #skill-detail-view .detail-panel .progress-summary span {
-  color: #DCE7F3 !important;
+#app .page p,
+#app .page li,
+#app .page .lead,
+#app .page .card p,
+#app .page .card-bottom,
+#app .page .tag,
+#app .page .page-intro p,
+#app .page .section-head p,
+#app .page .mini-stat,
+#app .page .detail-panel li,
+#app .page .detail-panel p,
+#app .page .step-card p,
+#app .page .check-item span,
+#app .page .progress-summary,
+#app .page .progress-summary span,
+#app .page .feature-copy p,
+#app .page .source-item p,
+#app .page .source-meta,
+#app .page .project-fact p,
+#app .page .project-pillar p,
+#app .page .answer-point p,
+#app .page .contact-card span,
+#app .page .notice p,
+#app .page .notice p strong,
+#app .page .empty-state p,
+#app .page .dialog-body,
+#app .page .quiz-progress,
+#app .page .feedback {
+  color: var(--arkon-muted) !important;
+  opacity: 1 !important;
+  text-shadow: none !important;
+}
+#app .page .notice p,
+#app .page .notice p strong {
+  color: var(--arkon-ink) !important;
+}
+#app .page .back-button,
+#app .page .pill,
+#app .page .text-link,
+#app .page a:not(.btn),
+#app .page .btn-quiet {
+  color: var(--arkon-ink) !important;
   opacity: 1 !important;
 }
-#app #skill-detail-view .detail-panel ol,
-#app #skill-detail-view .detail-panel ul {
-  color: #DCE7F3 !important;
-}
-#app #skill-detail-view .detail-panel .notice {
-  background: #10283B !important;
-  background-color: #10283B !important;
-  border: 1px solid #2D6574 !important;
-  box-shadow: inset 4px 0 0 #2DD4BF !important;
-}
-#app #skill-detail-view .detail-panel .notice p,
-#app #skill-detail-view .detail-panel .notice p strong {
-  color: #F4FAFF !important;
+#app .page .card:hover h3,
+#app .page .card:hover p,
+#app .page .card:hover .card-bottom,
+#app .page .step-card:hover h3,
+#app .page .step-card:hover p,
+#app .page .check-item:hover span {
+  color: var(--arkon-ink) !important;
   opacity: 1 !important;
 }
-#app #skill-detail-view .detail-panel .notice .notice-icon {
-  background: #15576A !important;
-  color: #FFFFFF !important;
-}
-#app #skill-detail-view .detail-panel .check-item {
-  background: #11253A !important;
-  border-color: #2E465F !important;
-  color: #EDF5FF !important;
-}
-#app #skill-detail-view .detail-panel .check-item span {
-  color: #EDF5FF !important;
-  opacity: 1 !important;
-}
-#app #skill-detail-view .detail-panel .check-item:hover {
-  background: #18354B !important;
-  border-color: #4DD6C3 !important;
-}
-#app #skill-detail-view .detail-panel .progress-shell {
-  background: #1B3045 !important;
-}
-#app #skill-detail-view .detail-panel .progress-fill {
-  background: #2DD4BF !important;
-}
-#app #skill-detail-view .side-card .btn-primary {
-  background: #155E63 !important;
-  background-color: #155E63 !important;
-  border: 1px solid #4DE0CC !important;
-  color: #FFFFFF !important;
-  opacity: 1 !important;
-}
-#app #skill-detail-view .side-card .btn-primary:hover {
-  background: #18777A !important;
-  border-color: #7BF2E2 !important;
-}
-#app #skill-detail-view .side-card .pill {
-  background: #142D42 !important;
-  color: #F2F8FF !important;
-  border: 1px solid #36556D !important;
-}
-#app #skill-detail-view .side-card hr {
-  border-top-color: #29445E !important;
-}
-
-/* El reto de cada ficha abre en una ventana oscura de alto contraste. */
-#quiz-dialog {
-  color-scheme: dark !important;
-  background: #081321 !important;
-  background-color: #081321 !important;
-  color: #F4F8FF !important;
-  border: 1px solid #34516B !important;
-  border-radius: 22px !important;
-  box-shadow: 0 28px 80px rgba(0,0,0,.55) !important;
-}
-#quiz-dialog::backdrop {
-  background: rgba(1,7,15,.78) !important;
-  backdrop-filter: blur(4px);
-}
-#quiz-dialog .dialog-content {
-  background: #081321 !important;
-  background-color: #081321 !important;
-  color: #F4F8FF !important;
-}
-#quiz-dialog .dialog-header {
-  border-bottom: 1px solid #263E55 !important;
-}
-#quiz-dialog .dialog-header h2,
-#quiz-dialog #quiz-title {
+/* Superficies oscuras conservan letras claras; no se alteran sus fondos. */
+#app header .brand,
+#app header .brand-name,
+#app header .nav button,
+#app header .icon-btn,
+#app .project-question-hero,
+#app .project-question-hero h1,
+#app .project-question-hero h2,
+#app .project-question-hero h3,
+#app .project-question-hero p,
+#app .project-question-hero a,
+#app .credits-hero,
+#app .credits-hero h1,
+#app .credits-hero h2,
+#app .credits-hero h3,
+#app .credits-hero p,
+#app .question-map-hero,
+#app .question-map-hero h3,
+#app .question-map-hero p {
   color: #FFFFFF !important;
   opacity: 1 !important;
 }
-#quiz-dialog .eyebrow,
-#quiz-dialog .quiz-progress {
-  color: #73E8D8 !important;
+#app .project-question-hero .project-kicker,
+#app .credits-hero .eyebrow,
+#app .question-map-hero .question-map-kicker {
+  color: #B9F5E9 !important;
   opacity: 1 !important;
 }
+/* Los retos y ventanas conservan su fondo actual y usan tinta legible. */
+dialog,
+dialog .dialog-content,
+dialog .dialog-header h2,
+dialog .dialog-body,
+dialog .dialog-body h3,
+dialog .dialog-body p,
+dialog .dialog-body li,
+#quiz-dialog,
+#quiz-dialog h1,
+#quiz-dialog h2,
+#quiz-dialog h3,
+#quiz-dialog p,
+#quiz-dialog strong,
+#quiz-dialog .quiz-progress,
+#quiz-dialog .quiz-result,
+#quiz-dialog .quiz-result p,
+#quiz-dialog .answer-btn,
+#quiz-dialog .answer-btn span,
+#quiz-dialog .answer-btn .letter,
 #quiz-dialog .dialog-close {
-  background: #17283B !important;
-  border-color: #3A5269 !important;
-  color: #FFFFFF !important;
-}
-#quiz-dialog #quiz-content h3 {
-  color: #F7FAFF !important;
+  color: var(--arkon-ink) !important;
   opacity: 1 !important;
-  line-height: 1.45 !important;
+  text-shadow: none !important;
 }
-#quiz-dialog #quiz-content .answer-btn {
-  display: flex !important;
-  align-items: center !important;
-  gap: 12px !important;
-  width: 100% !important;
-  min-height: 54px !important;
-  padding: 13px 15px !important;
-  margin: 9px 0 !important;
-  text-align: left !important;
-  background: #14283D !important;
-  background-color: #14283D !important;
-  border: 1px solid #34516B !important;
-  border-radius: 14px !important;
-  color: #F4F8FF !important;
-  opacity: 1 !important;
-  box-shadow: none !important;
-}
-#quiz-dialog #quiz-content .answer-btn span {
-  color: #F4F8FF !important;
-  opacity: 1 !important;
-}
-#quiz-dialog #quiz-content .answer-btn .letter {
-  display: grid !important;
-  place-items: center !important;
-  width: 30px !important;
-  height: 30px !important;
-  min-width: 30px !important;
-  border-radius: 9px !important;
-  background: #24445C !important;
-  color: #FFFFFF !important;
-  font-weight: 850 !important;
-}
-#quiz-dialog #quiz-content .answer-btn:hover:not(:disabled) {
-  background: #1B3B54 !important;
-  border-color: #4BDCC8 !important;
-}
-#quiz-dialog #quiz-content .answer-btn.correct,
-#quiz-dialog #quiz-content .answer-btn.correct:disabled {
-  background: #123D32 !important;
-  border-color: #38C99E !important;
-  color: #F2FFF9 !important;
-}
-#quiz-dialog #quiz-content .answer-btn.wrong,
-#quiz-dialog #quiz-content .answer-btn.wrong:disabled {
-  background: #47232B !important;
-  border-color: #F07884 !important;
-  color: #FFF5F6 !important;
-}
-#quiz-dialog #quiz-content .answer-btn:disabled {
-  cursor: default !important;
-  opacity: 1 !important;
-}
-#quiz-dialog #quiz-feedback {
-  margin-top: 14px !important;
-  padding: 14px 16px !important;
-  background: #102E2A !important;
-  border: 1px solid #2E7765 !important;
-  border-radius: 14px !important;
-  color: #F2FFF9 !important;
-}
-#quiz-dialog #quiz-feedback strong,
-#quiz-dialog #quiz-feedback p {
-  color: #F2FFF9 !important;
-  opacity: 1 !important;
-}
-#quiz-dialog #quiz-retry {
-  color: #FFFFFF !important;
-  background: #17354A !important;
-  border: 1px solid #3D667D !important;
-}
-@media (max-width: 620px) {
-  #app #skill-detail-view .detail-panel { padding: 18px !important; }
-  #quiz-dialog { width: calc(100vw - 20px) !important; max-width: calc(100vw - 20px) !important; }
-  #quiz-dialog #quiz-content .answer-btn { min-height: 56px !important; }
+#quiz-dialog .answer-btn.correct,
+#quiz-dialog .answer-btn.wrong {
+  color: var(--arkon-ink) !important;
 }
 </style>
-
 </body>
 </html>
