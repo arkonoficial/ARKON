@@ -65,7 +65,7 @@ jobs:
           with open("arkon-intro.vtt", "w", encoding="utf-8") as file:
               file.write("WEBVTT\n\n")
               for start, end, text in captions:
-                  file.write(f"{stamp(start*duration).replace(',', '.')} --> {stamp(end*duration).replace(',', '.')}\\n{text}\\n\\n")
+                  file.write(f"{stamp(start*duration).replace(',', '.')} --> {stamp(end*duration).replace(',', '.')}\n{text}\n\n")
           PY
 
           cat > filters.txt <<'FILTERS'
