@@ -1016,6 +1016,165 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
 }
 </style>
  
+
+<style id="arkon-second-video-styles">
+/* ARKON: segundo video debajo del video de bienvenida */
+#arkon-video-second {
+  max-width: 1140px;
+  margin: clamp(28px, 5vw, 72px) auto;
+  padding: clamp(18px, 4vw, 42px);
+  color: #f2f7fc;
+  background: linear-gradient(140deg, #071321 0%, #0a2033 58%, #0b2d3b 100%);
+  border: 1px solid rgba(118, 245, 219, 0.22);
+  border-radius: 28px;
+  box-shadow: 0 24px 65px rgba(8, 22, 42, 0.16);
+  position: relative;
+  overflow: hidden;
+}
+#arkon-video-second::before {
+  content: "";
+  position: absolute;
+  top: -110px;
+  right: -90px;
+  width: 290px;
+  height: 290px;
+  border-radius: 50%;
+  border: 1px solid rgba(118, 245, 219, 0.18);
+  box-shadow: 0 0 0 38px rgba(118, 245, 219, 0.025), 0 0 0 76px rgba(118, 245, 219, 0.018);
+  pointer-events: none;
+}
+#arkon-video-second .arkon-video-heading,
+#arkon-video-second .arkon-video-player-wrap,
+#arkon-video-second .arkon-video-meta {
+  position: relative;
+  z-index: 1;
+}
+#arkon-video-second .arkon-video-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 13px;
+  border: 1px solid rgba(118, 245, 219, 0.28);
+  border-radius: 999px;
+  color: #9cf4df;
+  background: rgba(12, 36, 55, 0.9);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+#arkon-video-second .arkon-video-eyebrow::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #76f5db;
+  box-shadow: 0 0 12px rgba(118, 245, 219, 0.7);
+}
+#arkon-video-second .arkon-video-title {
+  max-width: 820px;
+  margin: 18px 0 10px;
+  color: #f3f8fc;
+  font-size: clamp(1.8rem, 4vw, 3.15rem);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+#arkon-video-second .arkon-video-title span {
+  color: #76f5db;
+}
+#arkon-video-second .arkon-video-description {
+  max-width: 760px;
+  margin: 0 0 26px;
+  color: #b5c7d8;
+  font-size: clamp(0.98rem, 1.7vw, 1.08rem);
+  line-height: 1.7;
+}
+#arkon-video-second .arkon-video-player-wrap {
+  padding: 7px;
+  border: 1px solid rgba(118, 245, 219, 0.18);
+  border-radius: 23px;
+  background: rgba(2, 11, 22, 0.68);
+}
+#arkon-video-second .arkon-video-player {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #050d1c;
+  border-radius: 17px;
+}
+#arkon-video-second .arkon-video-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+#arkon-video-second .arkon-video-specs {
+  display: flex;
+  align-items: center;
+  gap: 10px 18px;
+  flex-wrap: wrap;
+  color: #a9bed0;
+  font-size: 0.9rem;
+}
+#arkon-video-second .arkon-video-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 12px 18px;
+  border: 1px solid #76f5db;
+  border-radius: 999px;
+  background: #76f5db;
+  color: #062033;
+  font-weight: 800;
+  text-decoration: none;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+#arkon-video-second .arkon-video-download:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(118, 245, 219, 0.18);
+}
+#arkon-video-second .arkon-video-download:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 4px;
+}
+@media (max-width: 720px) {
+  #arkon-video-second {
+    margin: 24px 12px;
+    padding: 18px;
+    border-radius: 22px;
+  }
+  #arkon-video-second .arkon-video-player-wrap {
+    padding: 4px;
+    border-radius: 15px;
+  }
+  #arkon-video-second .arkon-video-player {
+    border-radius: 11px;
+  }
+  #arkon-video-second .arkon-video-meta {
+    align-items: stretch;
+  }
+  #arkon-video-second .arkon-video-download {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #arkon-video-second .arkon-video-download {
+    transition: none;
+  }
+  #arkon-video-second .arkon-video-download:hover {
+    transform: none;
+  }
+}
+
+
+
+#arkon-video-second[hidden] { display: none !important; }
+</style>
 </head>
 <body>
 <div id="arkon-ambient" aria-hidden="true"></div>
@@ -1138,6 +1297,31 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
           </div>
           <button type="button" id="arkon-caption-toggle" class="arkon-caption-toggle" aria-pressed="true">CC Subtítulos: activados</button>
           <a class="arkon-video-download" href="./arkon-intro.mp4" download="ARKON-video-de-bienvenida.mp4">
+            <span aria-hidden="true">↓</span> Descargar video MP4
+          </a>
+        </div>
+      </section>
+
+      <section id="arkon-video-second" aria-labelledby="arkon-video-second-title" hidden>
+        <div class="arkon-video-heading">
+          <span class="arkon-video-eyebrow">ARKON · Video adicional</span>
+          <h2 class="arkon-video-title" id="arkon-video-second-title">ARKON en video</h2>
+          <p class="arkon-video-description">Un segundo video para conocer más sobre la plataforma.</p>
+        </div>
+        <div class="arkon-video-player-wrap">
+          <video class="arkon-video-player" controls playsinline preload="metadata"
+            aria-label="Segundo video de ARKON"
+            onloadedmetadata="this.closest('section').hidden=false"
+            onerror="this.closest('section').hidden=true">
+            <source src="./arkon-video-2.mp4" type="video/mp4">
+            Tu navegador no admite la reproducción de video HTML5.
+          </video>
+        </div>
+        <div class="arkon-video-meta">
+          <div class="arkon-video-specs">
+            <span>▶ Video adicional de ARKON</span>
+          </div>
+          <a class="arkon-video-download" href="./arkon-video-2.mp4" download="ARKON-video-2.mp4">
             <span aria-hidden="true">↓</span> Descargar video MP4
           </a>
         </div>
