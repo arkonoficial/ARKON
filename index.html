@@ -1025,7 +1025,7 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
 .arkon-tour-screen iframe { display:block; width:100%; height:clamp(300px,52vw,470px); border:0; background:#07111f; }
 .arkon-tour-caption { position:absolute; left:50%; bottom:13px; transform:translateX(-50%); width:max-content; max-width:88%; padding:5px 10px; border-radius:7px; background:rgba(0,0,0,.84); color:#fff; font-size:clamp(10px,1.2vw,12px); line-height:1.4; text-align:center; box-shadow:0 2px 10px rgba(0,0,0,.25); pointer-events:none; }
 .arkon-tour-controls { display:flex; align-items:center; flex-wrap:wrap; gap:9px; margin-top:12px; }
-.arkon-tour-controls button { border:1px solid var(--border); border-radius:10px; padding:9px 12px; color:var(--ink); background:var(--surface-soft); font-size:.84rem; font-weight:700; }
+.arkon-tour-controls button { border:1px solid var(--border); border-radius:10px; padding:9px 12px; color:var(--ink); background:var(--surface-soft); font-size:.84rem; font-weight:700; cursor:pointer; }\n.arkon-tour-controls button:focus-visible { outline:3px solid var(--site-secondary); outline-offset:2px; }
 .arkon-tour-controls button.primary { color:#fff; background:var(--site-primary); border-color:var(--site-primary); }
 .arkon-tour-progress { flex:1; min-width:100px; height:5px; accent-color:var(--site-secondary); }
 .arkon-tour[hidden], .arkon-tour-caption[hidden] { display:none !important; }
@@ -1064,7 +1064,7 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
 
 <section class="arkon-tour" id="arkon-silent-tour" aria-label="Recorrido silencioso por ARKON">
   <div class="arkon-tour-head">
-    <div><h2>Conoce ARKON en un minuto</h2><p>Recorrido visual sin audio. Puedes pausar y ocultar los subtítulos cuando quieras.</p></div>
+    <div><h2>Video tutorial de ARKON</h2><p>Recorrido visual sin audio por la página real. Puedes pausar, avanzar, retroceder y quitar los subtítulos.</p></div>
     <span class="pill">Tutorial · Sin sonido</span>
   </div>
   <div class="arkon-tour-screen">
@@ -1072,10 +1072,12 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
     <div class="arkon-tour-caption" id="arkon-tour-caption" aria-live="polite">Bienvenido a ARKON: explora sus secciones desde el menú superior.</div>
   </div>
   <div class="arkon-tour-controls">
-    <button type="button" class="primary" id="arkon-tour-play">▶ Iniciar recorrido</button>
+    <button type="button" class="primary" id="arkon-tour-play">▶ Reproducir tutorial</button>
+    <button type="button" id="arkon-tour-prev">← Anterior</button>
+    <button type="button" id="arkon-tour-next">Siguiente →</button>
     <button type="button" id="arkon-tour-subtitles" aria-pressed="true">Subtítulos: activados</button>
-    <input class="arkon-tour-progress" id="arkon-tour-progress" type="range" min="0" max="7" step="1" value="0" aria-label="Progreso del recorrido">
-    <span id="arkon-tour-step" class="source-meta">0/7</span>
+    <input class="arkon-tour-progress" id="arkon-tour-progress" type="range" min="0" max="8" step="1" value="0" aria-label="Progreso del recorrido">
+    <span id="arkon-tour-step" class="source-meta">1/9</span>
   </div>
 </section>
 
@@ -1117,62 +1119,7 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
 
       
       
-      <section id="arkon-video-real" aria-labelledby="arkon-video-title">
-        <div class="arkon-video-heading">
-          <span class="arkon-video-eyebrow">ARKON · Video de bienvenida</span>
-          <h2 class="arkon-video-title" id="arkon-video-title">Aprende. Conecta. <span>Transforma.</span></h2>
-          <p class="arkon-video-description">Conoce el propósito de ARKON: aprender para la vida, fortalecer la convivencia y desarrollar habilidades que nos preparan para el futuro.</p>
-        </div>
-        <div class="arkon-video-player-wrap">
-          <video class="arkon-video-player" controls playsinline preload="metadata"
-            poster="./arkon-intro-poster.jpg"
-            aria-label="Video de bienvenida a ARKON. Los subtítulos en español se pueden activar o desactivar desde los controles del reproductor.">
-            <source src="./arkon-intro.mp4" type="video/mp4">
-            <track src="./arkon-intro.vtt" kind="captions" srclang="es" label="Español" default>
-            Tu navegador no admite la reproducción de video HTML5.
-          </video>
-          <div class="arkon-video-avatar" id="arkon-video-avatar" aria-hidden="true">
-            <div class="arkon-video-avatar-label">ARKON te acompaña</div>
-            <svg viewBox="0 0 220 260" role="presentation" focusable="false">
-              <ellipse cx="110" cy="246" rx="62" ry="8" fill="#020A12" opacity=".34"/>
-              <g class="arkon-avatar-body">
-                <path d="M64 144 Q110 124 156 144 L178 236 L42 236Z" fill="#14364D"/>
-                <path d="M83 143 L110 178 L137 143 L145 236 L75 236Z" fill="#2DD4BF"/>
-                <path d="M80 145 L110 178 L99 201 L78 157Z M140 145 L110 178 L121 201 L142 157Z" fill="#FFFFFF"/>
-                <path d="M68 154 Q47 164 42 190" fill="none" stroke="#14364D" stroke-width="19" stroke-linecap="round"/>
-                <path d="M152 154 Q169 165 171 183" fill="none" stroke="#14364D" stroke-width="19" stroke-linecap="round"/>
-                <g class="arkon-avatar-wave">
-                  <path d="M171 185 L179 153" stroke="#DDA783" stroke-width="15" stroke-linecap="round"/>
-                  <path d="M178 156 Q166 144 173 137 Q181 132 185 145 Q186 132 193 134 Q200 140 190 154 Q202 145 207 152 Q207 161 190 168Z" fill="#E7B692"/>
-                </g>
-                <path d="M91 128 L91 153 Q110 172 129 153 L129 128Z" fill="#DDA783"/>
-              </g>
-              <g class="arkon-avatar-head">
-                <circle cx="64" cy="79" r="10" fill="#DDA783"/><circle cx="156" cy="79" r="10" fill="#DDA783"/>
-                <path d="M65 65 Q67 21 110 20 Q154 22 155 66 L148 104 Q140 133 110 139 Q80 132 72 104Z" fill="#E7B692"/>
-                <path d="M61 76 Q48 25 91 13 Q130 -1 157 31 Q171 51 159 80 L150 52 Q119 62 84 40 Q78 65 61 76Z" fill="#172637"/>
-                <path d="M75 75 Q87 67 98 75 M123 75 Q135 67 146 76" fill="none" stroke="#172637" stroke-width="4" stroke-linecap="round"/>
-                <g class="arkon-avatar-eyes" fill="#172637"><ellipse cx="88" cy="87" rx="4.5" ry="6"/><ellipse cx="133" cy="87" rx="4.5" ry="6"/></g>
-                <path d="M110 87 L105 101 Q110 105 116 101" fill="none" stroke="#C88C68" stroke-width="2.5" stroke-linecap="round"/>
-                <path class="arkon-avatar-mouth" d="M91 114 Q110 125 130 113 Q125 132 110 132 Q97 130 91 114Z" fill="#783747"/>
-                <path d="M97 116 Q110 121 124 116" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" fill="none"/>
-              </g>
-              <circle cx="76" cy="108" r="6" fill="#D98782" opacity=".36"/><circle cx="145" cy="108" r="6" fill="#D98782" opacity=".36"/>
-            </svg>
-          </div>
-        </div>
-        <div class="arkon-video-meta">
-          <div class="arkon-video-specs">
-            <span>▶ Narración neural en español</span>
-            <span class="arkon-caption-hint">Subtítulos pequeños · opcionales</span>
-            <span>1080p · 24 s</span>
-          </div>
-          <button type="button" id="arkon-caption-toggle" class="arkon-caption-toggle" aria-pressed="true">CC Subtítulos: activados</button>
-          <a class="arkon-video-download" href="./arkon-intro.mp4" download="ARKON-video-de-bienvenida.mp4">
-            <span aria-hidden="true">↓</span> Descargar video MP4
-          </a>
-        </div>
-      </section>
+      
 
       
 
@@ -2391,52 +2338,105 @@ dialog :is(h1,h2,h3,h4,p,li,small,strong,span,.quiz-progress,.quiz-result,.dialo
 
 <script id="arkon-silent-tour-script">
 (function(){
- const params=new URLSearchParams(location.search);
- const tour=params.get('tourview')==='1';
- if(tour){
-   const ownTour=document.getElementById('arkon-silent-tour');
-   if(ownTour) ownTour.hidden=true;
+ const params = new URLSearchParams(location.search);
+ if (params.get('tourview') === '1') {
+   const ownTour = document.getElementById('arkon-silent-tour');
+   if (ownTour) ownTour.hidden = true;
    return;
  }
- const box=document.getElementById('arkon-silent-tour');
- if(!box)return;
- const frame=document.getElementById('arkon-tour-frame');
- const caption=document.getElementById('arkon-tour-caption');
- const play=document.getElementById('arkon-tour-play');
- const subs=document.getElementById('arkon-tour-subtitles');
- const progress=document.getElementById('arkon-tour-progress');
- const stepLabel=document.getElementById('arkon-tour-step');
- const scenes=[
-  {page:'inicio',text:'Inicio: aquí encuentras la presentación y los accesos principales.'},
-  {page:'proyecto',text:'Pregunta ABP: conoce la pregunta central y cómo se conecta con el proyecto.'},
-  {page:'desastres',text:'Desastres: explora fichas educativas para prepararte y reconocer riesgos.'},
-  {page:'habilidades',text:'Habilidades laborales: revisa módulos, ejemplos y retos interactivos.'},
-  {page:'biblioteca',text:'Biblioteca: busca materiales de aprendizaje por tema y formato.'},
-  {page:'fuentes',text:'Fuentes: consulta referencias para ampliar o verificar la información.'},
-  {page:'creditos',text:'Créditos: conoce el equipo que participó en el desarrollo de ARKON.'}
+ const box = document.getElementById('arkon-silent-tour');
+ if (!box) return;
+ const frame = document.getElementById('arkon-tour-frame');
+ const caption = document.getElementById('arkon-tour-caption');
+ const play = document.getElementById('arkon-tour-play');
+ const previous = document.getElementById('arkon-tour-prev');
+ const next = document.getElementById('arkon-tour-next');
+ const subs = document.getElementById('arkon-tour-subtitles');
+ const progress = document.getElementById('arkon-tour-progress');
+ const stepLabel = document.getElementById('arkon-tour-step');
+ const scenes = [
+  {page:'inicio', text:'Inicio: aquí están la presentación y los accesos a las secciones principales.'},
+  {page:'proyecto', text:'Pregunta ABP: revisa la pregunta central y la relación con el proyecto educativo.'},
+  {page:'desastres', text:'Desastres: explora las guías de preparación y prevención de riesgos.'},
+  {page:'desastres', actionSelector:'#disaster-grid [data-action^="disaster:"]', text:'Ficha de desastre: abre un tema para consultar qué tener presente antes, durante y después.'},
+  {page:'habilidades', text:'Habilidades laborales: encuentra competencias que puedes practicar en el estudio y el trabajo.'},
+  {page:'habilidades', actionSelector:'#skills-grid [data-action^="skill:"]', text:'Ficha de habilidad: revisa ejemplos, actividades y una lista para practicar paso a paso.'},
+  {page:'biblioteca', text:'Biblioteca: busca recursos por tema, formato o nivel y abre el material que te interese.'},
+  {page:'fuentes', text:'Fuentes: consulta las referencias enlazadas para ampliar o verificar la información.'},
+  {page:'creditos', text:'Créditos: conoce a las personas que participaron en el desarrollo de ARKON.'}
  ];
- let current=0, timer=null, running=false, captionsOn=true;
- function showScene(i){
-   current=Math.max(0,Math.min(scenes.length-1,i));
-   const s=scenes[current];
-   caption.textContent=s.text;
-   caption.hidden=!captionsOn;
-   progress.value=current+1;
-   stepLabel.textContent=(current+1)+'/'+scenes.length;
-   try{
-     const doc=frame.contentDocument;
-     const nav=doc && doc.querySelector('[data-nav="'+s.page+'"]');
-     if(nav) nav.click();
-     else if(doc){const section=doc.getElementById('page-'+s.page);if(section){doc.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));section.classList.add('active');}}
-     if(doc && doc.defaultView) doc.defaultView.scrollTo({top:0,behavior:'smooth'});
-   }catch(e){}
+ let current = 0, timer = null, running = false, captionsOn = true, actionTimer = null;
+ const last = scenes.length - 1;
+ function showScene(i) {
+   if (actionTimer) { clearTimeout(actionTimer); actionTimer = null; }
+   current = Math.max(0, Math.min(last, i));
+   const scene = scenes[current];
+   caption.textContent = scene.text;
+   caption.hidden = !captionsOn;
+   progress.value = current;
+   stepLabel.textContent = (current + 1) + '/' + scenes.length;
+   try {
+     const doc = frame.contentDocument;
+     if (doc) {
+       const nav = doc.querySelector('[data-nav="' + scene.page + '"]');
+       if (nav) nav.click();
+       else {
+         const section = doc.getElementById('page-' + scene.page);
+         if (section) {
+           doc.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+           section.classList.add('active');
+         }
+       }
+       if (doc.defaultView) doc.defaultView.scrollTo({top:0, behavior:'auto'});
+       if (scene.actionSelector) {
+         actionTimer = setTimeout(() => {
+           if (current !== i) return;
+           try {
+             const activeDoc = frame.contentDocument;
+             const action = activeDoc && activeDoc.querySelector(scene.actionSelector);
+             if (action) action.click();
+             if (activeDoc && activeDoc.defaultView) activeDoc.defaultView.scrollTo({top:0,behavior:'auto'});
+           } catch (e) {}
+         }, 450);
+       }
+     }
+   } catch (e) {}
  }
- function stop(){if(timer)clearInterval(timer);timer=null;running=false;play.textContent='▶ Reanudar recorrido';}
- function start(){if(running)return;if(current>=scenes.length-1)current=-1;running=true;play.textContent='Ⅱ Pausar';showScene(current+1);timer=setInterval(()=>{if(current>=scenes.length-1){stop();play.textContent='↻ Ver de nuevo';return;}showScene(current+1);},6500);}
- play.addEventListener('click',()=>{if(running){stop();return;}if(current>=scenes.length-1){current=-1;}start();});
- subs.addEventListener('click',()=>{captionsOn=!captionsOn;caption.hidden=!captionsOn;subs.textContent='Subtítulos: '+(captionsOn?'activados':'desactivados');subs.setAttribute('aria-pressed',String(captionsOn));});
- progress.addEventListener('input',()=>{stop();showScene(Number(progress.value)-1);});
- frame.addEventListener('load',()=>showScene(0));
+ function pause() {
+   if (timer) clearInterval(timer);
+   timer = null;
+   running = false;
+   play.textContent = '▶ Reanudar tutorial';
+ }
+ function finish() {
+   pause();
+   play.textContent = '↻ Ver de nuevo';
+ }
+ function start() {
+   if (running) return;
+   if (current >= last) showScene(0);
+   running = true;
+   play.textContent = 'Ⅱ Pausar';
+   timer = setInterval(() => {
+     if (current >= last) { finish(); return; }
+     showScene(current + 1);
+   }, 6200);
+ }
+ play.addEventListener('click', () => {
+   if (running) { pause(); return; }
+   if (current >= last) showScene(0);
+   start();
+ });
+ previous.addEventListener('click', () => { pause(); showScene(current - 1); });
+ next.addEventListener('click', () => { pause(); showScene(current >= last ? 0 : current + 1); });
+ subs.addEventListener('click', () => {
+   captionsOn = !captionsOn;
+   caption.hidden = !captionsOn;
+   subs.textContent = 'Subtítulos: ' + (captionsOn ? 'activados' : 'desactivados');
+   subs.setAttribute('aria-pressed', String(captionsOn));
+ });
+ progress.addEventListener('input', () => { pause(); showScene(Number(progress.value)); });
+ frame.addEventListener('load', () => showScene(current));
  showScene(0);
 })();
 </script>
