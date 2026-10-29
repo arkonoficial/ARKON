@@ -1015,24 +1015,7 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
   #arkon-ambient::before, #arkon-ambient::after { animation: none; }
 }
 </style>
-
-<style id="arkon-silent-tour-styles">
-.arkon-tour { margin:0 0 28px; padding:18px; border:1px solid var(--border); border-radius:22px; background:var(--surface); box-shadow:var(--shadow); }
-.arkon-tour-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:12px; }
-.arkon-tour-head h2 { margin:0 0 5px; font-size:1.2rem; color:var(--ink); }
-.arkon-tour-head p { margin:0; color:var(--muted); font-size:.85rem; }
-.arkon-tour-screen { position:relative; overflow:hidden; border:1px solid var(--border); border-radius:15px; background:#07111f; }
-.arkon-tour-screen iframe { display:block; width:100%; height:clamp(300px,52vw,470px); border:0; background:#07111f; }
-.arkon-tour-caption { position:absolute; left:50%; bottom:13px; transform:translateX(-50%); width:max-content; max-width:88%; padding:5px 10px; border-radius:7px; background:rgba(0,0,0,.84); color:#fff; font-size:clamp(10px,1.2vw,12px); line-height:1.4; text-align:center; box-shadow:0 2px 10px rgba(0,0,0,.25); pointer-events:none; }
-.arkon-tour-controls { display:flex; align-items:center; flex-wrap:wrap; gap:9px; margin-top:12px; }
-.arkon-tour-controls button { border:1px solid var(--border); border-radius:10px; padding:9px 12px; color:var(--ink); background:var(--surface-soft); font-size:.84rem; font-weight:700; cursor:pointer; }
-.arkon-tour-controls button:focus-visible { outline:3px solid var(--site-secondary); outline-offset:2px; }
-.arkon-tour-controls button.primary { color:#fff; background:var(--site-primary); border-color:var(--site-primary); }
-.arkon-tour-progress { flex:1; min-width:100px; height:5px; accent-color:var(--site-secondary); }
-.arkon-tour[hidden], .arkon-tour-caption[hidden] { display:none !important; }
-@media(max-width:600px){ .arkon-tour{padding:12px}.arkon-tour-screen iframe{height:330px}.arkon-tour-caption{bottom:8px;max-width:94%} }
-</style>
-
+ 
 </head>
 <body>
 <div id="arkon-ambient" aria-hidden="true"></div>
@@ -1062,27 +1045,6 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
 
   <main id="main-content" class="shell">
     <section class="page active" id="page-inicio" aria-labelledby="home-title">
-
-<section class="arkon-tour" id="arkon-silent-tour" aria-label="Recorrido silencioso por ARKON">
-  <div class="arkon-tour-head">
-    <div><h2>Video tutorial de ARKON</h2><p>Recorrido visual sin audio por la página real. Puedes pausar, avanzar, retroceder y quitar los subtítulos.</p></div>
-    <span class="pill">Tutorial · Sin sonido</span>
-  </div>
-  <div class="arkon-tour-screen">
-    <iframe id="arkon-tour-frame" title="Vista real de la página ARKON durante el tutorial" loading="lazy" src="https://arkonoficial.github.io/ARKON/?tourview=1" allow="clipboard-read; clipboard-write"></iframe>
-    <div class="arkon-tour-caption" id="arkon-tour-caption" aria-live="polite">Bienvenido a ARKON: explora sus secciones desde el menú superior.</div>
-  </div>
-  <div class="arkon-tour-controls">
-    <button type="button" class="primary" id="arkon-tour-play">▶ Reproducir tutorial</button>
-    <button type="button" id="arkon-tour-prev">← Anterior</button>
-    <button type="button" id="arkon-tour-next">Siguiente →</button>
-    <button type="button" id="arkon-tour-subtitles" aria-pressed="true">Subtítulos: activados</button>
-    <input class="arkon-tour-progress" id="arkon-tour-progress" type="range" min="0" max="8" step="1" value="0" aria-label="Progreso del recorrido">
-    <span id="arkon-tour-step" class="source-meta">1/9</span>
-  </div>
-</section>
-
-
 <div class="hero">
         <div>
           <span class="eyebrow"><span class="eyebrow-dot"></span> Habilidades que te preparan</span>
@@ -2336,111 +2298,6 @@ dialog :is(h1,h2,h3,h4,p,li,small,strong,span,.quiz-progress,.quiz-result,.dialo
 }
 </style>
 
-
-<script id="arkon-silent-tour-script">
-(function(){
- const params = new URLSearchParams(location.search);
- if (params.get('tourview') === '1') {
-   const ownTour = document.getElementById('arkon-silent-tour');
-   if (ownTour) ownTour.hidden = true;
-   return;
- }
- const box = document.getElementById('arkon-silent-tour');
- if (!box) return;
- const frame = document.getElementById('arkon-tour-frame');
- const caption = document.getElementById('arkon-tour-caption');
- const play = document.getElementById('arkon-tour-play');
- const previous = document.getElementById('arkon-tour-prev');
- const next = document.getElementById('arkon-tour-next');
- const subs = document.getElementById('arkon-tour-subtitles');
- const progress = document.getElementById('arkon-tour-progress');
- const stepLabel = document.getElementById('arkon-tour-step');
- const scenes = [
-  {page:'inicio', text:'Inicio: aquí están la presentación y los accesos a las secciones principales.'},
-  {page:'proyecto', text:'Pregunta ABP: revisa la pregunta central y la relación con el proyecto educativo.'},
-  {page:'desastres', text:'Desastres: explora las guías de preparación y prevención de riesgos.'},
-  {page:'desastres', actionSelector:'#disaster-grid [data-action^="disaster:"]', text:'Ficha de desastre: abre un tema para consultar qué tener presente antes, durante y después.'},
-  {page:'habilidades', text:'Habilidades laborales: encuentra competencias que puedes practicar en el estudio y el trabajo.'},
-  {page:'habilidades', actionSelector:'#skills-grid [data-action^="skill:"]', text:'Ficha de habilidad: revisa ejemplos, actividades y una lista para practicar paso a paso.'},
-  {page:'biblioteca', text:'Biblioteca: busca recursos por tema, formato o nivel y abre el material que te interese.'},
-  {page:'fuentes', text:'Fuentes: consulta las referencias enlazadas para ampliar o verificar la información.'},
-  {page:'creditos', text:'Créditos: conoce a las personas que participaron en el desarrollo de ARKON.'}
- ];
- let current = 0, timer = null, running = false, captionsOn = true, actionTimer = null;
- const last = scenes.length - 1;
- function showScene(i) {
-   if (actionTimer) { clearTimeout(actionTimer); actionTimer = null; }
-   current = Math.max(0, Math.min(last, i));
-   const scene = scenes[current];
-   caption.textContent = scene.text;
-   caption.hidden = !captionsOn;
-   progress.value = current;
-   stepLabel.textContent = (current + 1) + '/' + scenes.length;
-   try {
-     const doc = frame.contentDocument;
-     if (doc) {
-       const nav = doc.querySelector('[data-nav="' + scene.page + '"]');
-       if (nav) nav.click();
-       else {
-         const section = doc.getElementById('page-' + scene.page);
-         if (section) {
-           doc.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-           section.classList.add('active');
-         }
-       }
-       if (doc.defaultView) doc.defaultView.scrollTo({top:0, behavior:'auto'});
-       if (scene.actionSelector) {
-         actionTimer = setTimeout(() => {
-           if (current !== i) return;
-           try {
-             const activeDoc = frame.contentDocument;
-             const action = activeDoc && activeDoc.querySelector(scene.actionSelector);
-             if (action) action.click();
-             if (activeDoc && activeDoc.defaultView) activeDoc.defaultView.scrollTo({top:0,behavior:'auto'});
-           } catch (e) {}
-         }, 450);
-       }
-     }
-   } catch (e) {}
- }
- function pause() {
-   if (timer) clearInterval(timer);
-   timer = null;
-   running = false;
-   play.textContent = '▶ Reanudar tutorial';
- }
- function finish() {
-   pause();
-   play.textContent = '↻ Ver de nuevo';
- }
- function start() {
-   if (running) return;
-   if (current >= last) showScene(0);
-   running = true;
-   play.textContent = 'Ⅱ Pausar';
-   timer = setInterval(() => {
-     if (current >= last) { finish(); return; }
-     showScene(current + 1);
-   }, 6200);
- }
- play.addEventListener('click', () => {
-   if (running) { pause(); return; }
-   if (current >= last) showScene(0);
-   start();
- });
- previous.addEventListener('click', () => { pause(); showScene(current - 1); });
- next.addEventListener('click', () => { pause(); showScene(current >= last ? 0 : current + 1); });
- subs.addEventListener('click', () => {
-   captionsOn = !captionsOn;
-   caption.hidden = !captionsOn;
-   subs.textContent = 'Subtítulos: ' + (captionsOn ? 'activados' : 'desactivados');
-   subs.setAttribute('aria-pressed', String(captionsOn));
- });
- progress.addEventListener('input', () => { pause(); showScene(Number(progress.value)); });
- frame.addEventListener('load', () => showScene(current));
- showScene(0);
-})();
-</script>
 
 </body>
 </html>
