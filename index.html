@@ -1086,7 +1086,64 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
 
       
 
-            <div class="section-head"><div><span class="eyebrow"><span class="eyebrow-dot"></span> Dos rutas, un mismo objetivo</span><h2>Tu próximo paso empieza aquí</h2><p>Aprende a anticiparte a los riesgos y a desarrollar competencias que puedes practicar cada día.</p></div></div>
+      <section id="arkon-video-real" aria-labelledby="arkon-video-title">
+        <div class="arkon-video-heading">
+          <span class="arkon-video-eyebrow">ARKON · Video de bienvenida</span>
+          <h2 class="arkon-video-title" id="arkon-video-title">Aprende. Conecta. <span>Transforma.</span></h2>
+          <p class="arkon-video-description">Conoce el propósito de ARKON: aprender para la vida, fortalecer la convivencia y desarrollar habilidades que nos preparan para el futuro.</p>
+        </div>
+        <div class="arkon-video-player-wrap">
+          <video class="arkon-video-player" controls playsinline preload="metadata"
+            poster="./arkon-intro-poster.jpg"
+            aria-label="Video de bienvenida a ARKON. Los subtítulos en español se pueden activar o desactivar desde los controles del reproductor.">
+            <source src="./arkon-intro.mp4" type="video/mp4">
+            <track src="./arkon-intro.vtt" kind="captions" srclang="es" label="Español" default>
+            Tu navegador no admite la reproducción de video HTML5.
+          </video>
+          <div class="arkon-video-avatar" id="arkon-video-avatar" aria-hidden="true">
+            <div class="arkon-video-avatar-label">ARKON te acompaña</div>
+            <svg viewBox="0 0 220 260" role="presentation" focusable="false">
+              <ellipse cx="110" cy="246" rx="62" ry="8" fill="#020A12" opacity=".34"/>
+              <g class="arkon-avatar-body">
+                <path d="M64 144 Q110 124 156 144 L178 236 L42 236Z" fill="#14364D"/>
+                <path d="M83 143 L110 178 L137 143 L145 236 L75 236Z" fill="#2DD4BF"/>
+                <path d="M80 145 L110 178 L99 201 L78 157Z M140 145 L110 178 L121 201 L142 157Z" fill="#FFFFFF"/>
+                <path d="M68 154 Q47 164 42 190" fill="none" stroke="#14364D" stroke-width="19" stroke-linecap="round"/>
+                <path d="M152 154 Q169 165 171 183" fill="none" stroke="#14364D" stroke-width="19" stroke-linecap="round"/>
+                <g class="arkon-avatar-wave">
+                  <path d="M171 185 L179 153" stroke="#DDA783" stroke-width="15" stroke-linecap="round"/>
+                  <path d="M178 156 Q166 144 173 137 Q181 132 185 145 Q186 132 193 134 Q200 140 190 154 Q202 145 207 152 Q207 161 190 168Z" fill="#E7B692"/>
+                </g>
+                <path d="M91 128 L91 153 Q110 172 129 153 L129 128Z" fill="#DDA783"/>
+              </g>
+              <g class="arkon-avatar-head">
+                <circle cx="64" cy="79" r="10" fill="#DDA783"/><circle cx="156" cy="79" r="10" fill="#DDA783"/>
+                <path d="M65 65 Q67 21 110 20 Q154 22 155 66 L148 104 Q140 133 110 139 Q80 132 72 104Z" fill="#E7B692"/>
+                <path d="M61 76 Q48 25 91 13 Q130 -1 157 31 Q171 51 159 80 L150 52 Q119 62 84 40 Q78 65 61 76Z" fill="#172637"/>
+                <path d="M75 75 Q87 67 98 75 M123 75 Q135 67 146 76" fill="none" stroke="#172637" stroke-width="4" stroke-linecap="round"/>
+                <g class="arkon-avatar-eyes" fill="#172637"><ellipse cx="88" cy="87" rx="4.5" ry="6"/><ellipse cx="133" cy="87" rx="4.5" ry="6"/></g>
+                <path d="M110 87 L105 101 Q110 105 116 101" fill="none" stroke="#C88C68" stroke-width="2.5" stroke-linecap="round"/>
+                <path class="arkon-avatar-mouth" d="M91 114 Q110 125 130 113 Q125 132 110 132 Q97 130 91 114Z" fill="#783747"/>
+                <path d="M97 116 Q110 121 124 116" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+              </g>
+              <circle cx="76" cy="108" r="6" fill="#D98782" opacity=".36"/><circle cx="145" cy="108" r="6" fill="#D98782" opacity=".36"/>
+            </svg>
+          </div>
+        </div>
+        <div class="arkon-video-meta">
+          <div class="arkon-video-specs">
+            <span>▶ Narración neural en español</span>
+            <span class="arkon-caption-hint">Subtítulos pequeños · opcionales</span>
+            <span>1080p · 24 s</span>
+          </div>
+          <button type="button" id="arkon-caption-toggle" class="arkon-caption-toggle" aria-pressed="true">CC Subtítulos: activados</button>
+          <a class="arkon-video-download" href="./arkon-intro.mp4" download="ARKON-video-de-bienvenida.mp4">
+            <span aria-hidden="true">↓</span> Descargar video MP4
+          </a>
+        </div>
+      </section>
+
+                  <div class="section-head"><div><span class="eyebrow"><span class="eyebrow-dot"></span> Dos rutas, un mismo objetivo</span><h2>Tu próximo paso empieza aquí</h2><p>Aprende a anticiparte a los riesgos y a desarrollar competencias que puedes practicar cada día.</p></div></div>
       <div class="card-grid">
         <article class="card interactive" data-nav="desastres"><div class="card-top"><span class="card-icon icon-blue">🌦️</span><span class="tag">Ruta 01 · Prevención</span><img class="card-top-art" src="imagenes/arkon-prevencion.svg" alt="" loading="lazy" decoding="async"></div><h3>Prepárate para los desastres</h3><p>Conoce distintos fenómenos, organiza un plan de preparación y aprende a seguir orientaciones oficiales.</p><div class="card-bottom"><span>7 temas para explorar</span><span class="arrow-circle">↗</span></div></article>
         <article class="card interactive" data-nav="habilidades"><div class="card-top"><span class="card-icon icon-mint">🧠</span><span class="tag">Ruta 02 · Trabajo</span><img class="card-top-art" src="imagenes/arkon-equipo.svg" alt="" loading="lazy" decoding="async"></div><h3>Fortalece tus habilidades laborales</h3><p>Practica comunicación, trabajo en equipo, resolución de problemas y herramientas útiles para el empleo.</p><div class="card-bottom"><span>8 competencias prácticas</span><span class="arrow-circle">↗</span></div></article>
