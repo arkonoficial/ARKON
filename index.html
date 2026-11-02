@@ -1308,6 +1308,16 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
 }
 </style>
 
+<style id="arkon-readable-text-alignment">
+/* Alineación uniforme de los textos informativos en todas las secciones. */
+#app .page p,
+#app .page li {
+  text-align:justify;
+  text-align-last:left;
+  text-justify:inter-word;
+  hyphens:auto;
+}
+</style>
 </head>
 <body>
 <div id="arkon-ambient" aria-hidden="true"></div>
@@ -3513,12 +3523,32 @@ dialog :is(h1,h2,h3,h4,p,li,small,strong,span,.quiz-progress,.quiz-result,.dialo
     const normalized=String(text||'').replace(/\s+/g,' ').trim();
     const words=normalized.split(/\s+/).filter(Boolean);
     if(words.length<=limit)return null;
-    const firstSentence=(normalized.match(/^.*?[.!?](?=\s|$)/)||[])[0]||normalized;
-    const sentenceWords=firstSentence.trim().split(/\s+/).filter(Boolean);
-    const clipped=sentenceWords.length>limit;
-    const chosen=clipped?sentenceWords.slice(0,limit):sentenceWords;
-    let result=chosen.join(' ');
-    if(clipped)result=result.replace(/[,:;]$/,'')+'…';
+
+    const sentences=normalized.match(/[^.!?]+[.!?]+|[^.!?]+$/g)||[normalized];
+    let chosen=[];
+    let result='';
+    let clipped=false;
+
+    for(let i=0;i<sentences.length;i++){
+      const sentence=sentences[i].trim();
+      const sentenceWords=sentence.split(/\s+/).filter(Boolean);
+      const room=limit-chosen.length;
+      if(room<=0){clipped=true;break;}
+
+      if(sentenceWords.length<=room){
+        chosen=chosen.concat(sentenceWords);
+        result+=(result?' ':'')+sentence;
+        if(chosen.length===limit && i<sentences.length-1)clipped=true;
+        if(clipped)break;
+      }else{
+        chosen=chosen.concat(sentenceWords.slice(0,room));
+        result+=(result?' ':'')+sentenceWords.slice(0,room).join(' ');
+        clipped=true;
+        break;
+      }
+    }
+
+    if(clipped)result=result.replace(/[,:;.!?…]*$/,'')+'…';
     return {wordCount:chosen.length,ellipsis:clipped,text:result};
   }
 
@@ -3549,7 +3579,7 @@ dialog :is(h1,h2,h3,h4,p,li,small,strong,span,.quiz-progress,.quiz-result,.dialo
     if(element.tagName==='LI'&&element.querySelector('p'))return;
     if(element.querySelector(':scope > .mode-copy-full'))return;
     const source=element.textContent||'';
-    const limit=element.tagName==='LI'?20:25;
+    const limit=element.tagName==='LI'?26:40;
     const brief=shortVersion(source,limit);
     if(!brief){
       element.dataset.readingModePrepared='plain';
