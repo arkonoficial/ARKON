@@ -1175,6 +1175,236 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
 
 #arkon-video-second[hidden] { display: none !important; }
 </style>
+
+<style id="arkon-reading-modes">
+/* Selector de lectura: una vista breve sin recortar el contenido completo. */
+.reading-mode-switch {
+  display:inline-flex;
+  align-items:center;
+  gap:3px;
+  padding:4px;
+  border:1px solid #d5e1e9;
+  border-radius:13px;
+  background:#f2f6fa;
+  white-space:nowrap;
+}
+.reading-mode-btn {
+  border:0;
+  border-radius:9px;
+  padding:8px 11px;
+  color:#42586b;
+  background:transparent;
+  font-size:.76rem;
+  font-weight:850;
+  transition:background .18s ease,color .18s ease,box-shadow .18s ease;
+}
+.reading-mode-btn.active {
+  color:#fff;
+  background:#183B70;
+  box-shadow:0 3px 9px rgba(24,59,112,.17);
+}
+.reading-mode-btn:focus-visible { outline-offset:2px; }
+#app.reading-brief-mode #main-nav,
+#app.reading-brief-mode #global-search,
+#app.reading-brief-mode #menu-toggle { display:none !important; }
+#app.reading-brief-mode .header-inner { justify-content:space-between; }
+#app.reading-brief-mode .header-actions { margin-left:auto; }
+.summary-welcome {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 180px;
+  gap:24px;
+  align-items:center;
+  margin:6px 0 22px;
+  padding:clamp(25px,4.5vw,46px);
+  border-radius:27px;
+  color:#fff;
+  background:linear-gradient(125deg,#183B70 0%,#245486 61%,#127d83 100%);
+  box-shadow:0 18px 44px rgba(24,59,112,.14);
+  overflow:hidden;
+}
+.summary-welcome-copy { max-width:760px; }
+.summary-kicker,.summary-bottom-kicker {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#9AF2E3;
+  font-size:.72rem;
+  font-weight:900;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+.summary-welcome h1 {
+  margin:14px 0 13px;
+  color:#fff !important;
+  font-size:clamp(2.15rem,4.5vw,3.55rem);
+  line-height:1.05;
+}
+.summary-welcome p {
+  max-width:690px;
+  margin:0;
+  color:rgba(255,255,255,.86) !important;
+  font-size:1.04rem;
+  line-height:1.65;
+}
+.summary-welcome-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:23px; }
+.summary-welcome .btn-secondary { background:#8EF0DD; color:#073A39; }
+.summary-welcome-art {
+  position:relative;
+  display:grid;
+  place-items:center;
+  width:160px;
+  height:160px;
+  justify-self:center;
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:50%;
+  background:rgba(255,255,255,.09);
+  font-size:3.25rem;
+}
+.summary-welcome-art span:nth-child(2) {
+  position:absolute;
+  top:0;
+  right:-8px;
+  display:grid;
+  place-items:center;
+  width:53px;
+  height:53px;
+  border-radius:17px;
+  background:#FFCA66;
+  font-size:1.55rem;
+}
+.summary-welcome-art span:nth-child(3) {
+  position:absolute;
+  bottom:2px;
+  left:-13px;
+  display:grid;
+  place-items:center;
+  width:55px;
+  height:55px;
+  border-radius:18px;
+  background:#DDF8EF;
+  font-size:1.6rem;
+}
+.summary-reading-note {
+  display:flex;
+  align-items:flex-start;
+  gap:13px;
+  margin:0 0 34px;
+  padding:16px 18px;
+  border:1px solid #cfe5e3;
+  border-radius:17px;
+  background:#f0faf8;
+}
+.summary-reading-note>span { font-size:1.35rem; line-height:1.3; }
+.summary-reading-note p {
+  margin:0;
+  color:#28465a !important;
+  font-size:.9rem;
+  line-height:1.65;
+}
+.summary-reading-note strong { color:#143e4a !important; }
+.summary-section-heading { margin:0 0 19px; }
+.summary-section-heading h2 { margin:9px 0 7px; color:#183047 !important; font-size:clamp(1.7rem,3vw,2.25rem); }
+.summary-section-heading p { margin:0; color:#607286 !important; }
+.summary-card-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;
+}
+.summary-card {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  min-width:0;
+  padding:21px;
+  border:1px solid #dce6ec;
+  border-radius:20px;
+  background:#fff;
+  box-shadow:0 7px 21px rgba(22,48,79,.045);
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+.summary-card:hover {
+  transform:translateY(-3px);
+  border-color:#83cfc3;
+  box-shadow:0 13px 28px rgba(22,48,79,.09);
+}
+.summary-card-icon {
+  display:grid;
+  place-items:center;
+  width:47px;
+  height:47px;
+  margin-bottom:15px;
+  border-radius:15px;
+  background:#e7f5f3;
+  font-size:1.35rem;
+}
+.summary-card-label {
+  margin-bottom:8px;
+  color:#087f75 !important;
+  font-size:.66rem;
+  font-weight:900;
+  letter-spacing:.1em;
+}
+.summary-card h3 { margin:0 0 8px; color:#183047 !important; font-size:1.12rem; }
+.summary-card p {
+  flex:1;
+  margin:0 0 14px;
+  color:#607286 !important;
+  font-size:.87rem;
+  line-height:1.62;
+}
+.summary-card-actions { display:flex; flex-wrap:wrap; gap:7px 14px; }
+.summary-card-link {
+  padding:7px 0;
+  border:0;
+  background:transparent;
+  color:#087f75;
+  text-align:left;
+  font-size:.8rem;
+  font-weight:850;
+  cursor:pointer;
+}
+.summary-card-link:hover { color:#075e56; text-decoration:underline; }
+.summary-bottom-panel {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:22px;
+  margin-top:22px;
+  padding:clamp(20px,3vw,28px);
+  border:1px solid #cfe0ea;
+  border-radius:21px;
+  background:#edf4f8;
+}
+.summary-bottom-panel h2 { margin:8px 0 7px; color:#183047 !important; font-size:1.4rem; }
+.summary-bottom-panel p { max-width:670px; margin:0; color:#607286 !important; font-size:.88rem; line-height:1.6; }
+.summary-bottom-kicker { color:#087f75 !important; }
+@media (max-width:980px) {
+  .reading-mode-btn { padding:8px 9px; font-size:.72rem; }
+  .summary-card-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:760px) {
+  .header-actions { gap:6px; }
+  .reading-mode-switch { padding:3px; }
+  .reading-mode-btn { padding:8px 9px; font-size:.7rem; }
+  .summary-welcome { grid-template-columns:1fr; }
+  .summary-welcome-art { width:118px; height:118px; margin-top:4px; font-size:2.65rem; }
+  .summary-welcome-art span:nth-child(2),.summary-welcome-art span:nth-child(3) { width:43px; height:43px; border-radius:14px; font-size:1.25rem; }
+  .summary-bottom-panel { align-items:flex-start; flex-direction:column; }
+  .summary-bottom-panel .btn { width:100%; }
+}
+@media (max-width:480px) {
+  .reading-mode-btn { padding:7px 8px; font-size:.66rem; }
+  .reading-mode-switch { gap:2px; }
+  .summary-card-grid { grid-template-columns:1fr; }
+  .summary-welcome { border-radius:22px; padding:23px 19px; }
+  .summary-welcome p { font-size:.94rem; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .reading-mode-btn,.summary-card { transition:none; }
+  .summary-card:hover { transform:none; }
+}
+</style>
+
 </head>
 <body>
 <div id="arkon-ambient" aria-hidden="true"></div>
@@ -1197,6 +1427,10 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
         <button data-nav="creditos">Créditos</button>
       </nav>
       <div class="header-actions">
+        <div class="reading-mode-switch" role="group" aria-label="Modo de lectura">
+          <button type="button" class="reading-mode-btn" id="mode-brief" aria-pressed="false">Resumen</button>
+          <button type="button" class="reading-mode-btn active" id="mode-full" aria-pressed="true">Completo</button>
+        </div>
         <button class="icon-btn" id="global-search" aria-label="Buscar recursos" title="Buscar recursos"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
         <button class="icon-btn menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
       </div>
@@ -1213,6 +1447,7 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
           <div class="button-row">
             <button class="btn btn-secondary" data-nav="desastres">Explorar prevención <span aria-hidden="true">↗</span></button>
             <button class="btn btn-quiet" data-nav="habilidades">Desarrollar habilidades <span aria-hidden="true">→</span></button>
+            <button class="btn btn-quiet" data-nav="resumen">Ver ARKON en modo resumido <span aria-hidden="true">✦</span></button>
           </div>
           <div class="hero-note"><span class="check">✓</span><span>Explicaciones claras, práctica interactiva y fuentes consultables.</span></div>
         </div>
@@ -1864,6 +2099,88 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
       <div class="credits-grid" id="credits-grid" aria-live="polite"></div>
       <div class="credits-note"><p><strong>Créditos oficiales del equipo ARKON.</strong> Esta sección es fija y no se puede editar desde la página. Solo se actualiza cuando el equipo modifica el archivo del sitio en GitHub.</p></div>
     </section>
+
+    <section class="page" id="page-resumen" aria-labelledby="summary-title">
+      <div class="summary-welcome">
+        <div class="summary-welcome-copy">
+          <span class="summary-kicker">✦ ARKON · MODO RESUMIDO</span>
+          <h1 id="summary-title">Todo ARKON, en pocas palabras.</h1>
+          <p>Aquí te explicaremos todo lo anterior de manera clara y concisa, para que puedas aprender más leyendo menos.</p>
+          <div class="summary-welcome-actions">
+            <button class="btn btn-secondary" type="button" data-nav="inicio">Volver al modo completo ↗</button>
+          </div>
+        </div>
+        <div class="summary-welcome-art" aria-hidden="true"><span>📘</span><span>💡</span><span>🤝</span></div>
+      </div>
+
+      <div class="summary-reading-note">
+        <span aria-hidden="true">🎯</span>
+        <p><strong>La idea es sencilla:</strong> entender lo más importante primero. Cuando quieras profundizar, abre cualquier tema y encontrarás la explicación completa, ejemplos, actividades y recursos.</p>
+      </div>
+
+      <div class="summary-section-heading">
+        <span class="eyebrow"><span class="eyebrow-dot"></span> Lo esencial de la plataforma</span>
+        <h2>¿Qué encontrarás en ARKON?</h2>
+        <p>Seis temas para aprender, cuidarte y aportar a tu comunidad.</p>
+      </div>
+
+      <div class="summary-card-grid">
+        <article class="summary-card">
+          <span class="summary-card-icon">🧭</span>
+          <span class="summary-card-label">01 · PROPÓSITO</span>
+          <h3>¿Qué busca ARKON?</h3>
+          <p>Fortalecer la convivencia, la ciudadanía y las habilidades laborales para aportar a la comunidad y prepararnos para el mundo del trabajo.</p>
+          <button type="button" class="summary-card-link" data-nav="proyecto">Ver la pregunta del proyecto ↗</button>
+        </article>
+        <article class="summary-card">
+          <span class="summary-card-icon">🛡️</span>
+          <span class="summary-card-label">02 · PREVENCIÓN</span>
+          <h3>Riesgos y desastres</h3>
+          <p>Reconoce amenazas, aprende a reducir riesgos y conoce cómo prepararte. Ante una emergencia, sigue las indicaciones de las autoridades.</p>
+          <button type="button" class="summary-card-link" data-nav="desastres">Abrir las guías completas ↗</button>
+        </article>
+        <article class="summary-card">
+          <span class="summary-card-icon">💬</span>
+          <span class="summary-card-label">03 · CONVIVENCIA</span>
+          <h3>Ciudadanía y respeto</h3>
+          <p>Escuchar, respetar las diferencias, dialogar y construir acuerdos ayuda a resolver conflictos y cuidar los espacios compartidos.</p>
+          <button type="button" class="summary-card-link" data-nav="proyecto">Explorar el proyecto ABP ↗</button>
+        </article>
+        <article class="summary-card">
+          <span class="summary-card-icon">🧠</span>
+          <span class="summary-card-label">04 · DESARROLLO</span>
+          <h3>Habilidades laborales</h3>
+          <p>Practica capacidades como comunicarte, trabajar en equipo, actuar con responsabilidad y resolver situaciones cotidianas.</p>
+          <button type="button" class="summary-card-link" data-nav="habilidades">Ver módulos y actividades ↗</button>
+        </article>
+        <article class="summary-card">
+          <span class="summary-card-icon">📍</span>
+          <span class="summary-card-label">05 · TERRITORIO</span>
+          <h3>Atención y comunidad</h3>
+          <p>Consulta recursos y servicios que comienzan en la Comuna 18 y se amplían a Cali. Puedes buscar, filtrar y ubicar lugares en el mapa.</p>
+          <button type="button" class="summary-card-link" data-nav="comunidad">Abrir el directorio y el mapa ↗</button>
+        </article>
+        <article class="summary-card">
+          <span class="summary-card-icon">📚</span>
+          <span class="summary-card-label">06 · CONSULTA</span>
+          <h3>Biblioteca y fuentes</h3>
+          <p>Encuentra materiales para seguir aprendiendo y revisa las fuentes que respaldan la información de la plataforma.</p>
+          <div class="summary-card-actions">
+            <button type="button" class="summary-card-link" data-nav="biblioteca">Ir a la biblioteca ↗</button>
+            <button type="button" class="summary-card-link" data-nav="fuentes">Consultar las fuentes ↗</button>
+          </div>
+        </article>
+      </div>
+
+      <div class="summary-bottom-panel">
+        <div>
+          <span class="summary-bottom-kicker">¿Quieres profundizar?</span>
+          <h2>La información completa sigue aquí.</h2>
+          <p>El modo resumido no reemplaza los contenidos. Solo te muestra primero lo esencial para que avances a tu ritmo.</p>
+        </div>
+        <button class="btn btn-primary" type="button" data-nav="inicio">Entrar al modo completo →</button>
+      </div>
+    </section>
   </main>
 
   <footer class="footer"><div class="shell footer-inner"><div><div class="footer-brand">ARKON <span style="color:var(--teal-ink)">✦</span></div><p>Aprendizaje práctico, prevención y habilidades para el futuro.</p></div><div class="footer-links"><button data-nav="fuentes">Fuentes</button><button data-nav="acerca">Acerca del proyecto</button></div></div></footer>
@@ -2038,8 +2355,15 @@ function initProjectTools(){
   updateProjectMilestones();
 }
 function goTo(page){
-  const available = ['inicio','proyecto','desastres','habilidades','comunidad','biblioteca','fuentes','acerca','creditos'];
+  const available = ['inicio','proyecto','desastres','habilidades','comunidad','biblioteca','fuentes','acerca','creditos','resumen'];
   if(!available.includes(page)) return;
+  const root=document.getElementById('app');
+  const summaryMode=page==='resumen';
+  if(root)root.classList.toggle('reading-brief-mode',summaryMode);
+  const briefButton=document.getElementById('mode-brief');
+  const fullButton=document.getElementById('mode-full');
+  if(briefButton){briefButton.classList.toggle('active',summaryMode);briefButton.setAttribute('aria-pressed',String(summaryMode));}
+  if(fullButton){fullButton.classList.toggle('active',!summaryMode);fullButton.setAttribute('aria-pressed',String(!summaryMode));}
   document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
   const section=document.getElementById('page-'+page); if(section)section.classList.add('active');
   document.querySelectorAll('[data-nav]').forEach(el=>el.classList.toggle('active', el.dataset.nav===page));
@@ -3340,5 +3664,18 @@ dialog :is(h1,h2,h3,h4,p,li,small,strong,span,.quiz-progress,.quiz-result,.dialo
   updateMap("ips-melendez");
 })();
 </script>
+
+<script id="arkon-reading-mode-controls">
+(function(){
+  const brief=document.getElementById('mode-brief');
+  const full=document.getElementById('mode-full');
+  if(brief)brief.addEventListener('click',function(){goTo('resumen');});
+  if(full)full.addEventListener('click',function(){
+    const active=document.querySelector('.page.active');
+    if(active&&active.id==='page-resumen')goTo('inicio');
+  });
+})();
+</script>
+
 </body>
 </html>
