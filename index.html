@@ -3384,11 +3384,11 @@ dialog :is(h1,h2,h3,h4,p,li,small,strong,span,.quiz-progress,.quiz-result,.dialo
   if(!app||!briefButton||!fullButton)return;
 
   function shortVersion(text,limit){
-    const normalized=String(text||'').replace(/\\s+/g,' ').trim();
-    const words=normalized.split(/\\s+/).filter(Boolean);
+    const normalized=String(text||'').replace(/\s+/g,' ').trim();
+    const words=normalized.split(/\s+/).filter(Boolean);
     if(words.length<=limit)return null;
-    const firstSentence=(normalized.match(/^.*?[.!?](?=\\s|$)/)||[])[0]||normalized;
-    const sentenceWords=firstSentence.trim().split(/\\s+/).filter(Boolean);
+    const firstSentence=(normalized.match(/^.*?[.!?](?=\s|$)/)||[])[0]||normalized;
+    const sentenceWords=firstSentence.trim().split(/\s+/).filter(Boolean);
     const clipped=sentenceWords.length>limit;
     const chosen=clipped?sentenceWords.slice(0,limit):sentenceWords;
     let result=chosen.join(' ');
@@ -3403,7 +3403,7 @@ dialog :is(h1,h2,h3,h4,p,li,small,strong,span,.quiz-progress,.quiz-result,.dialo
     let remaining=brief.wordCount;
     let lastKept=null;
     nodes.forEach(function(node){
-      const tokens=node.nodeValue.match(/\\S+\\s*/g)||[];
+      const tokens=node.nodeValue.match(/\S+\s*/g)||[];
       let output='';
       tokens.forEach(function(token){
         if(remaining>0){
@@ -3414,12 +3414,13 @@ dialog :is(h1,h2,h3,h4,p,li,small,strong,span,.quiz-progress,.quiz-result,.dialo
       });
       node.nodeValue=output;
     });
-    if(brief.ellipsis&&lastKept)lastKept.nodeValue=lastKept.nodeValue.replace(/\\s+$/,'')+'…';
+    if(brief.ellipsis&&lastKept)lastKept.nodeValue=lastKept.nodeValue.replace(/\s+$/,'')+'…';
   }
 
   function prepareTextBlock(element){
     if(!(element instanceof HTMLElement)||!element.matches('p,li'))return;
     if(element.closest('.checklist,.answer-list,.risk-quick-options,.reading-mode-switch'))return;
+    if(element.tagName==='LI'&&element.querySelector('p'))return;
     if(element.querySelector(':scope > .mode-copy-full'))return;
     const source=element.textContent||'';
     const limit=element.tagName==='LI'?20:25;
@@ -3468,7 +3469,13 @@ dialog :is(h1,h2,h3,h4,p,li,small,strong,span,.quiz-progress,.quiz-result,.dialo
         const block=parent&&parent.closest('p,li');
         if(block&&!block.querySelector(':scope > .mode-copy-full'))prepareTextBlock(block);
       }
-      record.addedNodes.forEach(function(node){if(node.nodeType===1)scan(node);});
+      record.addedNodes.forEach(function(node){
+        if(node.nodeType===1)scan(node);
+        else if(node.nodeType===3&&node.parentElement){
+          const block=node.parentElement.closest('p,li');
+          if(block&&!block.querySelector(':scope > .mode-copy-full'))prepareTextBlock(block);
+        }
+      });
     });
   });
   observer.observe(document.body,{childList:true,subtree:true,characterData:true});
