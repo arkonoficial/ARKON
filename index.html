@@ -1205,6 +1205,109 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
 @media (prefers-reduced-motion:reduce) { .reading-mode-btn { transition:none; } }
 </style>
 
+<style id="arkon-brief-mode-intro-style">
+/* Explicación visible solo en Inicio cuando se selecciona Resumen. */
+#brief-mode-intro { display:none; }
+#app.reading-brief-mode #page-inicio.active #brief-mode-intro { display:block; }
+.brief-mode-intro {
+  margin:24px 0 30px;
+  padding:clamp(19px,3.5vw,30px);
+  border:1px solid #cfe0e8;
+  border-radius:22px;
+  background:linear-gradient(145deg,#ffffff 0%,#f1f8fa 100%);
+  box-shadow:0 10px 28px rgba(20,52,78,.07);
+}
+.brief-mode-intro-heading {
+  display:flex;
+  align-items:flex-start;
+  gap:15px;
+  max-width:900px;
+}
+.brief-mode-intro-icon {
+  display:grid;
+  place-items:center;
+  flex:0 0 46px;
+  width:46px;
+  height:46px;
+  border-radius:15px;
+  background:#dff6ef;
+  color:#087f75;
+  font-size:1.35rem;
+}
+.brief-mode-intro-kicker {
+  display:block;
+  margin:1px 0 7px;
+  color:#087f75;
+  font-size:.68rem;
+  font-weight:900;
+  letter-spacing:.12em;
+}
+.brief-mode-intro h2 {
+  margin:0 0 8px;
+  color:#183047;
+  font-size:clamp(1.35rem,2.7vw,1.9rem);
+  line-height:1.2;
+}
+.brief-mode-intro-heading p {
+  margin:0;
+  color:#536a7b;
+  font-size:.92rem;
+  line-height:1.65;
+}
+.brief-mode-intro-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+  margin-top:21px;
+}
+.brief-mode-intro-grid article {
+  min-width:0;
+  padding:16px;
+  border:1px solid #dce8ed;
+  border-radius:16px;
+  background:#fff;
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+.brief-mode-intro-grid article:hover {
+  transform:translateY(-3px);
+  border-color:#83cfc3;
+  box-shadow:0 9px 20px rgba(22,48,79,.08);
+}
+.brief-mode-intro-grid article>span {
+  display:block;
+  margin-bottom:9px;
+  font-size:1.25rem;
+}
+.brief-mode-intro-grid h3 {
+  margin:0 0 7px;
+  color:#183047;
+  font-size:1rem;
+}
+.brief-mode-intro-grid p {
+  margin:0;
+  color:#607286;
+  font-size:.83rem;
+  line-height:1.6;
+}
+.brief-mode-intro-grid strong { color:#183047; }
+.brief-mode-intro-footer {
+  margin:16px 0 0;
+  padding-top:14px;
+  border-top:1px solid #dce8ed;
+  color:#456071;
+  font-size:.82rem;
+  line-height:1.55;
+}
+@media (max-width:760px) {
+  .brief-mode-intro-grid { grid-template-columns:1fr; }
+  .brief-mode-intro { padding:18px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .brief-mode-intro-grid article { transition:none; }
+  .brief-mode-intro-grid article:hover { transform:none; }
+}
+</style>
+
 </head>
 <body>
 <div id="arkon-ambient" aria-hidden="true"></div>
@@ -1274,11 +1377,34 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
         </div>
       </div>
 
-      
-      
-      
-
-      
+      <section id="brief-mode-intro" class="brief-mode-intro" aria-labelledby="brief-mode-intro-title">
+        <div class="brief-mode-intro-heading">
+          <span class="brief-mode-intro-icon" aria-hidden="true">✦</span>
+          <div>
+            <span class="brief-mode-intro-kicker">ESTÁS EN EL MODO RESUMEN</span>
+            <h2 id="brief-mode-intro-title">La misma ARKON, explicada con menos palabras.</h2>
+            <p>Este modo mantiene las mismas secciones, títulos, tarjetas y herramientas. La diferencia es que las explicaciones se muestran más cortas.</p>
+          </div>
+        </div>
+        <div class="brief-mode-intro-grid">
+          <article>
+            <span aria-hidden="true">⚙️</span>
+            <h3>¿Qué va a hacer?</h3>
+            <p>Reducir la extensión de los textos para mostrar primero las ideas principales, sin quitarte el acceso a los temas ni a sus actividades.</p>
+          </article>
+          <article>
+            <span aria-hidden="true">💡</span>
+            <h3>¿Por qué existe?</h3>
+            <p>Porque puedes aprender lo esencial sin tener que leer explicaciones largas desde el principio.</p>
+          </article>
+          <article>
+            <span aria-hidden="true">🕒</span>
+            <h3>¿Cuándo usarlo?</h3>
+            <p>Cuando tengas poco tiempo, quieras repasar o prefieras leer poco. Usa <strong>Completo</strong> cuando necesites más detalles, ejemplos o información ampliada.</p>
+          </article>
+        </div>
+        <p class="brief-mode-intro-footer">Puedes abrir los mismos apartados y cambiar de modo cuando quieras. Tu recorrido por ARKON sigue siendo el mismo.</p>
+      </section>
 
       <section id="arkon-video-real" aria-labelledby="arkon-video-title">
         <div class="arkon-video-heading">
