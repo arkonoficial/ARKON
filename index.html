@@ -1372,14 +1372,23 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
       </div>
       <div class="section-head"><div><span class="eyebrow"><span class="eyebrow-dot"></span> Desarrollo interdisciplinario</span><h2>Lo que aporta cada asignatura</h2><p>Abre solo el tema que necesites. Los contenidos están agrupados para mantener esta página clara y fácil de recorrer.</p></div></div>
       <div class="subject-list">
-        <details class="subject-detail">
+        <details class="subject-detail social-subject-detail">
           <summary><span class="subject-emoji">🧭</span><span class="subject-title-wrap"><span>Convivencia, ciudadanía y riesgos laborales</span><small>Ciencias Sociales · Filosofía · Educación Religiosa · Ética y Valores</small></span></summary>
           <div class="subject-body">
             <h3>Sistema General de Riesgos Laborales (SGRL)</h3>
             <p>Es el sistema que articula entidades públicas, ARL, empleadores y trabajadores para prevenir y atender accidentes y enfermedades relacionadas con el trabajo. Las responsabilidades son compartidas. Consulta la <a href="https://www2.minsalud.gov.co/salud/Documents/Contenidos/generalidades-SGRL.aspx" target="_blank" rel="noopener noreferrer">explicación del Ministerio de Salud</a>.</p>
             <h3>Riesgos para investigar en Cali y la Comuna 18</h3>
             <p>Son temas de investigación, no estadísticas ya comprobadas. La encuesta permitirá conocer cuáles aparecen en las respuestas reales.</p>
-            <div class="project-chip-list"><span>Empleo informal y protección</span><span>Ergonomía y posturas</span><span>Seguridad en el trabajo</span><span>Riesgos psicosociales</span><span>Riesgos ambientales</span><span>Convivencia comunitaria</span></div>
+            <div class="risk-topic-intro"><p>Selecciona cada tema para abrir una ficha con su significado, ejemplos, posibles consecuencias y formas de prevención.</p></div>
+            <div class="risk-topic-grid" id="risk-topic-grid">
+              <button class="risk-topic-card" type="button" data-risk-topic="informal" aria-controls="risk-topic-detail-view"><span class="risk-topic-icon">🧾</span><span class="risk-topic-name">Empleo informal y protección</span><span class="risk-topic-summary">Condiciones laborales y garantías</span><span class="risk-topic-arrow">Abrir explicación ↗</span></button>
+              <button class="risk-topic-card" type="button" data-risk-topic="ergonomia" aria-controls="risk-topic-detail-view"><span class="risk-topic-icon">🪑</span><span class="risk-topic-name">Ergonomía y posturas</span><span class="risk-topic-summary">Posturas, movimientos y esfuerzo</span><span class="risk-topic-arrow">Abrir explicación ↗</span></button>
+              <button class="risk-topic-card" type="button" data-risk-topic="seguridad" aria-controls="risk-topic-detail-view"><span class="risk-topic-icon">🦺</span><span class="risk-topic-name">Seguridad en el trabajo</span><span class="risk-topic-summary">Accidentes y condiciones inseguras</span><span class="risk-topic-arrow">Abrir explicación ↗</span></button>
+              <button class="risk-topic-card" type="button" data-risk-topic="psicosocial" aria-controls="risk-topic-detail-view"><span class="risk-topic-icon">🧠</span><span class="risk-topic-name">Riesgos psicosociales</span><span class="risk-topic-summary">Estrés, presión y relaciones</span><span class="risk-topic-arrow">Abrir explicación ↗</span></button>
+              <button class="risk-topic-card" type="button" data-risk-topic="ambiental" aria-controls="risk-topic-detail-view"><span class="risk-topic-icon">🌫️</span><span class="risk-topic-name">Riesgos ambientales</span><span class="risk-topic-summary">Ruido, calor, aire y entorno</span><span class="risk-topic-arrow">Abrir explicación ↗</span></button>
+              <button class="risk-topic-card" type="button" data-risk-topic="convivencia" aria-controls="risk-topic-detail-view"><span class="risk-topic-icon">🤝</span><span class="risk-topic-name">Convivencia comunitaria</span><span class="risk-topic-summary">Respeto y cuidado de espacios comunes</span><span class="risk-topic-arrow">Abrir explicación ↗</span></button>
+            </div>
+            <section class="risk-topic-detail-view" id="risk-topic-detail-view" tabindex="-1" aria-live="polite" hidden></section>
             <p>La responsabilidad individual consiste en actuar con cuidado y seguir las normas; la colectiva incluye reportar riesgos por canales adecuados, cuidar espacios comunes y apoyar a otros sin exponerse innecesariamente.</p>
             <div class="project-callout"><p><strong>Ruta ante un riesgo psicosocial:</strong> en el trabajo, informa la situación al responsable de seguridad y salud en el trabajo o al empleador y consulta la ARL cuando corresponda. En la escuela o la comunidad, busca a un adulto de confianza o a un servicio de orientación. En Cali, la Línea 106 ofrece teleorientación en salud mental; ante peligro inmediato, llama al 123.</p></div>
             <section class="social-infographic" aria-labelledby="social-infographic-title">
@@ -2654,5 +2663,202 @@ dialog :is(h1,h2,h3,h4,p,li,small,strong,span,.quiz-progress,.quiz-result,.dialo
 </style>
 
 
+
+<style id="social-readability-interactions">
+/* Contraste alto: esta sección usa superficies claras y letras negras. */
+#app .page .social-subject-detail{background:#fff!important;border-color:#cbd5df!important;color:#101820!important}
+#app .page .social-subject-detail>summary,
+#app .page .social-subject-detail>summary :is(span,small){color:#101820!important}
+#app .page .social-subject-detail .subject-body{background:#fff!important;color:#101820!important}
+#app .page .social-subject-detail .subject-body :is(h3,h4,p,li,strong,small,label){color:#111!important;opacity:1!important;text-shadow:none!important}
+#app .page .social-subject-detail .subject-body a{color:#075985!important}
+#app .page .social-subject-detail .project-callout{background:#eef6fa!important;border-color:#bfd5e2!important}
+#app .page .social-subject-detail .project-callout :is(p,strong){color:#111!important}
+#app .page .social-infographic{background:#f4f8fc!important;border:1px solid #c7d5df!important;color:#111!important}
+#app .page .social-infographic-hero{background:linear-gradient(115deg,#e4f4f8,#e8effb)!important;border-bottom:1px solid #cbd9e3!important}
+#app .page .social-infographic :is(h3,h4,p,small,strong,span){color:#111!important;opacity:1!important;text-shadow:none!important}
+#app .page .social-infographic .social-infographic-kicker{background:#d5f2f4!important;border-color:#6baebb!important;color:#123b49!important}
+#app .page .social-infographic .social-infographic-number{color:#07566b!important}
+#app .page .social-infographic .social-infographic-central{background:#e4f5f7!important;border-color:#9bcbd3!important}
+#app .page .social-infographic .social-infographic-central strong{color:#07566b!important}
+#app .page .social-infographic .social-infographic-card{background:#fff!important;border-color:#cbd8e1!important}
+#app .page .social-infographic .social-infographic-card p{color:#202a33!important}
+#app .page .social-infographic .social-infographic-tags span{background:#e8f4f7!important;border-color:#b7d4dc!important;color:#111!important}
+#app .page .social-infographic .social-infographic-action{background:#eaf2f8!important;border-color:#c1d4e0!important}
+#app .page .social-infographic .social-infographic-action li{background:#fff!important;border-color:#cfdae2!important}
+#app .page .social-infographic .social-infographic-action li>span{background:#b8edf0!important;color:#111!important}
+#app .page .social-infographic .social-infographic-law{background:#fff!important;border-color:#cbd8e1!important}
+#app .page .social-infographic .social-infographic-law>span{background:#d9f2f2!important;color:#111!important}
+#app .page .social-infographic .social-infographic-law a{color:#075985!important}
+#app .page .social-infographic .social-infographic-footer{background:#e2f4ef!important;border-color:#afd7cd!important}
+#app .page .social-infographic .social-infographic-source{color:#303b45!important}
+#app .page .social-infographic .social-infographic-orbit{background:#d8eef5!important}
+#app .page .social-infographic .social-infographic-orbit:before,
+#app .page .social-infographic .social-infographic-orbit:after{border-color:#8bbdc8!important}
+
+/* Los temas de riesgo funcionan como accesos a fichas independientes. */
+#app .page .risk-topic-intro p{color:#111!important;font-weight:650}
+#app .page .risk-topic-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px;margin:13px 0 19px}
+#app .page .risk-topic-card{position:relative;display:flex;min-width:0;flex-direction:column;align-items:flex-start;gap:7px;padding:16px;text-align:left;border:1px solid #c8d7e1;border-radius:16px;background:linear-gradient(160deg,#fff,#f0f7fa);color:#111!important;box-shadow:0 5px 15px rgba(17,42,61,.06);transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+#app .page .risk-topic-card:hover{transform:translateY(-3px);border-color:#2298ad;box-shadow:0 10px 22px rgba(17,75,94,.13)}
+#app .page .risk-topic-card:focus-visible{outline:3px solid #087f9a;outline-offset:3px}
+#app .page .risk-topic-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:#dff3f5;font-size:1.3rem;color:#111!important}
+#app .page .risk-topic-name{color:#111!important;font-weight:900;font-size:.88rem;line-height:1.35}
+#app .page .risk-topic-summary{color:#303b45!important;font-size:.75rem;line-height:1.45}
+#app .page .risk-topic-arrow{margin-top:3px;color:#075985!important;font-size:.73rem;font-weight:900}
+#app .page .risk-topic-detail-view{padding:clamp(16px,3vw,26px);margin:15px 0 20px;border:1px solid #bfcfd9;border-radius:20px;background:#f6fafc;color:#111!important;box-shadow:0 10px 24px rgba(17,42,61,.08)}
+#app .page .risk-topic-detail-view :is(h2,h3,h4,p,li,strong,small,span){color:#111!important;opacity:1!important;text-shadow:none!important}
+#app .page .risk-topic-back{display:inline-flex;align-items:center;gap:8px;padding:9px 13px;margin:0 0 18px;border:1px solid #b7cbd7;border-radius:11px;background:#fff;color:#064e65!important;font-size:.78rem;font-weight:900}
+#app .page .risk-topic-back:hover{background:#e5f4f7}
+#app .page .risk-topic-detail-heading{display:flex;align-items:center;gap:13px;padding-bottom:16px;border-bottom:1px solid #d4e0e7}
+#app .page .risk-topic-detail-icon{display:grid;place-items:center;flex:0 0 52px;width:52px;height:52px;border-radius:16px;background:#d9f1f4;font-size:1.6rem}
+#app .page .risk-topic-detail-heading h3{margin:0 0 5px;font-size:1.35rem}
+#app .page .risk-topic-detail-heading p{margin:0;color:#364653!important;font-size:.84rem}
+#app .page .risk-topic-info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin:17px 0}
+#app .page .risk-topic-info-card{padding:15px;border:1px solid #d0dce4;border-radius:14px;background:#fff}
+#app .page .risk-topic-info-card h4{display:flex;align-items:center;gap:8px;margin:0 0 8px;font-size:.87rem}
+#app .page .risk-topic-info-card p{margin:0;color:#263541!important;font-size:.81rem;line-height:1.65}
+#app .page .risk-topic-info-card ul{margin:0;padding-left:19px;color:#263541!important}
+#app .page .risk-topic-info-card li{margin:5px 0;color:#263541!important;font-size:.8rem;line-height:1.55}
+#app .page .risk-topic-actions{padding:15px;border:1px solid #b9d8dc;border-radius:15px;background:#e9f6f5}
+#app .page .risk-topic-actions h4{margin:0 0 9px;font-size:.9rem}
+#app .page .risk-topic-actions ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 20px;margin:0;padding-left:19px}
+#app .page .risk-topic-actions li{color:#172b35!important;font-size:.8rem;line-height:1.5}
+#app .page .risk-quick-check{margin-top:16px;padding:16px;border:1px solid #c9d5df;border-radius:15px;background:#fff}
+#app .page .risk-quick-check h4{margin:0 0 7px}
+#app .page .risk-quick-check>p{margin:0 0 11px;color:#182b38!important;font-size:.84rem;font-weight:750}
+#app .page .risk-quick-options{display:flex;flex-wrap:wrap;gap:8px}
+#app .page .risk-quick-options button{padding:9px 12px;border:1px solid #b8cbd6;border-radius:11px;background:#f1f7fa;color:#111!important;font-size:.77rem;font-weight:750}
+#app .page .risk-quick-options button:hover{border-color:#16889e;background:#e3f4f6}
+#app .page .risk-quick-options button.correct{border-color:#31845f;background:#dcf5e8}
+#app .page .risk-quick-options button.wrong{border-color:#bd6b56;background:#ffebe5}
+#app .page .risk-quick-options button:disabled{cursor:default;opacity:1}
+#app .page .risk-quick-feedback{margin:11px 0 0;color:#142c39!important;font-size:.8rem;font-weight:750;line-height:1.55}
+@media(max-width:760px){#app .page .risk-topic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#app .page .risk-topic-actions ul{grid-template-columns:1fr}}
+@media(max-width:520px){#app .page .risk-topic-grid,#app .page .risk-topic-info-grid{grid-template-columns:1fr}#app .page .social-infographic-pillars{grid-template-columns:1fr}#app .page .social-infographic-action ol{grid-template-columns:1fr}}
+</style>
+
+<script id="social-risk-topic-interactions">
+(function(){
+  const topics = {
+    informal: {
+      icon:"🧾", title:"Empleo informal y protección", summary:"Condiciones laborales y acceso a garantías.",
+      definition:"Se refiere a trabajos que no cuentan con todas las condiciones de formalidad o protección previstas. En algunos casos no hay acuerdos claros, afiliación efectiva a la seguridad social o información suficiente sobre los derechos y responsabilidades.",
+      examples:["Trabajos ocasionales sin condiciones acordadas por escrito.","Actividades donde la persona no sabe quién responde si ocurre un accidente.","Empleos sin información clara sobre pagos, horarios o afiliación a protección social."],
+      effects:"Puede aumentar la inestabilidad económica y dejar a la persona con dificultades para recibir orientación o protección cuando enfrenta un accidente, una enfermedad o un conflicto laboral.",
+      actions:["Preguntar y dejar claras las condiciones del trabajo.","Informarse sobre salud, pensión y riesgos laborales.","Guardar comprobantes y acuerdos importantes.","Consultar orientación laboral oficial ante dudas."],
+      question:"¿Qué ayuda a una persona a conocer mejor sus condiciones laborales?",
+      options:["Aceptar cualquier condición sin preguntar","Informarse y aclarar sus acuerdos y afiliaciones","No guardar ningún comprobante"], correct:1,
+      why:"Conocer las condiciones y la protección disponible permite tomar decisiones informadas y pedir orientación."
+    },
+    ergonomia: {
+      icon:"🪑", title:"Ergonomía y posturas", summary:"Cómo se adapta el trabajo al cuerpo de las personas.",
+      definition:"La ergonomía busca adaptar los espacios, herramientas y tareas a las capacidades de las personas. El riesgo aparece cuando una postura incómoda, un movimiento repetido o un esfuerzo se mantiene durante mucho tiempo.",
+      examples:["Pasar muchas horas sentado sin cambiar de posición.","Trabajar con la espalda encorvada o los hombros elevados.","Repetir el mismo movimiento durante gran parte de la jornada.","Levantar o mover cargas sin conocer la forma segura de hacerlo."],
+      effects:"Puede producir cansancio, molestias y lesiones en músculos y articulaciones, especialmente cuando las condiciones se mantienen sin cambios.",
+      actions:["Ajustar la silla, la mesa y la pantalla a una posición cómoda.","Cambiar de postura y hacer pausas breves cuando la tarea lo permita.","Organizar las herramientas para evitar alcances incómodos.","Pedir capacitación para mover cargas y realizar tareas repetitivas."],
+      question:"Una persona pasa horas con la espalda encorvada. ¿Qué tema debe revisar?",
+      options:["Ergonomía y posturas","Riesgo ambiental","Convivencia comunitaria"], correct:0,
+      why:"La ergonomía revisa las posturas, los movimientos y la adaptación del puesto de trabajo."
+    },
+    seguridad: {
+      icon:"🦺", title:"Seguridad en el trabajo", summary:"Condiciones que pueden causar accidentes.",
+      definition:"Son peligros presentes en el lugar o en la forma de realizar una tarea que pueden causar accidentes o lesiones. Se relacionan con equipos, instalaciones, orden, señalización y procedimientos.",
+      examples:["Pisos mojados sin señalización.","Cables atravesados en zonas de paso.","Herramientas dañadas o máquinas sin protección.","Falta de iluminación o de instrucciones para una tarea."],
+      effects:"Pueden ocasionar caídas, golpes, cortaduras, quemaduras u otros accidentes que afectan a los trabajadores y a quienes están cerca.",
+      actions:["Mantener despejadas y ordenadas las zonas de paso.","Usar los equipos de protección que correspondan a la tarea.","No utilizar equipos dañados o sin las protecciones indicadas.","Informar los peligros al responsable de seguridad."],
+      question:"Ves un cable atravesado en una zona de paso. ¿Qué tipo de riesgo identificas?",
+      options:["Riesgo psicosocial","Condición insegura en el trabajo","Riesgo por empleo informal"], correct:1,
+      why:"Un cable en una zona de paso puede provocar tropiezos y es una condición insegura que debe reportarse."
+    },
+    psicosocial: {
+      icon:"🧠", title:"Riesgos psicosociales", summary:"Factores del trabajo que afectan el bienestar emocional y social.",
+      definition:"Son aspectos de la organización del trabajo y de las relaciones laborales que pueden afectar el bienestar mental, emocional y social. Pueden aparecer por exceso de tareas, falta de apoyo o conflictos repetidos.",
+      examples:["Cargas de trabajo excesivas o jornadas mal organizadas.","Maltrato, acoso o discriminación.","Poca claridad sobre las responsabilidades.","Falta de apoyo y conflictos constantes en el equipo."],
+      effects:"Pueden generar estrés, agotamiento, dificultades para concentrarse y problemas en las relaciones con otras personas.",
+      actions:["Distribuir tareas y responsabilidades de forma clara.","Promover el respeto y la comunicación.","Pedir apoyo a los responsables o canales de orientación.","Reportar situaciones de acoso o maltrato por los canales establecidos."],
+      question:"Un equipo recibe tareas excesivas y no tiene apoyo. ¿Qué riesgo puede existir?",
+      options:["Riesgo psicosocial","Riesgo de inundación","Riesgo ergonómico solamente"], correct:0,
+      why:"La carga excesiva y la falta de apoyo son factores que pueden convertirse en riesgos psicosociales."
+    },
+    ambiental: {
+      icon:"🌫️", title:"Riesgos ambientales", summary:"Factores del entorno que pueden afectar la salud.",
+      definition:"Son condiciones del ambiente donde se estudia, trabaja o vive que pueden afectar la salud o la seguridad. Pueden estar relacionadas con el aire, el ruido, la temperatura o la limpieza del espacio.",
+      examples:["Ruido muy alto durante largos periodos.","Polvo, humo o mala ventilación.","Calor intenso o temperaturas inadecuadas.","Acumulación de residuos o presencia de humedad."],
+      effects:"Según el tipo y el tiempo de exposición, pueden causar molestias, problemas respiratorios, fatiga, estrés o dificultades para realizar las actividades.",
+      actions:["Mantener los espacios limpios y ventilados.","Seguir las medidas de protección indicadas para cada lugar.","Reportar fugas, humo, ruido excesivo o condiciones peligrosas.","Evitar exponerse a zonas contaminadas y seguir las indicaciones de las autoridades."],
+      question:"Un salón tiene poca ventilación y acumula humo. ¿Qué tipo de riesgo se observa?",
+      options:["Riesgo ambiental","Riesgo de convivencia solamente","Riesgo por falta de acuerdos"], correct:0,
+      why:"La calidad del aire y la ventilación son factores ambientales."
+    },
+    convivencia: {
+      icon:"🤝", title:"Convivencia comunitaria", summary:"Relaciones respetuosas y cuidado de los espacios compartidos.",
+      definition:"Se relaciona con la manera en que las personas conviven, comparten espacios y resuelven desacuerdos en el barrio, la escuela o el trabajo. Se convierte en un problema cuando hay irrespeto, discriminación o conflictos que no se atienden.",
+      examples:["Discusiones frecuentes entre vecinos o compañeros.","Discriminación o burlas por las diferencias.","Daño de espacios comunes o falta de acuerdos para cuidarlos.","Difusión de rumores que afectan a otras personas."],
+      effects:"Debilita la confianza, crea conflictos y puede hacer que las personas se sientan excluidas o inseguras en los espacios que comparten.",
+      actions:["Escuchar las opiniones sin insultar ni discriminar.","Dialogar y construir acuerdos claros.","Cuidar los espacios y bienes comunes.","Buscar mediación o apoyo de personas responsables cuando el conflicto no se resuelve."],
+      question:"Dos vecinos tienen un desacuerdo por el uso de un espacio común. ¿Qué ayuda a resolverlo?",
+      options:["Difundir rumores","Ignorar y aumentar el conflicto","Dialogar y crear acuerdos"], correct:2,
+      why:"El diálogo y los acuerdos permiten resolver diferencias respetando los derechos de todos."
+    }
+  };
+  const escapeHTML = function(value){
+    return String(value).replace(/[&<>"]/g,function(ch){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch];});
+  };
+  const grid = document.getElementById("risk-topic-grid");
+  const detail = document.getElementById("risk-topic-detail-view");
+  if(!grid || !detail) return;
+  function openTopic(id){
+    const topic = topics[id];
+    if(!topic) return;
+    grid.hidden = true;
+    detail.hidden = false;
+    const examples = topic.examples.map(function(item){return "<li>"+escapeHTML(item)+"</li>";}).join("");
+    const actions = topic.actions.map(function(item){return "<li>"+escapeHTML(item)+"</li>";}).join("");
+    const options = topic.options.map(function(item,index){return '<button type="button" data-risk-answer="'+index+'">'+escapeHTML(item)+'</button>';}).join("");
+    detail.innerHTML =
+      '<button type="button" class="risk-topic-back" data-risk-back>← Volver a los temas</button>'+
+      '<div class="risk-topic-detail-heading"><span class="risk-topic-detail-icon" aria-hidden="true">'+topic.icon+'</span><div><h3 tabindex="-1">'+escapeHTML(topic.title)+'</h3><p>'+escapeHTML(topic.summary)+'</p></div></div>'+
+      '<div class="risk-topic-info-grid">'+
+        '<article class="risk-topic-info-card"><h4>📘 ¿De qué se trata?</h4><p>'+escapeHTML(topic.definition)+'</p></article>'+
+        '<article class="risk-topic-info-card"><h4>🔎 Ejemplos</h4><ul>'+examples+'</ul></article>'+
+        '<article class="risk-topic-info-card"><h4>⚠️ ¿Qué puede provocar?</h4><p>'+escapeHTML(topic.effects)+'</p></article>'+
+        '<article class="risk-topic-actions"><h4>✅ ¿Cómo podemos prevenirlo?</h4><ul>'+actions+'</ul></article>'+
+      '</div>'+
+      '<div class="risk-quick-check" data-correct="'+topic.correct+'"><h4>🎯 Comprueba lo aprendido</h4><p>'+escapeHTML(topic.question)+'</p><div class="risk-quick-options">'+options+'</div><p class="risk-quick-feedback" aria-live="polite"></p></div>';
+    detail.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+    const heading = detail.querySelector("h3");
+    if(heading) heading.focus({preventScroll:true});
+  }
+  function backToTopics(){
+    detail.hidden = true;
+    detail.innerHTML = "";
+    grid.hidden = false;
+    grid.scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"});
+  }
+  document.addEventListener("click",function(event){
+    const openButton = event.target.closest("[data-risk-topic]");
+    if(openButton){openTopic(openButton.dataset.riskTopic);return;}
+    if(event.target.closest("[data-risk-back]")){backToTopics();return;}
+    const answer = event.target.closest("[data-risk-answer]");
+    if(answer){
+      const quiz = answer.closest(".risk-quick-check");
+      if(!quiz || answer.disabled) return;
+      const chosen = Number(answer.dataset.riskAnswer);
+      const correct = Number(quiz.dataset.correct);
+      const buttons = Array.from(quiz.querySelectorAll("[data-risk-answer]"));
+      buttons.forEach(function(button,index){
+        button.disabled = true;
+        if(index===correct) button.classList.add("correct");
+        if(index===chosen && chosen!==correct) button.classList.add("wrong");
+      });
+      const feedback = quiz.querySelector(".risk-quick-feedback");
+      const topicTitle = detail.querySelector(".risk-topic-detail-heading h3").textContent;
+      const reason = topics[Object.keys(topics).find(function(key){return topics[key].title===topicTitle;})].why;
+      feedback.textContent = (chosen===correct ? "¡Correcto! " : "Buen intento. ") + reason;
+    }
+  });
+})();
+</script>
 </body>
 </html>
