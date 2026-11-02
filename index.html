@@ -1638,6 +1638,43 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
         </div>
       </div>
 
+      <section class="community-map-panel" aria-labelledby="community-map-title">
+        <div class="community-map-heading">
+          <div><span class="eyebrow"><span class="eyebrow-dot"></span> Explora el territorio</span><h2 id="community-map-title">Ubica el servicio y calcula tu ruta</h2><p>Selecciona una entidad para verla en el mapa. Después indica un barrio o punto de referencia para consultar cómo llegar.</p></div>
+          <span class="community-map-heading-icon" aria-hidden="true">📍</span>
+        </div>
+        <div class="community-map-controls">
+          <label for="community-map-destination"><strong>1. ¿A dónde quieres ir?</strong>
+            <select id="community-map-destination" aria-label="Seleccionar entidad o lugar">
+              <option value="ips-melendez">IPS Meléndez · Comuna 18</option>
+            </select>
+          </label>
+          <label for="community-map-origin"><strong>2. ¿Desde dónde sales?</strong>
+            <input id="community-map-origin" type="text" autocomplete="off" placeholder="Ej. barrio Meléndez o un lugar cercano">
+          </label>
+          <div class="community-map-route-options">
+            <label for="community-map-mode"><strong>Medio de transporte</strong>
+              <select id="community-map-mode" aria-label="Medio de transporte">
+                <option value="driving">Carro</option>
+                <option value="walking">A pie</option>
+                <option value="transit">Transporte público</option>
+                <option value="bicycling">Bicicleta</option>
+              </select>
+            </label>
+            <button class="community-map-location-btn" type="button" id="community-map-location">◎ Usar ubicación actual</button>
+          </div>
+        </div>
+        <div class="community-map-privacy" id="community-map-status" aria-live="polite">Por privacidad, escribe un barrio o punto público de referencia, no la dirección exacta de tu casa. La ubicación temporal solo se usa si autorizas el permiso y no se guarda.</div>
+        <div class="community-map-frame-wrap">
+          <iframe id="community-google-map" title="Mapa de Google Maps con el lugar seleccionado" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen src="https://maps.google.com/maps?q=IPS%20Melendez%2C%20Carrera%2094%20No.%204C-65%2C%20Cali%2C%20Colombia&output=embed"></iframe>
+        </div>
+        <div class="community-map-footer">
+          <p id="community-map-place-caption" aria-live="polite">Lugar seleccionado: IPS Meléndez · Comuna 18.</p>
+          <button class="community-map-route-btn" type="button" id="community-map-route">↗ Ver ruta y tiempo en Google Maps</button>
+        </div>
+        <p class="community-map-note">Google Maps calcula la distancia, las rutas disponibles y el tiempo estimado según el medio de transporte y las condiciones actuales. El cálculo se abre en Google Maps.</p>
+      </section>
+
       <div class="community-filter-panel">
         <div class="community-search"><span aria-hidden="true">⌕</span><input id="community-search" type="search" placeholder="Buscar entidad, servicio o barrio…" aria-label="Buscar en el directorio"></div>
         <div class="community-category-filters" role="group" aria-label="Filtrar por categoría">
@@ -1659,56 +1696,56 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
           <div class="community-card-top"><span class="community-card-icon">🏥</span><span class="community-badge">Comuna 18 · Salud</span></div>
           <h3>IPS Meléndez</h3><p>Centro de atención de la Red de Salud de Ladera. Consulta la disponibilidad y los servicios antes de acudir.</p>
           <div class="community-card-meta"><span>📍 Carrera 94 No. 4C-65</span><span>☎️ Red Ladera: (602) 893 7701</span></div>
-          <div class="community-card-actions"><a href="tel:+576028937701">Llamar a la Red</a><a href="https://www.saludladera.gov.co/" target="_blank" rel="noopener noreferrer">Sitio oficial ↗</a></div>
+          <div class="community-card-actions"><a href="tel:+576028937701">Llamar a la Red</a><a href="https://www.saludladera.gov.co/" target="_blank" rel="noopener noreferrer">Sitio oficial ↗</a><button class="community-map-trigger" type="button" data-map-show="ips-melendez">📍 Ver en el mapa</button></div>
           <small class="community-source-note">Dirección del portafolio institucional 2024. Confirma la sede antes de desplazarte.</small>
         </article>
         <article class="community-directory-card" data-community-scopes="18,cali" data-community-category="salud" data-search="ips alto polvorines centro salud calle 4 oeste 91 83 comuna 18">
           <div class="community-card-top"><span class="community-card-icon">🩺</span><span class="community-badge">Comuna 18 · Salud</span></div>
           <h3>IPS Alto Polvorines</h3><p>Hace parte de la red pública de atención de la zona de ladera.</p>
           <div class="community-card-meta"><span>📍 Calle 4 oeste No. 91-83</span><span>☎️ (602) 893 7701 · Red Ladera</span></div>
-          <div class="community-card-actions"><a href="tel:+576028937701">Llamar a la Red</a><a href="https://www.saludladera.gov.co/" target="_blank" rel="noopener noreferrer">Sitio oficial ↗</a></div>
+          <div class="community-card-actions"><a href="tel:+576028937701">Llamar a la Red</a><a href="https://www.saludladera.gov.co/" target="_blank" rel="noopener noreferrer">Sitio oficial ↗</a><button class="community-map-trigger" type="button" data-map-show="ips-alto-polvorines">📍 Ver en el mapa</button></div>
           <small class="community-source-note">Dirección del portafolio institucional 2024. Confirma la sede antes de desplazarte.</small>
         </article>
         <article class="community-directory-card" data-community-scopes="18,cali" data-community-category="salud" data-search="ips napoles centro salud carrera 76b 2c 16 comuna 18">
           <div class="community-card-top"><span class="community-card-icon">🩺</span><span class="community-badge">Comuna 18 · Salud</span></div>
           <h3>IPS Nápoles</h3><p>Consulta con la Red de Salud de Ladera qué servicios se encuentran disponibles en esta sede.</p>
           <div class="community-card-meta"><span>📍 Carrera 76B No. 2C-16</span><span>☎️ (602) 893 7701 · Red Ladera</span></div>
-          <div class="community-card-actions"><a href="tel:+576028937701">Llamar a la Red</a><a href="https://www.saludladera.gov.co/" target="_blank" rel="noopener noreferrer">Sitio oficial ↗</a></div>
+          <div class="community-card-actions"><a href="tel:+576028937701">Llamar a la Red</a><a href="https://www.saludladera.gov.co/" target="_blank" rel="noopener noreferrer">Sitio oficial ↗</a><button class="community-map-trigger" type="button" data-map-show="ips-napoles">📍 Ver en el mapa</button></div>
           <small class="community-source-note">Dirección del portafolio institucional 2024. Confirma la sede antes de desplazarte.</small>
         </article>
         <article class="community-directory-card" data-community-scopes="18,cali" data-community-category="salud" data-search="ips lourdes centro salud carrera 73 1b 13 comuna 18">
           <div class="community-card-top"><span class="community-card-icon">🩺</span><span class="community-badge">Comuna 18 · Salud</span></div>
           <h3>IPS Lourdes</h3><p>Hace parte de los puntos de atención registrados para la Comuna 18.</p>
           <div class="community-card-meta"><span>📍 Carrera 73 No. 1B-13</span><span>☎️ (602) 893 7701 · Red Ladera</span></div>
-          <div class="community-card-actions"><a href="tel:+576028937701">Llamar a la Red</a><a href="https://www.saludladera.gov.co/" target="_blank" rel="noopener noreferrer">Sitio oficial ↗</a></div>
+          <div class="community-card-actions"><a href="tel:+576028937701">Llamar a la Red</a><a href="https://www.saludladera.gov.co/" target="_blank" rel="noopener noreferrer">Sitio oficial ↗</a><button class="community-map-trigger" type="button" data-map-show="ips-lourdes">📍 Ver en el mapa</button></div>
           <small class="community-source-note">Dirección del portafolio institucional 2024. Confirma la sede antes de desplazarte.</small>
         </article>
         <article class="community-directory-card" data-community-scopes="18,cali" data-community-category="salud" data-search="ips alto napoles centro salud calle 2b oeste 82d 11 comuna 18">
           <div class="community-card-top"><span class="community-card-icon">🩺</span><span class="community-badge">Comuna 18 · Salud</span></div>
           <h3>IPS Alto Nápoles</h3><p>Consulta con la Red de Salud de Ladera los horarios y servicios disponibles.</p>
           <div class="community-card-meta"><span>📍 Calle 2B oeste A No. 82D-11</span><span>☎️ (602) 893 7701 · Red Ladera</span></div>
-          <div class="community-card-actions"><a href="tel:+576028937701">Llamar a la Red</a><a href="https://www.saludladera.gov.co/" target="_blank" rel="noopener noreferrer">Sitio oficial ↗</a></div>
+          <div class="community-card-actions"><a href="tel:+576028937701">Llamar a la Red</a><a href="https://www.saludladera.gov.co/" target="_blank" rel="noopener noreferrer">Sitio oficial ↗</a><button class="community-map-trigger" type="button" data-map-show="ips-alto-napoles">📍 Ver en el mapa</button></div>
           <small class="community-source-note">Dirección del portafolio institucional 2024. Confirma la sede antes de desplazarte.</small>
         </article>
         <article class="community-directory-card" data-community-scopes="18,cali" data-community-category="salud" data-search="ips polvorines centro salud carrera 94a oeste comuna 18">
           <div class="community-card-top"><span class="community-card-icon">🩺</span><span class="community-badge">Comuna 18 · Salud</span></div>
           <h3>IPS Polvorines</h3><p>Hace parte de la oferta territorial de la Red de Salud de Ladera.</p>
           <div class="community-card-meta"><span>📍 Carrera 94A oeste No. 1 2A-00*</span><span>☎️ (602) 893 7701 · Red Ladera</span></div>
-          <div class="community-card-actions"><a href="tel:+576028937701">Llamar a la Red</a><a href="https://www.saludladera.gov.co/" target="_blank" rel="noopener noreferrer">Sitio oficial ↗</a></div>
+          <div class="community-card-actions"><a href="tel:+576028937701">Llamar a la Red</a><a href="https://www.saludladera.gov.co/" target="_blank" rel="noopener noreferrer">Sitio oficial ↗</a><button class="community-map-trigger" type="button" data-map-show="ips-polvorines">📍 Ver en el mapa</button></div>
           <small class="community-source-note">*La dirección aparece así en el portafolio institucional 2024; confirma el dato directamente con la Red antes de acudir.</small>
         </article>
         <article class="community-directory-card" data-community-scopes="18,cali" data-community-category="orientacion" data-search="mi cali bella integra alto jordan servicios alcaldia empleo salud educacion comuna 18">
           <div class="community-card-top"><span class="community-card-icon">🏘️</span><span class="community-badge">Alto Jordán · Comuna 18</span></div>
           <h3>Mi Cali Bella se Integra</h3><p>Punto de oferta institucional con orientación ciudadana y servicios de salud, educación, empleo, atención social, cultura, deporte y trámites.</p>
           <div class="community-card-meta"><span>📍 Barrio Alto Jordán, Comuna 18</span><span>🕘 Lun. a vie. · 8:00–12:00 y 1:00–5:00</span><span>✉️ micalibellaintegra@gmail.com</span></div>
-          <div class="community-card-actions"><a href="mailto:micalibellaintegra@gmail.com">Escribir</a><a href="https://www.cali.gov.co/boletines/publicaciones/194462/mi-cali-bella-se-integra-servicios-de-la-alcaldia-mas-cerca-de-la-comunidad/" target="_blank" rel="noopener noreferrer">Detalles oficiales ↗</a></div>
+          <div class="community-card-actions"><a href="mailto:micalibellaintegra@gmail.com">Escribir</a><a href="https://www.cali.gov.co/boletines/publicaciones/194462/mi-cali-bella-se-integra-servicios-de-la-alcaldia-mas-cerca-de-la-comunidad/" target="_blank" rel="noopener noreferrer">Detalles oficiales ↗</a><button class="community-map-trigger" type="button" data-map-show="mi-cali-bella">📍 Ver en el mapa</button></div>
           <small class="community-source-note">Los sábados atiende durante actividades o jornadas programadas. Confirma horarios y trámites antes de acudir.</small>
         </article>
         <article class="community-directory-card" data-community-scopes="18,cali" data-community-category="comunidad" data-search="cali 18 centro administracion local integrada CALI 18 participacion ciudadana">
           <div class="community-card-top"><span class="community-card-icon">🏛️</span><span class="community-badge">Participación · Comuna 18</span></div>
           <h3>CALI 18 · Centro de Administración Local Integrada</h3><p>Canal de contacto territorial para orientación y asuntos de participación ciudadana de la comuna.</p>
           <div class="community-card-meta"><span>📍 Calle 4 con carrera 94</span><span>☎️ (602) 332 4754 / 332 4753 / 332 4739</span><span>✉️ cali18@cali.gov.co</span></div>
-          <div class="community-card-actions"><a href="tel:+576023324754">Llamar</a><a href="mailto:cali18@cali.gov.co">Escribir</a><a href="https://datos.cali.gov.co/dataset/directorio-de-los-centros-de-administracion-local-integrada-cali" target="_blank" rel="noopener noreferrer">Directorio de CALI ↗</a></div>
+          <div class="community-card-actions"><a href="tel:+576023324754">Llamar</a><a href="mailto:cali18@cali.gov.co">Escribir</a><a href="https://datos.cali.gov.co/dataset/directorio-de-los-centros-de-administracion-local-integrada-cali" target="_blank" rel="noopener noreferrer">Directorio de CALI ↗</a><button class="community-map-trigger" type="button" data-map-show="cali-18">📍 Ver en el mapa</button></div>
           <small class="community-source-note">Datos del directorio institucional; confirma por teléfono antes de desplazarte.</small>
         </article>
         <article class="community-directory-card" data-community-scopes="18,cali" data-community-category="comunidad" data-search="juntas accion comunal jac comuna 18 barrios organizaciones comunidad">
@@ -2968,6 +3005,71 @@ dialog :is(h1,h2,h3,h4,p,li,small,strong,span,.quiz-progress,.quiz-result,.dialo
 @media(max-width:900px){#app .community-directory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){#app .community-hero{align-items:flex-start}#app .community-hero-art{flex-basis:95px;width:95px;height:95px}#app .community-hero-art span:nth-child(1){font-size:2.4rem}#app .community-hero-art span:nth-child(2){width:40px;height:40px;font-size:1.2rem}#app .community-hero-art span:nth-child(3){width:35px;height:35px;font-size:1rem}#app .community-scope-panel{align-items:flex-start;flex-direction:column}#app .community-scope-switch{width:100%}#app .community-scope-switch button{flex:1}#app .community-directory-grid{grid-template-columns:1fr}#app .community-expansion-note{align-items:flex-start;flex-direction:column}#app .community-expansion-stats{width:100%}#app .community-expansion-stats div{flex:1;min-width:0}#app .community-results-head{align-items:flex-start;flex-direction:column}}
 
+
+/* Legibilidad de Atención y comunidad: tinta negra sobre superficies claras. */
+#app #page-comunidad{color:#111!important}
+#app #page-comunidad :is(h1,h2,h3,h4,p,span,strong,small,label,li){color:#111!important;opacity:1!important;text-shadow:none!important}
+#app #page-comunidad .community-hero{background:linear-gradient(125deg,#e6f3f7 0%,#e4eef9 100%)!important;border-color:#c3d7e2!important;color:#111!important}
+#app #page-comunidad .community-hero :is(h1,p,.eyebrow,strong,small){color:#111!important}
+#app #page-comunidad .community-hero-note{background:#fff!important;border-color:#bfd4df!important}
+#app #page-comunidad .community-hero-art{background:#d6edf3!important;border-color:#9ec9d5!important}
+#app #page-comunidad .community-scope-panel,
+#app #page-comunidad .community-filter-panel,
+#app #page-comunidad .community-directory-card,
+#app #page-comunidad .community-sources,
+#app #page-comunidad .community-empty{background:#fff!important;color:#111!important}
+#app #page-comunidad .community-scope-copy :is(strong,small),
+#app #page-comunidad .community-directory-card :is(h3,p,span,small),
+#app #page-comunidad .community-results-head :is(h2,p){color:#111!important}
+#app #page-comunidad .community-category-filters button,
+#app #page-comunidad .community-scope-switch button,
+#app #page-comunidad .community-search{background:#f1f5f8!important;color:#111!important}
+#app #page-comunidad .community-search input{color:#111!important}
+#app #page-comunidad .community-search input::placeholder{color:#586570!important}
+#app #page-comunidad .community-scope-switch button.active,
+#app #page-comunidad .community-category-filters button.active{background:#dceff2!important;color:#111!important;border-color:#6eabb8!important}
+#app #page-comunidad .community-badge{background:#edf3f6!important;color:#111!important}
+#app #page-comunidad .community-card-meta span{color:#111!important}
+#app #page-comunidad .community-card-actions a{color:#064e65!important}
+#app #page-comunidad .community-card-actions a.community-action-primary{color:#fff!important}
+#app #page-comunidad .community-card-actions a,
+#app #page-comunidad .community-map-trigger{background:#eaf5f7!important;border-color:#9bbdc8!important;color:#064e65!important}
+#app #page-comunidad .community-expansion-note{background:#e9f3f6!important}
+#app #page-comunidad .community-expansion-note :is(h2,p,.eyebrow,strong,span){color:#111!important}
+#app #page-comunidad .community-disclaimer{background:#fff4dd!important;color:#111!important}
+#app #page-comunidad .community-disclaimer strong{color:#111!important}
+#app #page-comunidad .community-sources :is(h3,a){color:#064e65!important}
+#app #page-comunidad .community-card-icon{background:#e8f1f5!important}
+#app #page-comunidad .community-directory-card[hidden]{display:none!important}
+#app #page-comunidad .community-empty[hidden]{display:none!important}
+
+/* Google Maps dentro del directorio. */
+#app .community-map-panel{padding:clamp(16px,3vw,25px);margin:0 0 22px;border:1px solid #c5d4de;border-radius:20px;background:#fff;color:#111;box-shadow:0 12px 30px rgba(17,42,61,.07)}
+#app .community-map-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:16px}
+#app .community-map-heading h2{margin:6px 0;color:#111;font-size:clamp(1.45rem,3vw,2rem)}
+#app .community-map-heading p{max-width:760px;margin:0;color:#25333d;font-size:.83rem;line-height:1.6}
+#app .community-map-heading .eyebrow{color:#07566b}
+#app .community-map-heading-icon{display:grid;place-items:center;flex:0 0 48px;width:48px;height:48px;border-radius:14px;background:#e2f2f5;font-size:1.5rem}
+#app .community-map-controls{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+#app .community-map-controls>label,#app .community-map-route-options>label{display:grid;gap:7px;min-width:0;color:#111;font-size:.78rem}
+#app .community-map-controls strong{color:#111}
+#app .community-map-controls select,#app .community-map-controls input{width:100%;min-height:43px;padding:10px 12px;border:1px solid #bdcbd4;border-radius:11px;background:#f8fafc;color:#111;font:inherit;font-size:.82rem}
+#app .community-map-controls input::placeholder{color:#65727c}
+#app .community-map-route-options{display:flex;align-items:flex-end;gap:10px;grid-column:1/-1}
+#app .community-map-route-options>label{flex:1}
+#app .community-map-location-btn{min-height:43px;padding:10px 13px;border:1px solid #9bbfc9;border-radius:11px;background:#eaf5f7;color:#064e65;font-size:.77rem;font-weight:850}
+#app .community-map-privacy{padding:10px 12px;margin-bottom:12px;border-left:4px solid #4e9eae;border-radius:0 10px 10px 0;background:#edf6f8;color:#263b45;font-size:.73rem;line-height:1.55}
+#app .community-map-frame-wrap{overflow:hidden;border:1px solid #c8d5de;border-radius:15px;background:#e9eff2}
+#app .community-map-frame-wrap iframe{display:block;width:100%;height:360px;border:0}
+#app .community-map-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:13px}
+#app .community-map-footer p{margin:0;color:#111;font-size:.78rem;font-weight:750}
+#app .community-map-route-btn{min-height:42px;padding:10px 15px;border:1px solid #07566b;border-radius:11px;background:#07566b;color:#fff!important;font-size:.78rem;font-weight:900}
+#app .community-map-route-btn:hover{background:#06485a}
+#app .community-map-note{margin:10px 0 0;color:#3c4b54;font-size:.7rem;line-height:1.5}
+#app .community-map-trigger{display:inline-flex;align-items:center;justify-content:center;padding:8px 10px;border:1px solid #9bbfc9;border-radius:10px;background:#eaf5f7;color:#064e65!important;font-size:.7rem;font-weight:900}
+#app .community-map-trigger:hover{background:#d9eef2}
+@media(max-width:640px){#app .community-map-controls{grid-template-columns:1fr}#app .community-map-route-options{grid-column:auto;align-items:stretch;flex-direction:column}#app .community-map-frame-wrap iframe{height:310px}#app .community-map-footer{align-items:stretch;flex-direction:column}#app .community-map-route-btn{width:100%}}
+
 </style>
 
 <script id="social-risk-topic-interactions">
@@ -3161,6 +3263,81 @@ dialog :is(h1,h2,h3,h4,p,li,small,strong,span,.quiz-progress,.quiz-result,.dialo
     applyFilters();
   });
   applyFilters();
+
+  const mapFrame=root.querySelector("#community-google-map");
+  const mapSelect=root.querySelector("#community-map-destination");
+  const mapCaption=root.querySelector("#community-map-place-caption");
+  const mapOrigin=root.querySelector("#community-map-origin");
+  const mapMode=root.querySelector("#community-map-mode");
+  const mapStatus=root.querySelector("#community-map-status");
+  const mapLocation=root.querySelector("#community-map-location");
+  const mapRoute=root.querySelector("#community-map-route");
+  const mapTargets={
+    "ips-melendez":{label:"IPS Meléndez · Comuna 18",query:"IPS Melendez, Carrera 94 No. 4C-65, Cali, Valle del Cauca, Colombia"},
+    "ips-alto-polvorines":{label:"IPS Alto Polvorines · Comuna 18",query:"IPS Alto Polvorines, Calle 4 Oeste No. 91-83, Cali, Valle del Cauca, Colombia"},
+    "ips-napoles":{label:"IPS Nápoles · Comuna 18",query:"IPS Napoles, Carrera 76B No. 2C-16, Cali, Valle del Cauca, Colombia"},
+    "ips-lourdes":{label:"IPS Lourdes · Comuna 18",query:"IPS Lourdes, Carrera 73 No. 1B-13, Cali, Valle del Cauca, Colombia"},
+    "ips-alto-napoles":{label:"IPS Alto Nápoles · Comuna 18",query:"IPS Alto Napoles, Calle 2B Oeste A No. 82D-11, Cali, Valle del Cauca, Colombia"},
+    "ips-polvorines":{label:"IPS Polvorines · Comuna 18",query:"IPS Polvorines, Comuna 18, Cali, Valle del Cauca, Colombia"},
+    "mi-cali-bella":{label:"Mi Cali Bella se Integra · Alto Jordán",query:"Mi Cali Bella se Integra, Alto Jordan, Comuna 18, Cali, Colombia"},
+    "cali-18":{label:"CALI 18 · Comuna 18",query:"CALI 18 Centro de Administracion Local Integrada, Calle 4 con Carrera 94, Cali, Colombia"}
+  };
+  Object.keys(mapTargets).forEach(function(key){
+    const option=document.createElement("option");
+    option.value=key;
+    option.textContent=mapTargets[key].label;
+    mapSelect.appendChild(option);
+  });
+  let temporaryCoordinates=null;
+  function encode(value){return encodeURIComponent(value).replace(/%20/g,"+");}
+  function updateMap(key){
+    const item=mapTargets[key];
+    if(!item) return;
+    mapSelect.value=key;
+    mapCaption.textContent="Lugar seleccionado: "+item.label+".";
+    mapFrame.src="https://maps.google.com/maps?q="+encode(item.query)+"&output=embed";
+  }
+  mapSelect.addEventListener("change",function(){updateMap(mapSelect.value);});
+  root.addEventListener("click",function(event){
+    const trigger=event.target.closest("[data-map-show]");
+    if(!trigger) return;
+    const key=trigger.dataset.mapShow;
+    if(mapTargets[key]){
+      updateMap(key);
+      root.querySelector(".community-map-panel").scrollIntoView({behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+    }
+  });
+  mapOrigin.addEventListener("input",function(){temporaryCoordinates=null;});
+  mapLocation.addEventListener("click",function(){
+    if(!navigator.geolocation){
+      mapStatus.textContent="Este navegador no permite compartir la ubicación. Puedes escribir un barrio o punto de referencia.";
+      return;
+    }
+    mapStatus.textContent="Solicitando permiso de ubicación…";
+    navigator.geolocation.getCurrentPosition(function(position){
+      temporaryCoordinates=position.coords.latitude+","+position.coords.longitude;
+      mapOrigin.value="";
+      mapStatus.textContent="Ubicación temporal lista. No se guarda en ARKON; solo se incluirá al abrir tu ruta en Google Maps.";
+    },function(){
+      temporaryCoordinates=null;
+      mapStatus.textContent="No se obtuvo la ubicación. Puedes escribir el nombre de tu barrio o un punto público cercano.";
+    },{enableHighAccuracy:false,timeout:12000,maximumAge:60000});
+  });
+  mapRoute.addEventListener("click",function(){
+    const item=mapTargets[mapSelect.value];
+    if(!item) return;
+    const origin=(mapOrigin.value||"").trim();
+    let url="https://www.google.com/maps/dir/?api=1&destination="+encode(item.query)+"&travelmode="+encode(mapMode.value);
+    if(origin) url+="&origin="+encode(origin);
+    else if(temporaryCoordinates) url+="&origin="+encode(temporaryCoordinates);
+    window.open(url,"_blank","noopener,noreferrer");
+    if(!origin&&!temporaryCoordinates){
+      mapStatus.textContent="Google Maps usará la ubicación del dispositivo si está disponible; también podrás escribir tu punto de partida allí.";
+    }else{
+      mapStatus.textContent="Ruta solicitada a Google Maps. Allí verás las alternativas, la distancia y el tiempo estimado.";
+    }
+  });
+  updateMap("ips-melendez");
 })();
 </script>
 </body>
