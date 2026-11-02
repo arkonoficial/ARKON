@@ -1191,6 +1191,7 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
         <button data-nav="proyecto">Pregunta ABP</button>
         <button data-nav="desastres">Desastres</button>
         <button data-nav="habilidades">Habilidades laborales</button>
+        <button data-nav="comunidad">Atención y comunidad</button>
         <button data-nav="biblioteca">Biblioteca</button>
         <button data-nav="fuentes">Fuentes</button>
         <button data-nav="creditos">Créditos</button>
@@ -1463,19 +1464,7 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
   </footer>
   <div class="social-infographic-source">Elaboración educativa ARKON · Fuentes: Constitución Política de Colombia, Función Pública y normativa nacional sobre convivencia escolar y riesgos laborales.</div>
 </section>
-            <h3>Directorio de atención y redes comunitarias</h3>
-            <div class="contact-grid">
-              <article class="contact-card"><strong>123 · Emergencias en Cali</strong><span>Línea única distrital para emergencias, urgencias y desastres.</span><a href="tel:123">Llamar al 123 ↗</a></article>
-              <article class="contact-card"><strong>119 · Bomberos</strong><span>Organismo de socorro local.</span><a href="tel:119">Llamar al 119 ↗</a></article>
-              <article class="contact-card"><strong>132 · Cruz Roja Valle</strong><span>Organismo de socorro incluido en el directorio distrital.</span><a href="https://cruzrojavalle.org.co/" target="_blank" rel="noopener noreferrer">Sitio oficial ↗</a></article>
-              <article class="contact-card"><strong>144 · Defensa Civil</strong><span>Organismo de socorro incluido en las líneas de atención de Cali.</span><a href="tel:144">Llamar al 144 ↗</a></article>
-              <article class="contact-card"><strong>106 · Salud mental</strong><span>Teleorientación en Cali, disponible 24/7 según la información distrital publicada.</span><a href="https://www.cali.gov.co/boletines/publicaciones/192156/alcaldia-de-cali-prioriza-la-salud-mental-calenos-tienen-a-disposicion-la-linea-106-para-teleorientacion/" target="_blank" rel="noopener noreferrer">Consultar canales ↗</a></article>
-              <article class="contact-card"><strong>Comisarías de Familia</strong><span>Orientación psicosocial, jurídica y rutas de protección familiar.</span><a href="https://www.cali.gov.co/seguridad/publicaciones/140079/comisarias-de-familia/" target="_blank" rel="noopener noreferrer">Ver directorio ↗</a></article>
-              <article class="contact-card"><strong>Juntas de Acción Comunal</strong><span>Consulta organizaciones comunitarias registradas en Cali.</span><a href="https://www.cali.gov.co/participacion/publicaciones/174276/organismos-de-accion-comunal/" target="_blank" rel="noopener noreferrer">Buscar JAC ↗</a></article>
-              <article class="contact-card"><strong>Mi Cali Bella se integra</strong><span>Orientación y servicios distritales en Alto Jordán, Comuna 18. Verifica horarios antes de acudir.</span><a href="https://www.cali.gov.co/boletines/publicaciones/194462/mi-cali-bella-se-integra-servicios-de-la-alcaldia-mas-cerca-de-la-comunidad/" target="_blank" rel="noopener noreferrer">Consultar servicio ↗</a></article>
-              <article class="contact-card"><strong>Parroquias y redes barriales</strong><span>Completa los nombres y contactos con datos confirmados con la comunidad y el docente.</span><a href="https://www.cali.gov.co/participacion/publicaciones/174276/juntas-de-accion-comunal/" target="_blank" rel="noopener noreferrer">Directorio comunitario ↗</a></article>
-            </div>
-            <div class="project-callout"><p><strong>Importante:</strong> ante peligro inmediato, llama al 123. Verifica directorios y horarios en fuentes oficiales; no publiques datos de personas afectadas ni rumores.</p></div>
+            <div class="project-callout social-directory-shortcut"><p><strong>¿Necesitas encontrar apoyo en tu territorio?</strong> ARKON cuenta con una sección independiente de atención y redes comunitarias. Allí puedes consultar servicios que comienzan en la Comuna 18 y se amplían a todo Cali.</p><button class="btn btn-primary btn-small" data-nav="comunidad" type="button">Abrir Atención y comunidad ↗</button></div>
           </div>
         </details>
         <details class="subject-detail">
@@ -1628,6 +1617,179 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
         <div class="card-grid" id="skills-grid"></div>
       </div>
       <div id="skill-detail-view" hidden></div>
+    </section>
+
+    <section class="page" id="page-comunidad" aria-labelledby="community-title">
+      <div class="community-hero">
+        <div class="community-hero-copy">
+          <span class="eyebrow"><span class="eyebrow-dot"></span> Directorio territorial · ARKON</span>
+          <h1 id="community-title">Atención y comunidad</h1>
+          <p>Un punto de partida en la Comuna 18 para conectar a las personas con servicios de salud, orientación, emergencias y organizaciones comunitarias de todo Cali.</p>
+          <div class="community-hero-note"><span aria-hidden="true">📍</span><div><strong>Empezamos cerca. Crecemos hacia toda Cali.</strong><small>Consulta información local y recursos distritales en un mismo lugar.</small></div></div>
+        </div>
+        <div class="community-hero-art" aria-hidden="true"><span>🏘️</span><span>🤝</span><span>🌆</span></div>
+      </div>
+
+      <div class="community-scope-panel">
+        <div class="community-scope-copy"><strong>¿Qué territorio quieres consultar?</strong><small>La vista inicial muestra los servicios de la Comuna 18.</small></div>
+        <div class="community-scope-switch" role="group" aria-label="Seleccionar territorio">
+          <button type="button" class="active" data-community-scope="18" aria-pressed="true">📍 Comuna 18</button>
+          <button type="button" data-community-scope="cali" aria-pressed="false">🌆 Todo Cali</button>
+        </div>
+      </div>
+
+      <div class="community-filter-panel">
+        <div class="community-search"><span aria-hidden="true">⌕</span><input id="community-search" type="search" placeholder="Buscar entidad, servicio o barrio…" aria-label="Buscar en el directorio"></div>
+        <div class="community-category-filters" role="group" aria-label="Filtrar por categoría">
+          <button class="active" type="button" data-community-category="todos" aria-pressed="true">Todos</button>
+          <button type="button" data-community-category="salud" aria-pressed="false">Salud</button>
+          <button type="button" data-community-category="emergencias" aria-pressed="false">Emergencias</button>
+          <button type="button" data-community-category="orientacion" aria-pressed="false">Orientación y protección</button>
+          <button type="button" data-community-category="comunidad" aria-pressed="false">Redes comunitarias</button>
+        </div>
+      </div>
+
+      <div class="community-results-head">
+        <div><span class="eyebrow"><span class="eyebrow-dot"></span> Recursos disponibles</span><h2 id="community-results-title">Comuna 18 · Punto de partida</h2><p id="community-results-count" aria-live="polite">Mostrando recursos de la Comuna 18 y canales distritales.</p></div>
+        <button id="community-clear" class="text-link" type="button">Limpiar filtros ↻</button>
+      </div>
+
+      <div class="community-directory-grid" id="community-directory-grid">
+        <article class="community-directory-card" data-community-scopes="18,cali" data-community-category="salud" data-search="ips melendez centro salud comuna 18 carrera 94 4c 65">
+          <div class="community-card-top"><span class="community-card-icon">🏥</span><span class="community-badge">Comuna 18 · Salud</span></div>
+          <h3>IPS Meléndez</h3><p>Centro de atención de la Red de Salud de Ladera. Consulta la disponibilidad y los servicios antes de acudir.</p>
+          <div class="community-card-meta"><span>📍 Carrera 94 No. 4C-65</span><span>☎️ Red Ladera: (602) 893 7701</span></div>
+          <div class="community-card-actions"><a href="tel:+576028937701">Llamar a la Red</a><a href="https://www.saludladera.gov.co/" target="_blank" rel="noopener noreferrer">Sitio oficial ↗</a></div>
+          <small class="community-source-note">Dirección del portafolio institucional 2024. Confirma la sede antes de desplazarte.</small>
+        </article>
+        <article class="community-directory-card" data-community-scopes="18,cali" data-community-category="salud" data-search="ips alto polvorines centro salud calle 4 oeste 91 83 comuna 18">
+          <div class="community-card-top"><span class="community-card-icon">🩺</span><span class="community-badge">Comuna 18 · Salud</span></div>
+          <h3>IPS Alto Polvorines</h3><p>Hace parte de la red pública de atención de la zona de ladera.</p>
+          <div class="community-card-meta"><span>📍 Calle 4 oeste No. 91-83</span><span>☎️ (602) 893 7701 · Red Ladera</span></div>
+          <div class="community-card-actions"><a href="tel:+576028937701">Llamar a la Red</a><a href="https://www.saludladera.gov.co/" target="_blank" rel="noopener noreferrer">Sitio oficial ↗</a></div>
+          <small class="community-source-note">Dirección del portafolio institucional 2024. Confirma la sede antes de desplazarte.</small>
+        </article>
+        <article class="community-directory-card" data-community-scopes="18,cali" data-community-category="salud" data-search="ips napoles centro salud carrera 76b 2c 16 comuna 18">
+          <div class="community-card-top"><span class="community-card-icon">🩺</span><span class="community-badge">Comuna 18 · Salud</span></div>
+          <h3>IPS Nápoles</h3><p>Consulta con la Red de Salud de Ladera qué servicios se encuentran disponibles en esta sede.</p>
+          <div class="community-card-meta"><span>📍 Carrera 76B No. 2C-16</span><span>☎️ (602) 893 7701 · Red Ladera</span></div>
+          <div class="community-card-actions"><a href="tel:+576028937701">Llamar a la Red</a><a href="https://www.saludladera.gov.co/" target="_blank" rel="noopener noreferrer">Sitio oficial ↗</a></div>
+          <small class="community-source-note">Dirección del portafolio institucional 2024. Confirma la sede antes de desplazarte.</small>
+        </article>
+        <article class="community-directory-card" data-community-scopes="18,cali" data-community-category="salud" data-search="ips lourdes centro salud carrera 73 1b 13 comuna 18">
+          <div class="community-card-top"><span class="community-card-icon">🩺</span><span class="community-badge">Comuna 18 · Salud</span></div>
+          <h3>IPS Lourdes</h3><p>Hace parte de los puntos de atención registrados para la Comuna 18.</p>
+          <div class="community-card-meta"><span>📍 Carrera 73 No. 1B-13</span><span>☎️ (602) 893 7701 · Red Ladera</span></div>
+          <div class="community-card-actions"><a href="tel:+576028937701">Llamar a la Red</a><a href="https://www.saludladera.gov.co/" target="_blank" rel="noopener noreferrer">Sitio oficial ↗</a></div>
+          <small class="community-source-note">Dirección del portafolio institucional 2024. Confirma la sede antes de desplazarte.</small>
+        </article>
+        <article class="community-directory-card" data-community-scopes="18,cali" data-community-category="salud" data-search="ips alto napoles centro salud calle 2b oeste 82d 11 comuna 18">
+          <div class="community-card-top"><span class="community-card-icon">🩺</span><span class="community-badge">Comuna 18 · Salud</span></div>
+          <h3>IPS Alto Nápoles</h3><p>Consulta con la Red de Salud de Ladera los horarios y servicios disponibles.</p>
+          <div class="community-card-meta"><span>📍 Calle 2B oeste A No. 82D-11</span><span>☎️ (602) 893 7701 · Red Ladera</span></div>
+          <div class="community-card-actions"><a href="tel:+576028937701">Llamar a la Red</a><a href="https://www.saludladera.gov.co/" target="_blank" rel="noopener noreferrer">Sitio oficial ↗</a></div>
+          <small class="community-source-note">Dirección del portafolio institucional 2024. Confirma la sede antes de desplazarte.</small>
+        </article>
+        <article class="community-directory-card" data-community-scopes="18,cali" data-community-category="salud" data-search="ips polvorines centro salud carrera 94a oeste comuna 18">
+          <div class="community-card-top"><span class="community-card-icon">🩺</span><span class="community-badge">Comuna 18 · Salud</span></div>
+          <h3>IPS Polvorines</h3><p>Hace parte de la oferta territorial de la Red de Salud de Ladera.</p>
+          <div class="community-card-meta"><span>📍 Carrera 94A oeste No. 1-2A-00*</span><span>☎️ (602) 893 7701 · Red Ladera</span></div>
+          <div class="community-card-actions"><a href="tel:+576028937701">Llamar a la Red</a><a href="https://www.saludladera.gov.co/" target="_blank" rel="noopener noreferrer">Sitio oficial ↗</a></div>
+          <small class="community-source-note">*La dirección aparece así en el portafolio institucional 2024; confirma el dato directamente con la Red antes de acudir.</small>
+        </article>
+        <article class="community-directory-card" data-community-scopes="18,cali" data-community-category="orientacion" data-search="mi cali bella integra alto jordan servicios alcaldia empleo salud educacion comuna 18">
+          <div class="community-card-top"><span class="community-card-icon">🏘️</span><span class="community-badge">Alto Jordán · Comuna 18</span></div>
+          <h3>Mi Cali Bella se Integra</h3><p>Punto de oferta institucional con orientación ciudadana y servicios de salud, educación, empleo, atención social, cultura, deporte y trámites.</p>
+          <div class="community-card-meta"><span>📍 Barrio Alto Jordán, Comuna 18</span><span>🕘 Lun. a vie. · 8:00–12:00 y 1:00–5:00</span><span>✉️ micalibellaintegra@gmail.com</span></div>
+          <div class="community-card-actions"><a href="mailto:micalibellaintegra@gmail.com">Escribir</a><a href="https://www.cali.gov.co/boletines/publicaciones/194462/mi-cali-bella-se-integra-servicios-de-la-alcaldia-mas-cerca-de-la-comunidad/" target="_blank" rel="noopener noreferrer">Detalles oficiales ↗</a></div>
+          <small class="community-source-note">Los sábados atiende durante actividades o jornadas programadas. Confirma horarios y trámites antes de acudir.</small>
+        </article>
+        <article class="community-directory-card" data-community-scopes="18,cali" data-community-category="comunidad" data-search="cali 18 centro administracion local integrada CALI 18 participacion ciudadana">
+          <div class="community-card-top"><span class="community-card-icon">🏛️</span><span class="community-badge">Participación · Comuna 18</span></div>
+          <h3>CALI 18 · Centro de Administración Local Integrada</h3><p>Canal de contacto territorial para orientación y asuntos de participación ciudadana de la comuna.</p>
+          <div class="community-card-meta"><span>📍 Calle 4 con carrera 94</span><span>☎️ (602) 332 4754 / 332 4753 / 332 4739</span><span>✉️ cali18@cali.gov.co</span></div>
+          <div class="community-card-actions"><a href="tel:+576023324754">Llamar</a><a href="mailto:cali18@cali.gov.co">Escribir</a><a href="https://datos.cali.gov.co/dataset/directorio-de-los-centros-de-administracion-local-integrada-cali" target="_blank" rel="noopener noreferrer">Directorio de CALI ↗</a></div>
+          <small class="community-source-note">Datos del directorio institucional; confirma por teléfono antes de desplazarte.</small>
+        </article>
+        <article class="community-directory-card" data-community-scopes="18,cali" data-community-category="comunidad" data-search="juntas accion comunal jac comuna 18 barrios organizaciones comunidad">
+          <div class="community-card-top"><span class="community-card-icon">🤝</span><span class="community-badge">Redes comunitarias · Comuna 18</span></div>
+          <h3>Juntas de Acción Comunal</h3><p>Organizaciones vecinales que promueven la participación, los acuerdos y proyectos para mejorar cada barrio. Consulta el inventario y ubica la junta correspondiente a tu sector.</p>
+          <div class="community-card-meta"><span>📍 Barrios y sectores de la Comuna 18</span><span>📋 Inventario oficial de organizaciones comunales</span></div>
+          <div class="community-card-actions"><a href="https://www.cali.gov.co/participacion/publicaciones/174276/organismos-de-accion-comunal/" target="_blank" rel="noopener noreferrer">Buscar JAC ↗</a></div>
+          <small class="community-source-note">La Secretaría de Participación publica inventarios oficiales y documentos por comuna.</small>
+        </article>
+
+        <article class="community-directory-card" data-community-scopes="18,cali" data-community-category="emergencias" data-search="123 emergencias ambulancia bomberos policia rescate cali">
+          <div class="community-card-top"><span class="community-card-icon">🚨</span><span class="community-badge">Toda Cali · Emergencias</span></div>
+          <h3>Línea única de emergencias · 123</h3><p>Canal distrital para comunicar emergencias, urgencias y desastres. Explica con calma qué sucede y dónde necesitas ayuda.</p>
+          <div class="community-card-meta"><span>☎️ Número único: 123</span><span>Acceso para toda Cali</span></div>
+          <div class="community-card-actions"><a class="community-action-primary" href="tel:123">Llamar al 123</a><a href="https://normagrama.cali.gov.co/compilacion/docs/d_alcacali_0457_2025.htm" target="_blank" rel="noopener noreferrer">Norma distrital ↗</a></div>
+          <small class="community-source-note">Para emergencias inmediatas. No reemplaza la atención médica ni las instrucciones de las autoridades.</small>
+        </article>
+        <article class="community-directory-card" data-community-scopes="18,cali" data-community-category="orientacion" data-search="linea 106 salud mental psicologia whatsapp orientacion emocional cali">
+          <div class="community-card-top"><span class="community-card-icon">💬</span><span class="community-badge">Toda Cali · Orientación</span></div>
+          <h3>Línea 106 · Salud mental</h3><p>Escucha y teleorientación en salud mental. Es gratuita, confidencial y está disponible las 24 horas, todos los días.</p>
+          <div class="community-card-meta"><span>☎️ Marca 106</span><span>WhatsApp: 316 245 8423</span></div>
+          <div class="community-card-actions"><a href="tel:106">Llamar al 106</a><a href="https://wa.me/573162458423" target="_blank" rel="noopener noreferrer">Abrir WhatsApp ↗</a><a href="https://www.cali.gov.co/boletines/publicaciones/192156/alcaldia-de-cali-prioriza-la-salud-mental-calenos-tienen-a-disposicion-la-linea-106-para-teleorientacion/" target="_blank" rel="noopener noreferrer">Información oficial ↗</a></div>
+          <small class="community-source-note">Servicio distrital de orientación; ante peligro inmediato llama al 123.</small>
+        </article>
+        <article class="community-directory-card" data-community-scopes="18,cali" data-community-category="orientacion" data-search="ICBF linea 141 niñas niños adolescentes protección orientación derechos">
+          <div class="community-card-top"><span class="community-card-icon">🧒</span><span class="community-badge">Toda Colombia · Protección</span></div>
+          <h3>Línea 141 · ICBF</h3><p>Canal gratuito de protección, emergencia y orientación para niñas, niños y adolescentes. Disponible las 24 horas.</p>
+          <div class="community-card-meta"><span>☎️ Número gratuito: 141</span><span>Cobertura nacional</span></div>
+          <div class="community-card-actions"><a href="tel:141">Llamar al 141</a><a href="https://www.icbf.gov.co/linea-141" target="_blank" rel="noopener noreferrer">Sitio oficial ↗</a></div>
+        </article>
+        <article class="community-directory-card" data-community-scopes="cali" data-community-category="orientacion" data-search="casa matria mujeres orientación psicosocial jurídica línea fácil 311 612 0000 citas 350 803 2031">
+          <div class="community-card-top"><span class="community-card-icon">🌺</span><span class="community-badge">Toda Cali · Orientación</span></div>
+          <h3>Casa Matria · Orientación a mujeres</h3><p>Atención y orientación psicosocial y jurídica para mujeres. Consulta los canales y horarios vigentes antes de solicitar una cita.</p>
+          <div class="community-card-meta"><span>☎️ Línea Fácil 24/7: 311 612 0000</span><span>📅 Citas: 350 803 2031</span></div>
+          <div class="community-card-actions"><a href="tel:+573116120000">Llamar</a><a href="tel:+573508032031">Agendar cita</a><a href="https://www.cali.gov.co/boletines/publicaciones/194143/la-respuesta-con-enfoque-de-genero-de-la-alcaldia-de-cali-permitio-identificar-y-proteger-a-una-mujer-en-riesgo-de-feminicidio-durante-la-emergencia-por-el-terremoto/" target="_blank" rel="noopener noreferrer">Información oficial ↗</a></div>
+        </article>
+        <article class="community-directory-card" data-community-scopes="cali" data-community-category="orientacion" data-search="comisarias de familia orientacion proteccion familiar directorio cali">
+          <div class="community-card-top"><span class="community-card-icon">⚖️</span><span class="community-badge">Toda Cali · Orientación</span></div>
+          <h3>Comisarías de Familia</h3><p>Consulta las sedes y rutas de orientación psicosocial y jurídica relacionadas con situaciones del contexto familiar.</p>
+          <div class="community-card-actions"><a href="https://www.cali.gov.co/seguridad/publicaciones/140079/comisarias-de-familia/" target="_blank" rel="noopener noreferrer">Consultar directorio oficial ↗</a></div>
+        </article>
+        <article class="community-directory-card" data-community-scopes="cali" data-community-category="comunidad" data-search="juntas accion comunal jac inventario comunas barrios corregimientos Cali">
+          <div class="community-card-top"><span class="community-card-icon">🏘️</span><span class="community-badge">Toda Cali · Redes comunitarias</span></div>
+          <h3>Inventario de Juntas de Acción Comunal</h3><p>Consulta las organizaciones comunitarias registradas en las 22 comunas y los corregimientos. La página oficial permite revisar los inventarios publicados.</p>
+          <div class="community-card-actions"><a href="https://www.cali.gov.co/participacion/publicaciones/174276/organismos-de-accion-comunal/" target="_blank" rel="noopener noreferrer">Consultar inventario ↗</a></div>
+          <small class="community-source-note">Página oficial modificada el 27 de mayo de 2026.</small>
+        </article>
+        <article class="community-directory-card" data-community-scopes="cali" data-community-category="comunidad" data-search="centros administracion local integrada CALI 22 comunas zona rural directorio">
+          <div class="community-card-top"><span class="community-card-icon">🗺️</span><span class="community-badge">Toda Cali · Participación</span></div>
+          <h3>Centros de Administración Local Integrada · CALI</h3><p>Encuentra el centro de administración local que corresponde a cada una de las 22 comunas y la zona rural.</p>
+          <div class="community-card-actions"><a href="https://datos.cali.gov.co/dataset/directorio-de-los-centros-de-administracion-local-integrada-cali" target="_blank" rel="noopener noreferrer">Ver directorio por comuna ↗</a></div>
+          <small class="community-source-note">Conjunto de datos municipal con actualización registrada en octubre de 2025.</small>
+        </article>
+        <article class="community-directory-card" data-community-scopes="cali" data-community-category="salud" data-search="directorio red prestadores servicios salud IPS EPS hospitales Cali">
+          <div class="community-card-top"><span class="community-card-icon">🧭</span><span class="community-badge">Toda Cali · Salud</span></div>
+          <h3>Directorio de prestadores de salud</h3><p>Recurso municipal para consultar IPS y otros prestadores de servicios de salud en Cali. Verifica directamente si la sede y el servicio siguen disponibles.</p>
+          <div class="community-card-actions"><a href="https://datos.cali.gov.co/es/dataset/directorio-de-red-de-prestadores-de-servicios-de-salud" target="_blank" rel="noopener noreferrer">Consultar datos abiertos ↗</a></div>
+          <small class="community-source-note">La ficha de datos informa una actualización de junio de 2024; úsala como punto de consulta y confirma los datos con la entidad.</small>
+        </article>
+        <article class="community-directory-card" data-community-scopes="cali" data-community-category="comunidad" data-search="puntos informacion orientacion PIO poblacion victima conflicto armado Cali comuna 18">
+          <div class="community-card-top"><span class="community-card-icon">🫱🏽‍🫲🏾</span><span class="community-badge">Toda Cali · Orientación</span></div>
+          <h3>Puntos de Información y Orientación · PIO</h3><p>La Alcaldía ha informado que estos puntos acercan orientación y rutas de atención a población víctima del conflicto. La publicación incluye el CALI 18 entre los puntos mencionados.</p>
+          <div class="community-card-actions"><a href="https://www.cali.gov.co/bienestar/publicaciones/177137/11-puntos-de-informacion-y-orientacion-mas-cerca-a-la-poblacion-victima-del-conflicto-armado/" target="_blank" rel="noopener noreferrer">Consultar información distrital ↗</a></div>
+          <small class="community-source-note">Confirma la disponibilidad actual del punto antes de acudir.</small>
+        </article>
+      </div>
+      <div class="community-empty" id="community-empty" hidden><span>🔎</span><strong>No encontramos resultados</strong><p>Prueba otra palabra o cambia el filtro de categoría o territorio.</p></div>
+
+      <div class="community-expansion-note">
+        <div><span class="eyebrow"><span class="eyebrow-dot"></span> Ampliación territorial</span><h2>De la Comuna 18 a las 22 comunas y la zona rural</h2><p>La expansión se apoya en directorios distritales de centros CALI, organizaciones comunales y prestadores de salud. Así ARKON puede crecer sin inventar sedes ni publicar datos que no estén verificados.</p></div>
+        <div class="community-expansion-stats"><div><strong>18</strong><span>Punto de partida</span></div><div><strong>22</strong><span>Comunas de Cali</span></div><div><strong>+</strong><span>Zona rural</span></div></div>
+      </div>
+      <div class="community-disclaimer"><strong>Antes de desplazarte:</strong> los teléfonos, horarios y servicios pueden cambiar. Confirma la información en el canal oficial de cada entidad. ARKON orienta, pero no es una central de emergencias ni reemplaza a las autoridades. En una emergencia inmediata, llama al 123.</div>
+      <div class="community-sources">
+        <h3>Fuentes institucionales del directorio</h3>
+        <a href="https://www.saludladera.gov.co/docs/Transparencia%20y%20Acceso%20Informacion%20Publica/6.%20Participa/PORTAFOLIO%20SERVICIOS%202024BC.pdf" target="_blank" rel="noopener noreferrer">Red de Salud de Ladera · Portafolio de servicios y directorio IPS 2024 ↗</a>
+        <a href="https://www.saludladera.gov.co/canales.html" target="_blank" rel="noopener noreferrer">Red de Salud de Ladera · Canales y cobertura por comuna ↗</a>
+        <a href="https://www.cali.gov.co/participacion/publicaciones/174276/organismos-de-accion-comunal/" target="_blank" rel="noopener noreferrer">Alcaldía de Cali · Organismos de Acción Comunal ↗</a>
+        <a href="https://datos.cali.gov.co/dataset/directorio-de-los-centros-de-administracion-local-integrada-cali" target="_blank" rel="noopener noreferrer">Datos Abiertos Cali · Directorio de centros CALI ↗</a>
+        <a href="https://normagrama.cali.gov.co/compilacion/docs/d_alcacali_0457_2025.htm" target="_blank" rel="noopener noreferrer">Alcaldía de Cali · Decreto 457 de 2025, sistema NUSE 123 ↗</a>
+      </div>
     </section>
 
     <section class="page" id="page-biblioteca" aria-labelledby="library-title">
@@ -1839,7 +2001,7 @@ function initProjectTools(){
   updateProjectMilestones();
 }
 function goTo(page){
-  const available = ['inicio','proyecto','desastres','habilidades','biblioteca','fuentes','acerca','creditos'];
+  const available = ['inicio','proyecto','desastres','habilidades','comunidad','biblioteca','fuentes','acerca','creditos'];
   if(!available.includes(page)) return;
   document.querySelectorAll('.page').forEach(el=>el.classList.remove('active'));
   const section=document.getElementById('page-'+page); if(section)section.classList.add('active');
@@ -2736,6 +2898,76 @@ dialog :is(h1,h2,h3,h4,p,li,small,strong,span,.quiz-progress,.quiz-result,.dialo
 #app .page .risk-quick-feedback{margin:11px 0 0;color:#142c39!important;font-size:.8rem;font-weight:750;line-height:1.55}
 @media(max-width:760px){#app .page .risk-topic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#app .page .risk-topic-actions ul{grid-template-columns:1fr}}
 @media(max-width:520px){#app .page .risk-topic-grid,#app .page .risk-topic-info-grid{grid-template-columns:1fr}#app .page .social-infographic-pillars{grid-template-columns:1fr}#app .page .social-infographic-action ol{grid-template-columns:1fr}}
+
+/* Directorio de atención y redes comunitarias: navegación territorial */
+#app .community-hero{position:relative;display:flex;align-items:center;justify-content:space-between;gap:22px;overflow:hidden;padding:clamp(24px,4vw,42px);margin-bottom:22px;border:1px solid rgba(84,210,222,.35);border-radius:24px;background:radial-gradient(circle at 85% 18%,rgba(51,188,203,.28),transparent 32%),linear-gradient(125deg,#0d2035,#174a63 68%,#0d314b);color:#fff}
+#app .community-hero-copy{position:relative;z-index:1;max-width:760px}
+#app .community-hero .eyebrow{color:#a7eff0}
+#app .community-hero h1{margin:13px 0 12px;color:#fff!important;font-size:clamp(2.1rem,4.8vw,3.8rem)}
+#app .community-hero p{max-width:700px;margin:0;color:#e1f2f6!important;font-size:1rem}
+#app .community-hero-note{display:flex;align-items:center;gap:12px;max-width:540px;padding:13px 15px;margin-top:20px;border:1px solid rgba(168,234,237,.32);border-radius:14px;background:rgba(255,255,255,.09)}
+#app .community-hero-note>span{font-size:1.55rem}
+#app .community-hero-note strong,#app .community-hero-note small{display:block;color:#fff!important}
+#app .community-hero-note small{margin-top:3px;color:#d6ecf1!important;font-size:.75rem;line-height:1.45}
+#app .community-hero-art{position:relative;display:flex;flex:0 0 170px;align-items:center;justify-content:center;width:170px;height:170px;border:1px solid rgba(147,228,233,.5);border-radius:50%;background:radial-gradient(circle,rgba(106,221,220,.22),rgba(8,30,48,.1));box-shadow:0 0 50px rgba(43,202,218,.17)}
+#app .community-hero-art:before,#app .community-hero-art:after{position:absolute;content:"";inset:12px;border:1px dashed rgba(180,240,240,.48);border-radius:50%}
+#app .community-hero-art:after{inset:-10px;border-color:rgba(180,240,240,.2)}
+#app .community-hero-art span:nth-child(1){font-size:3.5rem}
+#app .community-hero-art span:nth-child(2){position:absolute;right:4px;bottom:10px;display:grid;place-items:center;width:54px;height:54px;border-radius:17px;background:#b9f0dc;font-size:1.7rem}
+#app .community-hero-art span:nth-child(3){position:absolute;left:2px;bottom:20px;display:grid;place-items:center;width:46px;height:46px;border-radius:15px;background:#e1f3ff;font-size:1.45rem}
+#app .community-scope-panel{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 18px;margin:0 0 13px;border:1px solid var(--border);border-radius:17px;background:var(--surface)}
+#app .community-scope-copy strong,#app .community-scope-copy small{display:block}
+#app .community-scope-copy strong{color:var(--ink);font-size:.94rem}
+#app .community-scope-copy small{margin-top:4px;color:var(--muted);font-size:.76rem}
+#app .community-scope-switch{display:flex;gap:7px;padding:5px;border:1px solid var(--border);border-radius:14px;background:var(--surface-soft)}
+#app .community-scope-switch button{padding:10px 13px;border:0;border-radius:10px;background:transparent;color:var(--ink);font-size:.82rem;font-weight:850}
+#app .community-scope-switch button.active{background:#dff5f4;color:#075568;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+#app .community-filter-panel{display:grid;gap:12px;padding:15px 17px;margin-bottom:22px;border:1px solid var(--border);border-radius:17px;background:var(--surface)}
+#app .community-search{display:flex;align-items:center;gap:10px;padding:0 13px;border:1px solid var(--border);border-radius:12px;background:var(--surface-soft)}
+#app .community-search>span{font-size:1.3rem;color:var(--muted)}
+#app .community-search input{width:100%;min-height:44px;border:0;outline:0;background:transparent;color:var(--ink);font:inherit}
+#app .community-search input::placeholder{color:var(--muted)}
+#app .community-category-filters{display:flex;flex-wrap:wrap;gap:7px}
+#app .community-category-filters button{padding:8px 12px;border:1px solid var(--border);border-radius:999px;background:var(--surface-soft);color:var(--ink);font-size:.75rem;font-weight:800}
+#app .community-category-filters button.active{border-color:#4babb5;background:#dff5f4;color:#064e60}
+#app .community-results-head{display:flex;align-items:flex-end;justify-content:space-between;gap:15px;margin:12px 0 15px}
+#app .community-results-head h2{margin:6px 0;font-size:clamp(1.5rem,3vw,2rem)}
+#app .community-results-head p{margin:0;font-size:.82rem}
+#app .community-directory-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+#app .community-directory-card{display:flex;min-width:0;flex-direction:column;padding:16px;border:1px solid var(--border);border-radius:17px;background:var(--surface);box-shadow:var(--shadow);transition:transform .18s ease,border-color .18s ease,background .18s ease}
+#app .community-directory-card:hover{transform:translateY(-3px);border-color:var(--hover-accent);background:light-dark(#fff,#172b41)}
+#app .community-card-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+#app .community-card-icon{display:grid;place-items:center;flex:0 0 42px;width:42px;height:42px;border-radius:13px;background:var(--surface-soft);font-size:1.35rem}
+#app .community-badge{padding:6px 8px;border:1px solid var(--border);border-radius:999px;background:var(--surface-soft);color:var(--ink);font-size:.64rem;font-weight:850;text-align:right}
+#app .community-directory-card h3{margin:0 0 7px;color:var(--ink);font-size:1rem;line-height:1.3}
+#app .community-directory-card>p{margin:0 0 12px;color:var(--muted);font-size:.79rem;line-height:1.6}
+#app .community-card-meta{display:grid;gap:6px;margin:auto 0 12px;padding:11px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+#app .community-card-meta span{color:var(--ink);font-size:.73rem;line-height:1.5;overflow-wrap:anywhere}
+#app .community-card-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:2px}
+#app .community-card-actions a{display:inline-flex;align-items:center;justify-content:center;padding:8px 10px;border:1px solid #9ec7d2;border-radius:10px;background:#eaf7f9;color:#07566a!important;font-size:.7rem;font-weight:900;text-decoration:none}
+#app .community-card-actions a:hover{background:#d8f0f3;border-color:#398fa3}
+#app .community-card-actions a.community-action-primary{background:#0b6c82;border-color:#0b6c82;color:#fff!important}
+#app .community-source-note{display:block;margin-top:10px;color:var(--muted);font-size:.66rem;line-height:1.5}
+#app .community-empty{display:grid;justify-items:center;gap:8px;padding:35px 18px;border:1px dashed var(--border);border-radius:17px;background:var(--surface);text-align:center}
+#app .community-empty>span{font-size:1.8rem}
+#app .community-empty strong{color:var(--ink)}
+#app .community-empty p{margin:0;font-size:.8rem}
+#app .community-expansion-note{display:flex;align-items:center;justify-content:space-between;gap:22px;padding:clamp(18px,3vw,25px);margin:26px 0 16px;border:1px solid #a9cbd3;border-radius:19px;background:linear-gradient(110deg,#e8f5f7,#f3f7fd)}
+#app .community-expansion-note .eyebrow{color:#075e70}
+#app .community-expansion-note h2{max-width:650px;margin:6px 0;color:#102d3b;font-size:clamp(1.25rem,2.6vw,1.8rem)}
+#app .community-expansion-note p{max-width:710px;margin:0;color:#29424d;font-size:.81rem}
+#app .community-expansion-stats{display:flex;gap:10px;flex:0 0 auto}
+#app .community-expansion-stats div{display:grid;place-items:center;min-width:72px;padding:11px 10px;border:1px solid #bed6dc;border-radius:13px;background:#fff}
+#app .community-expansion-stats strong{color:#07586b;font-size:1.4rem}
+#app .community-expansion-stats span{color:#29424d;font-size:.63rem;font-weight:800;text-align:center}
+#app .community-disclaimer{padding:14px 16px;margin:0 0 18px;border-left:4px solid #d39a36;border-radius:0 12px 12px 0;background:#fff7e8;color:#483517;font-size:.77rem;line-height:1.6}
+#app .community-disclaimer strong{color:#31220b}
+#app .community-sources{display:grid;gap:9px;padding:17px;border:1px solid var(--border);border-radius:16px;background:var(--surface)}
+#app .community-sources h3{margin:0 0 3px;color:var(--ink);font-size:.94rem}
+#app .community-sources a{color:var(--teal-ink);font-size:.76rem;font-weight:800;text-underline-offset:3px}
+@media(max-width:900px){#app .community-directory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){#app .community-hero{align-items:flex-start}#app .community-hero-art{flex-basis:95px;width:95px;height:95px}#app .community-hero-art span:nth-child(1){font-size:2.4rem}#app .community-hero-art span:nth-child(2){width:40px;height:40px;font-size:1.2rem}#app .community-hero-art span:nth-child(3){width:35px;height:35px;font-size:1rem}#app .community-scope-panel{align-items:flex-start;flex-direction:column}#app .community-scope-switch{width:100%}#app .community-scope-switch button{flex:1}#app .community-directory-grid{grid-template-columns:1fr}#app .community-expansion-note{align-items:flex-start;flex-direction:column}#app .community-expansion-stats{width:100%}#app .community-expansion-stats div{flex:1;min-width:0}#app .community-results-head{align-items:flex-start;flex-direction:column}}
+
 </style>
 
 <script id="social-risk-topic-interactions">
@@ -2858,6 +3090,77 @@ dialog :is(h1,h2,h3,h4,p,li,small,strong,span,.quiz-progress,.quiz-result,.dialo
       feedback.textContent = (chosen===correct ? "¡Correcto! " : "Buen intento. ") + reason;
     }
   });
+})();
+</script>
+
+<script id="community-directory-interactions">
+(function(){
+  const root=document.getElementById("page-comunidad");
+  if(!root) return;
+  let scope="18";
+  let category="todos";
+  const search=root.querySelector("#community-search");
+  const cards=Array.from(root.querySelectorAll(".community-directory-card"));
+  const scopeButtons=Array.from(root.querySelectorAll("[data-community-scope]"));
+  const categoryButtons=Array.from(root.querySelectorAll("[data-community-category]"));
+  const count=root.querySelector("#community-results-count");
+  const title=root.querySelector("#community-results-title");
+  const empty=root.querySelector("#community-empty");
+  function applyFilters(){
+    const term=(search.value||"").trim().toLocaleLowerCase("es");
+    let visible=0;
+    cards.forEach(function(card){
+      const scopes=(card.dataset.communityScopes||"").split(",");
+      const scopeOK=scope==="cali" || scopes.includes("18");
+      const categoryOK=category==="todos" || card.dataset.communityCategory===category;
+      const text=(card.textContent+" "+(card.dataset.search||"")).toLocaleLowerCase("es");
+      const searchOK=!term || text.includes(term);
+      const show=scopeOK && categoryOK && searchOK;
+      card.hidden=!show;
+      if(show) visible++;
+    });
+    title.textContent=scope==="18"?"Comuna 18 · Punto de partida":"Todo Cali · Recursos distritales y locales";
+    count.textContent=visible+" "+(visible===1?"recurso visible":"recursos visibles")+(scope==="18"?" en la Comuna 18 y canales de cobertura distrital.":" en el directorio de Cali, incluida la Comuna 18.");
+    empty.hidden=visible!==0;
+  }
+  scopeButtons.forEach(function(button){
+    button.addEventListener("click",function(){
+      scope=button.dataset.communityScope;
+      scopeButtons.forEach(function(item){
+        const active=item===button;
+        item.classList.toggle("active",active);
+        item.setAttribute("aria-pressed",String(active));
+      });
+      applyFilters();
+    });
+  });
+  categoryButtons.forEach(function(button){
+    button.addEventListener("click",function(){
+      category=button.dataset.communityCategory;
+      categoryButtons.forEach(function(item){
+        const active=item===button;
+        item.classList.toggle("active",active);
+        item.setAttribute("aria-pressed",String(active));
+      });
+      applyFilters();
+    });
+  });
+  search.addEventListener("input",applyFilters);
+  root.querySelector("#community-clear").addEventListener("click",function(){
+    scope="18";category="todos";search.value="";
+    scopeButtons.forEach(function(item){
+      const active=item.dataset.communityScope==="18";
+      item.classList.toggle("active",active);
+      item.setAttribute("aria-pressed",String(active));
+    });
+    categoryButtons.forEach(function(item){
+      const active=item.dataset.communityCategory==="todos";
+      item.classList.toggle("active",active);
+      item.setAttribute("aria-pressed",String(active));
+    });
+    applyFilters();
+  });
+  applyFilters();
 })();
 </script>
 </body>
