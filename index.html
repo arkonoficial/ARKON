@@ -968,6 +968,36 @@ body {
 header { background: rgba(255,255,255,.94); }
 .nav button:hover, .nav button.active { color: #0F766E; background: #DDF5EF; }
 
+
+<style id="arkon-sgrl-infographic">
+.sgrl-infographic{margin:26px 0 32px;overflow:hidden;border:1px solid #b9cce2;border-radius:22px;background:#f3f7fc;color:#102b49;box-shadow:0 14px 34px rgba(4,20,42,.16)}
+.sgrl-infographic *{box-sizing:border-box}
+.sgrl-hero{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:clamp(20px,4vw,32px);background:linear-gradient(120deg,#092747,#174b78);color:#fff}
+.sgrl-kicker{display:block;margin-bottom:8px;color:#b9e8ff;font-size:.72rem;font-weight:850;letter-spacing:.12em}
+.sgrl-hero h3{margin:0 0 5px;color:#fff;font-size:clamp(1.8rem,4vw,2.55rem);letter-spacing:-.035em}
+.sgrl-hero p{margin:0;color:#e0efff;font-size:clamp(.95rem,2vw,1.08rem);font-weight:700}
+.sgrl-hero-icon{display:grid;place-items:center;flex:0 0 72px;width:72px;height:72px;border-radius:22px;background:rgba(255,255,255,.13);font-size:2.5rem}
+.sgrl-grid{display:grid;gap:13px;padding:14px}
+.sgrl-top-grid,.sgrl-two-ways,.sgrl-bottom-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.sgrl-card{position:relative;min-width:0;padding:19px;border:1px solid #c9d8e9;border-radius:15px;background:#fff;overflow:hidden}
+.sgrl-card h4{margin:0 0 9px;color:#12385e;font-size:1.02rem;font-weight:850;line-height:1.25}
+.sgrl-card p{position:relative;z-index:1;margin:0;color:#20364d;font-size:.89rem;line-height:1.55}
+.sgrl-symbol{position:absolute;right:12px;bottom:7px;opacity:.13;font-size:2.3rem}
+.sgrl-dilemma{background:#fafdff}
+.sgrl-balance{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:7px;margin-top:14px}
+.sgrl-balance span{padding:7px 9px;border-radius:9px;background:#e4eef9;color:#153a60;font-size:.75rem;font-weight:800}
+.sgrl-balance span:last-child{background:#dff4e6;color:#185b34}
+.sgrl-balance b{font-size:.72rem;color:#52677e}
+.sgrl-section-title{margin:8px 14px 0;padding:10px 14px;border-radius:11px;background:#12385e;color:#fff;font-size:1.03rem;font-weight:900;letter-spacing:.03em;text-transform:uppercase}
+.sgrl-risk{border-top:4px solid #e1a32c}
+.sgrl-safe{border-top:4px solid #3a9c67}
+.sgrl-roles{grid-template-columns:repeat(3,minmax(0,1fr))}
+.sgrl-role-icon{display:block;margin-bottom:9px;font-size:1.65rem}
+.sgrl-key{background:#e5f0ff;border-color:#a8c5e8}
+.sgrl-footer{padding:15px 18px;background:#e1eaf5;color:#12385e;text-align:center;font-size:.84rem;line-height:1.5}
+@media(max-width:700px){.sgrl-top-grid,.sgrl-two-ways,.sgrl-bottom-grid{grid-template-columns:1fr}.sgrl-roles{grid-template-columns:1fr}.sgrl-hero-icon{flex-basis:58px;width:58px;height:58px;font-size:2rem}.sgrl-card{padding:16px}}
+</style>
+
 </style>
   <!-- ARKON: publicación actualizada 2026-10-24 -->
 <style id="arkon-animated-background">
@@ -1562,77 +1592,76 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
             <section class="risk-topic-detail-view" id="risk-topic-detail-view" tabindex="-1" aria-live="polite" hidden></section>
             <p>La responsabilidad individual consiste en actuar con cuidado y seguir las normas; la colectiva incluye reportar riesgos por canales adecuados, cuidar espacios comunes y apoyar a otros sin exponerse innecesariamente.</p>
             <div class="project-callout"><p><strong>Ruta ante un riesgo psicosocial:</strong> en el trabajo, informa la situación al responsable de seguridad y salud en el trabajo o al empleador y consulta la ARL cuando corresponda. En la escuela o la comunidad, busca a un adulto de confianza o a un servicio de orientación. En Cali, la Línea 106 ofrece teleorientación en salud mental; ante peligro inmediato, llama al 123.</p></div>
-            <section class="social-infographic" aria-labelledby="social-infographic-title">
-  <header class="social-infographic-hero">
-    <div class="social-infographic-hero-copy">
-      <span class="social-infographic-kicker">INFOGRAFÍA · CIENCIAS SOCIALES</span>
-      <h3 id="social-infographic-title">Convivencia, ciudadanía y habilidades laborales</h3>
-      <p>Tres pilares para construir una comunidad respetuosa y aportar positivamente al mundo del trabajo.</p>
+            <section class="sgrl-infographic" aria-labelledby="sgrl-infographic-title">
+  <header class="sgrl-hero">
+    <div>
+      <span class="sgrl-kicker">INFOGRAFÍA · CIENCIAS SOCIALES</span>
+      <h3 id="sgrl-infographic-title">Dilema social</h3>
+      <p>Sistema General de Riesgos Laborales de Colombia</p>
     </div>
-    <div class="social-infographic-orbit" aria-hidden="true"><span>🌎</span><span>🤝</span></div>
+    <span class="sgrl-hero-icon" aria-hidden="true">🦺</span>
   </header>
 
-  <div class="social-infographic-central">
-    <span class="social-infographic-label">IDEA PRINCIPAL</span>
-    <p>Una mejor sociedad se construye cuando <strong>respetamos a los demás, participamos en nuestra comunidad y colaboramos con responsabilidad.</strong></p>
-  </div>
-
-  <div class="social-infographic-pillars">
-    <article class="social-infographic-card">
-      <img src="imagenes/sociales-dialogo.svg" alt="Dos personas conversan y se escuchan con respeto" loading="lazy" decoding="async">
-      <div class="social-infographic-card-copy">
-        <span class="social-infographic-number">01 · CONVIVENCIA</span>
-        <h4>Aprender a vivir juntos</h4>
-        <p>Es relacionarnos con respeto, aceptar las diferencias y resolver los conflictos sin violencia.</p>
-        <div class="social-infographic-tags"><span>🤲 Respeto</span><span>💬 Diálogo</span><span>🕊️ Acuerdos</span></div>
-      </div>
+  <div class="sgrl-grid sgrl-top-grid">
+    <article class="sgrl-card">
+      <h4>¿Qué es?</h4>
+      <p>Es el sistema que busca prevenir, proteger y atender a los trabajadores frente a accidentes y enfermedades relacionados con el trabajo.</p>
+      <span class="sgrl-symbol" aria-hidden="true">🛡️</span>
     </article>
-
-    <article class="social-infographic-card">
-      <img src="imagenes/sociales-ciudadania.svg" alt="Personas participan en el cuidado de su barrio" loading="lazy" decoding="async">
-      <div class="social-infographic-card-copy">
-        <span class="social-infographic-number">02 · CIUDADANÍA</span>
-        <h4>Participar y aportar</h4>
-        <p>Es conocer nuestros derechos y deberes, cuidar los espacios comunes y ayudar a mejorar el entorno.</p>
-        <div class="social-infographic-tags"><span>⚖️ Derechos</span><span>🏘️ Participación</span><span>🌱 Cuidado común</span></div>
-      </div>
-    </article>
-
-    <article class="social-infographic-card">
-      <img src="imagenes/sociales-equipo.svg" alt="Compañeros organizan una tarea y colaboran en equipo" loading="lazy" decoding="async">
-      <div class="social-infographic-card-copy">
-        <span class="social-infographic-number">03 · HABILIDADES LABORALES</span>
-        <h4>Crecer trabajando en equipo</h4>
-        <p>Son capacidades que ayudan a cumplir tareas, comunicarnos y solucionar problemas en el trabajo.</p>
-        <div class="social-infographic-tags"><span>🗣️ Comunicación</span><span>👥 Equipo</span><span>🧩 Soluciones</span></div>
-      </div>
+    <article class="sgrl-card sgrl-dilemma">
+      <h4>El dilema</h4>
+      <p>Una empresa debe entregar un pedido rápido y reducir costos. ¿Sigue trabajando aunque exista un peligro o detiene la actividad para corregirlo y proteger a sus trabajadores?</p>
+      <div class="sgrl-balance"><span>⚙️ Producción y costos</span><b>VS.</b><span>🦺 Seguridad y salud</span></div>
     </article>
   </div>
 
-  <div class="social-infographic-action">
-    <div class="social-infographic-action-title"><span aria-hidden="true">🧭</span><div><strong>¿CÓMO LO PONEMOS EN PRÁCTICA?</strong><small>De las ideas a las acciones cotidianas</small></div></div>
-    <ol>
-      <li><span>1</span><div><strong>Escuchar</strong><small>Reconocer las necesidades y opiniones de los demás.</small></div></li>
-      <li><span>2</span><div><strong>Dialogar</strong><small>Hablar con respeto y buscar soluciones pacíficas.</small></div></li>
-      <li><span>3</span><div><strong>Participar</strong><small>Proponer acuerdos y cuidar los espacios compartidos.</small></div></li>
-      <li><span>4</span><div><strong>Colaborar</strong><small>Cumplir compromisos y trabajar por objetivos comunes.</small></div></li>
-    </ol>
+  <h4 class="sgrl-section-title">Dos caminos</h4>
+  <div class="sgrl-grid sgrl-two-ways">
+    <article class="sgrl-card sgrl-risk">
+      <h4>Priorizar solo la producción</h4>
+      <p>Aumenta la exposición al peligro y puede causar accidentes o enfermedades laborales.</p>
+      <span class="sgrl-symbol" aria-hidden="true">⚠️</span>
+    </article>
+    <article class="sgrl-card sgrl-safe">
+      <h4>Priorizar la prevención</h4>
+      <p>Identificar los peligros, aplicar medidas de seguridad y cuidar la vida y la salud.</p>
+      <span class="sgrl-symbol" aria-hidden="true">✅</span>
+    </article>
   </div>
 
-  <div class="social-infographic-laws">
-    <div class="social-infographic-laws-heading"><span aria-hidden="true">⚖️</span><div><strong>LEYES Y NORMAS QUE NOS RESPALDAN</strong><small>Referencias de Colombia relacionadas con la convivencia, la ciudadanía y la seguridad laboral.</small></div></div>
-    <div class="social-infographic-law-grid">
-      <article class="social-infographic-law"><span>01</span><h4>Constitución Política · Art. 22</h4><p>Reconoce la paz como un derecho y un deber de obligatorio cumplimiento.</p><a href="https://dapre.presidencia.gov.co/normativa/constitucion-politica" target="_blank" rel="noopener noreferrer">Consultar Constitución ↗</a></article>
-      <article class="social-infographic-law"><span>02</span><h4>Ley 1620 de 2013</h4><p>Promueve la convivencia escolar, la formación ciudadana y el ejercicio de los derechos humanos.</p><a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=52287" target="_blank" rel="noopener noreferrer">Consultar la ley ↗</a></article>
-      <article class="social-infographic-law"><span>03</span><h4>Ley 1562 de 2012 y Decreto 1072 de 2015</h4><p>Respaldan la prevención de riesgos y la seguridad y salud en el trabajo.</p><a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=48365" target="_blank" rel="noopener noreferrer">Ley 1562 ↗</a><a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=72173" target="_blank" rel="noopener noreferrer">Decreto 1072 ↗</a></article>
-    </div>
+  <h4 class="sgrl-section-title">¿Quién tiene responsabilidades?</h4>
+  <div class="sgrl-grid sgrl-roles">
+    <article class="sgrl-card">
+      <span class="sgrl-role-icon" aria-hidden="true">🏢</span>
+      <h4>Empresa</h4>
+      <p>Afiliar a sus trabajadores, implementar el SG-SST y tomar medidas para prevenir riesgos.</p>
+    </article>
+    <article class="sgrl-card">
+      <span class="sgrl-role-icon" aria-hidden="true">🛡️</span>
+      <h4>ARL</h4>
+      <p>Brindar asesoría y asistencia técnica, y apoyar la prevención y atención según el sistema.</p>
+    </article>
+    <article class="sgrl-card">
+      <span class="sgrl-role-icon" aria-hidden="true">👷</span>
+      <h4>Trabajador</h4>
+      <p>Cuidar su salud, cumplir las normas de seguridad e informar los peligros y accidentes.</p>
+    </article>
   </div>
 
-  <footer class="social-infographic-footer">
-    <span aria-hidden="true">🌟</span>
-    <p><strong>El cambio empieza con nuestras acciones.</strong><br>Respetar, participar y colaborar fortalece la comunidad y también nos prepara para el futuro laboral.</p>
+  <div class="sgrl-grid sgrl-bottom-grid">
+    <article class="sgrl-card">
+      <h4>¿Cómo se resuelve?</h4>
+      <p>La seguridad no debe sacrificarse por ahorrar tiempo o dinero. Hay que corregir las condiciones peligrosas, informar los riesgos y aplicar las medidas de protección.</p>
+    </article>
+    <article class="sgrl-card sgrl-key">
+      <h4>Idea clave</h4>
+      <p>La productividad importa, pero nunca debe estar por encima de la vida y la salud de las personas.</p>
+    </article>
+  </div>
+
+  <footer class="sgrl-footer">
+    <strong>Base normativa:</strong> Ley 1562 de 2012 y Decreto 1072 de 2015.
   </footer>
-  <div class="social-infographic-source">Elaboración educativa ARKON · Fuentes: Constitución Política de Colombia, Función Pública y normativa nacional sobre convivencia escolar y riesgos laborales.</div>
 </section>
             <div class="project-callout social-directory-shortcut"><p><strong>¿Necesitas encontrar apoyo en tu territorio?</strong> ARKON cuenta con una sección independiente de atención y redes comunitarias. Allí puedes consultar servicios que comienzan en la Comuna 18 y se amplían a todo Cali.</p><button class="btn btn-primary btn-small" data-nav="comunidad" type="button">Abrir Atención y comunidad ↗</button></div>
           </div>
