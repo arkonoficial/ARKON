@@ -22,9 +22,23 @@
 <path d="M520 288H958V306H520Z" fill="#123d64"/>
 </g>
 <g font-family="Arial,sans-serif" fill="#fff" font-weight="900" font-size="32" text-anchor="middle"><text x="261" y="286">¿QUÉ ES?</text><text x="739" y="286">EL DILEMA</text></g>
-<g font-family="Arial,sans-serif" fill="#172f46" font-size="24">
-<text x="70" y="350"><tspan x="70" dy="0">Es el sistema que busca</tspan><tspan x="70" dy="33">prevenir, proteger y atender</tspan><tspan x="70" dy="33">a los trabajadores frente a</tspan><tspan x="70" dy="33">accidentes y enfermedades</tspan><tspan x="70" dy="33">relacionados con el trabajo.</tspan></text>
-<text x="548" y="350"><tspan x="548" dy="0">Una empresa debe entregar un</tspan><tspan x="548" dy="33">pedido rápido y reducir costos.</tspan><tspan x="548" dy="33">¿Sigue trabajando aunque exista</tspan><tspan x="548" dy="33">un peligro o detiene la actividad</tspan><tspan x="548" dy="33">para proteger a sus trabajadores?</tspan></text>
+<g font-family="Arial,sans-serif" fill="#172f46" font-size="22">
+<text x="70" y="350"><tspan x="70" dy="0">Es el sistema que busca</tspan><tspan x="70" dy="27">prevenir, proteger y atender</tspan><tspan x="70" dy="27">a los trabajadores frente a</tspan><tspan x="70" dy="27">accidentes y enfermedades</tspan><tspan x="70" dy="27">relacionados con el trabajo.</tspan></text>
+<text x="548" y="350"><tspan x="548" dy="0">Una empresa debe entregar un</tspan><tspan x="548" dy="27">pedido rápido y reducir costos.</tspan><tspan x="548" dy="27">¿Sigue trabajando aunque exista</tspan><tspan x="548" dy="27">un peligro o detiene la actividad</tspan><tspan x="548" dy="27">para proteger a sus trabajadores?</tspan></text>
+</g>
+
+<!-- stickers placed below the text -->
+<g transform="translate(397 464) scale(.30)">
+  <path d="M10 56Q16 6 65 0Q112 7 119 56Z" fill="#ffd33d" stroke="#12395e" stroke-width="7"/>
+  <path d="M2 57H128V73H2Z" fill="#f2b91e" stroke="#12395e" stroke-width="6"/>
+  <path d="M64 8V55" stroke="#fff0a0" stroke-width="7"/>
+  <path d="M42 88L65 77L99 89V128Q95 158 65 174Q34 158 30 128V89Z" fill="#174d79" stroke="#12395e" stroke-width="5"/>
+  <path d="M47 121L61 136L88 105" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g transform="translate(850 466) scale(.27)" stroke="#12395e" stroke-width="8" stroke-linecap="round" fill="none">
+  <path d="M0 8V122M-62 35H62M-62 35L-95 96M-62 35L-29 96M62 35L29 96M62 35L95 96M-30 122H30"/>
+  <path d="M-111 96Q-62 126 -13 96M13 96Q62 126 111 96"/>
+  <circle cx="0" cy="8" r="12" fill="#2d83b7"/>
 </g>
 <!-- two paths -->
 <rect x="42" y="548" width="916" height="60" rx="17" fill="url(#navy)"/>
@@ -35,9 +49,21 @@
 </g>
 <rect x="42" y="620" width="438" height="55" rx="14" fill="#ffedc4"/><rect x="520" y="620" width="438" height="55" rx="14" fill="#d9f3e2"/>
 <g font-family="Arial" font-size="24" font-weight="900" fill="#183b5b" text-anchor="middle"><text x="261" y="656">PRIORIDAD: PRODUCCIÓN</text><text x="739" y="656">PRIORIDAD: PREVENCIÓN</text></g>
-<g font-family="Arial" font-size="22" fill="#20364b">
-<text x="70" y="716"><tspan x="70">Aumenta la exposición al</tspan><tspan x="70" dy="31">riesgo y puede causar</tspan><tspan x="70" dy="31">accidentes o enfermedades</tspan><tspan x="70" dy="31">laborales.</tspan></text>
-<text x="548" y="716"><tspan x="548">Identificar peligros, aplicar</tspan><tspan x="548" dy="31">medidas de seguridad y</tspan><tspan x="548" dy="31">cuidar la vida y la salud.</tspan></text>
+<g font-family="Arial" font-size="21" fill="#20364b">
+<text x="70" y="704"><tspan x="70">Aumenta la exposición al</tspan><tspan x="70" dy="25">riesgo y puede causar</tspan><tspan x="70" dy="25">accidentes o enfermedades</tspan><tspan x="70" dy="25">laborales.</tspan></text>
+<text x="548" y="704"><tspan x="548">Identificar peligros, aplicar</tspan><tspan x="548" dy="25">medidas de seguridad y</tspan><tspan x="548" dy="25">cuidar la vida y la salud.</tspan></text>
+</g>
+
+<!-- smaller stickers under the two path descriptions -->
+<g transform="translate(365 790) scale(.48)">
+  <path d="M0 55V5L34 27V5L69 27V-5H100V55Z" fill="#52728d" stroke="#183b5b" stroke-width="5"/>
+  <rect x="17" y="35" width="13" height="14" fill="#fff"/><rect x="47" y="35" width="13" height="14" fill="#fff"/>
+  <path d="M81 62L108 14L135 62Z" fill="#ef5c54" stroke="#9c2828" stroke-width="4"/>
+  <text x="108" y="54" font-family="Arial" font-size="34" font-weight="900" fill="#fff" text-anchor="middle">!</text>
+</g>
+<g transform="translate(860 786) scale(.34)">
+  <path d="M0 5L55 -12L110 5V60Q102 111 55 135Q8 111 0 60Z" fill="#1d6799" stroke="#12395e" stroke-width="5"/>
+  <path d="M28 57L48 78L84 36" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 <!-- roles -->
 <rect x="42" y="866" width="916" height="60" rx="17" fill="url(#navy)"/>
@@ -49,9 +75,25 @@
 </g>
 <g font-family="Arial" font-size="24" font-weight="900" fill="#12395e" text-anchor="middle"><text x="186" y="979">EMPRESA</text><text x="500" y="979">ARL</text><text x="814" y="979">TRABAJADOR</text></g>
 <g font-family="Arial" font-size="19" fill="#20364b" text-anchor="middle">
-<text x="186" y="1030"><tspan x="186">Afiliar a sus trabajadores,</tspan><tspan x="186" dy="27">implementar el SG-SST</tspan><tspan x="186" dy="27">y aplicar medidas de</tspan><tspan x="186" dy="27">prevención.</tspan></text>
-<text x="500" y="1030"><tspan x="500">Asesorar y brindar</tspan><tspan x="500" dy="27">asistencia técnica,</tspan><tspan x="500" dy="27">apoyar la prevención y</tspan><tspan x="500" dy="27">atención del sistema.</tspan></text>
-<text x="814" y="1030"><tspan x="814">Cumplir las normas de</tspan><tspan x="814" dy="27">seguridad, cuidar su salud</tspan><tspan x="814" dy="27">e informar los peligros</tspan><tspan x="814" dy="27">y accidentes.</tspan></text>
+<text x="186" y="1020"><tspan x="186">Afiliar a sus trabajadores,</tspan><tspan x="186" dy="22">implementar el SG-SST</tspan><tspan x="186" dy="22">y aplicar medidas de</tspan><tspan x="186" dy="22">prevención.</tspan></text>
+<text x="500" y="1020"><tspan x="500">Asesorar y brindar</tspan><tspan x="500" dy="22">asistencia técnica,</tspan><tspan x="500" dy="22">apoyar la prevención y</tspan><tspan x="500" dy="22">atención del sistema.</tspan></text>
+<text x="814" y="1020"><tspan x="814">Cumplir las normas de</tspan><tspan x="814" dy="22">seguridad, cuidar su salud</tspan><tspan x="814" dy="22">e informar los peligros</tspan><tspan x="814" dy="22">y accidentes.</tspan></text>
+</g>
+
+<!-- role stickers aligned along the bottom edge, clear of the copy -->
+<g transform="translate(160 1100)">
+  <path d="M0 26Q3 4 26 4Q49 4 52 26Z" fill="#ffd33d" stroke="#183b5b" stroke-width="3"/>
+  <path d="M-3 26H55V33H-3Z" fill="#e9ad1b" stroke="#183b5b" stroke-width="3"/>
+  <path d="M8 39H44V47H8Z" fill="#3679a7"/>
+</g>
+<g>
+  <path d="M500 1099L521 1106V1124Q517 1142 500 1150Q483 1142 479 1124V1106Z" fill="#1d6799" stroke="#12395e" stroke-width="3"/>
+  <path d="M489 1123L497 1131L512 1114" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round"/>
+</g>
+<g transform="translate(795 1100)">
+  <circle cx="19" cy="10" r="10" fill="#f0bd83" stroke="#183b5b" stroke-width="3"/>
+  <path d="M1 48Q2 25 19 25Q36 25 37 48Z" fill="#2878a9" stroke="#183b5b" stroke-width="3"/>
+  <path d="M5 9Q7 -2 19 -2Q31 -2 33 9Z" fill="#ffd33d" stroke="#183b5b" stroke-width="3"/>
 </g>
 <!-- resolution -->
 <g filter="url(#shadow)">
