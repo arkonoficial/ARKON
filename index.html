@@ -323,6 +323,38 @@ dialog::backdrop { background:rgba(8,21,39,.58);backdrop-filter:blur(4px); }
 .stats-table th { color:var(--ink); background:var(--surface-soft); }
 .stats-table td { color:var(--muted); }
 .stats-table tr:last-child td,.stats-table tr:last-child th { border-bottom:0; }
+
+.planning-intro{display:grid;grid-template-columns:minmax(0,1fr) 125px 125px;gap:14px;align-items:stretch;padding:18px;margin:18px 0;border:1px solid var(--border);border-radius:17px;background:var(--surface-soft)}
+.planning-intro>div:first-child{display:flex;flex-direction:column;justify-content:center}
+.planning-kicker{font-size:.68rem;letter-spacing:.12em;font-weight:900;color:var(--teal-ink)}
+.planning-intro>div:first-child>strong{margin:5px 0;color:var(--ink);font-size:1.08rem}
+.planning-intro p{margin:0;color:var(--muted);font-size:.8rem;line-height:1.55}
+.planning-stat{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:12px;border:1px solid var(--border);border-radius:13px;background:var(--surface)}
+.planning-stat strong{font-size:1.8rem;line-height:1.1;color:var(--teal-ink)}
+.planning-stat span{margin-top:6px;color:var(--muted);font-size:.72rem;line-height:1.35}
+.planning-timeline{display:grid;gap:12px;margin:20px 0}
+.planning-stage{display:grid;grid-template-columns:42px minmax(0,1fr);gap:13px}
+.planning-stage-number{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--site-secondary);color:#fff;font-size:.85rem;font-weight:900}
+.planning-stage-content{min-width:0;padding:15px 16px;border:1px solid var(--border);border-radius:15px;background:var(--surface)}
+.planning-stage-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.planning-stage-heading h3{margin:0;color:var(--ink);font-size:.96rem}
+.planning-stage-content>small{display:block;margin:5px 0 9px;color:var(--muted);font-size:.74rem;font-weight:700}
+.planning-stage-content>p{margin:0;color:var(--muted);font-size:.82rem;line-height:1.65}
+.planning-status{display:inline-flex;align-items:center;padding:5px 9px;border-radius:999px;font-size:.67rem;font-weight:800;white-space:nowrap}
+.planning-status.done{background:#dff4e7;color:#17633d}
+.planning-status.next{background:#fff0ce;color:#805400}
+.planning-learning{display:grid;gap:4px;margin-top:12px;padding:11px 12px;border-left:3px solid var(--site-secondary);border-radius:0 10px 10px 0;background:var(--surface-soft)}
+.planning-learning strong{font-size:.76rem;color:var(--ink)}
+.planning-learning span{font-size:.78rem;line-height:1.5;color:var(--muted)}
+.planning-stage.upcoming .planning-stage-number{background:#9a7933}
+.planning-evidence{margin:22px 0}
+.planning-evidence>h3{margin:0 0 12px;color:var(--ink);font-size:1.05rem}
+.planning-evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.planning-evidence-grid>div{padding:14px;border:1px solid var(--border);border-radius:13px;background:var(--surface-soft)}
+.planning-evidence-grid strong{font-size:.82rem;color:var(--ink)}
+.planning-evidence-grid p{margin:5px 0 0;color:var(--muted);font-size:.77rem;line-height:1.55}
+.planning-conclusion{margin-top:18px;border-left:4px solid var(--site-secondary)}
+@media(max-width:650px){.planning-intro{grid-template-columns:repeat(2,minmax(0,1fr))}.planning-intro>div:first-child{grid-column:1/-1}.planning-evidence-grid{grid-template-columns:1fr}.planning-stage{grid-template-columns:34px minmax(0,1fr);gap:9px}.planning-stage-number{width:32px;height:32px;border-radius:10px}.planning-stage-content{padding:13px}}
 .milestone-list { display:grid; gap:10px; margin:17px 0; }
 .milestone-row { display:flex; align-items:flex-start; gap:12px; padding:14px 15px; border:1px solid var(--border); border-radius:14px; background:var(--surface); cursor:pointer; transition:background-color .2s ease,border-color .2s ease; }
 .milestone-row:hover { background:light-dark(#E7F7F3,#213B49); border-color:var(--hover-accent); }
@@ -1633,13 +1665,46 @@ body { position: relative; isolation: isolate; background: #e8f0fb !important; }
         </details>
         <details class="subject-detail">
           <summary><span class="subject-emoji">🗓️</span><span class="subject-title-wrap"><span>Planeación, seguimiento y sustentación</span><small>Planeación · Educación Física · Organización del proyecto</small></span></summary>
-          <div class="subject-body"><p>Marca las etapas completadas por el equipo. El porcentaje se calcula con las casillas seleccionadas y se guarda en este navegador.</p><div class="survey-summary" aria-live="polite"><strong id="milestones-summary">0 de 5 etapas completadas · 0%</strong><div class="progress-shell"><div class="progress-fill" id="milestones-fill" style="width:0%"></div></div></div><div class="milestone-list">
-            <label class="milestone-row"><input type="checkbox" data-project-milestone="introduccion"><span><strong>21 de julio – 6 de agosto · Introducción y equipo</strong><small>Definir el proyecto, socializar criterios y asignar roles.</small></span></label>
-            <label class="milestone-row"><input type="checkbox" data-project-milestone="investigacion"><span><strong>10 de agosto – 11 de septiembre · Consulta e investigación</strong><small>Buscar fuentes, contrastar datos y registrar información.</small></span></label>
-            <label class="milestone-row"><input type="checkbox" data-project-milestone="producto"><span><strong>21 de septiembre – 23 de octubre · Elaboración del producto</strong><small>Integrar contenidos, encuesta y recursos visuales.</small></span></label>
-            <label class="milestone-row"><input type="checkbox" data-project-milestone="calidad"><span><strong>26 – 30 de octubre · Control de calidad</strong><small>Revisar enlaces, ortografía, fuentes y diseño adaptable.</small></span></label>
-            <label class="milestone-row"><input type="checkbox" data-project-milestone="sustentacion"><span><strong>11 – 13 de noviembre · Presentación y sustentación</strong><small>Explicar el proceso, responder preguntas y mostrar la web.</small></span></label>
-          </div><p>La bitácora pide registrar tareas, fechas y porcentaje de cumplimiento entre septiembre y noviembre de 2026. Actualicen esta lista según el avance real y preparen una sustentación grupal e individual.</p></div>
+          <div class="subject-body">
+            <p>La planeación de ARKON muestra cómo pasamos de una pregunta sobre nuestra comunidad a una herramienta educativa. Organizamos el trabajo por etapas, tomamos decisiones, revisamos los resultados y aplicamos lo aprendido para construir y mejorar el producto.</p>
+            <div class="planning-intro">
+              <div><span class="planning-kicker">PROCESO DE TRABAJO</span><strong>De la idea a una solución educativa</strong><p>El proyecto se desarrolló mediante investigación, organización del equipo, creación del sitio y revisión de su utilidad.</p></div>
+              <div class="planning-stat"><strong>20</strong><span>respuestas analizadas en la encuesta</span></div>
+              <div class="planning-stat"><strong>3</strong><span>integrantes con responsabilidades definidas</span></div>
+            </div>
+            <div class="planning-timeline" aria-label="Etapas del desarrollo de ARKON">
+              <article class="planning-stage">
+                <div class="planning-stage-number">01</div>
+                <div class="planning-stage-content"><div class="planning-stage-heading"><h3>Planteamiento y organización</h3><span class="planning-status done">Desarrollada</span></div><small>21 de julio – 6 de agosto</small><p>Definimos la pregunta problematizadora, el propósito de ARKON y a quién queríamos ayudar. Organizamos el equipo y distribuimos las responsabilidades según las fortalezas y tareas de cada integrante.</p><div class="planning-learning"><strong>¿Qué aprendimos?</strong><span>Un proyecto necesita un objetivo claro, una población a la que va dirigido y acuerdos de trabajo para que cada persona aporte.</span></div></div>
+              </article>
+              <article class="planning-stage">
+                <div class="planning-stage-number">02</div>
+                <div class="planning-stage-content"><div class="planning-stage-heading"><h3>Investigación y comprensión del problema</h3><span class="planning-status done">Desarrollada</span></div><small>10 de agosto – 11 de septiembre</small><p>Consultamos información sobre convivencia, ciudadanía, prevención de riesgos y habilidades laborales. Comparamos contenidos, seleccionamos fuentes y relacionamos los temas de distintas áreas con situaciones de la vida cotidiana.</p><div class="planning-learning"><strong>¿Qué aprendimos?</strong><span>A buscar información confiable, distinguir recomendaciones de datos y conectar lo investigado con problemas reales de nuestra comunidad.</span></div></div>
+              </article>
+              <article class="planning-stage">
+                <div class="planning-stage-number">03</div>
+                <div class="planning-stage-content"><div class="planning-stage-heading"><h3>Diseño y construcción de ARKON</h3><span class="planning-status done">Desarrollada</span></div><small>21 de septiembre – 23 de octubre</small><p>Convertimos la investigación en secciones, recursos visuales y contenidos navegables. Integramos la encuesta y sus resultados para que la página no se quedara solo en teoría, sino que también mostrara las opiniones recogidas.</p><div class="planning-learning"><strong>¿Qué aprendimos?</strong><span>A organizar contenidos para otras personas, construir y ajustar una página web, trabajar colaborativamente y comunicar información de forma clara.</span></div></div>
+              </article>
+              <article class="planning-stage">
+                <div class="planning-stage-number">04</div>
+                <div class="planning-stage-content"><div class="planning-stage-heading"><h3>Revisión y mejoramiento</h3><span class="planning-status done">Desarrollada</span></div><small>26 – 30 de octubre y ajustes posteriores</small><p>Revisamos la presentación, los textos, los enlaces y la visualización en diferentes pantallas. Corregimos elementos que dificultaban la lectura y reorganizamos recursos para que la información fuera más fácil de entender.</p><div class="planning-learning"><strong>¿Qué aprendimos?</strong><span>Un producto no queda listo al terminar de construirlo: hay que probarlo, recibir observaciones, detectar errores y hacer mejoras.</span></div></div>
+              </article>
+              <article class="planning-stage upcoming">
+                <div class="planning-stage-number">05</div>
+                <div class="planning-stage-content"><div class="planning-stage-heading"><h3>Sustentación y reflexión final</h3><span class="planning-status next">Por realizar</span></div><small>11 – 13 de noviembre</small><p>Presentaremos el sitio, explicaremos por qué lo creamos, cómo investigamos, qué decisiones tomamos y qué aprendimos. También mostraremos los resultados de la encuesta y reconoceremos qué aspectos podrían seguir mejorándose.</p><div class="planning-learning"><strong>¿Qué debemos demostrar?</strong><span>Que comprendemos el problema, podemos explicar nuestras decisiones y sabemos cómo ARKON convierte lo aprendido en un recurso útil.</span></div></div>
+              </article>
+            </div>
+            <section class="planning-evidence">
+              <h3>Lo que demuestra nuestro proceso</h3>
+              <div class="planning-evidence-grid">
+                <div><strong>Investigación aplicada</strong><p>Los contenidos de la web reúnen información consultada y la explican de manera organizada.</p></div>
+                <div><strong>Participación de la comunidad</strong><p>Analizamos 20 respuestas anónimas. La falta de comunicación fue la dificultad más señalada, con 8 respuestas (40%).</p></div>
+                <div><strong>Producto construido y mejorado</strong><p>ARKON integra secciones educativas, recursos visuales, navegación y ajustes hechos durante la revisión.</p></div>
+                <div><strong>Aprendizajes para la vida</strong><p>Fortalecimos la comunicación, el trabajo en equipo, la responsabilidad, la investigación y la solución de problemas.</p></div>
+              </div>
+            </section>
+            <div class="project-callout planning-conclusion"><p><strong>Conclusión del equipo:</strong> durante el desarrollo entendimos que aprender no es solamente reunir información. También es investigar, tomar decisiones, trabajar con otros, crear una solución, comprobar si funciona y mejorarla. ARKON es el resultado de aplicar ese proceso a una necesidad de nuestra comunidad.</p></div>
+          </div>
         </details>
       </div>
       <div class="project-callout" style="margin-top:22px"><p><strong>Uso responsable:</strong> esta web es un recurso educativo, no un servicio de alerta en tiempo real. Sigue las instrucciones de las autoridades y verifica las rutas antes de publicarlas.</p></div>
@@ -2153,30 +2218,6 @@ function esc(value){ return String(value).replace(/[&<>"']/g, c=>({'&':'&amp;','
 const defaultCredits = {title:'Créditos del proyecto',subtitle:'Detrás de cada idea hay personas que aportan, aprenden y construyen juntas.',accent:'#0F9488',people:[{id:'santiago',name:'Santiago Aponzá',role:'Integrante del proyecto'},{id:'juan',name:'Juan Esteban Quejada',role:'Integrante del proyecto'},{id:'stefania',name:'Stefania Garcia',role:'Integrante del proyecto'}]};
 const publicCreatorPhotos={santiago:'imagenes/IMG-20261020-WA0051.jpg',juan:'imagenes/file_00000000fdd081f8807f83c4b35dab7d.png',stefania:'imagenes/IMG-20260929-WA0017(1).jpg'};
 function renderCredits(){document.documentElement.style.setProperty('--hover-accent',defaultCredits.accent);document.getElementById('credits-page-title').textContent=defaultCredits.title;document.getElementById('credits-page-subtitle').textContent=defaultCredits.subtitle;document.getElementById('credits-grid').innerHTML=defaultCredits.people.map((person,index)=>'<article class="credit-card"><div class="creator-photo-frame"><img src="'+esc(publicCreatorPhotos[person.id]||'')+'" alt="Foto de '+esc(person.name)+'" loading="lazy"></div><span class="credit-number">'+String(index+1).padStart(2,'0')+'</span><span class="credit-symbol" aria-hidden="true">✦</span><h2 class="credit-name">'+esc(person.name)+'</h2><p class="credit-role">'+esc(person.role)+'</p></article>').join('');}
-const projectMilestoneKey='ayp-project-milestones-v1';
-function loadProjectMilestones(){try{const saved=JSON.parse(localStorage.getItem(projectMilestoneKey)||'{}');return saved&&typeof saved==='object'?saved:{};}catch(e){return {};}}
-let projectMilestoneState=loadProjectMilestones();
-function updateProjectMilestones(){
-  const boxes=[...document.querySelectorAll('[data-project-milestone]')];
-  const done=boxes.filter(box=>box.checked).length;
-  const percent=boxes.length?Math.round(done/boxes.length*100):0;
-  const summary=document.getElementById('milestones-summary');
-  const fill=document.getElementById('milestones-fill');
-  if(summary)summary.textContent=done+' de '+boxes.length+' etapas completadas · '+percent+'%';
-  if(fill)fill.style.width=percent+'%';
-}
-function initProjectTools(){
-  document.querySelectorAll('[data-project-milestone]').forEach(box=>{
-    const key=box.dataset.projectMilestone;
-    box.checked=Boolean(projectMilestoneState[key]);
-    box.addEventListener('change',()=>{
-      projectMilestoneState[key]=box.checked;
-      try{localStorage.setItem(projectMilestoneKey,JSON.stringify(projectMilestoneState));}catch(e){}
-      updateProjectMilestones();
-    });
-  });
-  updateProjectMilestones();
-}
 function goTo(page){
   const available = ['inicio','proyecto','desastres','habilidades','comunidad','biblioteca','fuentes','acerca','creditos'];
   if(!available.includes(page)) return;
@@ -2222,7 +2263,7 @@ document.getElementById('daily-reset').addEventListener('click',renderDailyQuiz)
 // Store the active quiz at launch so the feedback and retry controls always use the same checked question.
 const originalLaunchQuiz=launchQuiz;
 launchQuiz=function(q,context){window.currentQuiz=q;document.getElementById('quiz-title').textContent=context?`Reto: ${context}`:'Comprueba lo que aprendiste';originalLaunchQuiz(q,context);};
-renderDisasterGrid();renderSkillsGrid();renderSources();renderLibrary();renderDailyQuiz();renderCredits();initProjectTools();
+renderDisasterGrid();renderSkillsGrid();renderSources();renderLibrary();renderDailyQuiz();renderCredits();
 document.getElementById('featured-articles').innerHTML=[articles[0],articles[2],articles[4]].map(a=>cardHTML({title:a.title,icon:a.icon,tone:a.tone,tag:a.kind,summary:a.summary,bottom:a.time+' · '+a.levelName,action:'article:'+a.id})).join('');updateProgressStats();
 </script>
 
