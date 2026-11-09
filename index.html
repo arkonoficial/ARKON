@@ -3807,5 +3807,26 @@ html body #app .float-card span {
 }
 </style>
 
+
+<style id="arkon-project-answer-contrast-fix">
+/* La propuesta de respuesta está sobre una tarjeta clara: texto oscuro y sólido. */
+html body #app .project-answer,
+html body #app .project-answer :where(*) {
+  color:#17212b !important;
+  -webkit-text-fill-color:#17212b !important;
+  opacity:1 !important;
+  text-shadow:none !important;
+  -webkit-text-stroke:0 !important;
+}
+html body #app .project-answer .eyebrow,
+html body #app .project-answer .eyebrow-dot {
+  color:#176b63 !important;
+  -webkit-text-fill-color:#176b63 !important;
+}
+html body #app .project-answer .answer-point {
+  background:#f1f6f8 !important;
+}
+</style>
+
 </body>
 </html>
