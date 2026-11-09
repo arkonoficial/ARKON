@@ -4197,5 +4197,97 @@ html body #app #page-biblioteca .empty-state :is(h3,p) {
   opacity:1 !important;
 }
 </style>
+
+<style id="arkon-library-article-legibility">
+/* Legibilidad completa de cada ficha que se abre desde la Biblioteca */
+html body dialog#article-dialog {
+  background:#FFFFFF !important;
+  color:#17212B !important;
+  border:1px solid #AFC1CE !important;
+  box-shadow:0 24px 70px rgba(6,20,36,.32) !important;
+}
+html body dialog#article-dialog::backdrop {
+  background:rgba(5,16,30,.72) !important;
+}
+html body dialog#article-dialog .dialog-content,
+html body dialog#article-dialog .dialog-header,
+html body dialog#article-dialog .dialog-body,
+html body dialog#article-dialog .button-row {
+  background:#FFFFFF !important;
+  color:#17212B !important;
+}
+html body dialog#article-dialog .dialog-header {
+  border-bottom:1px solid #D8E2E9 !important;
+}
+html body dialog#article-dialog .dialog-header h2,
+html body dialog#article-dialog .dialog-header .eyebrow,
+html body dialog#article-dialog .dialog-body,
+html body dialog#article-dialog .dialog-body :is(h1,h2,h3,h4,p,li,span,strong,em,b,i) {
+  color:#17212B !important;
+  -webkit-text-fill-color:#17212B !important;
+  opacity:1 !important;
+  text-shadow:none !important;
+  -webkit-text-stroke:0 !important;
+  filter:none !important;
+}
+html body dialog#article-dialog .dialog-header .eyebrow {
+  color:#17665F !important;
+  -webkit-text-fill-color:#17665F !important;
+}
+html body dialog#article-dialog .dialog-body {
+  line-height:1.75 !important;
+}
+html body dialog#article-dialog .dialog-body h3 {
+  margin-top:22px !important;
+  margin-bottom:9px !important;
+  font-weight:800 !important;
+}
+html body dialog#article-dialog .dialog-body p,
+html body dialog#article-dialog .dialog-body li {
+  color:#263746 !important;
+  -webkit-text-fill-color:#263746 !important;
+}
+html body dialog#article-dialog .dialog-body ul,
+html body dialog#article-dialog .dialog-body ol {
+  padding-left:24px !important;
+}
+html body dialog#article-dialog .dialog-body li {
+  margin:0 0 7px !important;
+}
+html body dialog#article-dialog .dialog-body a {
+  color:#075985 !important;
+  -webkit-text-fill-color:#075985 !important;
+  text-decoration:underline !important;
+  text-underline-offset:3px !important;
+  font-weight:700 !important;
+}
+html body dialog#article-dialog .dialog-body a:focus-visible,
+html body dialog#article-dialog button:focus-visible {
+  outline:3px solid #0F9488 !important;
+  outline-offset:3px !important;
+}
+html body dialog#article-dialog .dialog-body .tag,
+html body dialog#article-dialog .dialog-body .pill {
+  background:#E7F0F6 !important;
+  border:1px solid #C4D3DE !important;
+  color:#24465E !important;
+  -webkit-text-fill-color:#24465E !important;
+  opacity:1 !important;
+}
+html body dialog#article-dialog .dialog-close,
+html body dialog#article-dialog .btn-quiet {
+  background:#EAF2F7 !important;
+  border:1px solid #B8C8D5 !important;
+  color:#17212B !important;
+  -webkit-text-fill-color:#17212B !important;
+  opacity:1 !important;
+}
+html body dialog#article-dialog .btn-primary {
+  color:#FFFFFF !important;
+  -webkit-text-fill-color:#FFFFFF !important;
+  opacity:1 !important;
+}
+</style>
+
 </body>
 </html>
