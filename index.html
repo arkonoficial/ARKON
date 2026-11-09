@@ -3895,5 +3895,27 @@ html body #app .project-answer .answer-point {
 }
 </style>
 
+
+<style id="arkon-community-text-fill-contrast">
+/* Corrige el relleno blanco heredado por la regla global de tipografía.
+   En Atención y comunidad, todo el texto sobre paneles claros queda oscuro y sólido. */
+html body #app #page-comunidad,
+html body #app #page-comunidad :where(*) {
+  color:#17212b !important;
+  -webkit-text-fill-color:#17212b !important;
+  opacity:1 !important;
+  text-shadow:none !important;
+  -webkit-text-stroke:0 !important;
+}
+/* Mantiene los enlaces y acciones con un tono azul oscuro legible. */
+html body #app #page-comunidad :is(.community-card-actions a,.community-map-trigger,.community-sources a,.text-link) {
+  color:#07566a !important;
+  -webkit-text-fill-color:#07566a !important;
+}
+html body #app #page-comunidad .community-card-actions a.community-action-primary {
+  color:#fff !important;
+  -webkit-text-fill-color:#fff !important;
+}
+</style>
 </body>
 </html>
