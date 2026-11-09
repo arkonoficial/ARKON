@@ -3718,5 +3718,59 @@ html body svg tspan {
 }
 </style>
 
+
+<style id="arkon-fixed-white-text-everywhere">
+/* Texto blanco permanente en TODA la página. Se conservan las paletas y los fondos. */
+html {
+  --ink:#FFFFFF !important;
+  --muted:#FFFFFF !important;
+  --arkon-ink:#FFFFFF !important;
+  --arkon-muted:#FFFFFF !important;
+  --site-on-background:#FFFFFF !important;
+  --site-on-primary:#FFFFFF !important;
+  --site-on-secondary:#FFFFFF !important;
+}
+html body *:not(#arkon-black-text-priority):not(#arkon-black-text-priority-two) {
+  color:#FFFFFF !important;
+  -webkit-text-fill-color:#FFFFFF !important;
+  opacity:1 !important;
+  text-shadow:0 1px 2px rgba(0,0,0,.95), 0 0 1px rgba(0,0,0,.9) !important;
+  -webkit-text-stroke:.35px rgba(0,0,0,.78);
+  paint-order:stroke fill;
+}
+/* Los textos SVG también usan blanco y conservan un contorno oscuro. */
+html body svg text,
+html body svg tspan {
+  fill:#FFFFFF !important;
+  stroke:rgba(0,0,0,.78) !important;
+  stroke-width:.35px !important;
+  paint-order:stroke fill;
+  opacity:1 !important;
+}
+/* El texto escrito en campos y sus marcadores también permanece visible. */
+html body input,
+html body select,
+html body textarea {
+  color:#FFFFFF !important;
+  -webkit-text-fill-color:#FFFFFF !important;
+  text-shadow:0 1px 2px rgba(0,0,0,.95) !important;
+  opacity:1 !important;
+}
+html body input::placeholder,
+html body textarea::placeholder {
+  color:#FFFFFF !important;
+  -webkit-text-fill-color:#FFFFFF !important;
+  opacity:1 !important;
+  text-shadow:0 1px 2px rgba(0,0,0,.95) !important;
+}
+/* Los subtítulos del video se leen en negro sobre su franja clara. */
+#arkon-video-real .arkon-video-player::cue {
+  color:#000000 !important;
+  background-color:rgba(255,255,255,.94) !important;
+  text-shadow:none !important;
+  -webkit-text-stroke:0 !important;
+}
+</style>
+
 </body>
 </html>
