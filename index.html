@@ -3714,5 +3714,98 @@ html body #app [aria-pressed="true"] {
   -webkit-text-fill-color:#fff !important;
 }
 </style>
+
+<style id="arkon-light-surface-dark-text">
+/* En superficies blancas o pastel, usar tinta oscura para mantener el contraste.
+   Los fondos y los colores de cada sección no se modifican. */
+html body #app :is(
+  .float-card,
+  .brief-mode-intro-grid article,
+  .card,
+  .detail-panel,
+  .step-card,
+  .check-item,
+  .source-item,
+  .principle,
+  .credit-card,
+  .mini-stat,
+  .search-panel,
+  .challenge,
+  .challenge-question,
+  .answer-btn,
+  .quiz-result,
+  .empty-state,
+  .feature-strip,
+  .project-fact,
+  .project-pillar,
+  .subject-detail,
+  .subject-body,
+  .notice,
+  .question-group,
+  .project-chip-list span,
+  .tag,
+  .pill,
+  .footer,
+  .card-icon,
+  .source-number,
+  .principle-icon,
+  .arrow-circle
+),
+html body #app :is(
+  .float-card,
+  .brief-mode-intro-grid article,
+  .card,
+  .detail-panel,
+  .step-card,
+  .check-item,
+  .source-item,
+  .principle,
+  .credit-card,
+  .mini-stat,
+  .search-panel,
+  .challenge,
+  .challenge-question,
+  .answer-btn,
+  .quiz-result,
+  .empty-state,
+  .feature-strip,
+  .project-fact,
+  .project-pillar,
+  .subject-detail,
+  .subject-body,
+  .notice,
+  .question-group,
+  .project-chip-list span,
+  .tag,
+  .pill,
+  .footer,
+  .card-icon,
+  .source-number,
+  .principle-icon,
+  .arrow-circle
+) :where(*) {
+  color:#17212b !important;
+  -webkit-text-fill-color:#17212b !important;
+  opacity:1 !important;
+  text-shadow:none !important;
+  -webkit-text-stroke:0 !important;
+  paint-order:normal !important;
+}
+/* Los enlaces y controles dentro de paneles claros también quedan legibles. */
+html body #app :is(.float-card,.brief-mode-intro-grid article,.card,.detail-panel,.step-card,.check-item,.source-item,.principle,.credit-card,.mini-stat,.search-panel,.challenge,.challenge-question,.answer-btn,.quiz-result,.empty-state,.feature-strip,.project-fact,.project-pillar,.subject-detail,.subject-body,.notice,.question-group,.project-chip-list,.tag,.pill,.footer) :is(a,button,input,select,textarea,label) {
+  color:#17212b !important;
+  -webkit-text-fill-color:#17212b !important;
+  text-shadow:none !important;
+  opacity:1 !important;
+}
+/* El aviso amarillo y los recuadros flotantes de la ilustración usan texto oscuro. */
+html body #app .notice-icon,
+html body #app .float-card span {
+  color:#17212b !important;
+  -webkit-text-fill-color:#17212b !important;
+  opacity:1 !important;
+}
+</style>
+
 </body>
 </html>
