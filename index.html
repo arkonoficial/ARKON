@@ -3649,5 +3649,50 @@ dialog :is(h1,h2,h3,h4,p,li,small,strong,span,.quiz-progress,.quiz-result,.dialo
 })();
 </script>
 
+
+<style id="arkon-fixed-black-text-everywhere">
+/* Color tipográfico único para todo ARKON. Las paletas y los fondos quedan intactos. */
+html {
+  --ink:#000000 !important;
+  --muted:#000000 !important;
+  --arkon-ink:#000000 !important;
+  --arkon-muted:#000000 !important;
+  --site-on-background:#000000 !important;
+  --site-on-primary:#000000 !important;
+  --site-on-secondary:#000000 !important;
+}
+/* La doble exclusión aporta prioridad frente a los estilos de cada sección y tema. */
+html body *:not(#arkon-black-text-priority):not(#arkon-black-text-priority-two) {
+  color:#000000 !important;
+  -webkit-text-fill-color:#000000 !important;
+  text-shadow:none !important;
+}
+/* Evita textos desvanecidos o semitransparentes. */
+html body *:not(#arkon-black-text-priority):not(#arkon-black-text-priority-two):is(
+  h1,h2,h3,h4,h5,h6,p,span,a,button,label,small,strong,b,i,em,li,dt,dd,
+  summary,figcaption,legend,output,th,td,option,optgroup,caption,code,kbd,
+  mark,time,abbr,cite,q,.cinema-title,.cinema-description,.cinema-chip,
+  .scene-note,.scene-card,.scene-words,.cinema-counter,.cinema-transcript,
+  .cinema-status,.arkon-video-avatar-label,.arkon-video-eyebrow,
+  .arkon-video-title,.arkon-video-description,.arkon-video-specs,
+  .arkon-video-download,.arkon-video-meta,.arkon-caption-toggle,
+  .arkon-caption-hint
+) {
+  opacity:1 !important;
+}
+/* Texto de gráficos SVG que se dibuja como texto y no como imagen. */
+html body svg text,
+html body svg tspan {
+  fill:#000000 !important;
+  opacity:1 !important;
+}
+/* Los subtítulos del video siguen siendo negros y llevan una base clara para leerse. */
+#arkon-video-real .arkon-video-player::cue {
+  color:#000000 !important;
+  background-color:rgba(255,255,255,.92) !important;
+  text-shadow:none !important;
+}
+</style>
+
 </body>
 </html>
