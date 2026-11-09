@@ -3692,6 +3692,30 @@ html body svg tspan {
   background-color:rgba(255,255,255,.92) !important;
   text-shadow:none !important;
 }
+
+/* Excepción de contraste: el bloque de bienvenida tiene fondo azul oscuro. */
+#arkon-video-real,
+#arkon-video-real :is(h1,h2,h3,h4,h5,h6,p,span,a,button,label,small,strong,b,i,em,li,figcaption,summary,div) {
+  color:#FFFFFF !important;
+  -webkit-text-fill-color:#FFFFFF !important;
+  opacity:1 !important;
+  text-shadow:0 1px 2px rgba(0,0,0,.35) !important;
+}
+/* El rótulo del presentador y los botones conservan texto blanco legible. */
+#arkon-video-real .arkon-video-avatar-label,
+#arkon-video-real .arkon-caption-toggle,
+#arkon-video-real .arkon-video-download,
+#arkon-video-real .arkon-video-specs {
+  color:#FFFFFF !important;
+  -webkit-text-fill-color:#FFFFFF !important;
+  opacity:1 !important;
+}
+/* Subtítulos del reproductor: negro sobre una franja clara para máxima lectura. */
+#arkon-video-real .arkon-video-player::cue {
+  color:#000000 !important;
+  background-color:rgba(255,255,255,.94) !important;
+  text-shadow:none !important;
+}
 </style>
 
 </body>
