@@ -3944,5 +3944,57 @@ html body #app #page-comunidad :is(.community-directory-card,.community-map-pane
   opacity:1 !important;
 }
 </style>
+<style id="arkon-challenge-legibility-final">
+/* Contraste firme para el reto diario y sus respuestas */
+html body #app .challenge,
+html body #app .challenge-intro,
+html body #app .challenge-question,
+html body #app .challenge-question h3,
+html body #app .challenge-intro h3,
+html body #app .challenge-intro p,
+html body #app .challenge-question .tag,
+html body #app .challenge-question .feedback,
+html body #app .challenge-question .text-link,
+html body #app .challenge-question .answer-btn,
+html body #app .challenge-question .answer-btn span,
+html body #app .challenge-question .answer-btn .letter {
+  opacity: 1 !important;
+  text-shadow: none !important;
+  -webkit-text-stroke: 0 !important;
+  filter: none !important;
+}
+html body #app .challenge-intro h3,
+html body #app .challenge-question h3,
+html body #app .challenge-intro p,
+html body #app .challenge-question .feedback,
+html body #app .challenge-question .text-link,
+html body #app .challenge-question .answer-btn,
+html body #app .challenge-question .answer-btn span {
+  color: #F4F8FF !important;
+  -webkit-text-fill-color: #F4F8FF !important;
+}
+html body #app .challenge-question .tag {
+  color: #062E2A !important;
+  -webkit-text-fill-color: #062E2A !important;
+  background: #5EEAD4 !important;
+}
+html body #app .challenge-question .answer-btn {
+  background: #1B2D43 !important;
+  border: 1px solid #66819F !important;
+}
+html body #app .challenge-question .answer-btn .letter {
+  color: #062E2A !important;
+  -webkit-text-fill-color: #062E2A !important;
+  background: #5EEAD4 !important;
+}
+html body #app .challenge-question .answer-btn.correct {
+  background: #17483F !important;
+  border-color: #42D6A4 !important;
+}
+html body #app .challenge-question .answer-btn.wrong {
+  background: #512D38 !important;
+  border-color: #FF9A91 !important;
+}
+</style>
 </body>
 </html>
