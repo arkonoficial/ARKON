@@ -3650,127 +3650,69 @@ dialog :is(h1,h2,h3,h4,p,li,small,strong,span,.quiz-progress,.quiz-result,.dialo
 </script>
 
 
-<style id="arkon-fixed-black-text-everywhere">
-/* Color tipográfico único para todo ARKON. Las paletas y los fondos quedan intactos. */
-html {
-  --ink:#000000 !important;
-  --muted:#000000 !important;
-  --arkon-ink:#000000 !important;
-  --arkon-muted:#000000 !important;
-  --site-on-background:#000000 !important;
-  --site-on-primary:#000000 !important;
-  --site-on-secondary:#000000 !important;
+<style id="arkon-final-white-text-global">
+/* ARKON: tipografía blanca y legible en todas las secciones y temas. */
+:root {
+  --ink:#fff !important;
+  --muted:#fff !important;
+  --arkon-ink:#fff !important;
+  --arkon-muted:#fff !important;
+  --site-on-background:#fff !important;
+  --site-on-primary:#fff !important;
+  --site-on-secondary:#fff !important;
 }
-/* La doble exclusión aporta prioridad frente a los estilos de cada sección y tema. */
-html body *:not(#arkon-black-text-priority):not(#arkon-black-text-priority-two) {
-  color:#000000 !important;
-  -webkit-text-fill-color:#000000 !important;
-  text-shadow:none !important;
-}
-/* Evita textos desvanecidos o semitransparentes. */
-html body *:not(#arkon-black-text-priority):not(#arkon-black-text-priority-two):is(
-  h1,h2,h3,h4,h5,h6,p,span,a,button,label,small,strong,b,i,em,li,dt,dd,
-  summary,figcaption,legend,output,th,td,option,optgroup,caption,code,kbd,
-  mark,time,abbr,cite,q,.cinema-title,.cinema-description,.cinema-chip,
-  .scene-note,.scene-card,.scene-words,.cinema-counter,.cinema-transcript,
-  .cinema-status,.arkon-video-avatar-label,.arkon-video-eyebrow,
-  .arkon-video-title,.arkon-video-description,.arkon-video-specs,
-  .arkon-video-download,.arkon-video-meta,.arkon-caption-toggle,
-  .arkon-caption-hint
-) {
+html body #app,
+html body #app :where(*) {
+  color:#fff !important;
+  -webkit-text-fill-color:#fff !important;
   opacity:1 !important;
-}
-/* Texto de gráficos SVG que se dibuja como texto y no como imagen. */
-html body svg text,
-html body svg tspan {
-  fill:#000000 !important;
-  opacity:1 !important;
-}
-/* Los subtítulos del video siguen siendo negros y llevan una base clara para leerse. */
-#arkon-video-real .arkon-video-player::cue {
-  color:#000000 !important;
-  background-color:rgba(255,255,255,.92) !important;
-  text-shadow:none !important;
-}
-
-/* Excepción de contraste: el bloque de bienvenida tiene fondo azul oscuro. */
-#arkon-video-real,
-#arkon-video-real :is(h1,h2,h3,h4,h5,h6,p,span,a,button,label,small,strong,b,i,em,li,figcaption,summary,div) {
-  color:#FFFFFF !important;
-  -webkit-text-fill-color:#FFFFFF !important;
-  opacity:1 !important;
-  text-shadow:0 1px 2px rgba(0,0,0,.35) !important;
-}
-/* El rótulo del presentador y los botones conservan texto blanco legible. */
-#arkon-video-real .arkon-video-avatar-label,
-#arkon-video-real .arkon-caption-toggle,
-#arkon-video-real .arkon-video-download,
-#arkon-video-real .arkon-video-specs {
-  color:#FFFFFF !important;
-  -webkit-text-fill-color:#FFFFFF !important;
-  opacity:1 !important;
-}
-/* Subtítulos del reproductor: negro sobre una franja clara para máxima lectura. */
-#arkon-video-real .arkon-video-player::cue {
-  color:#000000 !important;
-  background-color:rgba(255,255,255,.94) !important;
-  text-shadow:none !important;
-}
-</style>
-
-
-<style id="arkon-fixed-white-text-everywhere">
-/* Texto blanco permanente en TODA la página. Se conservan las paletas y los fondos. */
-html {
-  --ink:#FFFFFF !important;
-  --muted:#FFFFFF !important;
-  --arkon-ink:#FFFFFF !important;
-  --arkon-muted:#FFFFFF !important;
-  --site-on-background:#FFFFFF !important;
-  --site-on-primary:#FFFFFF !important;
-  --site-on-secondary:#FFFFFF !important;
-}
-html body *:not(#arkon-black-text-priority):not(#arkon-black-text-priority-two) {
-  color:#FFFFFF !important;
-  -webkit-text-fill-color:#FFFFFF !important;
-  opacity:1 !important;
-  text-shadow:0 1px 2px rgba(0,0,0,.95), 0 0 1px rgba(0,0,0,.9) !important;
-  -webkit-text-stroke:.35px rgba(0,0,0,.78);
+  text-shadow:
+    -1px -1px 0 #17212b,
+     1px -1px 0 #17212b,
+    -1px  1px 0 #17212b,
+     1px  1px 0 #17212b,
+     0 2px 4px rgba(0,0,0,.85) !important;
+  -webkit-text-stroke:.25px #17212b;
   paint-order:stroke fill;
 }
-/* Los textos SVG también usan blanco y conservan un contorno oscuro. */
-html body svg text,
-html body svg tspan {
-  fill:#FFFFFF !important;
-  stroke:rgba(0,0,0,.78) !important;
-  stroke-width:.35px !important;
+html body #app svg text,
+html body #app svg tspan {
+  fill:#fff !important;
+  stroke:#17212b !important;
+  stroke-width:.8px !important;
   paint-order:stroke fill;
   opacity:1 !important;
 }
-/* El texto escrito en campos y sus marcadores también permanece visible. */
-html body input,
-html body select,
-html body textarea {
-  color:#FFFFFF !important;
-  -webkit-text-fill-color:#FFFFFF !important;
-  text-shadow:0 1px 2px rgba(0,0,0,.95) !important;
+html body #app input,
+html body #app select,
+html body #app textarea,
+html body #app option {
+  color:#fff !important;
+  -webkit-text-fill-color:#fff !important;
   opacity:1 !important;
-}
-html body input::placeholder,
-html body textarea::placeholder {
-  color:#FFFFFF !important;
-  -webkit-text-fill-color:#FFFFFF !important;
-  opacity:1 !important;
-  text-shadow:0 1px 2px rgba(0,0,0,.95) !important;
-}
-/* Los subtítulos también permanecen blancos y llevan una franja oscura legible. */
-#arkon-video-real .arkon-video-player::cue {
-  color:#FFFFFF !important;
-  background-color:rgba(0,0,0,.82) !important;
-  text-shadow:0 1px 2px #000000 !important;
+  text-shadow:0 1px 3px #17212b !important;
   -webkit-text-stroke:0 !important;
 }
+html body #app input::placeholder,
+html body #app textarea::placeholder {
+  color:#fff !important;
+  -webkit-text-fill-color:#fff !important;
+  opacity:1 !important;
+}
+#arkon-video-real .arkon-video-player::cue {
+  color:#fff !important;
+  background-color:rgba(0,0,0,.86) !important;
+  text-shadow:0 1px 2px #000 !important;
+  -webkit-text-stroke:0 !important;
+}
+/* Evita que los colores de enlaces y estados activos vuelvan a teñir la letra. */
+html body #app a,
+html body #app button,
+html body #app .active,
+html body #app [aria-pressed="true"] {
+  color:#fff !important;
+  -webkit-text-fill-color:#fff !important;
+}
 </style>
-
 </body>
 </html>
