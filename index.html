@@ -3997,67 +3997,122 @@ html body #app .challenge-question .answer-btn.wrong {
 }
 </style>
 <style id="arkon-all-challenges-legibility">
-/* Contraste uniforme en TODOS los retos, preguntas y opciones de respuesta */
-html body #app .challenge,
-html body #app .challenge-intro,
-html body #app .challenge-question,
-html body #app #quiz-dialog,
-html body #app #quiz-dialog .dialog-content,
-html body #app #quiz-content,
-html body #app #quiz-content *,
-html body #app .quiz-progress,
-html body #app .quiz-result,
-html body #app .answer-list,
-html body #app .answer-btn,
-html body #app .answer-btn * {
+/* Contraste real para todos los retos: tarjetas claras y respuestas oscuras. */
+/* Reto diario de Inicio */
+html body #app .challenge {
+  background:#FFFFFF !important;
+  border:1px solid #A8BBC8 !important;
+  color:#17212B !important;
+}
+html body #app .challenge-intro {
+  background:transparent !important;
+  color:#17212B !important;
+}
+html body #app .challenge-question {
+  background:#F2F7FB !important;
+  border:1px solid #B7C7D4 !important;
+  color:#17212B !important;
+}
+html body #app .challenge-intro :is(h1,h2,h3,h4,p,strong,small,.mini-stat),
+html body #app .challenge-question :is(h1,h2,h3,h4,p,strong,small,.feedback,.text-link) {
+  color:#17212B !important;
+  -webkit-text-fill-color:#17212B !important;
   opacity:1 !important;
   text-shadow:none !important;
   -webkit-text-stroke:0 !important;
   filter:none !important;
 }
-html body #app .challenge-intro h3,
-html body #app .challenge-intro p,
-html body #app .challenge-question h3,
-html body #app .challenge-question .feedback,
-html body #app .challenge-question .text-link,
-html body #app #quiz-dialog .dialog-header h2,
-html body #app #quiz-content h3,
-html body #app #quiz-content p,
-html body #app #quiz-content .quiz-progress,
-html body #app #quiz-content .quiz-result,
-html body #app #quiz-content .quiz-result *,
-html body #app .challenge-question .answer-btn,
-html body #app .challenge-question .answer-btn span,
-html body #app #quiz-content .answer-btn,
-html body #app #quiz-content .answer-btn span {
-  color:#F4F8FF !important;
-  -webkit-text-fill-color:#F4F8FF !important;
+html body #app .challenge-question .tag {
+  color:#07564D !important;
+  -webkit-text-fill-color:#07564D !important;
+  background:#D8F3ED !important;
+  opacity:1 !important;
 }
-html body #app .challenge-question .tag,
-html body #app .challenge-question .answer-btn .letter,
-html body #app #quiz-content .answer-btn .letter {
-  color:#062E2A !important;
-  -webkit-text-fill-color:#062E2A !important;
-  background:#5EEAD4 !important;
+/* Opciones: fondo azul oscuro y texto blanco para separarlas claramente. */
+html body #app .challenge .answer-btn,
+html body #quiz-dialog .answer-btn {
+  background:#17334F !important;
+  border:1px solid #41627F !important;
+  color:#FFFFFF !important;
+  -webkit-text-fill-color:#FFFFFF !important;
+  opacity:1 !important;
+  text-shadow:none !important;
+  filter:none !important;
 }
-html body #app .challenge-question .answer-btn,
-html body #app #quiz-content .answer-btn {
-  background:#1B2D43 !important;
-  border:1px solid #66819F !important;
+html body #app .challenge .answer-btn span:not(.letter),
+html body #quiz-dialog .answer-btn span:not(.letter) {
+  color:#FFFFFF !important;
+  -webkit-text-fill-color:#FFFFFF !important;
+  opacity:1 !important;
 }
-html body #app .challenge-question .answer-btn.correct,
-html body #app #quiz-content .answer-btn.correct {
-  background:#17483F !important;
-  border-color:#42D6A4 !important;
+html body #app .challenge .answer-btn .letter,
+html body #quiz-dialog .answer-btn .letter {
+  color:#063B36 !important;
+  -webkit-text-fill-color:#063B36 !important;
+  background:#71E2D0 !important;
+  opacity:1 !important;
 }
-html body #app .challenge-question .answer-btn.wrong,
-html body #app #quiz-content .answer-btn.wrong {
-  background:#512D38 !important;
-  border-color:#FF9A91 !important;
+html body #app .challenge .answer-btn.correct,
+html body #quiz-dialog .answer-btn.correct {
+  background:#175342 !important;
+  border-color:#38B98D !important;
 }
-html body #app #quiz-dialog .quiz-result {
-  background:#1B2D43 !important;
-  border:1px solid #66819F !important;
+html body #app .challenge .answer-btn.wrong,
+html body #quiz-dialog .answer-btn.wrong {
+  background:#762D3A !important;
+  border-color:#E58B92 !important;
+}
+html body #app .challenge .feedback {
+  color:#17212B !important;
+  -webkit-text-fill-color:#17212B !important;
+  opacity:1 !important;
+}
+/* Los retos de Desastres, Habilidades y Biblioteca usan este diálogo,
+   que está fuera de #app en el HTML. */
+html body dialog#quiz-dialog {
+  background:#FFFFFF !important;
+  border:1px solid #A8BBC8 !important;
+  color:#17212B !important;
+}
+html body dialog#quiz-dialog .dialog-content,
+html body dialog#quiz-dialog .dialog-header,
+html body dialog#quiz-dialog #quiz-content {
+  background:#FFFFFF !important;
+  color:#17212B !important;
+}
+html body dialog#quiz-dialog :is(.dialog-header h2,h3,p,strong,.eyebrow,.quiz-progress,.dialog-body) {
+  color:#17212B !important;
+  -webkit-text-fill-color:#17212B !important;
+  opacity:1 !important;
+  text-shadow:none !important;
+  -webkit-text-stroke:0 !important;
+  filter:none !important;
+}
+html body dialog#quiz-dialog .quiz-progress {
+  color:#36536B !important;
+  -webkit-text-fill-color:#36536B !important;
+}
+html body dialog#quiz-dialog .quiz-result {
+  background:#EAF2F7 !important;
+  border:1px solid #B5C8D6 !important;
+  color:#17212B !important;
+}
+html body dialog#quiz-dialog .quiz-result :is(strong,p) {
+  color:#17212B !important;
+  -webkit-text-fill-color:#17212B !important;
+}
+html body dialog#quiz-dialog .dialog-close,
+html body dialog#quiz-dialog .btn-quiet {
+  color:#17212B !important;
+  -webkit-text-fill-color:#17212B !important;
+  background:#EAF2F7 !important;
+  border-color:#B5C8D6 !important;
+  opacity:1 !important;
+}
+html body #app .challenge :is(*),
+html body dialog#quiz-dialog :is(*) {
+  text-shadow:none !important;
+  filter:none !important;
 }
 </style>
 </body>
