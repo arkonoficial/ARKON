@@ -3719,67 +3719,44 @@ dialog :is(h1,h2,h3,h4,p,li,small,strong,span,.quiz-progress,.quiz-result,.dialo
 
 
 <style id="arkon-final-white-text-global">
-/* ARKON: tipografía blanca y legible en todas las secciones y temas. */
+/* Contraste adaptable: el texto hereda el color de cada sección y de cada tarjeta.
+   Así las superficies claras conservan tinta oscura y los paneles oscuros mantienen
+   sus textos blancos cuando su propio diseño así lo establece. */
 :root {
-  --ink:#fff !important;
-  --muted:#fff !important;
-  --arkon-ink:#fff !important;
-  --arkon-muted:#fff !important;
-  --site-on-background:#fff !important;
-  --site-on-primary:#fff !important;
-  --site-on-secondary:#fff !important;
+  --ink:var(--arkon-ink) !important;
+  --muted:var(--arkon-muted) !important;
+  --site-on-background:var(--arkon-ink) !important;
+  --site-on-primary:#FFFFFF !important;
 }
 html body #app,
 html body #app :where(*) {
-  color:#fff !important;
-  -webkit-text-fill-color:#fff !important;
   opacity:1 !important;
-  text-shadow:
-    -1px -1px 0 #17212b,
-     1px -1px 0 #17212b,
-    -1px  1px 0 #17212b,
-     1px  1px 0 #17212b,
-     0 2px 4px rgba(0,0,0,.85) !important;
-  -webkit-text-stroke:.25px #17212b;
-  paint-order:stroke fill;
+  -webkit-text-fill-color:currentColor !important;
+  text-shadow:none !important;
+  -webkit-text-stroke:0 !important;
+  paint-order:normal !important;
 }
-html body #app svg text,
-html body #app svg tspan {
-  fill:#fff !important;
-  stroke:#17212b !important;
-  stroke-width:.8px !important;
-  paint-order:stroke fill;
-  opacity:1 !important;
-}
+/* Controles sobre fondos claros: texto y marcador de posición legibles. */
 html body #app input,
 html body #app select,
 html body #app textarea,
 html body #app option {
-  color:#fff !important;
-  -webkit-text-fill-color:#fff !important;
-  opacity:1 !important;
-  text-shadow:0 1px 3px #17212b !important;
+  -webkit-text-fill-color:currentColor !important;
+  text-shadow:none !important;
   -webkit-text-stroke:0 !important;
 }
 html body #app input::placeholder,
 html body #app textarea::placeholder {
-  color:#fff !important;
-  -webkit-text-fill-color:#fff !important;
+  color:var(--arkon-muted) !important;
+  -webkit-text-fill-color:var(--arkon-muted) !important;
   opacity:1 !important;
 }
+/* Los subtítulos del video mantienen su caja oscura para distinguirse de la imagen. */
 #arkon-video-real .arkon-video-player::cue {
-  color:#fff !important;
+  color:#FFFFFF !important;
   background-color:rgba(0,0,0,.86) !important;
   text-shadow:0 1px 2px #000 !important;
   -webkit-text-stroke:0 !important;
-}
-/* Evita que los colores de enlaces y estados activos vuelvan a teñir la letra. */
-html body #app a,
-html body #app button,
-html body #app .active,
-html body #app [aria-pressed="true"] {
-  color:#fff !important;
-  -webkit-text-fill-color:#fff !important;
 }
 </style>
 
